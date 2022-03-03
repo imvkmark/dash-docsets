@@ -8,10 +8,11 @@
 
 **订阅**
 
-[dash-feed://https://raw.githubusercontent.com/imvkmark/dash-docsets/master/phpdocset.xml](dash-feed://https%3A%2F%2Fraw.githubusercontent.com%2Fimvkmark%2Fdash-docsets%2Fmaster%2Fphpdocset.xml)
+订阅 Url Feed : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/phpdocset.xml 
 
+![img.png](_php/feed.png)
 
-- 订阅 feed, 发布新版本会自行更新
+发布新版本会自行更新
 
 ## 特点
 
