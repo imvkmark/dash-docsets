@@ -14,9 +14,24 @@
 
 ## 运行替换
 
-运行时候自动替换 `Guide` 类型的中文标题
+- 运行时候自动替换 `Guide` 类型的中文标题
+- 运行时候自动优化样式, 去除默认背景
+
+需要
+
+```
+php > 8.0.2
+```
 
 ```
 cd laravel
 php artisan php:docset
+```
+
+## 发布
+
+对文档目录进行打包 tgz 的包
+
+```
+tar -cvzf _php/PHP.CN.tgz _php/PHP.docset
 ```
