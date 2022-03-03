@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>类的自动加载</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.constants.html">« 类常量</a></li>
+      <li style="float: right;"><a href="language.oop5.decon.html">构造函数和析构函数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">类与对象</a></li>
+    <li>类的自动加载</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.autoload" class="sect1">
+ <h2 class="title">类的自动加载</h2>
+ <p class="para">
+  在编写面向对象（OOP） 程序时，很多开发者为每个类新建一个 PHP 文件。
+  这会带来一个烦恼：每个脚本的开头，都需要包含（include）一个长长的列表（每个类都有个文件）。
+ </p>
+ <p class="para">
+  <span class="function"><a href="function.spl-autoload-register.html" class="function">spl_autoload_register()</a></span> 函数可以注册任意数量的自动加载器，当使用尚未被定义的类（class）和接口（interface）时自动去加载。通过注册自动加载器，脚本引擎在
+  PHP 出错失败前有了最后一个机会加载所需的类。
+ </p>
+ <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    PHP 8.0.0 之前，可以使用 <span class="function"><a href="function.autoload.html" class="function">__autoload()</a></span> 自动加载类和接口。然而，它是
+    <span class="function"><a href="function.spl-autoload-register.html" class="function">spl_autoload_register()</a></span> 的一种不太灵活的替代方法，并且
+    <span class="function"><a href="function.autoload.html" class="function">__autoload()</a></span> 在 PHP 7.2.0 起弃用，在 PHP 8.0.0 起移除。
+   </p>
+  </div>
+ <p class="para">
+  <div class="example" id="example-221">
+   <p><strong>示例 #1 自动加载示例</strong></p>
+   <div class="example-contents"><p>
+    本例尝试分别从 <var class="filename">MyClass1.php</var>
+    和 <var class="filename">MyClass2.php</var> 文件中加载
+    <code class="literal">MyClass1</code> 和
+    <code class="literal">MyClass2</code> 类。
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />spl_autoload_register</span><span style="color: #007700">(function&nbsp;(</span><span style="color: #0000BB">$class_name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;require_once&nbsp;</span><span style="color: #0000BB">$class_name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'.php'</span><span style="color: #007700">;<br />});<br /><br /></span><span style="color: #0000BB">$obj&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass1</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$obj2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass2</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-222">
+   <p><strong>示例 #2 另一个例子</strong></p>
+   <div class="example-contents"><p>
+    本例尝试加载接口 <code class="literal">ITest</code>。
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />spl_autoload_register</span><span style="color: #007700">(function&nbsp;(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />});<br /><br />class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">ITest&nbsp;</span><span style="color: #007700">{<br />}<br /><br /></span><span style="color: #FF8000">/*<br />string(5)&nbsp;"ITest"<br /><br />Fatal&nbsp;error:&nbsp;Interface&nbsp;'ITest'&nbsp;not&nbsp;found&nbsp;in&nbsp;...<br />*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-223">
+   <p><strong>示例 #3 自动加载异常处理</strong></p>
+   <div class="example-contents"><p>
+    本例抛出一个异常并在 try/catch 语句块中演示。
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />spl_autoload_register</span><span style="color: #007700">(function&nbsp;(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Want&nbsp;to&nbsp;load&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;load&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">."</span><span style="color: #007700">);<br />});<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">NonLoadableClass</span><span style="color: #007700">();<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>以上例程会输出：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Want to load NonLoadableClass.
+Unable to load NonLoadableClass.
+</pre></div>
+   </div>
+  </div>
+  <div class="example" id="example-224">
+   <p><strong>示例 #4 自动加载异常处理 - 没有自定义异常机制</strong></p>
+   <div class="example-contents"><p>
+    本例将一个异常抛给不存在的自定义异常处理函数。
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />spl_autoload_register</span><span style="color: #007700">(function&nbsp;(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Want&nbsp;to&nbsp;load&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">MissingException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;load&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">."</span><span style="color: #007700">);<br />});<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">NonLoadableClass</span><span style="color: #007700">();<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>以上例程会输出：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Want to load NonLoadableClass.
+Want to load MissingException.
+
+Fatal error: Class &#039;MissingException&#039; not found in testMissingException.php on line 4
+</pre></div>
+   </div>
+  </div>
+ </p>
+
+ <div class="simplesect">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span></li>
+    <li class="member"><a href="var.configuration.html#ini.unserialize-callback-func" class="link">unserialize_callback_func</a></li>
+    <li class="member"><span class="function"><a href="function.spl-autoload-register.html" class="function">spl_autoload_register()</a></span></li>
+    <li class="member"><span class="function"><a href="function.spl-autoload.html" class="function">spl_autoload()</a></span></li>
+     <li class="member"><span class="function"><a href="function.autoload.html" class="function">__autoload()</a></span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

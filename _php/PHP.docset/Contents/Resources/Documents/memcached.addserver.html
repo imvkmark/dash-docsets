@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>向服务器池中增加一个服务器</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcached.addbykey.html">« Memcached::addByKey</a></li>
+      <li style="float: right;"><a href="memcached.addservers.html">Memcached::addServers »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.memcached.html">Memcached</a></li>
+    <li>向服务器池中增加一个服务器</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="memcached.addserver" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcached::addServer</h1>
+  <p class="verinfo">(PECL memcached &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">Memcached::addServer</span> &mdash; <span class="dc-title">向服务器池中增加一个服务器</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-memcached.addserver-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Memcached::addServer</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$weight</code><span class="initializer"> = 0</span></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>Memcached::addServer()</strong></span>增加指定服务器到服务器池中。此时不会建立与服务端的连接，
+   但是，如果你使用一致性key分布选项（<strong><code>Memcached::DISTRIBUTION_CONSISTENT</code></strong>或
+   <strong><code>Memcached::OPT_LIBKETAMA_COMPATIBLE</code></strong>），一些内部的数据结构将会被更新。 
+   因此，如果你需要增加多台服务器，更好的方式是使用<span class="methodname"><a href="memcached.addservers.html" class="methodname">Memcached::addServers()</a></span>
+   以确保这种更新只发生一次。
+  </p>
+  <p class="para">
+  同一台服务器可以在服务器池中多次出现，因为这里没有做重复检测。但这是不推荐的做法，对于期望提高某台服务器
+  权重的需求，请使用<code class="parameter">weight</code>参数。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-memcached.addserver-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">host</code></dt>
+
+     <dd>
+
+      <p class="para">
+      memcached服务端主机名。如果主机名无效，相关的数据操作的返回代码将被设置为<strong><code>Memcached::RES_HOST_LOOKUP_FAILURE</code></strong>。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
+
+     <dd>
+
+      <p class="para">
+      memcached服务端端口号，通常是<code class="literal">11211</code>。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">weight</code></dt>
+
+     <dd>
+
+      <p class="para">
+      此服务器相对于服务器池中所有服务器的权重。此参数用来控制服务器在操作时被选种的概率。这个仅用于一致性
+      分布选项，并且这个值通常是由服务端分配的内存来设置的。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-memcached.addserver-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-memcached.addserver-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4291">
+    <p><strong>示例 #1 <span class="function"><strong>Memcached::addServer()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;Add&nbsp;2&nbsp;servers,&nbsp;so&nbsp;that&nbsp;the&nbsp;second&nbsp;one<br />&nbsp;&nbsp;&nbsp;is&nbsp;twice&nbsp;as&nbsp;likely&nbsp;to&nbsp;be&nbsp;selected.&nbsp;*/<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'mem1.domain.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'mem2.domain.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">67</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-memcached.addserver-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="memcached.addservers.html" class="methodname" rel="rdfs-seeAlso">Memcached::addServers()</a> - 向服务器池中增加多台服务器</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

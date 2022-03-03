@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安装</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="apcu.requirements.html">« 需求</a></li>
+      <li style="float: right;"><a href="apcu.configuration.html">运行时配置 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="apcu.setup.html">安装／配置</a></li>
+    <li>安装</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="apcu.installation" class="section">
+  <h2 class="title">安装</h2>
+  <p class="para">
+   安装此 PECL 扩展相关的信息可在手册中标题为
+<a href="install.pecl.html" class="link">PECL
+扩展的安装</a>章节中找到。更多信息如新的发行版本、下载、源文件、
+维护人员信息及变更日志等，都在此处：
+   <a href="https://pecl.php.net/package/apcu" class="link external">&raquo;&nbsp;https://pecl.php.net/package/apcu</a>.
+  </p>
+  <div class="tip"><strong class="tip">小技巧</strong>
+   <p class="simpara">
+    PHP 7 has a separate module (<a href="https://pecl.php.net/apcu_bc" class="link external">&raquo;&nbsp;apcu-bc</a>) for backwards compatibility with APC.
+   </p>
+   <p class="para">
+    In backward compatibility mode, APCu registers the applicable APC functions
+    with backward compatible prototypes.
+   </p>
+   <p class="para">
+    Where an APC function accepted <code class="parameter">cache_type</code>, it is simply
+    ignored by the backward compatible version, and omitted from the prototype for
+    the APCu version.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="simpara">
+    As of PHP 8.0.0, apcu-bc is no longer supported.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    On Windows, APCu needs a temp path to exist, and be
+    writable by the web server.  It checks the TMP, TEMP 
+    and USERPROFILE environment variables in that order
+    and finally tries the WINDOWS directory if none of
+    those are set.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    For more in-depth, highly technical implementation details, see the
+    <a href="https://github.com/php/pecl-caching-apc/blob/master/TECHNOTES.txt" class="link external">&raquo;&nbsp;
+     developer-supplied TECHNOTES file
+    </a>.
+   </span>
+  </p></blockquote>
+  <p class="para">
+   APCu sources can be found <a href="https://github.com/krakjoe/apcu" class="link external">&raquo;&nbsp;here</a>.
+  </p>
+ </div></div></div></body></html>

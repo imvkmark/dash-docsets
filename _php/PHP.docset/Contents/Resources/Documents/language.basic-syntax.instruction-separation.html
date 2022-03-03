@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>指令分隔符</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.basic-syntax.phpmode.html">« 从 HTML 中分离</a></li>
+      <li style="float: right;"><a href="language.basic-syntax.comments.html">注释 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.basic-syntax.html">基本语法</a></li>
+    <li>指令分隔符</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.basic-syntax.instruction-separation" class="sect1">
+  <h2 class="title">指令分隔符</h2>
+  <p class="para">
+   同 C 或 Perl 一样，PHP 需要在每个语句后用分号结束指令。一段 PHP
+   代码中的结束标记隐含表示了一个分号；在一个 PHP
+   代码段中的最后一行可以不用分号结束。如果后面还有新行，则代码段的结束标记包含了行结束。
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-32">
+     <p><strong>示例 #1 包含末尾换行符的结束标记的例子</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Some&nbsp;text"</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>No&nbsp;newline<br /><span style="color: #0000BB">&lt;?=&nbsp;</span><span style="color: #DD0000">"But&nbsp;newline&nbsp;now"&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>以上例程会输出：</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+Some textNo newline
+But newline now
+</pre></div>
+     </div>
+    </div>
+   </p>
+
+   <p class="para">
+    进入和退出 PHP 解析的例子：
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;test'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;<br /></span><br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;test'&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span><br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'We&nbsp;omitted&nbsp;the&nbsp;last&nbsp;closing&nbsp;tag'</span><span style="color: #007700">;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     文件末尾的 PHP 代码段结束标记可以不要，有些情况下当使用
+     <span class="function"><a href="function.include.html" class="function">include</a></span> 或者 <span class="function"><a href="function.require.html" class="function">require</a></span>
+     时省略掉会更好些，这样不期望的空白符就不会出现在文件末尾，之后仍然可以输出响应标头。在使用输出缓冲时也很便利，就不会看到由包含文件生成的不期望的空白符。
+    </p>
+   </p></blockquote>
+  </p>
+ </div></div></div></body></html>

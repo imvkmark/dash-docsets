@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>ReflectionExtension 类</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reflectionzendextension.tostring.html">« ReflectionZendExtension::__toString</a></li>
+      <li style="float: right;"><a href="reflectionextension.clone.html">ReflectionExtension::__clone »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.reflection.html">反射</a></li>
+    <li>ReflectionExtension 类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.reflectionextension" class="reference">
+
+ <h1 class="title">ReflectionExtension 类</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5, PHP 7, PHP 8)</p>
+
+
+  <div class="section" id="reflectionextension.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    <span class="classname"><strong class="classname">ReflectionExtension</strong></span> 报告了一个扩展（extension）的有关信息。
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionextension.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">ReflectionExtension</strong>
+     </span>
+     
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.reflector.html" class="interfacename">Reflector</a></span> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 属性 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+      <var class="varname"><a href="class.reflectionextension.html#reflectionextension.props.name">$<var class="varname">name</var></a></var>;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="methodname"><a href="reflectionextension.clone.html" class="methodname">__clone</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="reflectionextension.export.html" class="methodname">export</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getclasses.html" class="methodname">getClasses</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getclassnames.html" class="methodname">getClassNames</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getconstants.html" class="methodname">getConstants</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getdependencies.html" class="methodname">getDependencies</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getfunctions.html" class="methodname">getFunctions</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getinientries.html" class="methodname">getINIEntries</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getname.html" class="methodname">getName</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.getversion.html" class="methodname">getVersion</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.info.html" class="methodname">info</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.ispersistent.html" class="methodname">isPersistent</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.istemporary.html" class="methodname">isTemporary</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="reflectionextension.tostring.html" class="methodname">__toString</a></span>(): <span class="type">string</span></div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionextension.props">
+   <h2 class="title">属性</h2>
+   <dl>
+    
+     <dt id="reflectionextension.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       扩展的名称，和 <span class="methodname"><a href="reflectionextension.getname.html" class="methodname">ReflectionExtension::getName()</a></span> 方法所返回的一样。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="reflectionextension.clone.html">ReflectionExtension::__clone</a> — Clones</li><li><a href="reflectionextension.construct.html">ReflectionExtension::__construct</a> — Constructs a ReflectionExtension</li><li><a href="reflectionextension.export.html">ReflectionExtension::export</a> — Export</li><li><a href="reflectionextension.getclasses.html">ReflectionExtension::getClasses</a> — Gets classes</li><li><a href="reflectionextension.getclassnames.html">ReflectionExtension::getClassNames</a> — 获取类名称</li><li><a href="reflectionextension.getconstants.html">ReflectionExtension::getConstants</a> — 获取常量</li><li><a href="reflectionextension.getdependencies.html">ReflectionExtension::getDependencies</a> — 获取依赖</li><li><a href="reflectionextension.getfunctions.html">ReflectionExtension::getFunctions</a> — 获取扩展中的函数</li><li><a href="reflectionextension.getinientries.html">ReflectionExtension::getINIEntries</a> — 获取ini配置</li><li><a href="reflectionextension.getname.html">ReflectionExtension::getName</a> — 获取扩展名称</li><li><a href="reflectionextension.getversion.html">ReflectionExtension::getVersion</a> — 获取扩展版本号</li><li><a href="reflectionextension.info.html">ReflectionExtension::info</a> — 输出扩展信息</li><li><a href="reflectionextension.ispersistent.html">ReflectionExtension::isPersistent</a> — 返回扩展是否持久化载入</li><li><a href="reflectionextension.istemporary.html">ReflectionExtension::isTemporary</a> — 返回扩展是否是临时载入</li><li><a href="reflectionextension.tostring.html">ReflectionExtension::__toString</a> — To string</li></ul>
+</div>
+</div></div></body></html>

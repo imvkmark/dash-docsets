@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>TableSelect class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysql-xdevapi-tableinsert.values.html">« TableInsert::values</a></li>
+      <li style="float: right;"><a href="mysql-xdevapi-tableselect.bind.html">TableSelect::bind »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysql-xdevapi.html">Mysql_xdevapi</a></li>
+    <li>TableSelect class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.mysql-xdevapi-tableselect" class="reference">
+
+ <h1 class="title">TableSelect class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL mysql-xdevapi &gt;= 8.0.11)</p>
+
+
+  <div class="section" id="mysql-xdevapi-tableselect.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    A statement for record retrieval operations on a Table.
+   </p>
+  </div>
+
+
+  <div class="section" id="mysql-xdevapi-tableselect.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">mysql_xdevapi\TableSelect</strong>
+     </span>
+
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.mysql-xdevapi-executable.html" class="interfacename">mysql_xdevapi\Executable</a></span> {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>bind</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$placeholder_values</code></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>execute</strong></span>(): <span class="type"><a href="class.mysql-xdevapi-rowresult.html" class="type mysql_xdevapi\RowResult">mysql_xdevapi\RowResult</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>groupBy</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$sort_expr</code></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>having</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$sort_expr</code></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>limit</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$rows</code></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>lockExclusive</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$lock_waiting_option</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>lockShared</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$lock_waiting_option</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>offset</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$position</code></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>orderby</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$sort_expr</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">...$sort_exprs</code></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>where</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$where_expr</code></span>): <span class="type"><a href="class.mysql-xdevapi-tableselect.html" class="type mysql_xdevapi\TableSelect">mysql_xdevapi\TableSelect</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="mysql-xdevapi-tableselect.bind.html">TableSelect::bind</a> — Bind select query parameters</li><li><a href="mysql-xdevapi-tableselect.construct.html">TableSelect::__construct</a> — TableSelect constructor</li><li><a href="mysql-xdevapi-tableselect.execute.html">TableSelect::execute</a> — Execute select statement</li><li><a href="mysql-xdevapi-tableselect.groupby.html">TableSelect::groupBy</a> — Set select grouping criteria</li><li><a href="mysql-xdevapi-tableselect.having.html">TableSelect::having</a> — Set select having condition</li><li><a href="mysql-xdevapi-tableselect.limit.html">TableSelect::limit</a> — Limit selected rows</li><li><a href="mysql-xdevapi-tableselect.lockexclusive.html">TableSelect::lockExclusive</a> — Execute EXCLUSIVE LOCK</li><li><a href="mysql-xdevapi-tableselect.lockshared.html">TableSelect::lockShared</a> — Execute SHARED LOCK</li><li><a href="mysql-xdevapi-tableselect.offset.html">TableSelect::offset</a> — Set limit offset</li><li><a href="mysql-xdevapi-tableselect.orderby.html">TableSelect::orderby</a> — Set select sort criteria</li><li><a href="mysql-xdevapi-tableselect.where.html">TableSelect::where</a> — Set select search condition</li></ul>
+</div>
+</div></div></body></html>

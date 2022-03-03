@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>把一张图合并到一张图</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.compareimages.html">« Imagick::compareImages</a></li>
+      <li style="float: right;"><a href="imagick.construct.html">Imagick::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagick.html">Imagick</a></li>
+    <li>把一张图合并到一张图</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.compositeimage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::compositeImage</h1>
+  <p class="verinfo">(PECL imagick 2, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::compositeImage</span> &mdash; <span class="dc-title">把一张图合并到一张图</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.compositeimage-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>Imagick::compositeImage</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.imagick.html" class="type Imagick">Imagick</a></span> <code class="parameter">$composite_object</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$composite</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$channel</code><span class="initializer"> = Imagick::CHANNEL_ALL</span></span><br>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   把一张图合并到另一张图的指定位置
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.compositeimage-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">composite_object</code></dt>
+
+     <dd>
+
+      <p class="para">
+       用于合并的图片的Imagick对象
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">composite</code></dt>
+
+     <dd>
+
+      <p class="para">
+       合并操作，定义操作常量。 具体请查看 <a href="imagick.constants.html#imagick.constants.compositeop" class="link">合并操作常量列表</a>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">x</code></dt>
+
+     <dd>
+
+      <p class="para">
+       相对图像顶点左上位置（0,0）的横坐标
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">y</code></dt>
+
+     <dd>
+
+      <p class="para">
+       相对图像顶点左上位置（0,0）的纵坐标
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">channel</code></dt>
+
+     <dd>
+
+      <p class="para">
+       通过传入一个通道常量，来开启通道模式。为了支持多个通道，可以通过二进制运算的操作来合并多个通道常量。（Provide any channel constant that is valid for your channel mode. To apply to more than one channel, combine channeltype constants using bitwise operators）可以参考这个列表 <a href="imagick.constants.html#imagick.constants.channel" class="link">通道常量列表</a>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.compositeimage-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>。
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

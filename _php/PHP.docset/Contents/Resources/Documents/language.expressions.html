@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>表达式</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.constants.magic.html">« 魔术常量</a></li>
+      <li style="float: right;"><a href="language.operators.html">运算符 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="langref.html">语言参考</a></li>
+    <li>表达式</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.expressions" class="chapter">
+   <h1>表达式</h1>
+
+
+   <p class="simpara">
+    表达式是 PHP 最重要的构建部分。在 PHP
+    中，几乎所写的任何东西都是一个表达式。简单但却最精确的定义一个表达式的方式就是“任何有值的东西”。
+   </p>
+
+   <p class="simpara">
+    最基本的表达式形式是常量和变量。当键入“<var class="varname">$a</var> = 5”，即将值“5”分配给变量
+    <var class="varname">$a</var>。“5”，很明显，其值为 5，换句话说“5”是一个值为 5
+    的表达式（在这里，“5”是一个整型常量）。
+   </p>
+
+
+   <p class="simpara">
+    赋值之后，所期待情况是 <var class="varname">$a</var> 的值为 5，因而如果写下
+    <var class="varname">$b</var> = <var class="varname">$a</var>，期望的是它犹如 <var class="varname">$b</var> = 5 一样。换句话说，<var class="varname">$a</var> 是一个值也为 5
+    的表达式。如果一切运行正确，那这正是将要发生的正确结果。
+   </p>
+
+   <p class="para">
+    稍微复杂的表达式例子就是函数。例如，考虑下面的函数：
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="simpara">
+    假定已经熟悉了函数的概念（果不是的话，请看一下<a href="language.functions.html" class="link">函数</a>的相关章节），那么键入
+    <code class="literal">$c = foo()</code> 从本质上来说就如写下
+    <code class="literal">$c = 5</code>，这没错。函数也是表达式，表达式的值即为它们的返回值。既然
+    <code class="literal">foo()</code> 返回 5，表达式“<code class="literal">foo()</code>”的值也是 5。通常函数不会仅仅返回一个静态值，而可能会计算一些东西。
+   </p>
+
+   <p class="simpara">
+    当然，PHP 中的值常常并非是整型的。PHP
+    支持四种标量值（标量值不能拆分为更小的单元，例如和数组不同）类型：整型值（<span class="type">int</span>），浮点数值（<span class="type">float</span>），字符串值（<span class="type">string</span>）和布尔值（<span class="type">bool</span>）。PHP
+    也支持两种复合类型：数组和对象。这两种类型具可以赋值给变量或者从函数返回。
+   </p>
+
+   <p class="simpara">
+    PHP 和其它语言一样在表达式的道路上发展，但推进得更深远。PHP
+    是一种面向表达式的语言，从这一方面来讲几乎一切都是表达式。考虑刚才已经研究过的例子，“<var class="varname">$a</var> =
+    5”。很显然这里涉及到两个值，整型常量 5 的值以及而且变量 $a
+    的值，它也被更新为 5。但是事实是这里还涉及到一个额外的值，即附值语句本身的值。赋值语句本身求值为被赋的值，即
+    5。实际上这意味着“<var class="varname">$a</var> = 5”，不必管它是做什么的，是一个值为 5
+    的表达式。因而，这样写“<var class="varname">$b</var> = (<var class="varname">$a</var> = 5)”和这样写“<var class="varname">$a</var> =5;
+    <var class="varname">$b</var>=5”（分号标志着语句的结束）是一样的。因为赋值操作的顺序是由右到左的，也可以这么写“<var class="varname">$b</var> = <var class="varname">$a</var> =5”。
+   </p>
+
+   <p class="simpara">
+    另外一个很好的面向表达式的例子就是前、后递增和递减。PHP
+    和多数其它语言的用户应该比较熟悉变量 ++ 和变量 -- 符号。即<a href="language.operators.increment.html" class="link">递增和递减运算符</a>。在
+    PHP 和 C 语言 中，有两种类型的递增前递增和后递增，本质上来讲，前递增和后递增均增加了变量的值，并且对于变量的影响是相同的。不同的是递增表达式的值。前递增，写做“++$variable”，求增加后的值（PHP
+    在读取变量的值之前，增加变量的值，因而称之为“前递增”）。后递增，写做“$variable++”，求变量未递增之前的原始值（PHP
+    在读取变量的值之后，增加变量的值，因而叫做“后递增”）。
+   </p>
+
+   <p class="simpara">
+    一个常用到表达式类型是<a href="language.operators.comparison.html" class="link">比较表达式</a>。这些表达式求值
+    <strong><code>false</code></strong> 或 <strong><code>true</code></strong>。PHP
+    支持 &gt;（大于），&gt;=（大于等于），==（等于），!=（不等于），&lt;（小于），&lt;= (小于等于)。PHP
+    还支持全等运算符 ===（值和类型均相同）和非全等运算符
+    !==（值或者类型不同）。这些表达式都是在条件判断语句，比如，<code class="literal">if</code>
+    语句中最常用的。
+   </p>
+
+   <p class="simpara">
+    这里，将要研究的最后一个例子是组合的运算赋值表达式。已经知道如果想要为变量
+    $a 加1，可以简单的写“$a++”或者“++$a”。但是如果想为变量增加大于
+    1 的值，比如 3，该怎么做？可以多次写“$a++”，但这样明显不是一种高效舒适的方法，一个更加通用的做法是“$a
+    = $a + 3”。“$a + 3”计算 $a 加上 3 的值，并且得到的值重新赋予变量
+    $a，于是 $a 的值增加了3。在 PHP 及其它几种类似 C
+    的语言中，可以以一种更加简短的形式完成上述功能，因而也更加清楚快捷。为
+    $a 的当前值加 3，可以这样写：“$a += 3”。这里的意思是“取变量 $a 的值，加
+    3，得到的结果再次分配给变量 $a”。除了更简略和清楚外，也可以更快的运行。“$a +=
+    3”的值，如同一个正常赋值操作的值，是赋值后的值。注意它不是 3，而是
+    $a 的值加上3 之后的值（此值将被赋给 $a）。任何二元运算符都可以用运算赋值模式，例如“$a -= 5”（从变量
+    $a 的值中减去 5），“$b *= 7”（变量 $b 乘以 7），等等。
+   </p>
+
+   <p class="para">
+    还有一个表达式，如果没有在别的语言中看到过的话，可能看上去很奇怪，即三元条件运算符：
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$first&nbsp;?&nbsp;$second&nbsp;:&nbsp;$third</span>
+</code></div>
+     </div>
+
+    </div>
+    如果第一个子表达式的值是 <strong><code>true</code></strong>（非零），那么计算第二个子表达式的值，其值即为整个表达式的值。否则，将是第三个子表达式的值。
+   </p>
+
+   <p class="para">
+    下面的例子一般来说应该有助于理解前、后递增和表达式：
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">double</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">*</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;赋值&nbsp;5&nbsp;到变量&nbsp;$a&nbsp;和&nbsp;$b&nbsp;*/<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">++;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;后自增，将&nbsp;$a&nbsp;（5）&nbsp;的原始值赋给&nbsp;$c&nbsp;*/<br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;++</span><span style="color: #0000BB">$b</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;前自增，将&nbsp;$b&nbsp;（6）&nbsp;的递增值赋给&nbsp;$d&nbsp;和&nbsp;$e&nbsp;*/<br /><br />/*&nbsp;此时，&nbsp;$d&nbsp;和&nbsp;$e&nbsp;都等于&nbsp;6&nbsp;*/<br /><br /></span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">double</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">++);&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;自增前将两倍值赋值给&nbsp;$d&nbsp;，即&nbsp;2*6&nbsp;=&nbsp;12&nbsp;赋值给&nbsp;$f&nbsp;*/<br /></span><span style="color: #0000BB">$g&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">double</span><span style="color: #007700">(++</span><span style="color: #0000BB">$e</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;自增后将两倍值赋值给&nbsp;$e&nbsp;，即&nbsp;2*7&nbsp;=&nbsp;14&nbsp;赋值给&nbsp;$g&nbsp;*/<br /></span><span style="color: #0000BB">$h&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$g&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;首先，&nbsp;$g&nbsp;自增&nbsp;10&nbsp;后等于&nbsp;24。然后将值&nbsp;（24）&nbsp;赋值给了&nbsp;$h，<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$h&nbsp;的值也等于&nbsp;24。&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="simpara">
+    一些表达式可以被当成语句。这时，一条语句的形式是 &#039;expr&#039; &#039;;&#039;，即一个表达式加一个分号结尾。在“$b=$a=5;”中，$a=5
+    是一个有效的表达式，但它本身不是一条语句。“$b=$a=5;”是一条有效的语句。
+   </p>
+
+   <p class="simpara">
+    最后一件值得提起的事情就是表达式的真值。在许多事件中，大体上主要是在条件执行和循环中，不要专注于表达式中明确的值，反而要注意表达式的值是否是
+    <strong><code>true</code></strong> 或者 <strong><code>false</code></strong>。常量 <strong><code>true</code></strong> 和 <strong><code>false</code></strong>（大小写无关）是两种可能的
+    Boolean 值。如果有必要，一个表达式将自动转换为 Boolean。参见<a href="language.types.type-juggling.html#language.types.typecasting" class="link">类型强制转换</a>一节。
+   </p>
+   <p class="simpara">
+    PHP 提供了一套完整强大的表达式，而为它提供完整的文件资料已经超出了本手册的范围。上面的例子应该为你提供了一个好的关于什么是表达式和怎样构建一个有用的表达式的概念。在本手册的其余部分，我们将始终使用
+    <var class="varname">expr</var> 来表示一个有效的 PHP 表达式。
+   </p>
+
+  </div>
+</div></div></body></html>

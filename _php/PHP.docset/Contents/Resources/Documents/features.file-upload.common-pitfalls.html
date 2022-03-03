@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>常见缺陷</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.errors.html">« 错误信息说明</a></li>
+      <li style="float: right;"><a href="features.file-upload.multiple.html">上传多个文件 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.file-upload.html">文件上传处理</a></li>
+    <li>常见缺陷</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.file-upload.common-pitfalls" class="sect1">
+  <h2 class="title">常见缺陷</h2>
+  <p class="simpara">
+   对 <code class="literal">MAX_FILE_SIZE</code> 设置的值，不能大于 <var class="filename">php.ini</var> 文件
+   设置中 <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>
+   选项设置的值。其默认值为 2M 字节。
+  </p>
+  <p class="simpara">
+   如果内存限制设置被激活，可能需要将
+   <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a> 设置的更大些，请确认
+   <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a> 的设置足够的大。
+  </p>
+  <p class="simpara">
+   如果 <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>
+   设置的值太小，脚本运行的时间可能会超过该设置。因此，也请保证
+   <code class="literal">max_execution_time</code> 足够的大。
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>
+    仅仅只影响脚本本身运行的时间。任何其它花费在脚本运行之外的时间，诸如用函数
+    <span class="function"><a href="function.system.html" class="function">system()</a></span> 对系统的调用、<span class="function"><a href="function.sleep.html" class="function">sleep()</a></span>
+    函数的使用、数据库查询、文件上传等，在计算脚本运行的最大时间时都不包括在内。
+   </span>
+  </p></blockquote>
+
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="simpara">
+    <a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a>
+    以秒为单位设定了脚本接收输入的最大时间，包括文件上传。对于较大或多个文件，或者用户的网速较慢时，可能会超过默认的
+    <code class="literal">60 秒</code>。
+   </p>
+  </div>
+
+  <p class="simpara">
+   如果 <a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a>
+   设置的值太小，则较大的文件会无法被上传。因此，请保证
+   <code class="literal">post_max_size</code> 的值足够的大。
+  </p>
+  <p class="simpara">
+   As of PHP 5.2.12, the
+   <a href="ini.core.html#ini.max-file-uploads" class="link">max_file_uploads</a> configuration
+   setting controls the maximum number of files that can uploaded in one
+   request. If more files are uploaded than the limit, then
+   <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var> will stop processing files once the limit is
+   reached. For example, if
+   <a href="ini.core.html#ini.max-file-uploads" class="link">max_file_uploads</a> is set to
+   <code class="literal">10</code>, then <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var> will never contain
+   more than 10 items.
+  </p>
+  <p class="simpara">
+   不对正在操作的文件进行验证可能意味着用户能够访问其它目录下的敏感信息。
+  </p>
+  <p class="simpara">
+   请注意 <span class="productname">CERN httpd</span> 似乎会丢弃它从客户端获得的
+   content-type mime
+   头信息中第一个空格后所有的内容，基于这一点，<span class="productname">CERN httpd</span>
+   不支持文件上传特性。
+  </p>
+  <p class="simpara">
+   鉴于文件路径的表示方法有很多种，我们无法确保用使用各种外语的文件名（尤其是包含空格的）能够被正确的处理。
+  </p>
+  <p class="simpara">
+   开发人员不应将普通的 <code class="literal">input</code> 输入字段和文件上传的字段混用同一个表单变量（例如 <code class="literal">input</code> 名都用
+   <code class="literal">foo[]</code>）。
+  </p>
+ </div></div></div></body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>引用不是什么</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.references.whatdo.html">« 引用做什么</a></li>
+      <li style="float: right;"><a href="language.references.pass.html">引用传递 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.references.html">引用的解释</a></li>
+    <li>引用不是什么</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.references.arent" class="sect1">
+  <h2 class="title">引用不是什么</h2>
+  <p class="para">
+   如前所述，引用不是指针。这意味着下面的结构不会产生预期的效果：
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"baz"</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="simpara">
+   这将使 <var class="varname">foo</var> 函数中的 <var class="varname">$var</var> 变量在函数调用时和
+   <var class="varname">$bar</var> 绑定在一起，但接着又被重新绑定到了
+   <var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS["baz"]</a></var> 上面。不可能通过引用机制将 <var class="varname">$bar</var>
+   在函数调用范围内绑定到别的变量上面，因为在函数 <var class="varname">foo</var> 中并没有变量
+   <var class="varname">$bar</var>（它被表示为 <var class="varname">$var</var>，但是 <var class="varname">$var</var>
+   只有变量内容而没有调用符号表中的名字到值的绑定）。可以使用<a href="language.references.return.html" class="link">引用返回</a>来引用被函数选择的变量。
+  </p>
+ </div></div></div></body></html>

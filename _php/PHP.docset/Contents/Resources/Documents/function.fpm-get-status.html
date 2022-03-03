@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Returns the current FPM pool status</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fastcgi-finish-request.html">« fastcgi_finish_request</a></li>
+      <li style="float: right;"><a href="refs.basic.session.html">Session 扩展 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.fpm.html">FPM 函数</a></li>
+    <li>Returns the current FPM pool status</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fpm-get-status" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fpm_get_status</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.3, PHP 8)</p><p class="refpurpose"><span class="refname">fpm_get_status</span> &mdash; <span class="dc-title">Returns the current FPM pool status</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.fpm-get-status-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>fpm_get_status</strong></span>(): <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+   This function returns the full current FPM pool status as an associative array. It always
+   returns the full status, including per-process status information. See the
+   <a href="fpm.status.html" class="link">FPM status page guide</a> for further
+   details.
+  </p>
+  <p class="para">
+   Note that this function will only be defined if FPM is being used to serve the script.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.fpm-get-status-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">此函数没有参数。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.fpm-get-status-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Associative array containing the full FPM pool status.
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Derive a key from a password, using Argon2</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.sodium-crypto-pwhash-str.html">« sodium_crypto_pwhash_str</a></li>
+      <li style="float: right;"><a href="function.sodium-crypto-scalarmult-base.html">sodium_crypto_scalarmult_base »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sodium.html">Sodium 函数</a></li>
+    <li>Derive a key from a password, using Argon2</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.sodium-crypto-pwhash" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sodium_crypto_pwhash</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.2.0, PHP 8)</p><p class="refpurpose"><span class="refname">sodium_crypto_pwhash</span> &mdash; <span class="dc-title">Derive a key from a password, using Argon2</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.sodium-crypto-pwhash-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>sodium_crypto_pwhash</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$password</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$salt</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$opslimit</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$memlimit</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$algo</code><span class="initializer"> = <strong><code>SODIUM_CRYPTO_PWHASH_ALG_DEFAULT</code></strong></span></span><br>): <span class="type">string</span></div>
+
+  <p class="para rdfs-comment">
+   This function provides low-level access to libsodium&#039;s crypto_pwhash key derivation function. Unless you have specific reason to use this function, you should use <span class="function"><a href="function.sodium-crypto-pwhash-str.html" class="function">sodium_crypto_pwhash_str()</a></span> or <span class="function"><a href="function.password-hash.html" class="function">password_hash()</a></span> functions instead.
+  </p>
+  <p class="para">
+   A common reason to use this particular function is to derive the seeds for cryptographic keys from a password and salt,
+   and then use these seeds to generate the actual keys needed for some purpose (e.g. <span class="function"><a href="function.sodium-crypto-sign-detached.html" class="function">sodium_crypto_sign_detached()</a></span>).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.sodium-crypto-pwhash-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   
+    <dt>
+<code class="parameter">length</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <span class="type">int</span>; The length of the password hash to generate, in bytes.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">password</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <span class="type">string</span>; The password to generate a hash for.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">salt</code></dt>
+
+    <dd>
+
+     <p class="para">
+      A salt to add to the password before hashing. The salt should be unpredictable, ideally generated from a good random number source such as <span class="function"><a href="function.random-bytes.html" class="function">random_bytes()</a></span>, and have a length of at least <strong><code>SODIUM_CRYPTO_PWHASH_SALTBYTES</code></strong> bytes.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">opslimit</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Represents a maximum amount of computations to perform. Raising this number will make the function require more CPU cycles to compute a key. There are some constants available to set the operations limit to appropriate values depending on intended use, in order of strength: <strong><code>SODIUM_CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE</code></strong>, <strong><code>SODIUM_CRYPTO_PWHASH_OPSLIMIT_MODERATE</code></strong> and <strong><code>SODIUM_CRYPTO_PWHASH_OPSLIMIT_SENSITIVE</code></strong>.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">memlimit</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The maximum amount of RAM that the function will use, in bytes. There are constants to help you choose an appropriate value, in order of size: <strong><code>SODIUM_CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE</code></strong>, <strong><code>SODIUM_CRYPTO_PWHASH_MEMLIMIT_MODERATE</code></strong>, and <strong><code>SODIUM_CRYPTO_PWHASH_MEMLIMIT_SENSITIVE</code></strong>. Typically these should be paired with the matching <code class="parameter">opslimit</code> values.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">algo</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <span class="type">int</span> A number indicating the hash algorithm to use. By default <strong><code>SODIUM_CRYPTO_PWHASH_ALG_DEFAULT</code></strong> (the currently recommended algorithm, which can change from one version of libsodium to another), or explicitly using <strong><code>SODIUM_CRYPTO_PWHASH_ALG_ARGON2ID13</code></strong>, representing the Argon2id algorithm version 1.3.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sodium-crypto-pwhash-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns the derived key. The return value is a binary string of the hash, not an ASCII-encoded representation, and does not contain additional information about the parameters used to create the hash, so you will need to keep that information if you are ever going to verify the password in future. Use <span class="function"><a href="function.sodium-crypto-pwhash-str.html" class="function">sodium_crypto_pwhash_str()</a></span> to avoid needing to do all that.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.sodium-crypto-pwhash-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-963">
+    <p><strong>示例 #1 <span class="function"><strong>sodium_crypto_pwhash()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//Need&nbsp;to&nbsp;keep&nbsp;the&nbsp;salt&nbsp;if&nbsp;we're&nbsp;ever&nbsp;going&nbsp;to&nbsp;be&nbsp;able&nbsp;to&nbsp;check&nbsp;this&nbsp;password<br /></span><span style="color: #0000BB">$salt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">random_bytes</span><span style="color: #007700">(</span><span style="color: #0000BB">SODIUM_CRYPTO_PWHASH_SALTBYTES</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//Using&nbsp;bin2hex&nbsp;to&nbsp;keep&nbsp;output&nbsp;readable<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sodium_crypto_pwhash</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">16</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;==&nbsp;128&nbsp;bits<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'password'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$salt</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">SODIUM_CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">SODIUM_CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">SODIUM_CRYPTO_PWHASH_ALG_ARGON2ID13<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+a18f346ba57992eb7e4ae6abf3fd30ee
+</pre></div>
+    </div>
+   </div>
+  </p> 
+ </div>
+
+
+</div></div></div></body></html>

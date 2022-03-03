@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>获取指定数组的第一个键</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.array-key-exists.html">« array_key_exists</a></li>
+      <li style="float: right;"><a href="function.array-key-last.html">array_key_last »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">数组 函数</a></li>
+    <li>获取指定数组的第一个键</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.array-key-first" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_key_first</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.3.0, PHP 8)</p><p class="refpurpose"><span class="refname">array_key_first</span> &mdash; <span class="dc-title">获取指定数组的第一个键</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.array-key-first-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>array_key_first</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>): <span class="type"><span class="type">int</span>|<span class="type">string</span>|<span class="type">null</span></span></div>
+
+  <p class="para rdfs-comment">
+   不影响到数组内部指针，取得指定数组的 <code class="parameter">array</code>
+   第一个键。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.array-key-first-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   
+    <dt>
+<code class="parameter">array</code></dt>
+
+    <dd>
+
+     <p class="para">
+      要操作的数组。
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-key-first-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   如果 <code class="parameter">array</code> 不是空的，返回第一个键，否则返回 <strong><code>null</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.array-key-first-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="array_key_first.example.basic">
+    <p><strong>示例 #1 <span class="function"><strong>array_key_first()</strong></span> 基本用法</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$array&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">];<br /><br /></span><span style="color: #0000BB">$firstKey&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_key_first</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$firstKey</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(1) &quot;a&quot;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.array-key-first-notes">
+  <h3 class="title">注释</h3>
+  <div class="tip"><strong class="tip">小技巧</strong>
+    <p class="simpara">
+     在 PHP 7.3.0 之前，有几种方式可以实现该功能。可以使用
+     <span class="function"><a href="function.array-keys.html" class="function">array_keys()</a></span> 函数，但是性能会比较低。也可以使用
+     <span class="function"><a href="function.reset.html" class="function">reset()</a></span> 和 <span class="function"><a href="function.key.html" class="function">key()</a></span>
+     函数，但这可能会影响内部数组指针。实现该功能的 polyfill 写法如下:
+    </p>
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">function_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'array_key_first'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">array_key_first</span><span style="color: #007700">(array&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$unused</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.array-key-first-seealso">
+  <h3 class="title">参见</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.array-key-last.html" class="function" rel="rdfs-seeAlso">array_key_last()</a> - 获取一个数组的最后一个键值</span></li>
+   <li class="member"><span class="function"><a href="function.reset.html" class="function" rel="rdfs-seeAlso">reset()</a> - 将数组的内部指针指向第一个单元</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

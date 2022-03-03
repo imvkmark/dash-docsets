@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Connect to an LDAP server</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-compare.html">« ldap_compare</a></li>
+      <li style="float: right;"><a href="function.ldap-control-paged-result-response.html">ldap_control_paged_result_response »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP 函数</a></li>
+    <li>Connect to an LDAP server</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_connect</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_connect</span> &mdash; <span class="dc-title">Connect to an LDAP server</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-connect-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_connect</strong></span>(<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$uri</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type"><a href="class.ldap-connection.html" class="type LDAP\Connection">LDAP\Connection</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="simpara">
+    The <em class="emphasis">following</em> signature is still supported for backwards
+    compatibility (except for using named parameters), but is considered deprecated and should not be used anymore!
+   </p>
+  </div> 
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_connect</strong></span>(<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$uri</code><span class="initializer"> = <strong><code>null</code></strong></span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 389</span></span>): <span class="type"><span class="type"><a href="class.ldap-connection.html" class="type LDAP\Connection">LDAP\Connection</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   Creates an <span class="classname"><a href="class.ldap-connection.html" class="classname">LDAP\Connection</a></span> connection and checks whether the given
+   <code class="parameter">uri</code> is plausible.
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    This function does <em class="emphasis">not</em> open a connection.
+    It checks whether the given parameters are plausible and can be used
+    to open a connection as soon as one is needed.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ldap-connect-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">uri</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A full LDAP URI of the form <code class="literal">ldap://hostname:port</code>
+       or <code class="literal">ldaps://hostname:port</code> for SSL encryption.
+      </p>
+      <p class="para">
+       You can also provide multiple LDAP-URIs separated by a space as one string
+      </p>
+      <p class="para">
+       Note that <code class="literal">hostname:port</code> is not a supported LDAP URI as the schema is missing.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">uri</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The hostname to connect to.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The port to connect to.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-connect-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns an <span class="classname"><a href="class.ldap-connection.html" class="classname">LDAP\Connection</a></span> instance when the provided LDAP URI
+   seems plausible. It&#039;s a syntactic check of the provided parameter but the server(s) will not
+   be contacted! If the syntactic check fails it returns <strong><code>false</code></strong>.
+   <span class="function"><strong>ldap_connect()</strong></span> will otherwise
+   return a <span class="classname"><a href="class.ldap-connection.html" class="classname">LDAP\Connection</a></span> instance as it does not actually connect but just
+   initializes the connecting parameters.  The actual connect happens with
+   the next calls to ldap_* functions, usually with
+   <span class="function"><a href="function.ldap-bind.html" class="function">ldap_bind()</a></span>.
+  </p>
+  <p class="para">
+   If no argument is specified then the <span class="classname"><a href="class.ldap-connection.html" class="classname">LDAP\Connection</a></span> instance of the already
+   opened connection will be returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ldap-connect-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.1.0</td>
+      <td>
+       Returns an <span class="classname"><a href="class.ldap-connection.html" class="classname">LDAP\Connection</a></span> instance now;
+       previously, a <a href="language.types.resource.html" class="link">资源(resource)</a> was returned.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ldap-connect-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4245">
+    <p><strong>示例 #1 Example of connecting to LDAP server.</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;LDAP&nbsp;variables<br /></span><span style="color: #0000BB">$ldapuri&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"ldap://ldap.example.com:389"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;your&nbsp;ldap-uri<br /><br />//&nbsp;Connecting&nbsp;to&nbsp;LDAP<br /></span><span style="color: #0000BB">$ldapconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ldap_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ldapuri</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"That&nbsp;LDAP-URI&nbsp;was&nbsp;not&nbsp;parseable"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-4246">
+    <p><strong>示例 #2 Example of connecting securely to LDAP server.</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;make&nbsp;sure&nbsp;your&nbsp;host&nbsp;is&nbsp;the&nbsp;correct&nbsp;one<br />//&nbsp;that&nbsp;you&nbsp;issued&nbsp;your&nbsp;secure&nbsp;certificate&nbsp;to<br /></span><span style="color: #0000BB">$ldaphost&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"ldaps://ldap.example.com/"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Connecting&nbsp;to&nbsp;LDAP<br /></span><span style="color: #0000BB">$ldapconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ldap_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ldaphost</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"That&nbsp;LDAP-URI&nbsp;was&nbsp;not&nbsp;parseable"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ldap-connect-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ldap-bind.html" class="function" rel="rdfs-seeAlso">ldap_bind()</a> - 绑定 LDAP 目录</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>在全部作用域中始终可用的内置变量</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reserved.variables.html">« 预定义变量</a></li>
+      <li style="float: right;"><a href="reserved.variables.globals.html">$GLOBALS »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.variables.html">预定义变量</a></li>
+    <li>在全部作用域中始终可用的内置变量</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.variables.superglobals" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">超全局变量</h1>
+  <p class="refpurpose"><span class="refname">超全局变量</span> &mdash; <span class="dc-title">在全部作用域中始终可用的内置变量</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-language.variables.superglobals-description">
+  <h3 class="title">说明</h3>
+  <p class="para">
+   PHP 中的许多预定义变量都是“超全局的”，这意味着它们在一个脚本的全部作用域中都可用。在函数或方法中无需执行 <strong class="command">global $variable;</strong> 就可以访问它们。
+  </p>
+  <p class="para">
+   这些超全局变量是：
+   <ul class="simplelist">
+    <li class="member"><var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.environment.html" class="classname">$_ENV</a></var></li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-language.variables.superglobals-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>变量可用性</strong><br />
+   <p class="para">
+    默认情况下，所有的超全局变量都是可用的。但是，有一些指令会影响这种可用性。更多信息，参见文档
+    <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>可变变量</strong><br />
+   <p class="para">
+    在函数或类方法中，超全局变量不能被用作<a href="language.variables.variable.html" class="link">可变变量</a>。
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-language.variables.superglobals-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="language.variables.scope.html" class="link">变量作用域</a></li>
+    <li class="member"><a href="ini.core.html#ini.variables-order" class="link">variables_order</a> 指令</li>
+    <li class="member"><a href="book.filter.html" class="link">过滤器扩展</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

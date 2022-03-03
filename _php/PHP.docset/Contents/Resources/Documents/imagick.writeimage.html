@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>把图片写入指定的文件</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.whitethresholdimage.html">« Imagick::whiteThresholdImage</a></li>
+      <li style="float: right;"><a href="imagick.writeimagefile.html">Imagick::writeImageFile »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagick.html">Imagick</a></li>
+    <li>把图片写入指定的文件</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.writeimage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::writeImage</h1>
+  <p class="verinfo">(PECL imagick 2 &gt;= 2.3.0, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::writeImage</span> &mdash; <span class="dc-title">把图片写入指定的文件</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.writeimage-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>Imagick::writeImage</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code><span class="initializer"> = NULL</span></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   把图片写入指定的文件。如果指定文件参数的值是 NULL ，图片将会写入通过 Imagick::readImage() 或者
+   Imagick::setImageFilename() 设定的文件。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.writeimage-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       图片将被写入的文件名。文件的后缀指定了文件的类型。
+       可以强制指定图片的格式而不管文件的后缀名。在文件名前面加上一个前缀，例如 “jpg:test.png”。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.writeimage-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>。
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

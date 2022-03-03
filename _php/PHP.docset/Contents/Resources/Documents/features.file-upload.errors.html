@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>错误信息说明</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.post-method.html">« POST 方法上传</a></li>
+      <li style="float: right;"><a href="features.file-upload.common-pitfalls.html">常见缺陷 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.file-upload.html">文件上传处理</a></li>
+    <li>错误信息说明</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.file-upload.errors" class="sect1">
+  <h2 class="title">错误信息说明</h2>
+  <p class="simpara">
+   PHP
+   将随文件信息数组一起返回一个对应的错误代码。该代码可以在文件上传时生成的文件数组中的
+   <code class="literal">error</code> 字段中被找到，也就是
+   <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['error']</a></var>。
+  </p>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<strong><code>UPLOAD_ERR_OK</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       其值为 0，没有错误发生，文件上传成功。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>UPLOAD_ERR_INI_SIZE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       其值为 1，上传的文件超过了 <var class="filename">php.ini</var> 中
+       <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a> 选项限制的值。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>UPLOAD_ERR_FORM_SIZE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       其值为 2，上传文件的大小超过了 HTML 表单中
+       <em class="emphasis">MAX_FILE_SIZE</em> 选项指定的值。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>UPLOAD_ERR_PARTIAL</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       其值为 3，文件只有部分被上传。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>UPLOAD_ERR_NO_FILE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       其值为 4，没有文件被上传。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>UPLOAD_ERR_NO_TMP_DIR</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       其值为 6，找不到临时文件夹。PHP 5.0.3 引进。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>UPLOAD_ERR_CANT_WRITE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       其值为 7，文件写入失败。PHP 5.1.0 引进。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>UPLOAD_ERR_EXTENSION</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Value: 8; A PHP extension stopped the file upload. PHP does not
+       provide a way to ascertain which extension caused the file upload to
+       stop; examining the list of loaded extensions with <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> may help.
+       Introduced in PHP 5.2.0.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div></div></div></body></html>

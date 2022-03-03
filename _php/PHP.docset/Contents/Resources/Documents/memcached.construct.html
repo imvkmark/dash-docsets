@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>创建一个Memcached实例</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcached.casbykey.html">« Memcached::casByKey</a></li>
+      <li style="float: right;"><a href="memcached.decrement.html">Memcached::decrement »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.memcached.html">Memcached</a></li>
+    <li>创建一个Memcached实例</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="memcached.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcached::__construct</h1>
+  <p class="verinfo">(PECL memcached &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">Memcached::__construct</span> &mdash; <span class="dc-title">创建一个Memcached实例</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-memcached.construct-description">
+  <h3 class="title">说明</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="methodname"><strong>Memcached::__construct</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$persistent_id</code><span class="initializer"> = ?</span></span>)</div>
+
+  <p class="para rdfs-comment">
+  创建一个代表到Memcached服务端连接的Memcached实例。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-memcached.construct-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">persistent_id</code></dt>
+
+     <dd>
+
+      <p class="para">
+      默认情况下，Memcached实例在请求结束后会被销毁。但可以在创建时通过<code class="parameter">persistent_id</code>为每个实例指定唯一的ID，
+      在请求间共享实例。所有通过相同的<code class="parameter">persistent_id</code>值创建的实例共享同一个连接。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-memcached.construct-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   一个Memcached对象。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-memcached.construct-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4295">
+    <p><strong>示例 #1 创建一个Memcached对象</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;创建一个普通的对象&nbsp;*/<br /></span><span style="color: #0000BB">$m1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;创建持久化对象&nbsp;*/<br /></span><span style="color: #0000BB">$m2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">(</span><span style="color: #DD0000">'story_pool'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$m3&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">(</span><span style="color: #DD0000">'story_pool'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;现在$m2和$m3共享相同的连接&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>使用回调函数过滤数组的元素</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.array-fill.html">« array_fill</a></li>
+      <li style="float: right;"><a href="function.array-flip.html">array_flip »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">数组 函数</a></li>
+    <li>使用回调函数过滤数组的元素</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.array-filter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_filter</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">array_filter</span> &mdash; <span class="dc-title">使用回调函数过滤数组的元素</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.array-filter-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>array_filter</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span><span class="type"></span></span> <code class="parameter">$callback</code><span class="initializer"> = <strong><code>null</code></strong></span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = 0</span></span>): <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+   遍历 <code class="parameter">array</code> 数组中的每个值，并将每个值传递给 <code class="parameter">callback</code> 回调函数。
+   如果 <code class="parameter">callback</code> 回调函数返回 <strong><code>true</code></strong>，则将 <code class="parameter">array</code> 数组中的当前值返回到结果 <span class="type">array</span> 数组中。
+  </p>
+  <p class="para">
+   返回结果 <span class="type">array</span> 数组的键名（下标）会维持不变，如果 <code class="parameter">array</code> 参数是索引数组，返回的结果 <span class="type">array</span> 数组键名（下标）可能会不连续。
+   可以使用 <span class="function"><a href="function.array-values.html" class="function">array_values()</a></span> 函数对数组重新索引。
+  </p>
+</div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.array-filter-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">array</code></dt>
+
+     <dd>
+
+      <p class="para">
+       要遍历的数组
+      </p>
+     </dd>
+
+    
+
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       使用的回调函数
+      </p>
+      <p class="para">
+       如果没有提供 <code class="parameter">callback</code> 回调函数，将删除数组中 <code class="parameter">array</code> 的所有“空”元素。
+       有关 PHP 如何判定“空”元素，请参阅 <span class="function"><a href="function.empty.html" class="function">empty()</a></span> 。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt>
+<code class="parameter">mode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       决定哪些参数发送到 <code class="parameter">callback</code> 回调的标志：
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara"><strong><code>ARRAY_FILTER_USE_KEY</code></strong> - 将键名作为 <code class="parameter">callback</code> 回调的唯一参数，而不是值</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara"><strong><code>ARRAY_FILTER_USE_BOTH</code></strong> - 将值和键都作为参数传递给 <code class="parameter">callback</code> 回调，而不是仅传递值</span>
+        </li>
+       </ul>
+       默认值为 <code class="literal">0</code> ，只传递值作为 <code class="parameter">callback</code> 回调的唯一参数。
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-filter-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回过滤后的数组。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.array-filter-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">callback</code> 现在可为空（nullable）。
+      </td>
+     </tr>
+
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  如果 <code class="parameter">callback</code> 接受引用传递参数，该方法将会抛出
+  <strong><code>E_WARNING</code></strong>。
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-function.array-filter-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4798">
+    <p><strong>示例 #1 <span class="function"><strong>array_filter()</strong></span> 示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">odd</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;返回输入整数是否为奇数（单数）<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br />function&nbsp;</span><span style="color: #0000BB">even</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;返回输入整数是否为偶数<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;!(</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">$array1&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'d'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'e'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$array2&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">];<br />echo&nbsp;</span><span style="color: #DD0000">"Odd&nbsp;:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"odd"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Even:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$array2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"even"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Odd :
+Array
+(
+    [a] =&gt; 1
+    [c] =&gt; 3
+    [e] =&gt; 5
+)
+Even:
+Array
+(
+    [0] =&gt; 6
+    [2] =&gt; 8
+    [4] =&gt; 10
+    [6] =&gt; 12
+)
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-4799">
+    <p><strong>示例 #2 <span class="function"><strong>array_filter()</strong></span> 不使用 <code class="parameter">callback</code> 参数时</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$entry&nbsp;</span><span style="color: #007700">=&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">6&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />];<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$entry</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; foo
+    [2] =&gt; -1
+)
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-4800">
+    <p><strong>示例 #3 <span class="function"><strong>array_filter()</strong></span> 不使用 <code class="parameter">mode</code> 参数时</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'d'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;function(</span><span style="color: #0000BB">$k</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$k&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">;<br />},&nbsp;</span><span style="color: #0000BB">ARRAY_FILTER_USE_KEY</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;function(</span><span style="color: #0000BB">$v</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$k</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$k&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$v&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;<br />},&nbsp;</span><span style="color: #0000BB">ARRAY_FILTER_USE_BOTH</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [&quot;b&quot;]=&gt;
+  int(2)
+}
+array(2) {
+  [&quot;b&quot;]=&gt;
+  int(2)
+  [&quot;d&quot;]=&gt;
+  int(4)
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.array-filter-notes">
+  <h3 class="title">注释</h3>
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    不应该在回调函数中改变数组（如：添加、删除或销毁“unset”当前数组和里面的元素），否则此函数的行为将不可预测。
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.array-filter-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.array-intersect.html" class="function" rel="rdfs-seeAlso">array_intersect()</a> - 计算数组的交集</span></li>
+    <li class="member"><span class="function"><a href="function.array-map.html" class="function" rel="rdfs-seeAlso">array_map()</a> - 为数组的每个元素应用回调函数</span></li>
+    <li class="member"><span class="function"><a href="function.array-reduce.html" class="function" rel="rdfs-seeAlso">array_reduce()</a> - 用回调函数迭代地将数组简化为单一的值</span></li>
+    <li class="member"><span class="function"><a href="function.array-walk.html" class="function" rel="rdfs-seeAlso">array_walk()</a> - 使用用户自定义函数对数组中的每个元素做回调处理</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

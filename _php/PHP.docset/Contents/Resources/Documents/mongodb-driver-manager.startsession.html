@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Start a new client session for use with this client</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb-driver-manager.selectserver.html">« MongoDB\Driver\Manager::selectServer</a></li>
+      <li style="float: right;"><a href="class.mongodb-driver-command.html">MongoDB\Driver\Command »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mongodb-driver-manager.html">MongoDB\Driver\Manager</a></li>
+    <li>Start a new client session for use with this client</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb-driver-manager.startsession" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB\Driver\Manager::startSession</h1>
+  <p class="verinfo">(mongodb &gt;=1.4.0)</p><p class="refpurpose"><span class="refname">MongoDB\Driver\Manager::startSession</span> &mdash; <span class="dc-title">Start a new client session for use with this client</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongodb-driver-manager.startsession-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><strong>MongoDB\Driver\Manager::startSession</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>): <span class="type"><span class="type MongoDB\Driver\Session">MongoDB\Driver\Session</span></span></div>
+
+  <p class="para rdfs-comment">
+   Creates a <span class="classname"><strong class="classname">MongoDB\Driver\Session</strong></span> for the given
+   options. The session may then be specified when executing commands, queries,
+   and write operations.
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    A <span class="classname"><strong class="classname">MongoDB\Driver\Session</strong></span> can only be used with the
+    <span class="classname"><a href="class.mongodb-driver-manager.html" class="classname">MongoDB\Driver\Manager</a></span> from which it was created.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongodb-driver-manager.startsession-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   
+    <dt>
+<code class="parameter">options</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <table class="doctable table">
+       <caption><strong>options</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Option</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>causalConsistency</td>
+          <td><span class="type">bool</span></td>
+          <td>
+           <p class="para">
+            Configure causal consistency in a session. If <strong><code>true</code></strong>, each operation
+            in the session will be causally ordered after the previous read or
+            write operation. Set to <strong><code>false</code></strong> to disable causal consistency.
+           </p>
+           <p class="para">
+            See
+            <a href="https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/#causal-consistency" class="link external">&raquo;&nbsp;Casual Consistency</a>
+            in the MongoDB manual for more information.
+           </p>
+          </td>
+          <td><strong><code>true</code></strong></td>
+         </tr>
+
+         <tr>
+          <td>defaultTransactionOptions</td>
+          <td><span class="type">array</span></td>
+          <td>
+           <p class="para">
+            Default options to apply to newly created transactions. These
+            options are used unless they are overridden when a transaction is
+            started with different value for each option.
+           </p>
+           <p class="para">
+            <table class="doctable table">
+             <caption><strong>options</strong></caption>
+             
+              <thead>
+               <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+               </tr>
+
+              </thead>
+
+              <tbody class="tbody">
+               
+         <tr>
+          <td>maxCommitTimeMS</td>
+          <td>integer</td>
+          <td>
+           <p class="para">
+            The maximum amount of time in milliseconds to allow a single
+            <code class="literal">commitTransaction</code> command to run.
+           </p>
+           <p class="para">
+            If specified, <code class="literal">maxCommitTimeMS</code> must be a signed
+            32-bit integer greater than or equal to zero.
+           </p>
+          </td>
+         </tr>
+
+
+               
+         <tr>
+          <td>readConcern</td>
+          <td><span class="classname"><a href="class.mongodb-driver-readconcern.html" class="classname">MongoDB\Driver\ReadConcern</a></span></td>
+          <td>
+           <p class="para">
+            A read concern to apply to the operation.
+           </p>
+           <p class="para">
+            This option is available in MongoDB 3.2+ and will result in an
+            exception at execution time if specified for an older server
+            version.
+           </p>
+          </td>
+         </tr>
+
+
+               
+         <tr>
+          <td>readPreference</td>
+          <td><span class="classname"><a href="class.mongodb-driver-readpreference.html" class="classname">MongoDB\Driver\ReadPreference</a></span></td>
+          <td>
+           <p class="para">
+            A read preference to use for selecting a server for the operation.
+           </p>
+          </td>
+         </tr>
+
+
+               
+         <tr>
+          <td>writeConcern</td>
+          <td><span class="classname"><a href="class.mongodb-driver-writeconcern.html" class="classname">MongoDB\Driver\WriteConcern</a></span></td>
+          <td>
+           <p class="para">
+            A write concern to apply to the operation.
+           </p>
+          </td>
+         </tr>
+
+
+              </tbody>
+             
+            </table>
+
+           </p>
+           <p class="para">
+            This option is available in MongoDB 4.0+.
+           </p>
+          </td>
+          <td><code class="literal">[]</code></td>
+         </tr>
+
+         <tr>
+          <td>snapshot</td>
+          <td><span class="type">bool</span></td>
+          <td>
+           <p class="para">
+            Configure snapshot reads in a session. If <strong><code>true</code></strong>, a timestamp will
+            be obtained from the first supported read operation in the session
+            (i.e. <code class="literal">find</code>, <code class="literal">aggregate</code>, or
+            unsharded <code class="literal">distinct</code>). Subsequent read operations
+            within the session will then utilize a <code class="literal">&quot;snapshot&quot;</code>
+            read concern level to read majority-committed data from that
+            timestamp. Set to <strong><code>false</code></strong> to disable snapshot reads.
+           </p>
+           <p class="para">
+            Snapshot reads require MongoDB 5.0+ and cannot be used with causal
+            consistency, transactions, or write operations. If
+            <code class="literal">&quot;snapshot&quot;</code> is <strong><code>true</code></strong>,
+            <code class="literal">&quot;causalConsistency&quot;</code> will default to <strong><code>false</code></strong>.
+           </p>
+           <p class="para">
+            See
+            <a href="https://docs.mongodb.com/manual/reference/read-concern-snapshot/#read-concern-and-atclustertime" class="link external">&raquo;&nbsp;Read Concern &quot;snapshot&quot;</a>
+            in the MongoDB manual for more information.
+           </p>
+          </td>
+          <td><strong><code>false</code></strong></td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongodb-driver-manager.startsession-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns a <span class="classname"><strong class="classname">MongoDB\Driver\Session</strong></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongodb-driver-manager.startsession-errors">
+  <h3 class="title">错误／异常</h3>
+  <ul class="simplelist">
+   <li class="member">Throws <span class="classname"><a href="class.mongodb-driver-exception-invalidargumentexception.html" class="classname">MongoDB\Driver\Exception\InvalidArgumentException</a></span> on argument parsing errors.</li>
+   <li class="member">Throws <span class="classname"><a href="class.mongodb-driver-exception-invalidargumentexception.html" class="classname">MongoDB\Driver\Exception\InvalidArgumentException</a></span> if the <code class="literal">&quot;causalConsistency&quot;</code> and <code class="literal">&quot;snapshot&quot;</code> options are both <strong><code>true</code></strong>.</li>
+   <li class="member">Throws <span class="classname"><a href="class.mongodb-driver-exception-runtimeexception.html" class="classname">MongoDB\Driver\Exception\RuntimeException</a></span> if the session could not be created (e.g. libmongoc does not support crypto).</li>
+  </ul>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mongodb-driver-manager.startsession-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL mongodb 1.11.0</td>
+       <td>
+        <p class="para">
+         The <code class="literal">&quot;snapshot&quot;</code> option was added.
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL mongodb 1.6.0</td>
+       <td>
+        <p class="para">
+         The <code class="literal">&quot;maxCommitTimeMS&quot;</code> option was added to
+         <code class="literal">&quot;defaultTransactionOptions&quot;</code>.
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL mongodb 1.5.0</td>
+       <td>
+        <p class="para">
+         The <code class="literal">&quot;defaultTransactionOptions&quot;</code> option was added.
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongodb-driver-manager.startsession-seealso">
+  <h3 class="title">参见</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="classname"><strong class="classname">MongoDB\Driver\Session</strong></span></li>
+   <li class="member"><a href="https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/#causal-consistency" class="link external">&raquo;&nbsp;Casual Consistency</a> in the MongoDB manual</li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

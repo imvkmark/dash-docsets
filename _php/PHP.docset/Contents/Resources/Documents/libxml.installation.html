@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安装</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="libxml.requirements.html">« 需求</a></li>
+      <li style="float: right;"><a href="libxml.configuration.html">运行时配置 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="libxml.setup.html">安装／配置</a></li>
+    <li>安装</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="libxml.installation" class="section">
+  <h2 class="title">安装</h2>
+  <p class="para">
+   The libxml extension is enabled by default, although it may be disabled with
+   <strong class="option configure">--disable-libxml</strong>. 
+  </p>
+  <p class="para">
+   The optional <strong class="option configure">--with-libxml-dir</strong>
+   directive is used to specify the location of <code class="literal">libxml</code>
+   on the system that PHP is being compiled on, otherwise only the
+   default locations are scanned. The <code class="literal">configure</code> process
+   checks for libxml (specifically, <code class="literal">xml2-config</code>) in the
+   following order:
+  </p>
+  <ol type="1">
+   <li class="listitem">
+    <p class="para">
+     The location ([DIR]) specified with <strong class="option configure">--with-libxml-dir</strong> 
+     ([DIR]=<var class="filename">/bin/xml2-config</var>)
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <var class="filename">/usr/local/bin/xml2-config</var>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <var class="filename">/usr/bin/xml2-config</var>
+    </p>
+   </li>
+  </ol>
+  <p class="para">
+   If <code class="literal">configure</code> cannot find <var class="filename">xml2-config</var> in the directory
+   specified by <strong class="option configure">--with-libxml-dir</strong>, then
+   it&#039;ll continue on and check the default locations.
+  </p>
+ </div></div></div></body></html>

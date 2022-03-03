@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>运行时配置</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="outcontrol.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="outcontrol.resources.html">资源类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="outcontrol.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="outcontrol.configuration" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>输出控制配置选项</strong></caption>
+   
+    <thead>
+    <tr>
+     <th>名字</th>
+     <th>默认</th>
+     <th>可修改范围</th>
+     <th>更新日志</th>
+    </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+    <tr>
+     <td>output_buffering</td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td>output_handler</td>
+     <td>NULL</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td>implicit_flush</td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+        <td><a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a></td>
+        <td>&quot;a=href,area=href,frame=src,form=,fieldset=&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Before PHP 7.1.0, this was used to set
+        session&#039;s trans sid rewrite. From PHP 7.1.0, it is only used by 
+        <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span>.</td>
+    </tr>
+
+    <tr>
+        <td><a href="outcontrol.configuration.html#ini.url-rewriter.hosts" class="link">url_rewriter.hosts</a></td>
+        <td><code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code> is used as default.</td>
+        <td>PHP_INI_ALL</td>
+        <td>Available as of PHP 7.1.0</td>
+    </tr>
+
+    </tbody>
+   
+  </table>
+
+  有关 PHP_INI_* 样式的更多详情与定义，见 <a href="configuration.changes.modes.html" class="xref">配置可被设定范围</a>。
+ </p>
+
+ <p class="para">这是配置指令的简短说明。</p>
+
+ <p class="para">
+ <dl>
+  
+   <dt id="ini.output-buffering">
+    <code class="parameter">output_buffering</code>
+    <span class="type">bool</span>/<span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     该选项设置为 On
+     时，将在所有的脚本中使用输出控制。如果要限制输出缓冲区的最大值，可将该选项设定为指定的最大字节数（例如
+     output_buffering=4096）。从PHP
+     该选项在 PHP-CLI 下总是为 Off。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.output-handler">
+    <code class="parameter">output_handler</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     该选项可将脚本所有的输出，重定向到一个函数。例如，将 output_handler
+     设置为 <span class="function"><a href="function.mb-output-handler.html" class="function">mb_output_handler()</a></span>
+     时，字符的编码将被修改为指定的编码。设置的任何处理函数，将自动的处理输出缓冲。
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      不能同时使用 <span class="function"><a href="function.mb-output-handler.html" class="function">mb_output_handler()</a></span> 和
+      <span class="function"><a href="function.ob-iconv-handler.html" class="function">ob_iconv_handler()</a></span>，也不能同时使用
+      <span class="function"><a href="function.ob-gzhandler.html" class="function">ob_gzhandler()</a></span> 和
+      <a href="zlib.configuration.html#ini.zlib.output-compression" class="link">zlib.output_compression</a>。
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      只有内置函数可以使用此指令。对于用户定义的函数，使用 <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span>。
+     </p>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.implicit-flush">
+    <code class="parameter">implicit_flush</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     默认为 <strong><code>false</code></strong>。如将该选项改为 <strong><code>true</code></strong>，PHP
+     将使输出层，在每段信息块输出后，自动刷新。这等同于在每次使用
+     <span class="function"><a href="function.print.html" class="function">print</a></span>、<span class="function"><a href="function.echo.html" class="function">echo</a></span>
+     等函数或每个 <code class="literal">HTML</code> 块之后，调用 PHP 中的
+     <span class="function"><a href="function.flush.html" class="function">flush()</a></span> 函数。
+    </p>
+    <p class="para">
+     不在web环境中使用 PHP
+     时，打开这个选项对程序执行的性能有严重的影响，通常只推荐在调试时使用。在
+     <code class="literal">CLI SAPI</code> 的执行模式下，该标记默认为 <strong><code>true</code></strong>。
+    </p>
+    <p class="para">
+     参见 <span class="function"><a href="function.ob-implicit-flush.html" class="function">ob_implicit_flush()</a></span>。
+    </p>
+   </dd>
+
+  
+
+  
+    <dt id="ini.url-rewriter.tags">
+     <code class="parameter">url_rewriter.tags</code>
+     <span class="type">string</span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      <code class="literal">url_rewriter.tags</code> specifies which HTML tags
+      are rewritten by <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span> values.
+      Defaults to
+      <code class="literal">a=href,area=href,frame=src,input=src,form=</code>
+     </span>
+     <span class="simpara">
+      <code class="literal">form</code> is special tag. <code class="literal">&lt;input hidden=&quot;session_id&quot; name=&quot;session_name&quot;&gt;</code>
+      is added as form variable.
+     </span>
+     <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">
+       Before PHP 7.1.0, <a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a>
+       was used to specify <a href="session.configuration.html#ini.session.trans-sid-tags" class="link">session.trans_sid_tags</a>.
+       As of PHP 7.1.0, <code class="literal">fieldset</code> is no longer considered as special tag.
+      </span>
+     </p></blockquote>
+    </dd>
+
+   
+
+    
+        <dt id="ini.url-rewriter.hosts">
+        <code class="parameter">url_rewriter.hosts</code>
+        <span class="type">string</span>
+        </dt>
+
+        <dd>
+
+        <span class="simpara">
+        <code class="literal">url_rewriter.hosts</code> specifies which hosts are
+        rewritten to include <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span> values.
+        Defaults to <code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code>. Multiple hosts
+        can be specified by &quot;,&quot;, no space is allowed between hosts. e.g.
+        <code class="literal">php.net,wiki.php.net,bugs.php.net</code>
+        </span>
+        </dd>
+
+    
+  </dl>
+
+ </p>
+</div></div></div></body></html>

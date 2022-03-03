@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Memcached</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.memcache-debug.html">« memcache_debug</a></li>
+      <li style="float: right;"><a href="intro.memcached.html">简介 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="refs.remote.other.html">其它服务</a></li>
+    <li>Memcached</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="book.memcached" class="book">
+ <h1 class="title">Memcached</h1>
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="intro.memcached.html">简介</a></li><li><a href="memcached.setup.html">安装／配置</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="memcached.requirements.html">需求</a></li><li><a href="memcached.installation.html">安装</a></li><li><a href="memcached.configuration.html">运行时配置</a></li><li><a href="memcached.resources.html">资源类型</a></li></ul></li><li><a href="memcached.constants.html">预定义常量</a></li><li><a href="memcached.expiration.html">超时时间</a></li><li><a href="memcached.callbacks.html">回调</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="memcached.callbacks.result.html">结果回调</a></li><li><a href="memcached.callbacks.read-through.html">通读缓存回调</a></li></ul></li><li><a href="memcached.sessions.html">Sessions支持</a></li><li><a href="class.memcached.html">Memcached</a> — Memcached类<ul class="chunklist chunklist_book chunklist_children"><li><a href="memcached.add.html">Memcached::add</a> — 向一个新的key下面增加一个元素</li><li><a href="memcached.addbykey.html">Memcached::addByKey</a> — 在指定服务器上的一个新的key下增加一个元素</li><li><a href="memcached.addserver.html">Memcached::addServer</a> — 向服务器池中增加一个服务器</li><li><a href="memcached.addservers.html">Memcached::addServers</a> — 向服务器池中增加多台服务器</li><li><a href="memcached.append.html">Memcached::append</a> — 向已存在元素后追加数据</li><li><a href="memcached.appendbykey.html">Memcached::appendByKey</a> — 向指定服务器上已存在元素后追加数据</li><li><a href="memcached.cas.html">Memcached::cas</a> — 比较并交换值</li><li><a href="memcached.casbykey.html">Memcached::casByKey</a> — 在指定服务器上比较并交换值</li><li><a href="memcached.construct.html">Memcached::__construct</a> — 创建一个Memcached实例</li><li><a href="memcached.decrement.html">Memcached::decrement</a> — 减小数值元素的值</li><li><a href="memcached.decrementbykey.html">Memcached::decrementByKey</a> — Decrement numeric item's value, stored on a specific server</li><li><a href="memcached.delete.html">Memcached::delete</a> — 删除一个元素</li><li><a href="memcached.deletebykey.html">Memcached::deleteByKey</a> — 从指定的服务器删除一个元素</li><li><a href="memcached.deletemulti.html">Memcached::deleteMulti</a> — Delete multiple items</li><li><a href="memcached.deletemultibykey.html">Memcached::deleteMultiByKey</a> — Delete multiple items from a specific server</li><li><a href="memcached.fetch.html">Memcached::fetch</a> — 抓取下一个结果</li><li><a href="memcached.fetchall.html">Memcached::fetchAll</a> — 抓取所有剩余的结果</li><li><a href="memcached.flush.html">Memcached::flush</a> — 作废缓存中的所有元素</li><li><a href="memcached.get.html">Memcached::get</a> — 检索一个元素</li><li><a href="memcached.getallkeys.html">Memcached::getAllKeys</a> — Gets the keys stored on all the servers</li><li><a href="memcached.getbykey.html">Memcached::getByKey</a> — 从特定的服务器检索元素</li><li><a href="memcached.getdelayed.html">Memcached::getDelayed</a> — 请求多个元素</li><li><a href="memcached.getdelayedbykey.html">Memcached::getDelayedByKey</a> — 从指定的服务器上请求多个元素</li><li><a href="memcached.getmulti.html">Memcached::getMulti</a> — 检索多个元素</li><li><a href="memcached.getmultibykey.html">Memcached::getMultiByKey</a> — 从特定服务器检索多个元素</li><li><a href="memcached.getoption.html">Memcached::getOption</a> — 获取Memcached的选项值</li><li><a href="memcached.getresultcode.html">Memcached::getResultCode</a> — 返回最后一次操作的结果代码</li><li><a href="memcached.getresultmessage.html">Memcached::getResultMessage</a> — 返回最后一次操作的结果描述消息</li><li><a href="memcached.getserverbykey.html">Memcached::getServerByKey</a> — 获取一个key所映射的服务器信息</li><li><a href="memcached.getserverlist.html">Memcached::getServerList</a> — 获取服务器池中的服务器列表</li><li><a href="memcached.getstats.html">Memcached::getStats</a> — 获取服务器池的统计信息</li><li><a href="memcached.getversion.html">Memcached::getVersion</a> — 获取服务器池中所有服务器的版本信息</li><li><a href="memcached.increment.html">Memcached::increment</a> — 增加数值元素的值</li><li><a href="memcached.incrementbykey.html">Memcached::incrementByKey</a> — Increment numeric item's value, stored on a specific server</li><li><a href="memcached.ispersistent.html">Memcached::isPersistent</a> — Check if a persitent connection to memcache is being used</li><li><a href="memcached.ispristine.html">Memcached::isPristine</a> — Check if the instance was recently created</li><li><a href="memcached.prepend.html">Memcached::prepend</a> — 向一个已存在的元素前面追加数据</li><li><a href="memcached.prependbykey.html">Memcached::prependByKey</a> — Prepend data to an existing item on a specific server</li><li><a href="memcached.quit.html">Memcached::quit</a> — 关闭所有打开的链接。</li><li><a href="memcached.replace.html">Memcached::replace</a> — 替换已存在key下的元素</li><li><a href="memcached.replacebykey.html">Memcached::replaceByKey</a> — Replace the item under an existing key on a specific server</li><li><a href="memcached.resetserverlist.html">Memcached::resetServerList</a> — Clears all servers from the server list</li><li><a href="memcached.set.html">Memcached::set</a> — 存储一个元素</li><li><a href="memcached.setbykey.html">Memcached::setByKey</a> — 将元素存储到指定的服务器上</li><li><a href="memcached.setmulti.html">Memcached::setMulti</a> — 存储多个元素</li><li><a href="memcached.setmultibykey.html">Memcached::setMultiByKey</a> — Store multiple items on a specific server</li><li><a href="memcached.setoption.html">Memcached::setOption</a> — 设置一个memcached选项</li><li><a href="memcached.setoptions.html">Memcached::setOptions</a> — Set Memcached options</li><li><a href="memcached.setsaslauthdata.html">Memcached::setSaslAuthData</a> — Set the credentials to use for authentication</li><li><a href="memcached.touch.html">Memcached::touch</a> — Set a new expiration on an item</li><li><a href="memcached.touchbykey.html">Memcached::touchByKey</a> — Set a new expiration on an item on a specific server</li></ul></li></ul></div></div></div></body></html>

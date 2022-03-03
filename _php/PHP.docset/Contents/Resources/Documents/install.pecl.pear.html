@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>用 PEAR 编译共享 PECL 扩展库</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.pecl.windows.html">« 在 Windows 上安装 PHP 扩展</a></li>
+      <li style="float: right;"><a href="install.pecl.phpize.html">用 phpize 编译共享 PECL 扩展库 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.pecl.html">PECL 扩展库安装</a></li>
+    <li>用 PEAR 编译共享 PECL 扩展库</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.pecl.pear" class="sect1">
+  <h2 class="title">用 PEAR 编译共享 PECL 扩展库</h2>
+  <p class="simpara">
+   PECL 使建立共享 PHP 扩展库更容易。用
+   <a href="https://pear.php.net/manual/en/guide.users.commandline.cli.php" class="link external">&raquo;&nbsp;pecl 命令</a>这样做：
+  </p>
+  <p class="para">
+   <div class="example-contents screen"><br />
+    $ pecl install extname<br />
+   </div>
+  </p>
+  <p class="simpara">
+   这将下载 <em class="emphasis">extname</em> 的源代码，编译之，并将
+   <var class="filename">extname.so</var> 安装到 <a href="ini.core.html#ini.extension-dir" class="link">extension_dir</a>
+   中。然后 <var class="filename">extname.so</var> 就可以通过 <var class="filename">php.ini</var> 加载了。
+  </p>
+  <p class="simpara">
+   默认情况下，<code class="literal">pecl</code> 命令不会安装标记为
+   <code class="literal">alpha</code> 或
+   <code class="literal">beta</code> 状态的包。如果没有 <code class="literal">stable</code>
+   包可用，也可以用以下命令安装一个 <code class="literal">beta</code> 包：
+  </p>
+  <p class="para">
+   <div class="example-contents screen"><br />
+    $ pecl install extname-beta<br />
+   </div>
+  </p>
+  <p class="para">
+   也可以用此命令安装一个指定的版本：
+  </p>
+  <p class="para">
+   <div class="example-contents screen"><br />
+    $ pecl install extname-0.1<br />
+   </div>
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    在 <var class="filename">php.ini</var> 中激活扩展之后，需要重新启动 web 服务以使更改生效。
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

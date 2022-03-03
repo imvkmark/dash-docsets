@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Connecting to Microsoft SQL Server and Sybase databases</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.pdo-dblib.html">« MS SQL Server (PDO)</a></li>
+      <li style="float: right;"><a href="ref.pdo-firebird.html">Firebird (PDO) »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pdo-dblib.html">MS SQL Server (PDO)</a></li>
+    <li>Connecting to Microsoft SQL Server and Sybase databases</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.pdo-dblib.connection" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">PDO_DBLIB DSN</h1>
+    <p class="verinfo">(PECL PDO_DBLIB &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">PDO_DBLIB DSN</span> &mdash; <span class="dc-title">Connecting to Microsoft SQL Server and Sybase databases</span></p>
+
+   </div>
+
+   <div class="refsect1 description" id="refsect1-ref.pdo-dblib.connection-description">
+    <h3 class="title">说明</h3>
+    <p class="para">
+     The PDO_DBLIB Data Source Name (DSN) is composed of the following elements:
+     <dl>
+      
+       <dt>
+DSN prefix</dt>
+
+       <dd>
+
+        <p class="para">
+         The DSN prefix is <strong class="userinput"><code>sybase:</code></strong> if PDO_DBLIB was
+         linked against the Sybase ct-lib libraries,
+         <strong class="userinput"><code>mssql:</code></strong> if PDO_DBLIB was linked against the
+         Microsoft SQL Server libraries, or <strong class="userinput"><code>dblib:</code></strong> if
+         PDO_DBLIB was linked against the FreeTDS libraries.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">host</code></dt>
+
+       <dd>
+
+        <p class="para">
+         The hostname on which the database server resides.
+         Defaults to 127.0.0.1.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">dbname</code></dt>
+
+       <dd>
+
+        <p class="para">
+         The name of the database.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">charset</code></dt>
+
+       <dd>
+
+        <p class="para">
+         The client character set.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">appname</code></dt>
+
+       <dd>
+
+        <p class="para">
+         The application name (used in sysprocesses).
+         Defaults to &quot;PHP Generic DB-lib&quot; or &quot;PHP freetds&quot;.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">secure</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Currently unused.
+        </p>
+       </dd>
+
+      
+     </dl>
+
+    </p>
+   </div>
+
+   <div class="refsect1 examples" id="refsect1-ref.pdo-dblib.connection-examples">
+    <h3 class="title">范例</h3>
+    <p class="para">
+     <div class="example" id="example-1060">
+      <p><strong>示例 #1 PDO_DBLIB DSN examples</strong></p>
+      <div class="example-contents"><p>
+       The following examples show a PDO_DBLIB DSN for connecting to
+       Microsoft SQL Server and Sybase databases:
+       <div class="example-contents"><div class="cdata"><pre>
+mssql:host=localhost;dbname=testdb
+sybase:host=localhost;dbname=testdb
+dblib:host=localhost;dbname=testdb
+</pre></div>
+       </div>
+
+      </p></div>
+     </div>
+    </p>
+   </div>
+
+  </div></div></div></body></html>

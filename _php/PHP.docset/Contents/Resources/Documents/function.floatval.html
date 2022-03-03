@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>获取变量的浮点值</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.empty.html">« empty</a></li>
+      <li style="float: right;"><a href="function.get-debug-type.html">get_debug_type »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.var.html">Variable handling 函数</a></li>
+    <li>获取变量的浮点值</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.floatval" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">floatval</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">floatval</span> &mdash; <span class="dc-title">获取变量的浮点值</span></p>
+
+   </div>
+   <div class="refsect1 unknown-seealsp" id="refsect1-function.floatval-unknown-seealsp">
+    <h3 class="title">描述</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="methodname"><strong>floatval</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>): <span class="type">float</span></div>
+
+    <p class="simpara">
+     返回变量 <code class="parameter">var</code>
+     的 <span class="type">float</span> 数值。
+    </p>
+    <p class="para">
+     <code class="parameter">var</code> 可以是任何标量类型。你不能将
+     <span class="function"><strong>floatval()</strong></span> 用于数组或对象。
+    <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'122.34343The'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$float_value_of_var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">floatval&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br />print&nbsp;</span><span style="color: #0000BB">$float_value_of_var</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;打印出&nbsp;122.34343<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     参见 <span class="function"><a href="function.intval.html" class="function">intval()</a></span>、<span class="function"><a href="function.strval.html" class="function">strval()</a></span>、<span class="function"><a href="function.settype.html" class="function">settype()</a></span> 和
+     <a href="language.types.type-juggling.html" class="link">类型戏法</a>。
+    </p>
+   </div>
+
+  </div></div></div></body></html>

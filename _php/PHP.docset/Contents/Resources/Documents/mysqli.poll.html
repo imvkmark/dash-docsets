@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>轮询连接</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.ping.html">« mysqli::ping</a></li>
+      <li style="float: right;"><a href="mysqli.prepare.html">mysqli::prepare »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">MySQLi</a></li>
+    <li>轮询连接</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.poll" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli::poll</h1>
+  <h1 class="refname">mysqli_poll</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::poll</span> -- <span class="refname">mysqli_poll</span> &mdash; <span class="dc-title">轮询连接</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli.poll-description">
+  <h3 class="title">说明</h3>
+  <p class="para">面向对象风格</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>mysqli::poll</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$read</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$error</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$reject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$sec</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$usec</code><span class="initializer"> = 0</span></span><br>): <span class="type">int</span></div>
+
+  <p class="para rdfs-comment">过程化风格</p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_poll</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$read</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$error</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$reject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$sec</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$usec</code><span class="initializer"> = 0</span></span><br>): <span class="type">int</span></div>
+
+  <p class="para rdfs-comment">
+   轮询连接。
+   仅可用于 <a href="book.mysqlnd.html" class="link">mysqlnd</a>。
+   此方法是
+   <a href="language.oop5.static.html" class="link">static</a> 的。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli.poll-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">read</code></dt>
+
+     <dd>
+
+      <p class="para">
+       要检测是否存在可以读取的结果集的连接的数组。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">error</code></dt>
+
+     <dd>
+
+      <p class="para">
+       发生错误的，例如：SQL 语句执行失败或者已经断开的
+       连接的数组。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">reject</code></dt>
+
+     <dd>
+
+      <p class="para">
+       没有可以读取的结果集的连接
+       的数组。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">sec</code></dt>
+
+     <dd>
+
+      <p class="para">
+       秒为单位的最大等待时间，不可以为负数。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">usec</code></dt>
+
+     <dd>
+
+      <p class="para">
+       微秒为单位的最大等待时间，不可以为负数。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli.poll-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功执行则返回存在可以读取结果集的连接数量，
+   否则 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.poll-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-1438">
+    <p><strong>示例 #1 A <span class="function"><strong>mysqli_poll()</strong></span> 例程</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$link1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$link1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'test'"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MYSQLI_ASYNC</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$all_links&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">$link1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$processed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$links&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$errors&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$reject&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$all_links&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$links</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$errors</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$reject</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">mysqli_poll</span><span style="color: #007700">(</span><span style="color: #0000BB">$links</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errors</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$reject</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$links&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">reap_async_query</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_row</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"MySQLi&nbsp;Error:&nbsp;%s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$processed</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;while&nbsp;(</span><span style="color: #0000BB">$processed&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$all_links</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; test
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli.poll-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="mysqli.query.html" class="function" rel="rdfs-seeAlso">mysqli_query()</a> - 对数据库执行一次查询</span></li>
+    <li class="member"><span class="function"><a href="mysqli.reap-async-query.html" class="function" rel="rdfs-seeAlso">mysqli_reap_async_query()</a> - 获取异步查询的结果</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

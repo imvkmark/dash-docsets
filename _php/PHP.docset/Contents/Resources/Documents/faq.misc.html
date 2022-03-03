@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>其他问题</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="faq.com.html">« PHP 和 COM</a></li>
+      <li style="float: right;"><a href="appendices.html">附录 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li>其他问题</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="faq.misc" class="chapter">
+  <h1>其他问题</h1>
+
+  
+  <p class="para">有些问题没法归到其它类中，可以在这里找到。</p>
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.misc.bz2">
+        在 Windows 中怎样处理 bz2 压缩的文档？
+      </a></li></ol></div>
+    <dl class="qandaentry" id="faq.misc.bz2">
+      <dt><strong>
+        在 Windows 中怎样处理 bz2 压缩的文档？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">如果没有能处理 bz2 文件的压缩工具，从 Redhat 
+        <a href="https://www.sourceware.org/bzip2/" class="link external">&raquo;&nbsp;下载</a>一个命令行工具（进一步信息见下面）。</p>
+        <p class="para">如果不喜欢用命令行工具，可以试试免费工具例如 
+        <a href="http://www.stuffit.com/" class="link external">&raquo;&nbsp;Stuffit Expander</a>，
+        <a href="http://www.ultimatezip.com/" class="link external">&raquo;&nbsp;UltimateZip</a>，
+        <a href="http://www.7-zip.org/" class="link external">&raquo;&nbsp;7-Zip</a>或者 
+        <a href="http://www.quickzip.org/" class="link external">&raquo;&nbsp;Quick Zip</a>。如果有像 
+        <a href="http://www.rarlab.com/" class="link external">&raquo;&nbsp;WinRAR</a>或者 
+        <a href="http://www.powerarchiver.com/" class="link external">&raquo;&nbsp;Power Archiver</a>之类的工具，可以很容易用它解压缩 bz2 文件。如果用 Total Commander（前身为 Windows Commander），可以从 
+        <a href="http://www.ghisler.com/" class="link external">&raquo;&nbsp;Total Commander</a>网站免费得到一个 bz2 插件。</p>
+        <p class="para">来自 Redhat 的 bzip2 命令行工具：</p>
+        <p class="para">Win2K Sp2 用户下载最新版本 1.0.2，所有其它 Windows 用户应该用版本 1.00。下载后重命名可执行文件为 bzip2.exe。为方便起见将其放到一个在你路径中的目录，例如 C:\Windows，C 表示你安装 Windows 的盘符。</p>
+        <p class="para">注意：lang 指的是你的语种，x 是想要的格式，例如：pdf。要解压缩 php_manual_lang.x.bz2，按照下面的简单说明进行： 
+        <ul class="itemizedlist">
+          <li class="listitem">
+            <span class="simpara">打开一个命令行窗口</span>
+          </li>
+          <li class="listitem">
+            <span class="simpara">进入存放已下载的 php_manual_lang.x.bz2 的目录</span>
+          </li>
+          <li class="listitem">
+            <span class="simpara">调用 bzip2 -d php_manual_lang.x.bz2，将 php_manual_lang.x 释放到同一个目录</span>
+          </li>
+        </ul></p>
+        <p class="para">在下载了包含很多 html 文件的 php_manual_lang.tar.bz2 的情况下，过程是一样的。唯一区别是得到了一个 php_manual_lang.tar 文件。tar 格式可以被大多数 Windows 下流行的压缩工具所处理，例如 
+        <a href="http://www.winzip.com/" class="link external">&raquo;&nbsp;WinZip</a>。</p>
+      </dd>
+    </dl>
+  
+</div>
+</div></div></body></html>

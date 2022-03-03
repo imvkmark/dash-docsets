@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Send an email message</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imap-mail-move.html">« imap_mail_move</a></li>
+      <li style="float: right;"><a href="function.imap-mailboxmsginfo.html">imap_mailboxmsginfo »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.imap.html">IMAP 函数</a></li>
+    <li>Send an email message</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imap-mail" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imap_mail</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imap_mail</span> &mdash; <span class="dc-title">Send an email message</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imap-mail-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imap_mail</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$to</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$additional_headers</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$cc</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$bcc</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$return_path</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   This function allows sending of emails with correct handling of
+   Cc and Bcc receivers. 
+  </p>
+  <p class="para">
+   The parameters <code class="parameter">to</code>, <code class="parameter">cc</code>
+   and <code class="parameter">bcc</code> are all strings and are all parsed
+   as <a href="http://www.faqs.org/rfcs/rfc822" class="link external">&raquo;&nbsp;RFC822</a> address lists.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imap-mail-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">to</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The receiver
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">subject</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The mail subject
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">message</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The mail body, see <span class="function"><a href="function.imap-mail-compose.html" class="function">imap_mail_compose()</a></span>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">additional_headers</code></dt>
+
+     <dd>
+
+      <p class="para">
+       As string with additional headers to be set on the mail
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">cc</code></dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">bcc</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The receivers specified in <code class="parameter">bcc</code> will get the
+       mail, but are excluded from the headers.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">return_path</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Use this parameter to specify return path upon mail delivery failure.
+       This is useful when using PHP as a mail client for multiple users.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imap-mail-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.imap-mail-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">additional_headers</code>, <code class="parameter">cc</code>,
+       <code class="parameter">bcc</code>, and <code class="parameter">return_path</code> are now nullable.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.imap-mail-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mail.html" class="function" rel="rdfs-seeAlso">mail()</a> - 发送邮件</span></li>
+    <li class="member"><span class="function"><a href="function.imap-mail-compose.html" class="function" rel="rdfs-seeAlso">imap_mail_compose()</a> - Create a MIME message based on given envelope and body sections</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

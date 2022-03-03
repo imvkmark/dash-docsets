@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安装</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ibm-db2.requirements.html">« 需求</a></li>
+      <li style="float: right;"><a href="ibm-db2.configuration.html">运行时配置 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ibm-db2.setup.html">安装／配置</a></li>
+    <li>安装</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ibm-db2.installation" class="section">
+ <h2 class="title">安装</h2>
+ <p class="para">
+  To build the ibm_db2 extension, the DB2 application development header
+  files and libraries must be installed on your system. DB2 does not install
+  these by default, so you may have to return to your DB2 installer and add
+  this option. The header files are included with the DB2 Application
+  Development Client freely available for download from the IBM DB2 Universal
+  Database <a href="https://www.ibm.com/developerworks/downloads/im/db2express/index.html" class="link external">&raquo;&nbsp;support site</a>.
+ </p>
+ <p class="para">
+  If you add the DB2 application development header files and libraries to
+  a Linux or Unix operating system on which DB2 was already installed, you
+  must issue the command <strong class="command">db2iupdt -e</strong> to update the symbolic
+  links to the header files and libraries in your DB2 instances.
+ </p>
+ <p class="para">
+  ibm_db2 is a  <a href="https://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a> extension, so follow the
+  instructions in <a href="install.pecl.html" class="xref">PECL 扩展库安装</a> to install the ibm_db2
+  extension for PHP. Issue the <strong class="command">configure</strong> command to point
+  to the location of your DB2 header files and libraries as follows:
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bash$ ./configure --with-IBM_DB2=/path/to/DB2
+</pre></div>
+  </div>
+  The <strong class="command">configure</strong> command defaults to
+  <var class="filename">/opt/IBM/db2/V8.1</var>.
+ </p>
+ <p class="para">
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>Note for IIS users</strong><br />
+   <p class="para">
+    If you are using the ibm_db2 driver with Microsoft Internet Information Server (IIS) 
+    you may have to do the following:
+   </p>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member">
+      Install DB2 with extended operating system security.
+     </li>
+     <li class="member">
+      Add the PHP binary path to the <var class="envar">PATH</var> system environment variable (default C:\php\).
+     </li>
+     <li class="member">
+      Create another system environment variable equal to the path where the PHP.INI file is located (eg: PHPRC = C:\php\).
+     </li>
+     <li class="member">
+      Add the IUSR_COMPUTERNAME to the DB2USERS group.
+     </li>
+    </ul>
+   </p>
+  </p></blockquote>
+ </p>
+</div></div></div></body></html>

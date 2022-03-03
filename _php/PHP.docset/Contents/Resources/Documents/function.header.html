@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>发送原生 HTTP 头</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.header-remove.html">« header_remove</a></li>
+      <li style="float: right;"><a href="function.headers-list.html">headers_list »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.network.html">网络 函数</a></li>
+    <li>发送原生 HTTP 头</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.header" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">header</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">header</span> &mdash; <span class="dc-title">发送原生 HTTP 头</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.header-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>header</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$replace</code><span class="initializer"> = true</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$response_code</code><span class="initializer"> = ?</span></span>): <span class="type"><span class="type void">void</span></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>header()</strong></span> 用于发送原生的 <acronym title="Hypertext Transfer Protocol">HTTP</acronym>
+   头。关于 <acronym title="Hypertext Transfer Protocol">HTTP</acronym> 头的更多信息请参考 <a href="http://www.faqs.org/rfcs/rfc2616" class="link external">&raquo;&nbsp;HTTP/1.1 specification</a>。
+  </p>
+  <p class="para">
+   请注意 <span class="function"><strong>header()</strong></span> 必须在任何实际输出之前调用，不管是普通的 HTML 标签，还是文件或 PHP 输出的空行，空格。这是个常见的错误，在通过<span class="function"><a href="function.include.html" class="function">include</a></span>，<span class="function"><a href="function.require.html" class="function">require</a></span>，或者其访问其他文件里面的函数的时候，如果在<span class="function"><strong>header()</strong></span>被调用之前，其中有空格或者空行。
+   同样的问题也存在于单独的 PHP/HTML 文件中。
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+&lt;html&gt;<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;This&nbsp;will&nbsp;give&nbsp;an&nbsp;error.&nbsp;Note&nbsp;the&nbsp;output<br />&nbsp;*&nbsp;above,&nbsp;which&nbsp;is&nbsp;before&nbsp;the&nbsp;header()&nbsp;call&nbsp;*/<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Location:&nbsp;http://www.example.com/'</span><span style="color: #007700">);<br />exit;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.header-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">string</code></dt>
+
+     <dd>
+
+      <p class="para">
+       头字符串。
+      </p>
+      <p class="para">
+       有两种特别的头。第一种以“<code class="literal">HTTP/</code>”开头的 (case is not
+       significant)，将会被用来计算出将要发送的HTTP状态码。 
+       例如在 Apache 服务器上用 PHP 脚本来处理不存在文件的请求（使用 <code class="literal">ErrorDocument</code> 指令）， 就会希望脚本响应了正确的状态码。
+      </p>
+      <p class="para">
+       <div class="informalexample">
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;本示例演示了&nbsp;"HTTP/"&nbsp;的特殊例子，典型用法的最佳实践，包括：<br />//&nbsp;1.&nbsp;header($_SERVER["SERVER_PROTOCOL"]&nbsp;.&nbsp;"&nbsp;404&nbsp;Not&nbsp;Found");<br />//&nbsp;&nbsp;&nbsp;&nbsp;（覆盖&nbsp;http&nbsp;状态消息，兼容还在使用&nbsp;HTTP/1.0&nbsp;的客户端）<br />//&nbsp;2.&nbsp;http_response_code(404);&nbsp;（使用默认消息）<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"HTTP/1.1&nbsp;404&nbsp;Not&nbsp;Found"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+      </p>
+      <p class="para">
+       第二种特殊情况是“Location:”的头信息。它不仅把报文发送给浏览器，而且还将返回给浏览器一个 <code class="literal">REDIRECT</code>（302）的状态码，除非状态码已经事先被设置为了<code class="literal">201</code>或者<code class="literal">3xx</code>。
+      </p>
+      <p class="para">
+       <div class="informalexample">
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Location:&nbsp;http://www.example.com/"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">/*&nbsp;Redirect&nbsp;browser&nbsp;*/<br /><br />/*&nbsp;Make&nbsp;sure&nbsp;that&nbsp;code&nbsp;below&nbsp;does&nbsp;not&nbsp;get&nbsp;executed&nbsp;when&nbsp;we&nbsp;redirect.&nbsp;*/<br /></span><span style="color: #007700">exit;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">replace</code></dt>
+
+     <dd>
+
+      <p class="para">
+       可选参数 <code class="parameter">replace</code> 表明是否用后面的头替换前面相同类型的头。
+       
+       默认情况下会替换。如果传入 <strong><code>false</code></strong>，就可以强制使相同的头信息并存。例如：
+      </p>
+      <p class="para">
+       <div class="informalexample">
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">'WWW-Authenticate:&nbsp;Negotiate'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'WWW-Authenticate:&nbsp;NTLM'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+       </div>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">response_code</code></dt>
+
+     <dd>
+
+      <p class="para">
+       强制指定 HTTP 响应的值。注意，这个参数只有在报文字符串（<code class="parameter">header</code>）不为空的情况下才有效。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.header-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   没有返回值。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.header-errors">
+  <h3 class="title">错误／异常</h3>
+  <p class="para">
+   当 header 发送失败时，<span class="function"><strong>header()</strong></span> 会抛出 <strong><code>E_WARNING</code></strong> 级别的错误
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.header-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4348">
+    <p><strong>示例 #1 下载对话框</strong></p>
+    <div class="example-contents"><p>
+     如果你想提醒用户去保存你发送的数据，例如保存一个生成的PDF文件。你可以使用<a href="http://www.faqs.org/rfcs/rfc2183" class="link external">&raquo;&nbsp;Content-Disposition</a>的报文信息来提供一个推荐的文件名，并且强制浏览器显示一个文件下载的对话框。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;输出&nbsp;PDF&nbsp;文件<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;application/pdf'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;名称为&nbsp;downloaded.pdf<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Disposition:&nbsp;attachment;&nbsp;filename="downloaded.pdf"'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;该&nbsp;PDF&nbsp;来源于&nbsp;original.pdf<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'original.pdf'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4349">
+    <p><strong>示例 #2 缓存指令</strong></p>
+    <div class="example-contents"><p>
+     PHP 脚本经常生成一些动态内容，它不该被客户端、服务器与浏览器之间的代理缓存。
+     许多代理与客户端都支持这样强制禁用缓存：
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Cache-Control:&nbsp;no-cache,&nbsp;must-revalidate"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;HTTP/1.1<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Expires:&nbsp;Sat,&nbsp;26&nbsp;Jul&nbsp;1997&nbsp;05:00:00&nbsp;GMT"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;过去的日期<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <p class="para">
+       也许你会遇到这样的情况，那就是即使你没使用上面这段代码，你的页面也没有被缓存。大多数情况是因为用户可以自己设置他们的浏览器从而改变浏览器默认的缓存行为。一旦发送了上面这段报文信息，那么你就应该重写那些可能用到缓存了的代码。
+      </p>
+      <p class="para">
+       此外，在启用session的情况下，<span class="function"><a href="function.session-cache-limiter.html" class="function">session_cache_limiter()</a></span>和<code class="literal">session.cache_limiter</code>的配置可以用来自动地生成正确的缓存相关的头信息。
+      </p>
+     </p></blockquote>
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.header-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+<p class="para">
+ 数据头只会在SAPI支持时得到处理和输出。
+</p>
+</p></blockquote>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    你所有需要输出到浏览器的数据将会一直缓存在服务器端，直到你发送他们，这将造成比较大的资源开销。你可以是用输出缓冲来避开这个问题。你可以通过在脚本里使用<span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span>和<span class="function"><a href="function.ob-end-flush.html" class="function">ob_end_flush()</a></span>或者直接在你的<var class="filename">php.ini</var>文件里设置<code class="literal">output_buffering</code>，也可以直接在服务器的配置文件里设置。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    HTTP状态信息的报文永远都是最新被发送到客户端的，而不管<span class="function"><strong>header()</strong></span>是否是在最先发送的。报文状态码可能会被重写，当调用<span class="function"><strong>header()</strong></span>来设定新的状态码，除非HTTP报文已经被发送了。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    绝大多数现代浏览器的 <a href="http://tools.ietf.org/html/rfc7231#section-7.1.2" class="link external">&raquo;&nbsp;Location:</a>
+    都支持相对 <acronym title="Uniform Resource Identifier">URI</acronym>，但也有一些旧浏览器需要绝对 URI：包含协议、主机名、绝对路径。
+    一般情况下，可以借助 <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['HTTP_HOST']</a></var>、<var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['PHP_SELF']</a></var>、
+    <span class="function"><a href="function.dirname.html" class="function">dirname()</a></span> 将相对地址组合成绝对 URI：
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;根据当前请求所在的目录，重定向到不同的页面&nbsp;*/<br /></span><span style="color: #0000BB">$host&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'HTTP_HOST'</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$uri&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rtrim</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'PHP_SELF'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #DD0000">'/\\'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$extra&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mypage.php'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Location:&nbsp;http://</span><span style="color: #0000BB">$host$uri</span><span style="color: #DD0000">/</span><span style="color: #0000BB">$extra</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />exit;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    在执行Location header跳转的时候，Session ID无法通传递的，即使<a href="session.configuration.html#ini.session.use-trans-sid" class="link">session.use_trans_sid</a>是激活状态的。只能通过手动传递using <strong><code>SID</code></strong>的值来实现。
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.header-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.headers-sent.html" class="function" rel="rdfs-seeAlso">headers_sent()</a> - 检测 HTTP 头是否已经发送</span></li>
+    <li class="member"><span class="function"><a href="function.setcookie.html" class="function" rel="rdfs-seeAlso">setcookie()</a> - 发送 Cookie</span></li>
+    <li class="member"><span class="function"><a href="function.http-response-code.html" class="function" rel="rdfs-seeAlso">http_response_code()</a> - 获取/设置响应的 HTTP 状态码</span></li>
+    <li class="member"><span class="function"><a href="function.header-remove.html" class="function" rel="rdfs-seeAlso">header_remove()</a> - 删除之前设置的 HTTP 头</span></li>
+    <li class="member"><span class="function"><strong>header_list()</strong></span></li>
+    <li class="member">
+     The section on <a href="features.http-auth.html" class="link">HTTP
+     authentication</a>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

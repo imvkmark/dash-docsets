@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Status Page</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="fpm.observability.html">« Observability</a></li>
+      <li style="float: right;"><a href="ref.fpm.html">FPM 函数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="fpm.observability.html">Observability</a></li>
+    <li>Status Page</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="fpm.status" class="sect1">
+ <h2 class="title">Status Page</h2>
+ 
+ <p class="para">
+  This page provides information on the setup and contents of the FPM status page. See also
+  <span class="function"><a href="function.fpm-get-status.html" class="function">fpm_get_status()</a></span>.
+ </p>
+
+ <div class="sect2" id="fpm.status.configuration">
+  <h3 class="title">Configuration</h3>
+  
+  <p class="para">
+   The FPM status page can be enabled by setting the
+   <a href="install.fpm.configuration.html#pm.status-path" class="link">pm.status_path</a> configuration parameter in the FPM pool
+   configuration.
+  </p>
+
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    For security the FPM status page should be restricted to internal requests or known client IPs
+    only as the page reveals request URLs and information about available resources.
+   </p>
+  </div>
+  
+  <p class="para">
+   Depending on the web server configuration it might be needed to configure the web server to
+   allow requests directly to this path, bypassing any PHP scripts. An example of a configuration
+   for Apache with FPM listening on UDS and <code class="literal">pm.status_path</code> set to
+   <code class="literal">/fpm-status</code> would look like:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+    <div class="apache-confcode"><pre class="apache-confcode">&lt;LocationMatch &quot;/fpm-status&quot;&gt;
+ Order Allow,Deny
+ Allow from 127.0.0.1
+ ProxyPass &quot;unix:/var/run/php-fpm.sock|fcgi://localhost/fpm-status&quot;
+&lt;/LocationMatch&gt;</pre>
+</div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   After reloading or restarting both FPM and the web server the status page will be accessible from
+   the browser (as long as the request comes from an allowed IP address if the IP restriction was
+   configured).
+  </p>
+ </div>
+
+ <div class="sect2" id="fpm.status.parameters">
+  <h3 class="title">Query Parameters</h3>
+
+  <p class="para">
+   The format of the status page output can be altered by specifying one of the following query
+   parameters:
+  </p>
+  
+  <ul class="simplelist">
+   <li class="member"><code class="literal">html</code></li>
+   <li class="member"><code class="literal">json</code></li>
+   <li class="member"><code class="literal">openmetrics</code></li>
+   <li class="member"><code class="literal">xml</code></li>
+  </ul>
+
+  <p class="para">
+   Additional information can also be returned using the <code class="literal">full</code> query parameter.
+  </p>
+  
+  <p class="para">
+   Example status page URLs:
+  </p>
+  
+  <ul class="simplelist">
+   <li class="member">
+    <code class="literal">https://localhost/fpm-status</code>
+    - Brief output in the default text format
+   </li>
+   <li class="member">
+    <code class="literal">https://localhost/fpm-status?full</code>
+    - Full output in the default text format
+   </li>
+   <li class="member">
+    <code class="literal">https://localhost/fpm-status?json</code>
+    - Brief output in JSON format
+   </li>
+   <li class="member">
+    <code class="literal">https://localhost/fpm-status?html&amp;full</code>
+    - Full output in HTML format
+   </li>
+  </ul>
+ </div>
+ 
+ <div class="sect2" id="fpm.status.contents">
+  <h3 class="title">Displayed Information</h3>
+
+  <p class="para">
+   Date/Time values use the unix timestamp format in JSON and XML output, otherwise they use
+   the format resulting in the following example date
+   <code class="literal">&quot;03/Jun/2021:07:21:46 +0100&quot;</code>.
+  </p>
+  
+  <table class="doctable table">
+   <caption><strong>Basic information - Always displayed on the status page</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>pool</td>
+      <td>The name of the FPM process pool.</td>
+     </tr>
+
+     <tr>
+      <td>proccess manager</td>
+      <td>The process manager type - static, dynamic or ondemand.</td>
+     </tr>
+
+     <tr>
+      <td>start time</td>
+      <td>The date/time that the process pool was last started.</td>
+     </tr>
+
+     <tr>
+      <td>start since</td>
+      <td>The time in seconds since the process pool was last started.</td>
+     </tr>
+
+     <tr>
+      <td>accepted conn</td>
+      <td>The total number of accepted connections.</td>
+     </tr>
+
+     <tr>
+      <td>listen queue</td>
+      <td>The number of requests (backlog) currently waiting for a free process.</td>
+     </tr>
+
+     <tr>
+      <td>max listen queue</td>
+      <td>The maximum number of requests seen in the listen queue at any one time.</td>
+     </tr>
+
+     <tr>
+      <td>listen queue len</td>
+      <td>The maximum allowed size of the listen queue.</td>
+     </tr>
+
+     <tr>
+      <td>idle processes</td>
+      <td>The number of processes that are currently idle (waiting for requests).</td>
+     </tr>
+
+     <tr>
+      <td>active processes</td>
+      <td>The number of processes that are currently processing requests.</td>
+     </tr>
+
+     <tr>
+      <td>total processes</td>
+      <td>The current total number of processes.</td>
+     </tr>
+
+     <tr>
+      <td>max active processes</td>
+      <td>The maximum number of concurrently active processes.</td>
+     </tr>
+
+     <tr>
+      <td>max children reached</td>
+      <td>
+       Has the maximum number of processes ever been reached? If so the displayed value is
+       <code class="literal">1</code> otherwise the value is <code class="literal">0</code>.
+      </td>
+     </tr>
+
+     <tr>
+      <td>slow requests</td>
+      <td>
+       The total number of requests that have hit the configured
+       <code class="literal">request_slowlog_timeout</code>.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+
+  <table class="doctable table">
+   <caption><strong>Per-process information - only displayed in <code class="literal">full</code> output mode</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>pid</td>
+      <td>The system PID of the process.</td>
+     </tr>
+
+     <tr>
+      <td>state</td>
+      <td>The state of the process - Idle, Running, ...</td>
+     </tr>
+
+     <tr>
+      <td>start time</td>
+      <td>The date/time at which the process started.</td>
+     </tr>
+
+     <tr>
+      <td>start since</td>
+      <td>The number of seconds since the process started.</td>
+     </tr>
+
+     <tr>
+      <td>requests</td>
+      <td>The total number of requests served.</td>
+     </tr>
+
+     <tr>
+      <td>request duration</td>
+      <td>The total time in seconds spent serving requests.</td>
+     </tr>
+
+     <tr>
+      <td>request method</td>
+      <td>The HTTP method of the last served request.</td>
+     </tr>
+
+     <tr>
+      <td>request uri</td>
+      <td>
+       The URI of the last served request (after webserver processing, it may always be
+       <code class="literal">/index.php</code> if you use a front controller pattern redirect).
+      </td>
+     </tr>
+
+     <tr>
+      <td>content length</td>
+      <td>The length of the request body, in bytes, of the last request.</td>
+     </tr>
+
+     <tr>
+      <td>user</td>
+      <td>The HTTP user (<code class="literal">PHP_AUTH_USER</code>) of the last request.</td>
+     </tr>
+
+     <tr>
+      <td>script</td>
+      <td>
+       The full path of the script executed by the last request. This will be
+       <code class="literal">&#039;-&#039;</code> if not applicable (eg. status page requests).
+      </td>
+     </tr>
+
+     <tr>
+      <td>last request cpu</td>
+      <td>
+       The %cpu of the last request. This will be 0 if the process is not Idle because the
+       calculation is done when the request processing is complete.
+      </td>
+     </tr>
+
+     <tr>
+      <td>last request memory</td>
+      <td>
+       The maximum amount of memory consumed by the last request. This will be 0 if the process is
+       not Idle because the calculation is done when the request processing is complete.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    All values are specific to the pool and are reset when FPM is restarted.
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    OpenMetrics format output uses different parameter types to better suit the OpenMetrics format.
+    The parameters and descriptions of their values are included in the OpenMetrics format output.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="sect2">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.1.0</td>
+      <td>The openmetrics format was added.</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+</div></div></div></body></html>

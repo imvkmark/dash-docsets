@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安装</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="snmp.requirements.html">« 需求</a></li>
+      <li style="float: right;"><a href="snmp.configuration.html">运行时配置 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="snmp.setup.html">安装／配置</a></li>
+    <li>安装</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="snmp.installation" class="section">
+ <h2 class="title">安装</h2>
+ <p class="para">
+  重要提示：为了使用 UCD SNMP 包，需要在编译之前将
+  <code class="literal">NO_ZEROLENGTH_COMMUNITY</code> 定义为
+  <code class="literal">1</code>。 在配置 UCD SNMP 之后，编辑
+  <var class="filename">config.h</var> 或 <var class="filename">acconfig.h</var>，查找
+  <code class="literal">NO_ZEROLENGTH_COMMUNITY</code>，将 #define
+  所在行的注释去掉。修改后应该类似这样：
+  <div class="example-contents">
+<div class="ccode"><pre class="ccode">#define NO_ZEROLENGTH_COMMUNITY 1</pre>
+</div>
+  </div>
+
+  然后使用 <strong class="option configure">--with-snmp[=DIR]</strong> 选项编译 PHP。
+ </p>
+ <p class="para">
+  如果在组合 SNMP 命令时看到奇怪的字段错误，那就是因为没有遵从上述说明。如果不想重新编译
+  UCD SNMP，可以使用 <strong class="option configure">--enable-ucd-snmp-hack</strong>
+  开关编译 PHP 以绕开上述错误。
+ </p>
+ <p class="para">
+  Windows 版本在目录 <var class="filename">mibs</var>
+  中包含了支持 SNMP 的文件。此目录应该移到
+  <var class="filename">DRIVE:\usr\mibs</var>，其中 DRIVE
+  是安装 PHP 所在的盘符，例如 <var class="filename">c:\usr\mibs</var>。
+ </p>
+</div></div></div></body></html>

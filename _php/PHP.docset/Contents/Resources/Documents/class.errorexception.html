@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>ErrorException</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="exception.clone.html">« Exception::__clone</a></li>
+      <li style="float: right;"><a href="errorexception.construct.html">ErrorException::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.exceptions.html">预定义异常</a></li>
+    <li>ErrorException</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.errorexception" class="reference">
+ <h1 class="title">ErrorException</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p>
+ 
+
+  <div class="section" id="errorexception.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    错误异常。
+   </p>
+  </div>
+
+ 
+  <div class="section" id="errorexception.synopsis">
+   <h2 class="title">类摘要</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">ErrorException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+       <a href="class.exception.html" class="classname">Exception</a>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 属性 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.errorexception.html#errorexception.props.severity">$<var class="varname">severity</var></a></var><span class="initializer"> = E_ERROR</span>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 继承的属性 */</div>
+    <div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.exception.html#exception.props.message">$<var class="varname">message</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.exception.html#exception.props.string">$<var class="varname">string</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.exception.html#exception.props.code">$<var class="varname">code</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.exception.html#exception.props.file">$<var class="varname">file</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.exception.html#exception.props.line">$<var class="varname">line</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">array</span>
+      <var class="varname"><a href="class.exception.html#exception.props.trace">$<var class="varname">trace</var></a></var><span class="initializer"> = []</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.exception.html#exception.props.previous">$<var class="varname">previous</var></a></var><span class="initializer"> = null</span>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="errorexception.construct.html" class="methodname">__construct</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code><span class="initializer"> = &quot;&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$code</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$severity</code><span class="initializer"> = <strong><code>E_ERROR</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$filename</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">int</span><span class="type"></span></span> <code class="parameter">$line</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">?</span><span class="type"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span><span class="type"></span></span> <code class="parameter">$previous</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="errorexception.getseverity.html" class="methodname">getSeverity</a></span>(): <span class="type">int</span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 继承的方法 */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getmessage.html" class="methodname">Exception::getMessage</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getprevious.html" class="methodname">Exception::getPrevious</a></span>(): <span class="type"><span class="type">?</span><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getcode.html" class="methodname">Exception::getCode</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getfile.html" class="methodname">Exception::getFile</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getline.html" class="methodname">Exception::getLine</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.gettrace.html" class="methodname">Exception::getTrace</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.gettraceasstring.html" class="methodname">Exception::getTraceAsString</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="exception.tostring.html" class="methodname">Exception::__toString</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">private</span> <span class="methodname"><a href="exception.clone.html" class="methodname">Exception::__clone</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="errorexception.props">
+   <h2 class="title">属性</h2>
+   <dl>
+    
+     <dt id="errorexception.props.severity"><var class="varname">severity</var></dt>
+
+     <dd>
+
+      <p class="para">异常级别</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  <div class="section" id="errorexception.examples">
+   <h2 class="title">范例</h2>
+   <p class="para">
+    <div class="example" id="errorexception.example.error-handler">
+     <p><strong>示例 #1 使用 <span class="function"><a href="function.set-error-handler.html" class="function">set_error_handler()</a></span> 函数将错误信息托管至 ErrorException。</strong></p>
+     <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">exception_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">()&nbsp;&amp;&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;这个错误代码未包含在&nbsp;error_reporting&nbsp;中<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">ErrorException</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">set_error_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">"exception_error_handler"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;触发异常&nbsp;*/<br /></span><span style="color: #0000BB">strpos</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+Fatal error: Uncaught exception &#039;ErrorException&#039; with message &#039;strpos() expects at least 2 parameters, 0 given&#039; in /home/bjori/tmp/ex.php:12
+Stack trace:
+#0 [internal function]: exception_error_handler(2, &#039;strpos() expect...&#039;, &#039;/home/bjori/php...&#039;, 12, Array)
+#1 /home/bjori/php/cleandocs/test.php(12): strpos()
+#2 {main}
+  thrown in /home/bjori/tmp/ex.php on line 12
+</pre></div>
+     </div>
+    </div>
+   </p>
+  </div>
+ 
+ </div>
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="errorexception.construct.html">ErrorException::__construct</a> — 构造一个异常（Exception）</li><li><a href="errorexception.getseverity.html">ErrorException::getSeverity</a> — 获取异常的严重程度</li></ul>
+</div>
+</div></div></body></html>

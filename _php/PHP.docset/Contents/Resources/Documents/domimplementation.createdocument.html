@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Creates a DOMDocument object of the specified type with its document element</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domimplementation.construct.html">« DOMImplementation::__construct</a></li>
+      <li style="float: right;"><a href="domimplementation.createdocumenttype.html">DOMImplementation::createDocumentType »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domimplementation.html">DOMImplementation</a></li>
+    <li>Creates a DOMDocument object of the specified type with its document element</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domimplementation.createdocument" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMImplementation::createDocument</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMImplementation::createDocument</span> &mdash; <span class="dc-title">
+   Creates a DOMDocument object of the specified type with its document element
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domimplementation.createdocument-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMImplementation::createDocument</strong></span>(<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$namespace</code><span class="initializer"> = <strong><code>null</code></strong></span></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$qualifiedName</code><span class="initializer"> = &quot;&quot;</span></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type"><a href="class.domdocumenttype.html" class="type DOMDocumentType">DOMDocumentType</a></span><span class="type"></span></span> <code class="parameter">$doctype</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type"><a href="class.domdocument.html" class="type DOMDocument">DOMDocument</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   Creates a <span class="classname"><a href="class.domdocument.html" class="classname">DOMDocument</a></span> object of the specified type
+   with its document element. 
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domimplementation.createdocument-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">namespace</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The namespace URI of the document element to create.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">qualifiedName</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The qualified name of the document element to create.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">doctype</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The type of document to create or <strong><code>null</code></strong>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domimplementation.createdocument-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   A new <span class="classname"><a href="class.domdocument.html" class="classname">DOMDocument</a></span> object. If 
+   <code class="parameter">namespace</code>, <code class="parameter">qualifiedName</code>, 
+   and <code class="parameter">doctype</code> are null, the returned 
+   <span class="classname"><a href="class.domdocument.html" class="classname">DOMDocument</a></span> is empty with no document element
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-domimplementation.createdocument-errors">
+  <h3 class="title">错误／异常</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<strong><code>DOM_WRONG_DOCUMENT_ERR</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Raised if <code class="parameter">doctype</code> has already been used with a 
+       different document or was created from a different implementation.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>DOM_NAMESPACE_ERR</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Raised if there is an error with the namespace, as determined by 
+       <code class="parameter">namespace</code> and <code class="parameter">qualifiedName</code>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+  <p class="para">在 PHP 8.0.0 之前<em class="emphasis">可以</em>静态调用此方法，但会发出
+<strong><code>E_DEPRECATED</code></strong> 错误。自 PHP 8.0.0 起，静态调用此方法会抛出 <span class="classname"><a href="class.error.html" class="classname">Error</a></span> 异常</p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-domimplementation.createdocument-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.0.3</td>
+       <td>
+        <code class="parameter">namespace</code> is now nullable.
+       </td>
+      </tr>
+
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        <code class="parameter">doctype</code> is now nullable.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-domimplementation.createdocument-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="domdocument.construct.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::__construct()</a> - Creates a new DOMDocument object</span></li>
+    <li class="member"><span class="methodname"><a href="domimplementation.createdocumenttype.html" class="methodname" rel="rdfs-seeAlso">DOMImplementation::createDocumentType()</a> - Creates an empty DOMDocumentType object</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

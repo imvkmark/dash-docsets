@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>variant class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="dotnet.construct.html">« dotnet::__construct</a></li>
+      <li style="float: right;"><a href="variant.construct.html">variant::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.com.html">COM</a></li>
+    <li>variant class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.variant" class="reference">
+ 
+ <h1 class="title">variant class</h1>
+ <div class="partintro"><p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p>
+
+
+  <div class="section" id="variant.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    The VARIANT is COM&#039;s equivalent of the PHP zval; it is a structure that
+    can contain a value with a range of different possible types.  The variant
+    class provided by the COM extension allows you to have more control over
+    the way that PHP passes values to and from COM.
+   </p>
+  </div>
+
+
+  <div class="section" id="variant.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">variant</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="variant.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code><span class="initializer"> = <strong><code>null</code></strong></span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = <strong><code>VT_EMPTY</code></strong></span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$codepage</code><span class="initializer"> = <strong><code>CP_ACP</code></strong></span></span>)</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="class.variant.examples">
+   <h2 class="title">variant examples</h2>
+   <p class="para">
+    <div class="example" id="com.variant.example.php5">
+     <p><strong>示例 #1 variant example</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$v&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">variant</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">);<br />print&nbsp;</span><span style="color: #DD0000">"The&nbsp;type&nbsp;is&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">variant_get_type</span><span style="color: #007700">(</span><span style="color: #0000BB">$v</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br/&gt;"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"The&nbsp;value&nbsp;is&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$v&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br/&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     When returning
+     a value or fetching a variant property, the variant is converted to a PHP
+     value only when there is a direct mapping between the types that would
+     not result in a loss of information.  In all other cases, the result is
+     returned as an instance of the variant class.  You can force PHP to
+     convert or evaluate the variant as a PHP native type by using a casting
+     operator explicitly, or implicitly casting to a string by
+     <span class="function"><a href="function.print.html" class="function">print</a></span>ing it.  You may use the wide range of variant
+     functions to perform arithmetic operations on variants without forcing a
+     conversion or risking a loss of data.
+    </p>
+   </p></blockquote>
+   <p class="para">
+    See also <span class="function"><a href="function.variant-get-type.html" class="function">variant_get_type()</a></span>.
+   </p>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="variant.construct.html">variant::__construct</a> — variant class constructor</li></ul>
+</div>
+</div></div></body></html>

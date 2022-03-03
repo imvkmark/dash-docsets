@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>The Stack class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ds-set.xor.html">« Ds\Set::xor</a></li>
+      <li style="float: right;"><a href="ds-stack.allocate.html">Ds\Stack::allocate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.ds.html">Data Structures</a></li>
+    <li>The Stack class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.ds-stack" class="reference">
+
+ <h1 class="title">The Stack class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(No version information available, might only be in Git)</p>
+
+
+  <div class="section" id="ds-stack.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    A Stack is a “last in, first out” or “LIFO” collection that only allows
+    access to the value at the top of the structure and iterates in that order,
+    destructively.
+   </p>
+   <p class="para">
+    Uses a <span class="classname"><strong class="classname">Ds\Vector</strong></span> internally.
+   </p>
+  </div>
+
+
+  <div class="section" id="ds-stack.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">Ds\Stack</strong>
+     </span>
+
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <strong class="interfacename">Ds\Collection</strong></span><span class="oointerface">,  <a href="class.arrayaccess.html" class="interfacename">ArrayAccess</a></span> {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="ds-stack.allocate.html" class="methodname">allocate</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.capacity.html" class="methodname">capacity</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.clear.html" class="methodname">clear</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.copy.html" class="methodname">copy</a></span>(): <span class="type"><a href="class.ds-stack.html" class="type Ds\Stack">Ds\Stack</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.isempty.html" class="methodname">isEmpty</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.peek.html" class="methodname">peek</a></span>(): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.pop.html" class="methodname">pop</a></span>(): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.push.html" class="methodname">push</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">...$values</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ds-stack.toarray.html" class="methodname">toArray</a></span>(): <span class="type">array</span></div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section">
+   <h2 class="title">更新日志</h2>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>版本</th>
+        <th>说明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>PECL ds 1.3.0</td>
+        <td>
+         The class now implements <span class="classname"><a href="class.arrayaccess.html" class="classname">ArrayAccess</a></span>.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="ds-stack.allocate.html">Ds\Stack::allocate</a> — Allocates enough memory for a required capacity</li><li><a href="ds-stack.capacity.html">Ds\Stack::capacity</a> — Returns the current capacity</li><li><a href="ds-stack.clear.html">Ds\Stack::clear</a> — Removes all values</li><li><a href="ds-stack.construct.html">Ds\Stack::__construct</a> — Creates a new instance</li><li><a href="ds-stack.copy.html">Ds\Stack::copy</a> — Returns a shallow copy of the stack</li><li><a href="ds-stack.count.html">Ds\Stack::count</a> — Returns the number of values in the stack</li><li><a href="ds-stack.isempty.html">Ds\Stack::isEmpty</a> — Returns whether the stack is empty</li><li><a href="ds-stack.jsonserialize.html">Ds\Stack::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="ds-stack.peek.html">Ds\Stack::peek</a> — Returns the value at the top of the stack</li><li><a href="ds-stack.pop.html">Ds\Stack::pop</a> — Removes and returns the value at the top of the stack</li><li><a href="ds-stack.push.html">Ds\Stack::push</a> — Pushes values onto the stack</li><li><a href="ds-stack.toarray.html">Ds\Stack::toArray</a> — Converts the stack to an array</li></ul>
+</div>
+</div></div></body></html>

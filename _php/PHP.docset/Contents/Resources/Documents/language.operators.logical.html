@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>逻辑运算符</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.increment.html">« 递增／递减运算符</a></li>
+      <li style="float: right;"><a href="language.operators.string.html">字符串运算符 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">运算符</a></li>
+    <li>逻辑运算符</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.logical" class="sect1">
+   <h2 class="title">逻辑运算符</h2>
+
+   <table class="doctable table">
+    <caption><strong>逻辑运算符</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>例子</th>
+       <th>名称</th>
+       <th>结果</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>$a and $b</td>
+       <td>And（逻辑与）</td>
+       <td><strong><code>true</code></strong>，如果 <var class="varname">$a</var> 和 <var class="varname">$b</var> 都为 <strong><code>true</code></strong>。</td>
+      </tr>
+
+      <tr>
+       <td>$a or $b</td>
+       <td>Or（逻辑或）</td>
+       <td><strong><code>true</code></strong>，如果 <var class="varname">$a</var> 或 <var class="varname">$b</var> 任一为 <strong><code>true</code></strong>。</td>
+      </tr>
+
+      <tr>
+       <td>$a xor $b</td>
+       <td>Xor（逻辑异或）</td>
+       <td><strong><code>true</code></strong>，如果 <var class="varname">$a</var> 或 <var class="varname">$b</var> 任一为 <strong><code>true</code></strong>，但不同时是。</td>
+      </tr>
+
+      <tr>
+       <td>! $a</td>
+       <td>Not（逻辑非）</td>
+       <td><strong><code>true</code></strong>，如果 <var class="varname">$a</var> 不为 <strong><code>true</code></strong>。</td>
+      </tr>
+
+      <tr>
+       <td>$a &amp;&amp; $b</td>
+       <td>And（逻辑与）</td>
+       <td><strong><code>true</code></strong>，如果 <var class="varname">$a</var> 和 <var class="varname">$b</var> 都为 <strong><code>true</code></strong>。</td>
+      </tr>
+
+      <tr>
+       <td>$a || $b</td>
+       <td>Or（逻辑或）</td>
+       <td><strong><code>true</code></strong>，如果 <var class="varname">$a</var> 或 <var class="varname">$b</var> 任一为 <strong><code>true</code></strong>。</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+   <p class="simpara">
+    “与”和“或”有两种不同形式运算符的原因是它们运算的优先级不同（见<a href="language.operators.precedence.html" class="link">运算符优先级</a>）。
+   </p>
+   <div class="example" id="example-121">
+    <p><strong>示例 #1 逻辑运算符示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;--------------------<br />//&nbsp;foo()&nbsp;根本没机会被调用，被运算符“短路”了<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">true&nbsp;&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">and&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">true&nbsp;&nbsp;</span><span style="color: #007700">or&nbsp;&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">//&nbsp;--------------------<br />//&nbsp;"||"&nbsp;比&nbsp;"or"&nbsp;的优先级高<br /><br />//&nbsp;表达式&nbsp;(false&nbsp;||&nbsp;true)&nbsp;的结果被赋给&nbsp;$e<br />//&nbsp;等同于：($e&nbsp;=&nbsp;(false&nbsp;||&nbsp;true))<br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;常量&nbsp;false&nbsp;被赋给&nbsp;$f，true&nbsp;被忽略<br />//&nbsp;等同于：(($f&nbsp;=&nbsp;false)&nbsp;or&nbsp;true)<br /></span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">or&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$f</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;--------------------<br />//&nbsp;"&amp;&amp;"&nbsp;比&nbsp;"and"&nbsp;的优先级高<br /><br />//&nbsp;表达式&nbsp;(true&nbsp;&amp;&amp;&nbsp;false)&nbsp;的结果被赋给&nbsp;$g<br />//&nbsp;等同于：($g&nbsp;=&nbsp;(true&nbsp;&amp;&amp;&nbsp;false))<br /></span><span style="color: #0000BB">$g&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;常量&nbsp;true&nbsp;被赋给&nbsp;$h，false&nbsp;被忽略<br />//&nbsp;等同于：(($h&nbsp;=&nbsp;true)&nbsp;and&nbsp;false)<br /></span><span style="color: #0000BB">$h&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">and&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$g</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$h</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+bool(false)
+bool(true)
+</pre></div>
+    </div>
+   </div>
+  </div></div></div></body></html>

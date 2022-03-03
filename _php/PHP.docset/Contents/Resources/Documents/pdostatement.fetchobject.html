@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>获取下一行并作为一个对象返回。</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdostatement.fetchcolumn.html">« PDOStatement::fetchColumn</a></li>
+      <li style="float: right;"><a href="pdostatement.getattribute.html">PDOStatement::getAttribute »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdostatement.html">PDOStatement</a></li>
+    <li>获取下一行并作为一个对象返回。</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdostatement.fetchobject" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDOStatement::fetchObject</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.2.4)</p><p class="refpurpose"><span class="refname">PDOStatement::fetchObject</span> &mdash; <span class="dc-title">获取下一行并作为一个对象返回。</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdostatement.fetchobject-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>PDOStatement::fetchObject</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code><span class="initializer"> = &quot;stdClass&quot;</span></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ctor_args</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   获取下一行并作为一个对象返回。此函数（方法）是使用 <strong><code>PDO::FETCH_CLASS</code></strong> 或 <strong><code>PDO::FETCH_OBJ</code></strong> 风格的 <span class="function"><a href="pdostatement.fetch.html" class="function">PDOStatement::fetch()</a></span> 的一种替代。
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-pdostatement.fetchobject-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">class_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       创建类的名称。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">ctor_args</code></dt>
+
+     <dd>
+
+      <p class="para">
+       此数组的元素被传递给构造函数。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pdostatement.fetchobject-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回一个属性名对应于列名的所要求类的实例，  或者在失败时返回 <strong><code>false</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdostatement.fetchobject-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="pdostatement.fetch.html" class="function" rel="rdfs-seeAlso">PDOStatement::fetch()</a> - 从结果集中获取下一行</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

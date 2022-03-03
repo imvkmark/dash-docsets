@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>针对 Solaris 的安装提示</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.unix.openbsd.html">« 在 OpenBSD 系统下的安装</a></li>
+      <li style="float: right;"><a href="install.unix.debian.html">Debian GNU/Linux 安装说明 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.unix.html">Unix 系统下的安装</a></li>
+    <li>针对 Solaris 的安装提示</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.unix.solaris" class="sect1">
+ <h2 class="title">针对 <span class="productname">Solaris</span> 的安装提示</h2>
+ <p class="para">
+  本节包含了在 <span class="productname">Solaris</span> 系统上安装 PHP 的说明和提示。
+ </p>
+ 
+ <div class="sect2" id="install.solaris.required">
+  <h3 class="title">需要的软件</h3>
+  <p class="para">
+   默认安装的 <span class="productname">Solaris</span> 系统经常缺少 C
+   语言编译器和其相关工具。部分工具必须使用该工具的
+   GNU 版本，原因请阅读 <a href="faq.build.html#faq.installation.needgnu" class="link">FAQ</a>。
+  </p>
+  <p class="para">
+   要解压缩 PHP 发行包，需要：
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      tar
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      gzip 或
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      bzip2
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   要编译 PHP，需要：
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      gcc（推荐使用，其它 C 编译器也许也能用）
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      make
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      GNU sed
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   要编译更多扩展库或自行开发 PHP 代码，可能还需要：
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      re2c
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      bison
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      m4
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      autoconf
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      automake
+     </span>
+    </li>
+   </ul>
+   此外，还需要安装（甚至编译）针对自己的配置所需的软件，例如
+   Oracle 或 MySQL。
+  </p>     
+ </div>
+ 
+ <div class="sect2" id="install.solaris.packages">
+  <h3 class="title">使用软件包</h3>
+  <p class="simpara">
+   可以使用 pkgadd 来安装大部分需要的软件来简化
+   <span class="productname">Solaris</span> 安装过程。<span class="productname">Solaris
+   11 Express</span> 下的映像打包系统（Image
+   Packaging System，IPS）也包含了大多数安装所需的部件，通过
+   pkg 命令。
+  </p>
+ </div>
+ 
+</div></div></div></body></html>

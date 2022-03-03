@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Starts a transaction</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.autocommit.html">« mysqli::autocommit</a></li>
+      <li style="float: right;"><a href="mysqli.change-user.html">mysqli::change_user »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">MySQLi</a></li>
+    <li>Starts a transaction</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.begin-transaction" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli::begin_transaction</h1>
+  <h1 class="refname">mysqli_begin_transaction</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::begin_transaction</span> -- <span class="refname">mysqli_begin_transaction</span> &mdash; <span class="dc-title">Starts a transaction</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli.begin-transaction-description">
+  <h3 class="title">说明</h3>
+  <p class="para">面向对象风格</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli::begin_transaction</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$name</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">过程化风格:</p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_begin_transaction</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$mysql</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$name</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Begins a transaction. Requires the InnoDB 
+   engine (it is enabled by default). For additional details about how MySQL transactions
+   work, see <a href="http://dev.mysql.com/doc/mysql/en/commit.html" class="link external">&raquo;&nbsp;http://dev.mysql.com/doc/mysql/en/commit.html</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli.begin-transaction-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    <dt>
+
+<code class="parameter">mysql</code></dt>
+<dd>
+<p class="para">仅以过程化样式：由<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> 或 <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span>
+返回的 <span class="classname"><a href="class.mysqli.html" class="classname">mysqli</a></span> 对象。</p></dd>
+
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Valid flags are:
+      </p>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         <strong><code>MYSQLI_TRANS_START_READ_ONLY</code></strong>: 
+         Start the transaction as &quot;START TRANSACTION READ ONLY&quot;.
+         Requires MySQL 5.6 and above.
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <strong><code>MYSQLI_TRANS_START_READ_WRITE</code></strong>: 
+         Start the transaction as &quot;START TRANSACTION READ WRITE&quot;.
+         Requires MySQL 5.6 and above.
+        </p>
+       </li>
+       <li class="listitem">
+         <p class="para">
+         <strong><code>MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT</code></strong>: 
+         Start the transaction as &quot;START TRANSACTION WITH CONSISTENT SNAPSHOT&quot;.
+        </p>
+       </li>
+      </ul>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Savepoint name for the transaction.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli.begin-transaction-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mysqli.begin-transaction-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">name</code> is now nullable.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.begin-transaction-examples">
+  <h3 class="title">范例</h3>
+  <div class="example" id="mysqli.begin-transaction.example.basic">
+   <p><strong>示例 #1 <span class="methodname"><strong>mysqli::begin_transaction()</strong></span> example</strong></p>
+   <div class="example-contents"><p>面向对象风格</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;Tell&nbsp;mysqli&nbsp;to&nbsp;throw&nbsp;an&nbsp;exception&nbsp;if&nbsp;an&nbsp;error&nbsp;occurs&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;The&nbsp;table&nbsp;engine&nbsp;has&nbsp;to&nbsp;support&nbsp;transactions&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;IF&nbsp;NOT&nbsp;EXISTS&nbsp;language&nbsp;(<br />&nbsp;&nbsp;&nbsp;&nbsp;Code&nbsp;text&nbsp;NOT&nbsp;NULL,<br />&nbsp;&nbsp;&nbsp;&nbsp;Speakers&nbsp;int(11)&nbsp;NOT&nbsp;NULL<br />&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;ENGINE=InnoDB&nbsp;DEFAULT&nbsp;CHARSET=utf8mb4;"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Start&nbsp;transaction&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">begin_transaction</span><span style="color: #007700">();<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Insert&nbsp;some&nbsp;values&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;language(Code,&nbsp;Speakers)&nbsp;VALUES&nbsp;('DE',&nbsp;42000123)"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Try&nbsp;to&nbsp;insert&nbsp;invalid&nbsp;values&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$language_code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'FR'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$native_speakers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Unknown'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'INSERT&nbsp;INTO&nbsp;language(Code,&nbsp;Speakers)&nbsp;VALUES&nbsp;(?,?)'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bind_param</span><span style="color: #007700">(</span><span style="color: #DD0000">'ss'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$language_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$native_speakers</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;If&nbsp;code&nbsp;reaches&nbsp;this&nbsp;point&nbsp;without&nbsp;errors&nbsp;then&nbsp;commit&nbsp;the&nbsp;data&nbsp;in&nbsp;the&nbsp;database&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">commit</span><span style="color: #007700">();<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">mysqli_sql_exception&nbsp;$exception</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rollback</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;</span><span style="color: #0000BB">$exception</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>过程化风格</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;Tell&nbsp;mysqli&nbsp;to&nbsp;throw&nbsp;an&nbsp;exception&nbsp;if&nbsp;an&nbsp;error&nbsp;occurs&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;The&nbsp;table&nbsp;engine&nbsp;has&nbsp;to&nbsp;support&nbsp;transactions&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;IF&nbsp;NOT&nbsp;EXISTS&nbsp;language&nbsp;(<br />&nbsp;&nbsp;&nbsp;&nbsp;Code&nbsp;text&nbsp;NOT&nbsp;NULL,<br />&nbsp;&nbsp;&nbsp;&nbsp;Speakers&nbsp;int(11)&nbsp;NOT&nbsp;NULL<br />&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;ENGINE=InnoDB&nbsp;DEFAULT&nbsp;CHARSET=utf8mb4;"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Start&nbsp;transaction&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_begin_transaction</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">);<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Insert&nbsp;some&nbsp;values&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;language(Code,&nbsp;Speakers)&nbsp;VALUES&nbsp;('DE',&nbsp;42000123)"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Try&nbsp;to&nbsp;insert&nbsp;invalid&nbsp;values&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$language_code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'FR'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$native_speakers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Unknown'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'INSERT&nbsp;INTO&nbsp;language(Code,&nbsp;Speakers)&nbsp;VALUES&nbsp;(?,?)'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_stmt_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ss'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$language_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$native_speakers</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_stmt_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;If&nbsp;code&nbsp;reaches&nbsp;this&nbsp;point&nbsp;without&nbsp;errors&nbsp;then&nbsp;commit&nbsp;the&nbsp;data&nbsp;in&nbsp;the&nbsp;database&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">mysqli_sql_exception&nbsp;$exception</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_rollback</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;</span><span style="color: #0000BB">$exception</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-mysqli.begin-transaction-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    This function does not work with non transactional table types (like
+    MyISAM or ISAM).
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli.begin-transaction-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="mysqli.autocommit.html" class="function" rel="rdfs-seeAlso">mysqli_autocommit()</a> - 打开或关闭本次数据库连接的自动命令提交事务模式</span></li>
+    <li class="member"><span class="function"><a href="mysqli.commit.html" class="function" rel="rdfs-seeAlso">mysqli_commit()</a> - 提交一个事务</span></li>
+    <li class="member"><span class="function"><a href="mysqli.rollback.html" class="function" rel="rdfs-seeAlso">mysqli_rollback()</a> - 回退当前事务</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

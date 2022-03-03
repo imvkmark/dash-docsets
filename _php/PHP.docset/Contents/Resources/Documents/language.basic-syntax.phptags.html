@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>PHP 标记</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.basic-syntax.html">« 基本语法</a></li>
+      <li style="float: right;"><a href="language.basic-syntax.phpmode.html">从 HTML 中分离 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.basic-syntax.html">基本语法</a></li>
+    <li>PHP 标记</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.basic-syntax.phptags" class="sect1">
+  <h2 class="title">PHP 标记</h2>
+  <p class="para">
+   当解析一个文件时，PHP 会寻找起始和结束标记，也就是
+   <code class="literal">&lt;?php</code> 和 <code class="literal">?&gt;</code>，这告诉
+   PHP 开始和停止解析二者之间的代码。此种解析方式使得 PHP
+   可以被嵌入到各种不同的文档中去，而任何起始和结束标记之外的部分都会被
+   PHP 解析器忽略。
+  </p>
+
+  <p class="para">
+    PHP 有一个 echo 标记简写 <code class="literal">&lt;?=</code>，
+    它是更完整的 <code class="code">&lt;?php echo</code> 的简写形式。
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-30">
+     <p><strong>示例 #1 PHP 开始和结束标记</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+1.&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'if&nbsp;you&nbsp;want&nbsp;to&nbsp;serve&nbsp;PHP&nbsp;code&nbsp;in&nbsp;XHTML&nbsp;or&nbsp;XML&nbsp;documents,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;these&nbsp;tags'</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span><br />2.&nbsp;&nbsp;You&nbsp;can&nbsp;use&nbsp;the&nbsp;short&nbsp;echo&nbsp;tag&nbsp;to&nbsp;<span style="color: #0000BB">&lt;?=&nbsp;</span><span style="color: #DD0000">'print&nbsp;this&nbsp;string'&nbsp;</span><span style="color: #0000BB">?&gt;</span>.<br />&nbsp;&nbsp;&nbsp;&nbsp;It's&nbsp;equivalent&nbsp;to&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'print&nbsp;this&nbsp;string'&nbsp;</span><span style="color: #0000BB">?&gt;</span>.<br /><br />3.&nbsp;&nbsp;&lt;?&nbsp;echo&nbsp;'this&nbsp;code&nbsp;is&nbsp;within&nbsp;short&nbsp;tags,&nbsp;but&nbsp;will&nbsp;only&nbsp;work&nbsp;'.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'if&nbsp;short_open_tag&nbsp;is&nbsp;enabled';&nbsp;?&gt;</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    短标记 (第三个例子) 是被默认开启的，但是也可以通过
+    <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>
+    <var class="filename">php.ini</var> 来直接禁用。如果 PHP 在被安装时使用了 <strong class="option unknown">--disable-short-tags</strong>
+    的配置，该功能则是被默认禁用的。
+   </p>
+   <p class="para">
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      因为短标记可以被禁用，所以建议使用普通标记 (<code class="code">&lt;?php ?&gt;</code> 和 <code class="code">&lt;?= ?&gt;</code>) 来最大化兼容性。
+     </p>
+    </p></blockquote>
+   </p>
+
+  <p class="para">
+    如果文件内容仅仅包含 PHP 代码，最好在文件末尾删除 PHP
+    结束标记。这可以避免在 PHP 结束标记之后万一意外加入了空格或者换行符，会导致
+    PHP 开始输出这些空白，而脚本中此时并无输出的意图。
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;...&nbsp;更多代码<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Last&nbsp;statement"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;脚本在此处结束，没有&nbsp;PHP&nbsp;结束标记</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div></div></div></body></html>

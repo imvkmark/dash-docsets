@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>打开一个到 MySQL 服务器的连接</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-close.html">« mysql_close</a></li>
+      <li style="float: right;"><a href="function.mysql-create-db.html">mysql_create_db »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">MySQL 函数</a></li>
+    <li>打开一个到 MySQL 服务器的连接</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_connect</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_connect</span> &mdash; <span class="dc-title">打开一个到 MySQL 服务器的连接</span></p>
+
+ </div>
+
+ <div id="function.mysql-connect-refsynopsisdiv">
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">本扩展自 PHP 5.5.0
+起已废弃，并在自 PHP 7.0.0 开始被移除。应使用 <a href="book.mysqli.html" class="link">MySQLi</a>
+或 <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a> 扩展来替换之。参见 <a href="mysqlinfo.api.choosing.html" class="link">MySQL：选择 API</a> 
+指南来获取更多信息。用以替代本函数的有：</p>
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdo.construct.html" class="methodname">PDO::__construct()</a></span></li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-connect-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysql_connect</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$server</code><span class="initializer"> = ini_get(&quot;mysql.default_host&quot;)</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$username</code><span class="initializer"> = ini_get(&quot;mysql.default_user&quot;)</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$password</code><span class="initializer"> = ini_get(&quot;mysql.default_password&quot;)</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$new_link</code><span class="initializer"> = <strong><code>false</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$client_flags</code><span class="initializer"> = 0</span></span><br>): <span class="type"><span class="type">resource</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   打开或重复使用一个到 MySQL 服务器的连接。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-connect-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">server</code></dt>
+
+     <dd>
+
+      <p class="para">
+       MySQL 服务器。可以包括端口号，例如
+       &quot;hostname:port&quot;，或者到本地套接字的路径，例如对于 localhost 的 &quot;:/path/to/socket&quot;。
+      </p>
+      <p class="para">
+       如果 PHP 指令 <a href="mysql.configuration.html#ini.mysql.default-host" class="link">
+       mysql.default_host</a> 未定义（默认情况），则默认值是 &#039;localhost:3306&#039;。
+       在 <a href="ini.core.html#ini.sql.safe-mode" class="link">SQL 安全模式</a> 时，参数被忽略，总是使用 &#039;localhost:3306&#039;。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">username</code></dt>
+
+     <dd>
+
+      <p class="para">
+       用户名。默认值由 <a href="mysql.configuration.html#ini.mysql.default-user" class="link">mysql.default_user</a> 定义。 在
+       <a href="ini.core.html#ini.sql.safe-mode" class="link">SQL 安全模式</a> 时，参数被忽略，总是使用服务器进程所有者的用户名。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
+
+     <dd>
+
+      <p class="para">
+       密码。默认值由<a href="mysql.configuration.html#ini.mysql.default-password" class="link">mysql.default_password</a>定义。在
+       <a href="ini.core.html#ini.sql.safe-mode" class="link">SQL 安全模式</a> 时，参数被忽略，总是使用空密码。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">new_link</code></dt>
+
+     <dd>
+
+      <p class="para">
+       如果用同样的参数第二次调用
+       <span class="function"><strong>mysql_connect()</strong></span>，将不会建立新连接，而将返回已经打开的连接标识。参数
+       <code class="parameter">new_link</code> 改变此行为并使
+       <span class="function"><strong>mysql_connect()</strong></span> 总是打开新的连接，甚至当
+       <span class="function"><strong>mysql_connect()</strong></span> 曾在前面被用同样的参数调用过。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">client_flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">client_flags</code>
+       参数可以是以下常量的组合：<strong><code>MYSQL_CLIENT_SSL</code></strong>，<strong><code>MYSQL_CLIENT_COMPRESS</code></strong>，<strong><code>MYSQL_CLIENT_IGNORE_SPACE</code></strong>
+       或 <strong><code>MYSQL_CLIENT_INTERACTIVE</code></strong>。进一步信息见
+       <a href="mysql.constants.html#mysql.client-flags" class="xref">MySQL 客户端常量</a>。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-connect-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   如果成功则返回一个 MySQL 连接标识， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mysql-connect-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table id="function.mysql-connect.changelog" class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        此函数会生成一个 <strong><code>E_DEPRECATED</code></strong> 错误。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-connect-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-1711">
+    <p><strong>示例 #1 <span class="function"><strong>mysql_connect()</strong></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'Connected&nbsp;successfully'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1712">
+    <p><strong>示例 #2 <span class="function"><strong>mysql_connect()</strong></span> 例子：使用 <code class="literal">hostname:port</code> 语法</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;we&nbsp;connect&nbsp;to&nbsp;example.com&nbsp;and&nbsp;port&nbsp;3307<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.com:3307'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'Connected&nbsp;successfully'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;we&nbsp;connect&nbsp;to&nbsp;localhost&nbsp;at&nbsp;port&nbsp;3307<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'127.0.0.1:3307'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'Connected&nbsp;successfully'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1713">
+    <p><strong>示例 #3 <span class="function"><strong>mysql_connect()</strong></span> 例子：使用 &quot;:/path/to/socket&quot; 语法</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;we&nbsp;connect&nbsp;to&nbsp;localhost&nbsp;and&nbsp;socket&nbsp;e.g.&nbsp;/tmp/mysql.sock<br /><br />//&nbsp;variant&nbsp;1:&nbsp;omit&nbsp;localhost<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">':/tmp/mysql'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'Connected&nbsp;successfully'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;variant&nbsp;2:&nbsp;with&nbsp;localhost<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost:/tmp/mysql.sock'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'Connected&nbsp;successfully'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-connect-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    只要将 server 指定为 &quot;localhost&quot; 或
+    &quot;localhost:port&quot;，MySQL 客户端库会越过此值并尝试连接到本地套接字（Windows
+    中的名字管道）。如果想用 TCP/IP，应该用 &quot;127.0.0.1&quot;
+    代替 &quot;localhost&quot;。如果 MySQL 客户端库试图连接到一个错误的本地套接字，则应该在
+    PHP 配置中设定 <a href="mysql.configuration.html#ini.mysql.default-host" class="xref"></a>
+    的正确路径并把 server 留空。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    脚本一结束，到服务器的连接就被关闭，除非之前已经明确调用
+    <span class="function"><a href="function.mysql-close.html" class="function">mysql_close()</a></span> 关闭了。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    Error &quot;Can&#039;t create TCP/IP socket (10106)&quot; usually means that the <a href="ini.core.html#ini.variables-order" class="link">variables_order</a> configure directive
+    doesn&#039;t contain character <code class="literal">E</code>. On Windows, if the
+    environment is not copied the <code class="literal">SYSTEMROOT</code> environment
+    variable won&#039;t be available and PHP will have problems loading Winsock.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-connect-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-pconnect.html" class="function" rel="rdfs-seeAlso">mysql_pconnect()</a> - 打开一个到 MySQL 服务器的持久连接</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-close.html" class="function" rel="rdfs-seeAlso">mysql_close()</a> - 关闭 MySQL 连接</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

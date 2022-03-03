@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>语法</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.constants.html">« 常量</a></li>
+      <li style="float: right;"><a href="language.constants.predefined.html">预定义常量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.constants.html">常量</a></li>
+    <li>语法</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.constants.syntax" class="sect1">
+   <h2 class="title">语法</h2>
+   <p class="simpara">
+    可以使用 <code class="literal">const</code> 关键字或 <span class="function"><a href="function.define.html" class="function">define()</a></span> 函数两种方法来定义一个常量。函数
+    <span class="function"><a href="function.define.html" class="function">define()</a></span> 允许将常量定义为一个表达式，而
+    <code class="literal">const</code> 关键字有一些限制，具体可参见下述章节。一个常量一旦被定义，就不能再改变或者取消定义。
+   </p>
+   <p class="simpara">
+    使用 <code class="literal">const</code> 关键字定义常量时，只能包含标量数据（<span class="type">bool</span>、<span class="type">int</span>、<span class="type">float</span>
+    、<span class="type">string</span>）。可以将常量定义为一个表达式，也可以定义为一个 <span class="type">array</span>。还可以定义
+    <span class="type">resource</span> 为常量，但应尽量避免，因为可能会造成不可预料的结果。
+   </p>
+   <p class="simpara">
+    可以简单的通过指定其名字来取得常量的值，与变量不同，<em class="emphasis">不应该</em>在常量前面加上
+     <code class="literal">$</code> 符号。如果常量名是动态的，也可以用函数 
+     <span class="function"><a href="function.constant.html" class="function">constant()</a></span> 来获取常量的值。用 
+     <span class="function"><a href="function.get-defined-constants.html" class="function">get_defined_constants()</a></span> 可以获得所有已定义的常量列表。
+   </p>
+
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     常量和（全局）变量在不同的名字空间中。这意味着例如 <strong><code>true</code></strong> 和 <var class="varname">$TRUE</var> 是不同的。
+    </span>
+   </p></blockquote>
+
+   <p class="simpara">
+    如果使用了一个未定义的常量，则会抛出 <span class="classname"><a href="class.error.html" class="classname">Error</a></span>。
+    在 PHP 8.0.0 之前，调用未定义的常量会被解释为一个该常量的
+    字符串，即（CONSTANT 对应 &quot;CONSTANT&quot; ）。
+    此方法已在 PHP 7.2.0 中被废弃，会抛出一个 <strong><code>E_WARNING</code></strong> 级错误。（PHP 7.2.0 之前会发出一个
+    <a href="ref.errorfunc.html" class="link">E_NOTICE</a> 级的错误。）参见手册中为什么
+    <a href="language.types.array.html#language.types.array.foo-bar" class="link">$foo[bar]</a>
+    是错误的（除非 <code class="literal">bar</code> 是一个常量）。这不适用于 <a href="language.namespaces.rules.html" class="link">(完全)限定的常量</a>，如果未定义，将始终引发 <span class="classname"><a href="class.error.html" class="classname">Error</a></span> 。
+   </p>
+
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     如果要检查是否定义了某常量，请使用 <span class="function"><a href="function.defined.html" class="function">defined()</a></span> 函数。
+    </span>
+   </p></blockquote>
+
+  <p class="para">
+    常量和变量有如下不同：
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       常量前面没有美元符号（<code class="literal">$</code>）；
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       常量可以不用理会变量的作用域而在任何地方定义和访问；
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       常量一旦定义就不能被重新定义或者取消定义；
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+        常量只能计算标量值或数组。
+       </span>
+     </li>
+    </ul>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-105">
+     <p><strong>示例 #1 定义常量</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"CONSTANT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world."</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;"Hello&nbsp;world."<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Constant</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;抛出错误：未定义的常量&nbsp;"Constant"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;在&nbsp;PHP&nbsp;8.0.0&nbsp;之前，输出&nbsp;"Constant"&nbsp;并发出一个提示级别错误信息<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-106">
+     <p><strong>示例 #2 使用关键字 <code class="literal">const</code> 定义常量</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;简单的标量值<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;标量表达式<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">ANOTHER_CONST&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">.</span><span style="color: #DD0000">';&nbsp;Goodbye&nbsp;World'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">ANOTHER_CONST</span><span style="color: #007700">;<br /><br />const&nbsp;</span><span style="color: #0000BB">ANIMALS&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bird'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;将输出&nbsp;"cat"<br /><br />//&nbsp;常量数组<br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'ANIMALS'</span><span style="color: #007700">,&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'bird'<br /></span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;将输出&nbsp;"cat"<br /></span><span style="color: #0000BB">?&gt;<br /></span><br />?&gt;</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     和使用 <span class="function"><a href="function.define.html" class="function">define()</a></span> 来定义常量相反的是，使用 <code class="literal">const</code>
+     关键字定义常量必须处于最顶端的作用域，因为用此方法是在编译时定义的。这就意味着不能在函数内，循环内以及
+     <code class="literal">if</code> 或 <code class="literal">try</code>/<code class="literal">catch</code>
+     语句之内用 <code class="literal">const</code> 来定义常量。
+    </p>
+   </p></blockquote>
+
+   <div class="sect2">
+    <h3 class="title">参见</h3>
+     <p class="para">
+      <ul class="simplelist">
+       <li class="member"><a href="language.oop5.constants.html" class="link">类常量</a></li>
+      </ul>
+     </p>
+   </div>
+  </div></div></div></body></html>

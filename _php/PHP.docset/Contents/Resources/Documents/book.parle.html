@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Parsing and lexing</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.commonmark-render-xml.html">« CommonMark\Render\XML</a></li>
+      <li style="float: right;"><a href="intro.parle.html">简介 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="refs.basic.text.html">文本处理</a></li>
+    <li>Parsing and lexing</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="book.parle" class="book">
+ 
+ <h1 class="title">Parsing and lexing</h1>
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="intro.parle.html">简介</a></li><li><a href="parle.setup.html">安装／配置</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="parle.requirements.html">需求</a></li><li><a href="parle.installation.html">安装</a></li></ul></li><li><a href="parle.constants.html">预定义常量</a></li><li><a href="parle.pattern.matching.html">Pattern matching</a> — Parle pattern matching<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle.regex.chars.html">Character representations</a></li><li><a href="parle.regex.charclass.html">Character classes</a></li><li><a href="parle.regex.unicodecharclass.html">Unicode character classes</a></li><li><a href="parle.regex.alternation.html">Alternation and repetition</a></li><li><a href="parle.regex.anchors.html">Anchors</a></li><li><a href="parle.regex.grouping.html">Grouping</a></li></ul></li><li><a href="parle.examples.html">范例</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="parle.examples.lexer.html">Lexer examples</a></li><li><a href="parle.examples.parser.html">Parser examples</a></li></ul></li><li><a href="class.parle-lexer.html">Parle\Lexer</a> — The Parle\Lexer class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-lexer.advance.html">Parle\Lexer::advance</a> — Process next lexer rule</li><li><a href="parle-lexer.build.html">Parle\Lexer::build</a> — Finalize the lexer rule set</li><li><a href="parle-lexer.callout.html">Parle\Lexer::callout</a> — Define token callback</li><li><a href="parle-lexer.consume.html">Parle\Lexer::consume</a> — Pass the data for processing</li><li><a href="parle-lexer.dump.html">Parle\Lexer::dump</a> — Dump the state machine</li><li><a href="parle-lexer.gettoken.html">Parle\Lexer::getToken</a> — Retrieve the current token</li><li><a href="parle-lexer.insertmacro.html">Parle\Lexer::insertMacro</a> — Insert regex macro</li><li><a href="parle-lexer.push.html">Parle\Lexer::push</a> — Add a lexer rule</li><li><a href="parle-lexer.reset.html">Parle\Lexer::reset</a> — Reset lexer</li></ul></li><li><a href="class.parle-rlexer.html">Parle\RLexer</a> — The Parle\RLexer class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-rlexer.advance.html">Parle\RLexer::advance</a> — Process next lexer rule</li><li><a href="parle-rlexer.build.html">Parle\RLexer::build</a> — Finalize the lexer rule set</li><li><a href="parle-rlexer.callout.html">Parle\RLexer::callout</a> — Define token callback</li><li><a href="parle-rlexer.consume.html">Parle\RLexer::consume</a> — Pass the data for processing</li><li><a href="parle-rlexer.dump.html">Parle\RLexer::dump</a> — Dump the state machine</li><li><a href="parle-rlexer.gettoken.html">Parle\RLexer::getToken</a> — Retrieve the current token</li><li><a href="parle-rlexer.insertmacro.html">Parle\RLexer::insertMacro</a> — Insert regex macro</li><li><a href="parle-rlexer.push.html">Parle\RLexer::push</a> — Add a lexer rule</li><li><a href="parle-rlexer.pushstate.html">Parle\RLexer::pushState</a> — Push a new start state</li><li><a href="parle-rlexer.reset.html">Parle\RLexer::reset</a> — Reset lexer</li></ul></li><li><a href="class.parle-parser.html">Parle\Parser</a> — The Parle\Parser class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-parser.advance.html">Parle\Parser::advance</a> — Process next parser rule</li><li><a href="parle-parser.build.html">Parle\Parser::build</a> — Finalize the grammar rules</li><li><a href="parle-parser.consume.html">Parle\Parser::consume</a> — Consume the data for processing</li><li><a href="parle-parser.dump.html">Parle\Parser::dump</a> — Dump the grammar</li><li><a href="parle-parser.errorinfo.html">Parle\Parser::errorInfo</a> — Retrieve the error information</li><li><a href="parle-parser.left.html">Parle\Parser::left</a> — Declare a token with left-associativity</li><li><a href="parle-parser.nonassoc.html">Parle\Parser::nonassoc</a> — Declare a token with no associativity</li><li><a href="parle-parser.precedence.html">Parle\Parser::precedence</a> — Declare a precedence rule</li><li><a href="parle-parser.push.html">Parle\Parser::push</a> — Add a grammar rule</li><li><a href="parle-parser.reset.html">Parle\Parser::reset</a> — Reset parser state</li><li><a href="parle-parser.right.html">Parle\Parser::right</a> — Declare a token with right-associativity</li><li><a href="parle-parser.sigil.html">Parle\Parser::sigil</a> — Retrieve a matching part of a rule</li><li><a href="parle-parser.token.html">Parle\Parser::token</a> — Declare a token</li><li><a href="parle-parser.tokenid.html">Parle\Parser::tokenId</a> — Get token id</li><li><a href="parle-parser.trace.html">Parle\Parser::trace</a> — Trace the parser operation</li><li><a href="parle-parser.validate.html">Parle\Parser::validate</a> — Validate input</li></ul></li><li><a href="class.parle-rparser.html">Parle\RParser</a> — The Parle\RParser class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-rparser.advance.html">Parle\RParser::advance</a> — Process next parser rule</li><li><a href="parle-rparser.build.html">Parle\RParser::build</a> — Finalize the grammar rules</li><li><a href="parle-rparser.consume.html">Parle\RParser::consume</a> — Consume the data for processing</li><li><a href="parle-rparser.dump.html">Parle\RParser::dump</a> — Dump the grammar</li><li><a href="parle-rparser.errorinfo.html">Parle\RParser::errorInfo</a> — Retrieve the error information</li><li><a href="parle-rparser.left.html">Parle\RParser::left</a> — Declare a token with left-associativity</li><li><a href="parle-rparser.nonassoc.html">Parle\RParser::nonassoc</a> — Declare a token with no associativity</li><li><a href="parle-rparser.precedence.html">Parle\RParser::precedence</a> — Declare a precedence rule</li><li><a href="parle-rparser.push.html">Parle\RParser::push</a> — Add a grammar rule</li><li><a href="parle-rparser.reset.html">Parle\RParser::reset</a> — Reset parser state</li><li><a href="parle-rparser.right.html">Parle\RParser::right</a> — Declare a token with right-associativity</li><li><a href="parle-rparser.sigil.html">Parle\RParser::sigil</a> — Retrieve a matching part of a rule</li><li><a href="parle-rparser.token.html">Parle\RParser::token</a> — Declare a token</li><li><a href="parle-rparser.tokenid.html">Parle\RParser::tokenId</a> — Get token id</li><li><a href="parle-rparser.trace.html">Parle\RParser::trace</a> — Trace the parser operation</li><li><a href="parle-rparser.validate.html">Parle\RParser::validate</a> — Validate input</li></ul></li><li><a href="class.parle-stack.html">Parle\Stack</a> — The Parle\Stack class<ul class="chunklist chunklist_book chunklist_children"><li><a href="parle-stack.pop.html">Parle\Stack::pop</a> — Pop an item from the stack</li><li><a href="parle-stack.push.html">Parle\Stack::push</a> — Push an item into the stack</li></ul></li><li><a href="class.parle-token.html">Parle\Token</a> — The Parle\Token class</li><li><a href="class.parle-errorinfo.html">Parle\ErrorInfo</a> — The Parle\ErrorInfo class</li><li><a href="class.parle-lexerexception.html">Parle\LexerException</a> — The Parle\LexerException class</li><li><a href="class.parle-parserexception.html">Parle\ParserException</a> — The Parle\ParserException class</li></ul></div></div></div></body></html>

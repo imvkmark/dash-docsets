@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>设定用于填充的贴图</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagesetthickness.html">« imagesetthickness</a></li>
+      <li style="float: right;"><a href="function.imagestring.html">imagestring »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD 和图像处理 函数</a></li>
+    <li>设定用于填充的贴图</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagesettile" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">imagesettile</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagesettile</span> &mdash; <span class="dc-title">设定用于填充的贴图</span></p>
+
+   </div>
+   <div class="refsect1 unknown-notet" id="refsect1-function.imagesettile-unknown-notet">
+    <h3 class="title">说明</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="methodname"><strong>imagesettile</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$tile</code></span>): <span class="type">bool</span></div>
+
+    <p class="para rdfs-comment">
+     <span class="function"><strong>imagesettile()</strong></span> 设定所有区域填充函数（例如
+     <span class="function"><a href="function.imagefill.html" class="function">imagefill()</a></span>
+     和 <span class="function"><a href="function.imagefilledpolygon.html" class="function">imagefilledpolygon()</a></span>）在使用特殊颜色
+     <code class="literal">IMG_COLOR_TILED</code> 填充时所使用的贴图。
+    </p>
+    <p class="para">
+     贴图是指用重复的样式来填充一块区域所使用的图像。<em class="emphasis">任何</em>
+     GD 图像都能用作贴图，并且通过使用 <span class="function"><a href="function.imagecolortransparent.html" class="function">imagecolortransparent()</a></span>
+     来设定贴图的透明色，贴图可以使底层的特定区域透上来。
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      使用完贴图后不需要采取什么特殊动作。但如果销毁了贴图，在设定一个新的贴图之前不能使用
+      <code class="literal">IMG_COLOR_TILED</code>！
+     </p>
+    </p></blockquote>
+   </div>
+
+  </div></div></div></body></html>

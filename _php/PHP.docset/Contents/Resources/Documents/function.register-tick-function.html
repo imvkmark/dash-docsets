@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>注册一个函数以便在每个 tick 上执行</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.register-shutdown-function.html">« register_shutdown_function</a></li>
+      <li style="float: right;"><a href="function.unregister-tick-function.html">unregister_tick_function »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.funchand.html">函数处理 函数</a></li>
+    <li>注册一个函数以便在每个 tick 上执行</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.register-tick-function" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">register_tick_function</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">register_tick_function</span> &mdash; <span class="dc-title">注册一个函数以便在每个 tick 上执行</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.register-tick-function-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>register_tick_function</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">...$args</code></span>): <span class="type">bool</span></div>
+
+  <p class="simpara">
+   注册给定的 <code class="parameter">callback</code>，以便在
+   <a href="control-structures.declare.html#control-structures.declare.ticks" class="link">tick</a> 被调用时执行。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.register-tick-function-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       需要注册的函数。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">args</code></dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.register-tick-function-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.register-tick-function-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4981">
+    <p><strong>示例 #1 <span class="function"><strong>register_tick_function()</strong></span> 示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;using&nbsp;a&nbsp;function&nbsp;as&nbsp;the&nbsp;callback<br /></span><span style="color: #0000BB">register_tick_function</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_function'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;using&nbsp;an&nbsp;object-&gt;method<br /></span><span style="color: #0000BB">$object&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">my_class</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">register_tick_function</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$object</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_method'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.register-tick-function-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="control-structures.declare.html" class="link">declare</a></li>
+    <li class="member"><span class="function"><a href="function.unregister-tick-function.html" class="function" rel="rdfs-seeAlso">unregister_tick_function()</a> - De-register a function for execution on each tick</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

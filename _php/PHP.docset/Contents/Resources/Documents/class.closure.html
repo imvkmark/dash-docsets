@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Closure 类</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="serializable.unserialize.html">« Serializable::unserialize</a></li>
+      <li style="float: right;"><a href="closure.construct.html">Closure::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.interfaces.html">预定义接口</a></li>
+    <li>Closure 类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.closure" class="reference">
+
+ <h1 class="title">Closure 类</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
+
+
+  <div class="section" id="closure.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    用于代表 <a href="functions.anonymous.html" class="link">匿名函数</a>
+    的类.
+   </p>
+
+   <p class="para">
+    匿名函数会产生这种类型的对象。这个类带有一些方法允许在匿名函数创建后对其进行更多的控制。
+   </p>
+
+   <p class="para">
+    除了此处列出的方法，还有一个
+    <code class="literal">__invoke</code> 方法。这是为了与其他实现了
+    <a href="language.oop5.magic.html#language.oop5.magic.invoke" class="link">__invoke()魔术方法</a>
+    的对象保持一致性，但调用匿名函数的过程与它无关。
+   </p>
+
+  </div>
+
+
+  <div class="section" id="closure.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+      <span class="modifier">class</span> <strong class="classname">Closure</strong>
+     </span>
+     {</div>
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">private</span> <span class="methodname"><a href="closure.construct.html" class="methodname">__construct</a></span>()</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="closure.bind.html" class="methodname">bind</a></span>(<span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <code class="parameter">$closure</code></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">object</span><span class="type"></span></span> <code class="parameter">$newThis</code></span>, <span class="methodparam"><span class="type"><span class="type">object</span>|<span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$newScope</code><span class="initializer"> = &quot;static&quot;</span></span>): <span class="type"><span class="type">?</span><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="closure.bindto.html" class="methodname">bindTo</a></span>(<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">object</span><span class="type"></span></span> <code class="parameter">$newThis</code></span>, <span class="methodparam"><span class="type"><span class="type">object</span>|<span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$newScope</code><span class="initializer"> = &quot;static&quot;</span></span>): <span class="type"><span class="type">?</span><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="closure.call.html" class="methodname">call</a></span>(<span class="methodparam"><span class="type">object</span> <code class="parameter">$newThis</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">...$args</code></span>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="closure.fromcallable.html" class="methodname">fromCallable</a></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="closure.construct.html">Closure::__construct</a> — 用于禁止实例化的构造函数</li><li><a href="closure.bind.html">Closure::bind</a> — 复制一个闭包，绑定指定的$this对象和类作用域。</li><li><a href="closure.bindto.html">Closure::bindTo</a> — 复制当前闭包对象，绑定指定的$this对象和类作用域。</li><li><a href="closure.call.html">Closure::call</a> — 绑定并调用闭包</li><li><a href="closure.fromcallable.html">Closure::fromCallable</a> — 将 callable 转换为闭包</li></ul>
+</div>
+</div></div></body></html>

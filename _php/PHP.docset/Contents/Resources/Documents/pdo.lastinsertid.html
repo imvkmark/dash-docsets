@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>返回最后插入行的ID或序列值</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.intransaction.html">« PDO::inTransaction</a></li>
+      <li style="float: right;"><a href="pdo.prepare.html">PDO::prepare »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>返回最后插入行的ID或序列值</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.lastinsertid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::lastInsertId</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDO::lastInsertId</span> &mdash; <span class="dc-title">
+   返回最后插入行的ID或序列值
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.lastinsertid-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>PDO::lastInsertId</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">string</span></div>
+
+
+  <p class="para rdfs-comment">
+  返回最后插入行的ID，或者是一个序列对象最后的值，取决于底层的驱动。比如，<span class="function"><strong>PDO_PGSQL()</strong></span> 要求为 <code class="parameter">name</code> 参数指定序列对象的名称。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    在不同的 PDO 驱动之间，此方法可能不会返回一个有意义或一致的结果，因为底层数据库可能不支持自增字段或序列的概念。
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-pdo.lastinsertid-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       应该返回ID的那个序列对象的名称。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.lastinsertid-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   如果没有为参数 <code class="parameter">name</code> 指定序列名称，<span class="function"><strong>PDO::lastInsertId()</strong></span> 则返回一个表示最后插入数据库那一行的行ID的字符串。
+  </p>
+  <p class="para">
+   如果为参数 <code class="parameter">name</code> 指定了序列名称，<span class="function"><strong>PDO::lastInsertId()</strong></span> 则返回一个表示从指定序列对象取回最后的值的字符串。
+  </p>
+  <p class="para">
+  如果当前 PDO 驱动不支持此功能，则 <span class="function"><strong>PDO::lastInsertId()</strong></span> 触发一个 <code class="literal">IM001</code> SQLSTATE 。
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

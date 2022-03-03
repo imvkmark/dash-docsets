@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>预定义变量</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.variables.basics.html">« 基础</a></li>
+      <li style="float: right;"><a href="language.variables.scope.html">变量范围 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.variables.html">变量</a></li>
+    <li>预定义变量</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.variables.predefined" class="sect1">
+   <h2 class="title">预定义变量</h2>
+
+   <p class="para">
+    PHP 提供了大量的预定义变量。由于许多变量依赖于运行的服务器的版本和设置，及其它因素，所以并没有详细的说明文档。一些预定义变量在
+    PHP 以<a href="features.commandline.html" class="link">命令行</a>形式运行时并不生效。
+    详细参阅<a href="reserved.variables.html" class="link">预定义变量</a>一章。
+   </p>
+
+   <p class="para">
+    PHP 提供了一套附加的预定数组，这些数组变量包含了来自 web
+    服务器（如果可用），运行环境，和用户输入的数据。这些数组非常特别，它们在全局范围内自动生效，例如，在任何范围内自动生效。因此通常被称为自动全局变量（autoglobals）或者超全局变量（superglobals）。（PHP
+    中没有用户自定义超全局变量的机制。）
+    详情参阅<a href="language.variables.superglobals.html" class="link">超全局变量列表</a>。
+   </p>
+
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <strong>可变变量</strong><br />
+    <p class="para">
+     超级全局变量不能被用作函数或类方法中的<a href="language.variables.variable.html" class="link">可变变量</a>。
+    </p>
+   </p></blockquote>
+
+   <p class="para">
+    如果某些 <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>
+    中的变量没有设定，它们的对应的 PHP 预定义数组也是空的。
+   </p>
+
+  </div></div></div></body></html>

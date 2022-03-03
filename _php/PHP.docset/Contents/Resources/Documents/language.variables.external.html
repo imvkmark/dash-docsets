@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>来自 PHP 之外的变量</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.variables.variable.html">« 可变变量</a></li>
+      <li style="float: right;"><a href="language.constants.html">常量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.variables.html">变量</a></li>
+    <li>来自 PHP 之外的变量</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.variables.external" class="sect1">
+   <h2 class="title">来自 PHP 之外的变量</h2>
+
+   <div class="sect2" id="language.variables.external.form">
+    <h3 class="title">HTML 表单（GET 和 POST）</h3>
+
+    <p class="simpara">
+     当一个表单提交给 PHP
+     脚本时，表单中的信息会自动在脚本中可用。有几个方法访问此信息，例如：
+    </p>
+
+    <p class="para">
+     <div class="example" id="example-100">
+      <p><strong>示例 #1 一个简单的 HTML 表单</strong></p>
+      <div class="example-contents">
+<div class="htmlcode"><pre class="htmlcode">&lt;form action=&quot;foo.php&quot; method=&quot;POST&quot;&gt;
+    Name:  &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br /&gt;
+    Email: &lt;input type=&quot;text&quot; name=&quot;email&quot;&gt;&lt;br /&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit me!&quot; /&gt;
+&lt;/form&gt;</pre>
+</div>
+      </div>
+
+     </div>
+    </p>
+
+    <p class="para">
+     只有两种方法可以访问 HTML
+     表单中的数据。
+     以下列出了当前有效的方法：
+    </p>
+
+    <p class="para">
+     <div class="example" id="example-101">
+      <p><strong>示例 #2 从一个简单的 POST HTML 表单访问数据</strong></p>
+      <div class="example-contents">
+        <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$_REQUEST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+
+    <p class="para">
+     使用 GET 表单也类似，只不过要用适当的 GET 预定义变量。GET
+     也适用于
+     <code class="literal">QUERY_STRING</code>（URL
+     中在“?”之后的信息）。因此，举例说，<code class="literal">http://www.example.com/test.php?id=3</code>
+     包含有可用 <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['id']</a></var>
+     来访问的 GET 数据。参见
+     <a href="reserved.variables.request.html" class="link">$_REQUEST</a>。
+    </p>
+
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      变量名中的点和空格被转换成下划线。例如
+      <code class="literal">&lt;input name=&quot;a.b&quot; /&gt;</code> 变成了
+      <code class="literal">$_REQUEST[&quot;a_b&quot;]</code>。
+     </p>
+    </p></blockquote>
+
+    <p class="simpara">
+     PHP 也懂得表单变量上下文中的数组（参见<a href="faq.html.html" class="link">相关常见问题</a>）。例如可以将相关的变量编成组，或者用此特性从多选输入框中取得值。例如，将一个表单 POST 给自己并在提交时显示数据：
+    </p>
+
+    <p class="para">
+     <div class="example" id="example-102">
+      <p><strong>示例 #3 更复杂的表单变量</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'action'</span><span style="color: #007700">])&nbsp;&amp;&amp;&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'action'</span><span style="color: #007700">]&nbsp;==&nbsp;</span><span style="color: #DD0000">'submitted'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;pre&gt;'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;a&nbsp;href="'</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'PHP_SELF'</span><span style="color: #007700">]&nbsp;.</span><span style="color: #DD0000">'"&gt;Please&nbsp;try&nbsp;again&lt;/a&gt;'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;/pre&gt;'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;form&nbsp;action="<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'PHP_SELF'</span><span style="color: #007700">];&nbsp;</span><span style="color: #0000BB">?&gt;</span>"&nbsp;method="post"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Name:&nbsp;&nbsp;&lt;input&nbsp;type="text"&nbsp;name="personal[name]"&gt;&lt;br&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Email:&nbsp;&lt;input&nbsp;type="text"&nbsp;name="personal[email]"&gt;&lt;br&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Beer:&nbsp;&lt;br&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;multiple&nbsp;name="beer[]"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="warthog"&gt;Warthog&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="guinness"&gt;Guinness&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="stuttgarter"&gt;Stuttgarter&nbsp;Schwabenbr&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;&lt;br&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="hidden"&nbsp;name="action"&nbsp;value="submitted"&nbsp;/&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="submit"&nbsp;name="submit"&nbsp;value="submit&nbsp;me!"&nbsp;/&gt;<br />&lt;/form&gt;<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <span class="simpara">
+         If an external variable name begins with a valid array syntax, trailing characters
+         are silently ignored. For example, <code class="literal">&lt;input name=&quot;foo[bar]baz&quot;&gt;</code>
+         becomes <code class="literal">$_REQUEST[&#039;foo&#039;][&#039;bar&#039;]</code>.
+        </span>
+     </p></blockquote>
+
+     <div class="sect3" id="language.variables.external.form.submit">
+     <h4 class="title">IMAGE SUBMIT 变量名</h4>
+
+     <p class="simpara">
+      当提交表单时，可以用一幅图像代替标准的提交按钮，用类似这样的标记：
+     </p>
+
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="htmlcode"><pre class="htmlcode">&lt;input type=&quot;image&quot; src=&quot;image.gif&quot; name=&quot;sub&quot; /&gt;</pre>
+</div>
+      </div>
+
+     </div>
+
+     <p class="simpara">
+      当用户点击到图像中的某处时，相应的表单会被传送到服务器，并加上两个变量
+      <var class="varname">sub_x</var> 和
+      <var class="varname">sub_y</var>。它们包含了用户点击图像的坐标。有经验的用户可能会注意到被浏览器发送的实际变量名包含的是一个点而不是下划线（即
+      sub.x 和 sub.y），但 PHP 自动将点转换成了下划线。
+     </p>
+    </div>
+
+   </div>
+
+   <div class="sect2" id="language.variables.external.cookies">
+    <h3 class="title">HTTP Cookies</h3>
+
+    <p class="simpara">
+     PHP 透明地支持 <a href="http://www.faqs.org/rfcs/rfc6265" class="link external">&raquo;&nbsp;RFC 6265</a>定义中的
+     HTTP cookies。Cookies
+     是一种在远端浏览器端存储数据并能追踪或识别再次访问的用户的机制。可以用
+     <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span>
+     函数设定 cookies。Cookies 是
+     HTTP 信息头中的一部分，因此
+     SetCookie 函数必须在向浏览器发送任何输出之前调用。对于
+     <span class="function"><a href="function.header.html" class="function">header()</a></span> 函数也有同样的限制。Cookie
+     数据会在相应的 cookie 数据数组中可用，例如
+     <var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var> 和
+     <var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var>。更多细节和例子见
+     <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span> 手册页面。
+    </p>
+
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <span class="simpara">
+         As of PHP 7.2.34, 7.3.23 and 7.4.11, respectively, the <em class="emphasis">names</em>
+         of incoming cookies are no longer url-decoded for security reasons.
+        </span>
+    </p></blockquote>
+
+    <p class="simpara">
+     如果要将多个值赋给一个 cookie 变量，必须将其赋成数组。例如：
+    </p>
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"MyCookie[foo]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Testing&nbsp;1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"MyCookie[bar]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Testing&nbsp;2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+    <p class="simpara">
+     这将会建立两个单独的 cookie，尽管 MyCookie
+     在脚本中是一个单一的数组。如果想在仅仅一个 cookie
+     中设定多个值，考虑先在值上使用
+     <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> 或
+     <span class="function"><a href="function.explode.html" class="function">explode()</a></span>。
+    </p>
+
+    <p class="simpara">
+     注意在浏览器中一个 cookie 会替换掉上一个同名的
+     cookie，除非路径或者域不同。因此对于购物车程序可以保留一个计数器并一起传递，例如：
+    </p>
+
+    <div class="example" id="example-103">
+     <p><strong>示例 #4 一个 <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span> 的示例</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]&nbsp;+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">'count'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"Cart[</span><span style="color: #0000BB">$count</span><span style="color: #DD0000">]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$item</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+   </div>
+
+   <div class="sect2" id="language.variables.external.dot-in-names">
+    <h3 class="title">变量名中的点</h3>
+
+    <p class="para">
+     通常，PHP 不会改变传递给脚本中的变量名。然而应该注意到点（句号）不是
+     PHP 变量名中的合法字符。至于原因，看看：
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$varname</span><span style="color: #007700">.</span><span style="color: #0000BB">ext</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;非法变量名&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     这时，解析器看到是一个名为
+     <var class="varname">$varname</var>
+     的变量，后面跟着一个字符串连接运算符，后面跟着一个裸字符串（即没有加引号的字符串，且不匹配任何已知的健名或保留字）&#039;ext&#039;。很明显这不是想要的结果。
+    </p>
+
+    <p class="para">
+     出于此原因，要注意 PHP
+     将会自动将变量名中的点替换成下划线。
+    </p>
+
+   </div>
+
+   <div class="sect2" id="language.variables.determining-type-of">
+    <h3 class="title">确定变量类型</h3>
+
+    <p class="para">
+     因为 PHP 会判断变量类型并在需要时进行转换（通常情况下），因此在某一时刻给定的变量是何种类型并不明显。PHP
+     包括几个函数可以判断变量的类型，例如：<span class="function"><a href="function.gettype.html" class="function">gettype()</a></span>，<span class="function"><a href="function.is-array.html" class="function">is_array()</a></span>，<span class="function"><a href="function.is-float.html" class="function">is_float()</a></span>，<span class="function"><a href="function.is-int.html" class="function">is_int()</a></span>，<span class="function"><a href="function.is-object.html" class="function">is_object()</a></span>
+     和 <span class="function"><a href="function.is-string.html" class="function">is_string()</a></span>。参见<a href="language.types.html" class="link">类型</a>一章。
+    </p>
+    <p class="para">
+     HTTP being a text protocol, most, if not all, content that comes in
+     <a href="language.variables.superglobals.html" class="link">Superglobal arrays</a>, 
+     like <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var> and <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var> will remain
+     as strings. PHP will not try to convert values to a specific type.
+     In the example below, <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET["var1"]</a></var> will contain the
+     string &quot;null&quot; and <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET["var2"]</a></var>, the string &quot;123&quot;.
+     <div class="example-contents">
+<div class="cdata"><pre>
+/index.php?var1=null&amp;var2=123
+</pre></div>
+      </div>
+
+    </p>
+   </div>
+   
+   <div class="sect2" id="language.variables.external.changelog">
+    <h3 class="title">更新日志</h3>
+
+    <p class="para">
+     <table class="doctable informaltable">
+      
+       <thead>
+        <tr>
+         <th>版本</th>
+         <th>说明</th>
+        </tr>
+
+       </thead>
+
+       <tbody class="tbody">
+        <tr>
+         <td>7.2.34, 7.3.23, 7.4.11</td>
+         <td>
+            The <em class="emphasis">names</em> of incoming cookies are no longer url-decoded
+            for security reasons.
+         </td>
+        </tr>
+
+       </tbody>
+      
+     </table>
+
+    </p>
+   </div>
+  </div></div></div></body></html>

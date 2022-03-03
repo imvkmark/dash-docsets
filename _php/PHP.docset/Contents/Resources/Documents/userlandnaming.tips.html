@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>提示</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="userlandnaming.rules.html">« 规则</a></li>
+      <li style="float: right;"><a href="about.html">关于本手册 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="userlandnaming.html">用户空间命名指南</a></li>
+    <li>提示</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="userlandnaming.tips" class="section">
+  <h2 class="title">提示</h2>
+  <p class="para">
+   要写出能经受住时间考验的代码，建议在全局的命名空间中，尽量不要用变量、函数或类名，以避免与其它用户空间代码出现命名空间冲突。
+  </p>
+  <p class="para">
+    防止函数和类的命名冲突的一个常见方法是使用自己专属名字的
+    <a href="language.namespaces.html" class="link">namespace</a>。
+  </p>
+<div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">my_function</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}<br /><br />\</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">\</span><span style="color: #0000BB">my_function</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">
+    这仍然需要你跟踪已经使用过的命名空间，但一旦你用了在决定了要使用的命名空间后，你可以添加所有的函数和类到它，不用再考虑冲突。
+  </p>
+  <p class="para">
+    最好的做法是，尽量控制一下添加到全局范围内的变量，以防止与第三方代码的命名产生命名空间冲突。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>Variable scoping</strong><br />
+   <p class="para">
+    Because of PHP&#039;s <a href="language.variables.scope.html" class="link">scoping rules</a>
+    variables defined inside functions and methods are not in the global scope
+    and as such cannot conflict with other variables defined in the global scope.
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

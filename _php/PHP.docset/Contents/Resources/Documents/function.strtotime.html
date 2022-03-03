@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>将任何字符串的日期时间描述解析为 Unix 时间戳</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.strptime.html">« strptime</a></li>
+      <li style="float: right;"><a href="function.time.html">time »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.datetime.html">Date/Time 函数</a></li>
+    <li>将任何字符串的日期时间描述解析为 Unix 时间戳</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.strtotime" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strtotime</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">strtotime</span> &mdash; <span class="dc-title">将任何字符串的日期时间描述解析为 Unix 时间戳</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.strtotime-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>strtotime</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$datetime</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$now</code><span class="initializer"> = time()</span></span>): <span class="type">int</span></div>
+
+  <p class="simpara">
+   本函数预期接受一个包含美国英语日期格式的字符串并尝试将其解析为
+   Unix 时间戳（自 January 1 1970 00:00:00 UTC 起的秒数），其值相对于
+   <code class="parameter">now</code> 参数给出的时间，如果没有提供
+   <code class="parameter">now</code> 参数则用系统当前时间。
+  </p>
+  <div class="warning"><strong class="warning">警告</strong>
+  <p class="para">
+    本函数返回的 Unix 时间戳不包含时区信息，为了实现对 &quot;日期/时间&quot;
+    进行计算，推荐使用功能更强大的
+    <span class="classname"><a href="class.datetimeimmutable.html" class="classname">DateTimeImmutable</a></span> 类。
+   </p>
+  </div>
+  <p class="para">
+    本函数将使用 <var class="envar">TZ</var> 环境变量（如果有的话）来计算时间戳。自
+    PHP 5.1.0 起有更容易的方法来定义时区用于所有的日期／时间函数。此过程在
+    <span class="function"><a href="function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span> 函数页面中有说明。
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 parameters" id="refsect1-function.strtotime-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">datetime</code></dt>
+
+     <dd>
+
+      <p class="para">日期/时间字符串。正确格式的说明详见 <a href="datetime.formats.html" class="link">日期与时间格式</a>。</p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">now</code></dt>
+
+     <dd>
+
+      <p class="para">
+       用来计算返回值的时间戳。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.strtotime-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功则返回时间戳，否则返回 <strong><code>false</code></strong>。在 PHP 5.1.0
+   之前本函数在失败时返回 <code class="literal">-1</code>。
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-function.strtotime-errors">
+  <h3 class="title">错误／异常</h3>
+   
+   <p class="para">
+在每次调用日期/时间函数时，如果时区无效则会引发 <strong><code>E_NOTICE</code></strong> 错误。参见
+<span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span>。</p>
+ 
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.strtotime-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-2051">
+    <p><strong>示例 #1 <span class="function"><strong>strtotime()</strong></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"now"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"10&nbsp;September&nbsp;2000"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;day"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;week"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;week&nbsp;2&nbsp;days&nbsp;4&nbsp;hours&nbsp;2&nbsp;seconds"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"next&nbsp;Thursday"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"last&nbsp;Monday"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2052">
+    <p><strong>示例 #2 失败检查</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Not&nbsp;Good'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5.1.0&nbsp;之前的版本中和应该改成和&nbsp;-1&nbsp;进行比较<br /></span><span style="color: #007700">if&nbsp;((</span><span style="color: #0000BB">$timestamp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">))&nbsp;===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;string&nbsp;(</span><span style="color: #0000BB">$str</span><span style="color: #DD0000">)&nbsp;is&nbsp;bogus"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$str</span><span style="color: #DD0000">&nbsp;==&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'l&nbsp;dS&nbsp;of&nbsp;F&nbsp;Y&nbsp;h:i:s&nbsp;A'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$timestamp</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.strtotime-notes">
+  <h3 class="title">注释</h3>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    如果给定的年份是两位数字的格式，则其值 0-69 表示 2000-2069，70-100
+    表示 1970-2000。 See the notes
+    below for possible differences on 32bit systems (possible dates might end on 
+    2038-01-19 03:14:07).
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    有效的时间戳通常从 Fri, 13 Dec
+    1901 20:45:54 UTC 到 Tue, 19 Jan 2038 03:14:07 UTC（对应于 32
+    位有符号整数的最小值和最大值）。
+   </p>
+   
+   <p class="para">
+    PHP 5.1.0 之前，不是所有的平台都支持负的时间戳，那么日记范围就被限制为不能早于
+    Unix 纪元。这意味着在 1970 年 1 月 1 日之前的日期将不能用在 Windows，一些
+    Linux 版本，以及几个其它的操作系统中。
+   </p>
+
+   <p class="para">
+    在 64 位的 PHP 版本中，时间戳的有效范围实际上是无限的，因为
+    64 位可以覆盖最多
+    2930 亿年的范围。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    不同的分隔符，比如 <code class="literal">m/d/y</code> 或 <code class="literal">d-m-y</code>
+    会影响到解析结果：若以反斜线 (<code class="literal">/</code>) 为分隔，将会做为美洲日期
+    <code class="literal">m/d/y</code> 来解析；而当分隔符为短横线 (<code class="literal">-</code>) 或点
+    (<code class="literal">.</code>) 时，则将做为欧洲日期 <code class="literal">d-m-y</code>
+    格式来解析。当年份只有两位数字，且分隔符为短横线 (<code class="literal">-</code>时，日期字符串将被解析为
+    <code class="literal">y-m-d</code> 格式。
+   </p>
+   <p class="para">
+    为了避免潜在的歧义，最好使用 ISO 8601 标准格式
+    (<code class="literal">YYYY-MM-DD</code>) 或
+    <span class="methodname"><a href="datetime.createfromformat.html" class="methodname">DateTime::createFromFormat()</a></span> 来表达。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    不建议使用此函数对日期进行数学运算。在 PHP 5.3 及以后版本中，推荐使用
+    <span class="methodname"><a href="datetime.add.html" class="methodname">DateTime::add()</a></span> 和
+    <span class="methodname"><a href="datetime.sub.html" class="methodname">DateTime::sub()</a></span> 函数，PHP 5.2 中可以使用
+    <span class="methodname"><a href="datetime.modify.html" class="methodname">DateTime::modify()</a></span>。
+   </p>
+  </p></blockquote>
+ </div>
+
+
+<div class="refsect1 seealso" id="refsect1-function.strtotime-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="datetime.formats.html" class="link">日期时间格式</a></li>
+    <li class="member"><span class="methodname"><a href="datetime.createfromformat.html" class="methodname" rel="rdfs-seeAlso">DateTime::createFromFormat()</a> - 根据给定的格式解析日期时间字符串</span></li>
+    <li class="member"><span class="function"><a href="function.checkdate.html" class="function" rel="rdfs-seeAlso">checkdate()</a> - 验证一个格里高里日期</span></li>
+    <li class="member"><span class="function"><a href="function.strptime.html" class="function" rel="rdfs-seeAlso">strptime()</a> - 解析由 strftime 生成的日期／时间</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

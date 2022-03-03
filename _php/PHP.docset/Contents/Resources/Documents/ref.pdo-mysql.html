@@ -1,0 +1,552 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>MySQL Functions (PDO_MYSQL)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.pdo-informix.connection.html">« PDO_INFORMIX DSN</a></li>
+      <li style="float: right;"><a href="ref.pdo-mysql.connection.html">PDO_MYSQL DSN »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pdo.drivers.html">PDO 驱动</a></li>
+    <li>MySQL Functions (PDO_MYSQL)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.pdo-mysql" class="reference">
+  
+  <h1 class="title">MySQL Functions (PDO_MYSQL)</h1>
+  
+  <div class="partintro">
+
+   <div class="section" id="pdo-mysql.intro">
+   <h2 class="title">简介</h2>
+    <p class="para">
+     PDO_MYSQL is a driver that implements the <a href="intro.pdo.html" class="link">PHP
+     Data Objects (PDO) interface</a>
+     to enable access from PHP to MySQL databases.
+    </p>
+    <p class="para">
+     PDO_MYSQL uses emulated prepares by default.
+    </p>
+
+    <p class="para">
+      <em class="emphasis">MySQL 8</em>
+    </p>
+
+    <p class="para">
+     When running a PHP version before 7.1.16, or PHP 7.2 before 7.2.4, set 
+     MySQL 8 Server&#039;s default password plugin to <em class="emphasis">mysql_native_password</em>
+     or else you will see errors similar to
+     <em class="emphasis">The server requested authentication method unknown to the client [caching_sha2_password]</em>
+     even when <em class="emphasis">caching_sha2_password</em> is not used.
+    </p>
+    <p class="para">
+     This is because MySQL 8 defaults to caching_sha2_password, a plugin that is
+     not recognized by the older PHP (mysqlnd) releases. Instead, change it by
+     setting <code class="literal">default_authentication_plugin=mysql_native_password</code>
+     in <var class="filename">my.cnf</var>. The <em class="emphasis">caching_sha2_password</em>
+     plugin will be supported in a future PHP release. In the meantime, the
+     <a href="book.mysql-xdevapi.html" class="link">mysql_xdevapi</a> extension does
+     support it.
+    </p>
+
+    <div class="warning"><strong class="warning">警告</strong>
+     <p class="para">
+      Beware: Some MySQL table types (storage engines) do not support transactions.  When
+      writing transactional database code using a table type that does not support
+      transactions, MySQL will pretend that a transaction was initiated successfully.
+      In addition, any DDL queries issued will implicitly
+      commit any pending transactions.
+     </p>
+    </div>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      The MySQL driver does not properly support <strong><code>PDO::PARAM_INPUT_OUTPUT</code></strong>
+      via <span class="methodname"><a href="pdostatement.bindparam.html" class="methodname">PDOStatement::bindParam()</a></span>; while such parameters can be used,
+      they are not updated (i.e. the actual output is ignored).
+     </p>
+    </p></blockquote>
+   </div>
+   
+
+<div class="section" id="ref.pdo-mysql.installation">
+ <h2 class="title">安装</h2>
+ <p class="para">
+  The common Unix distributions include binary versions of PHP that can
+  be installed. Although these binary versions are typically built with
+  support for the MySQL extensions, the extension libraries
+  themselves may need to be installed using an additional package. Check
+  the package manager than comes with your chosen distribution for
+  availability.
+ </p>
+ 
+ <p class="para">
+  For example, on Ubuntu the <code class="literal">php5-mysql</code> package installs
+  the ext/mysql, ext/mysqli, and PDO_MYSQL PHP extensions. On CentOS, 
+  the <code class="literal">php-mysql</code> package also installs these three 
+  PHP extensions.
+ </p>
+
+ <p class="para">
+  Alternatively, you can compile this extension yourself. Building PHP from 
+  source allows you to specify the MySQL extensions you want to use, as well 
+  as your choice of client library for each extension.
+ </p>
+
+ <p class="para">
+  When compiling, use <strong class="option configure">--with-pdo-mysql[=DIR]</strong> to install
+  the PDO MySQL extension, where the optional <code class="literal">[=DIR]</code>
+  is the MySQL base library. <a href="book.mysqlnd.html" class="link">Mysqlnd</a>
+  is the default library. For details about choosing a library, see
+  <a href="mysqlinfo.library.choosing.html" class="link">Choosing a MySQL library</a>.
+ </p>
+ <p class="para">
+  Optionally, the <strong class="option configure">--with-mysql-sock[=DIR]</strong> sets to location
+  to the MySQL unix socket pointer for all MySQL extensions, including PDO_MYSQL. If
+  unspecified, the default locations are searched.
+ </p>
+ <p class="para">
+  Optionally, the <strong class="option configure">--with-zlib-dir[=DIR]</strong> is used to set
+  the path to the libz install prefix.
+ </p>
+ <p class="para">
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+$ ./configure --with-pdo-mysql --with-mysql-sock=/var/mysql/mysql.sock
+</pre></div>
+  </div>
+ </p>
+ <p class="para">
+  SSL support is enabled using the appropriate <a href="ref.pdo-mysql.html#pdo-mysql.constants" class="link">PDO_MySQL constants</a>,
+  which is equivalent to calling the <a href="http://dev.mysql.com/doc/mysql/en/mysql-ssl-set.html" class="link external">&raquo;&nbsp;MySQL C API function mysql_ssl_set()</a>.
+  Also, SSL cannot be enabled with <span class="classname"><strong class="classname">PDO::setAttribute</strong></span> because the connection
+  already exists. See also the MySQL documentation about <a href="http://dev.mysql.com/doc/mysql/en/configuring-for-ssl.html" class="link external">&raquo;&nbsp;connecting to
+  MySQL with SSL</a>.
+ </p>
+
+</div>
+
+
+
+   
+
+<div class="section" id="pdo-mysql.constants">
+ <h2 class="title">预定义常量</h2>
+ <p class="simpara">下列常量由此驱动定义，且仅在扩展编译入 PHP
+或在运行时动态载入时可用。另外，使用此驱动时，仅会使用这些驱动特定的常量。使用其他驱动的驱动特定的常量可能会导致不可预见的情况。如果代码可运行于多个驱动，<span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span>
+可被用于获取
+<strong><code>PDO_ATTR_DRIVER_NAME</code></strong>
+属性以检查驱动。</p>
+ <dl>
+  
+   <dt id="pdo.constants.mysql-attr-use-buffered-query">
+    <strong><code>PDO::MYSQL_ATTR_USE_BUFFERED_QUERY</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     If this attribute is set to <strong><code>true</code></strong> on a
+     <span class="classname"><a href="class.pdostatement.html" class="classname">PDOStatement</a></span>, the MySQL driver will use the
+     buffered versions of the MySQL API.  If you&#039;re writing portable code, you
+     should use <span class="function"><a href="pdostatement.fetchall.html" class="function">PDOStatement::fetchAll()</a></span> instead.
+    </span>
+    <p class="para">
+     <div class="example" id="example-1069"><p><strong>示例 #1 Forcing queries to be buffered in mysql</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_DRIVER_NAME</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #DD0000">'mysql'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'select&nbsp;*&nbsp;from&nbsp;foo'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">MYSQL_ATTR_USE_BUFFERED_QUERY&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"my&nbsp;application&nbsp;only&nbsp;works&nbsp;with&nbsp;mysql;&nbsp;I&nbsp;should&nbsp;use&nbsp;\$stmt-&gt;fetchAll()&nbsp;instead"</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-local-infile">
+    <strong><code>PDO::MYSQL_ATTR_LOCAL_INFILE</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Enable <code class="literal">LOAD LOCAL INFILE</code>. Available as of PHP 8.1.0.
+    </p>
+    <p class="para">
+     Note, this constant can only be used in the <code class="parameter">driver_options</code> 
+     array when constructing a new database handle.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-local-infile-directory">
+    <strong><code>PDO::MYSQL_ATTR_LOCAL_INFILE_DIRECTORY</code></strong>
+     (<span class="type">string</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Allows restricting LOCAL DATA loading to files located in this designated 
+     directory.
+    </p>
+    <p class="para">
+     Note, this constant can only be used in the <code class="parameter">driver_options</code> 
+     array when constructing a new database handle.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-init-command">
+    <strong><code>PDO::MYSQL_ATTR_INIT_COMMAND</code></strong>
+     (<span class="type">string</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Command to execute when connecting to the MySQL server. Will
+     automatically be re-executed when reconnecting.
+    </p>
+    <p class="para">
+     Note, this constant can only be used in the <code class="parameter">driver_options</code> 
+     array when constructing a new database handle.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-read-default-file">
+    <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_FILE</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Read options from the named option file instead of from
+     <var class="filename">my.cnf</var>. This option is not available if 
+     mysqlnd is used, because mysqlnd does not read the mysql 
+     configuration files.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-read-default-group">
+    <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Read options from the named group from <var class="filename">my.cnf</var> or the
+     file specified with <strong><code>MYSQL_READ_DEFAULT_FILE</code></strong>. This option 
+     is not available if mysqlnd is used, because mysqlnd does not read the mysql 
+     configuration files.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-max-buffer-size">
+    <strong><code>PDO::MYSQL_ATTR_MAX_BUFFER_SIZE</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Maximum buffer size. Defaults to 1 MiB. This constant is not supported when 
+     compiled against mysqlnd.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-direct-query">
+    <strong><code>PDO::MYSQL_ATTR_DIRECT_QUERY</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Perform direct queries, don&#039;t use prepared statements.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-found-rows">
+    <strong><code>PDO::MYSQL_ATTR_FOUND_ROWS</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Return the number of found (matched) rows, not the 
+     number of changed rows.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-ignore-space">
+    <strong><code>PDO::MYSQL_ATTR_IGNORE_SPACE</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Permit spaces after function names. Makes all functions 
+     names reserved words.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.mysql-attr-compress">
+    <strong><code>PDO::MYSQL_ATTR_COMPRESS</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Enable network communication compression.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="pdo.constants.mysql-attr-ssl-ca">
+    <strong><code>PDO::MYSQL_ATTR_SSL_CA</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     The file path to the SSL certificate authority.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="pdo.constants.mysql-attr-ssl-capath">
+    <strong><code>PDO::MYSQL_ATTR_SSL_CAPATH</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     The file path to the directory that contains the trusted SSL
+     CA certificates, which are stored in PEM format.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="pdo.constants.mysql-attr-ssl-cert">
+    <strong><code>PDO::MYSQL_ATTR_SSL_CERT</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     The file path to the SSL certificate.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="pdo.constants.mysql-attr-cipher">
+    <strong><code>PDO::MYSQL_ATTR_SSL_CIPHER</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     A list of one or more permissible ciphers to use for SSL encryption, in a format
+     understood by OpenSSL. For example: <code class="literal">DHE-RSA-AES256-SHA:AES128-SHA</code>
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="pdo.constants.mysql-attr-key">
+    <strong><code>PDO::MYSQL_ATTR_SSL_KEY</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     The file path to the SSL key.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="pdo.constants.mysql-attr-ssl-verify-server-cert">
+    <strong><code>PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Provides a way to disable verification of the server SSL certificate.
+    </p>
+    <p class="para">
+     自以下版本起 PHP  7.0.18 and PHP 7.1.4.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="pdo.constants.mysql-attr-multi-statements">
+    <strong><code>PDO::MYSQL_ATTR_MULTI_STATEMENTS</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Disables multi query execution in both <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span>
+     and <span class="function"><a href="pdo.query.html" class="function">PDO::query()</a></span> when set to <strong><code>false</code></strong>.
+    </p>
+    <p class="para">
+     Note, this constant can only be used in the <code class="parameter">driver_options</code> 
+     array when constructing a new database handle.
+    </p>
+   </dd>
+
+  
+
+ </dl>
+
+</div>
+
+
+
+   
+
+<div class="section" id="pdo-mysql.configuration">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>PDO_MYSQL Configuration Options</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>名字</th>
+      <th>默认</th>
+      <th>可修改范围</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="ref.pdo-mysql.html#ini.pdo-mysql.default-socket" class="link">pdo_mysql.default_socket</a></td>
+      <td>&quot;/tmp/mysql.sock&quot;</td>
+      <td>PHP_INI_SYSTEM</td>
+     </tr>
+
+     <tr>
+      <td><a href="ref.pdo-mysql.html#ini.pdo-mysql.debug" class="link">pdo_mysql.debug</a></td>
+      <td>NULL</td>
+      <td>PHP_INI_SYSTEM</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  有关 PHP_INI_* 样式的更多详情与定义，见 <a href="configuration.changes.modes.html" class="xref">配置可被设定范围</a>。
+ </p>
+
+ <p class="para">这是配置指令的简短说明。</p>
+
+ <p class="para">
+  <dl>
+   
+    <dt id="ini.pdo-mysql.default-socket">
+     <code class="parameter">pdo_mysql.default_socket</code>
+     <span class="type">string</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Sets a Unix domain socket. This value can either be set at compile time if 
+      a domain socket is found at configure. This ini setting is Unix only.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.pdo-mysql.debug">
+     <code class="parameter">pdo_mysql.debug</code>
+     <span class="type">bool</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Enables debugging for PDO_MYSQL. This setting is only available when PDO_MYSQL is 
+      compiled against mysqlnd and in PDO debug mode.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </p>
+</div>
+
+
+
+  </div>
+
+  
+
+ <h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="ref.pdo-mysql.connection.html">PDO_MYSQL DSN</a> — Connecting to MySQL databases</li></ul>
+</div>
+</div></div></body></html>

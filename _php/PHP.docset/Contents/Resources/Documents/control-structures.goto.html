@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>goto</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.include-once.html">« include_once</a></li>
+      <li style="float: right;"><a href="language.functions.html">函数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">流程控制</a></li>
+    <li>goto</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.goto" class="sect1">
+ <h2 class="title">goto</h2>
+ <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
+ <p class="para">
+  <div class="mediaobject">
+   
+   <div class="imageobject">
+    <img src="images/0baa1b9fae6aec55bbb73037f3016001-xkcd-goto.png" alt="What's the worse thing that could happen if you use goto?" width="740" height="201" />
+   </div>
+  </div>
+  此漫画鸣谢 <a href="http://xkcd.com/292" class="link external">&raquo;&nbsp;xkcd</a>
+ </p>
+ <p class="para">
+  <code class="literal">goto</code>
+  操作符可以用来跳转到程序中的另一位置。该目标位置可以用 <em class="emphasis">区分大小写</em> 的目标名称加上冒号来标记，而跳转指令是
+  <code class="literal">goto</code> 之后接上目标位置的标记。PHP 中的 <code class="literal">goto</code>
+  有一定限制，目标位置只能位于同一个文件和作用域，也就是说无法跳出一个函数或类方法，也无法跳入到另一个函数。也无法跳入到任何循环或者
+  switch 结构中。可以跳出循环或者 switch，通常的用法是用 <code class="literal">goto</code>
+  代替多层的 <code class="literal">break</code>。
+ </p>
+ <p class="para">
+  <div class="example" id="example-146">
+   <p><strong>示例 #1 <code class="literal">goto</code> 示例</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">goto&nbsp;</span><span style="color: #0000BB">a</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">;<br />&nbsp;<br /></span><span style="color: #0000BB">a</span><span style="color: #007700">:<br />echo&nbsp;</span><span style="color: #DD0000">'Bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>以上例程会输出：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Bar
+</pre></div>
+   </div>
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-147">
+   <p><strong>示例 #2 <code class="literal">goto</code> 跳出循环示例</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">for(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$j</span><span style="color: #007700">=</span><span style="color: #0000BB">50</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">100</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;while(</span><span style="color: #0000BB">$j</span><span style="color: #007700">--)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$j</span><span style="color: #007700">==</span><span style="color: #0000BB">17</span><span style="color: #007700">)&nbsp;goto&nbsp;</span><span style="color: #0000BB">end</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;}&nbsp;&nbsp;<br />}<br />echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;=&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">end</span><span style="color: #007700">:<br />echo&nbsp;</span><span style="color: #DD0000">'j&nbsp;hit&nbsp;17'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>以上例程会输出：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+j hit 17
+</pre></div>
+   </div>
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-148">
+   <p><strong>示例 #3 以下写法无效</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">goto&nbsp;</span><span style="color: #0000BB">loop</span><span style="color: #007700">;<br />for(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$j</span><span style="color: #007700">=</span><span style="color: #0000BB">50</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">100</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;while(</span><span style="color: #0000BB">$j</span><span style="color: #007700">--)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">loop</span><span style="color: #007700">:<br />&nbsp;&nbsp;}<br />}<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">&nbsp;=&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>以上例程会输出：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Fatal error: &#039;goto&#039; into loop or switch statement is disallowed in
+script on line 2
+</pre></div>
+   </div>
+  </div>
+ </p>
+</div></div></div></body></html>

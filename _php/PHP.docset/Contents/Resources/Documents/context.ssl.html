@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>SSL 上下文选项清单</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="context.ftp.html">« FTP 上下文选项</a></li>
+      <li style="float: right;"><a href="context.curl.html">CURL 上下文选项 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="context.html">上下文（Context）选项和参数</a></li>
+    <li>SSL 上下文选项清单</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="context.ssl" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SSL 上下文选项</h1>
+  <p class="refpurpose"><span class="refname">SSL 上下文选项</span> &mdash; <span class="dc-title">SSL 上下文选项清单</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-context.ssl-description">
+  <h3 class="title">说明</h3>
+  <p class="para">
+   <code class="literal">ssl://</code> 和 <code class="literal">tls://</code>
+   传输协议上下文选项清单。
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-context.ssl-options">
+  <h3 class="title">可选项</h3>
+  <p class="para">
+   <dl>
+    
+     <dt id="context.ssl.peer-name">
+      <code class="parameter">peer_name</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+        要连接的服务器名称。如果未设置，那么服务器名称将根据打开 SSL 流的主机名称猜测得出。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.verify-peer">
+      <code class="parameter">verify_peer</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       是否需要验证 SSL 证书。
+      </p>
+      <p class="para">
+       默认值为 <strong><code>true</code></strong>。
+      </p>
+     </dd>
+
+    
+    
+       <dt id="context.ssl.verify-peer-name">
+           <code class="parameter">verify_peer_name</code>
+           <span class="type">bool</span>
+       </dt>
+
+       <dd>
+
+           <p class="para">
+            是否需要验证 peer name。
+           </p>
+           <p class="para">
+               默认值为 <strong><code>true</code></strong>.
+           </p>
+       </dd>
+
+    
+    
+     <dt id="context.ssl.allow-self-signed">
+      <code class="parameter">allow_self_signed</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       是否允许自签名证书。需要配合
+       <a href="context.ssl.html#context.ssl.verify-peer" class="link"><code class="parameter">verify_peer</code></a> 参数使用（注：当 verify_peer 参数为 true 时才会根据 allow_self_signed 参数值来决定是否允许自签名证书）。
+      </p>
+      <p class="para">
+       默认值为 <strong><code>false</code></strong>
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.cafile">
+      <code class="parameter">cafile</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       当设置 <code class="literal">verify_peer</code> 为 true 时，
+       用来验证远端证书所用到的 CA 证书。
+       本选项值为 CA 证书在本地文件系统的全路径及文件名。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.capath">
+      <code class="parameter">capath</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       如果未设置 <code class="literal">cafile</code>，或者 <code class="literal">cafile</code> 所指的文件不存在时，
+       会在 <code class="literal">capath</code> 所指定的目录搜索适用的证书。
+       该目录必须是已经经过哈希处理的证书目录。
+       （注：所谓 hashed certificate 目录是指使用类似 c_rehash 命令将目录中的 .pem 和 .crt 文件扫描并提取哈希码，然后根据此哈希码创建文件链接，以便于快速查找证书）
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.local-cert">
+      <code class="parameter">local_cert</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       本地证书路径。
+       必须是 PEM 格式，并且包含本地的证书及私钥。
+       也可以包含证书颁发者证书链。
+       也可以通过 <code class="literal">local_pk</code> 指定包含私钥的独立文件。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.local-pk">
+      <code class="parameter">local_pk</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       如果使用独立的文件来存储证书（<code class="literal">local_cert</code>）和私钥，
+       那么使用此选项来指明私钥文件的路径。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.passphrase">
+      <code class="parameter">passphrase</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="literal">local_cert</code> 文件的密码。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.verify-depth">
+      <code class="parameter">verify_depth</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       如果证书链条层次太深，超过了本选项的设定值，则终止验证。
+      </p>
+      <p class="para">
+       默认情况下不限制证书链条层次深度。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.ciphers">
+      <code class="parameter">ciphers</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       设置可用的密码列表。
+       可用的值参见： <a href="https://www.openssl.org/docs/manmaster/man1/ciphers.html#CIPHER-LIST-FORMAT" class="link external">&raquo;&nbsp;ciphers(1)</a>。
+      </p>
+      <p class="para">
+       默认值为 <code class="literal">DEFAULT</code>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.capture-peer-cert">
+      <code class="parameter">capture_peer_cert</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       如果设置为 <strong><code>true</code></strong> 将会在上下文中创建 <code class="literal">peer_certificate</code> 选项，
+       该选项中包含远端证书。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.capture-peer-cert-chain">
+      <code class="parameter">capture_peer_cert_chain</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       如果设置为 <strong><code>true</code></strong> 将会在上下文中创建 <code class="literal">peer_certificate_chain</code> 选项，
+       该选项中包含远端证书链条。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.sni-enabled">
+      <code class="parameter">SNI_enabled</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       设置为 <strong><code>true</code></strong> 将启用服务器名称指示（server name indication）。 
+       启用 SNI 将允许同一 IP 地址使用多个证书。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.disable-compression">
+      <code class="parameter">disable_compression</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       如果设置，则禁用 TLS 压缩，有助于减轻恶意攻击。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.peer-fingerprint">
+      <code class="parameter">peer_fingerprint</code>
+      <span class="type">string</span> | <span class="type">array</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       当远程服务器证书的摘要和指定的散列值不相同的时候，
+       终止操作。
+      </p>
+      <p class="para">
+       当使用 <span class="type">string</span> 时，
+       会根据字符串的长度来检测所使用的散列算法：“md5”（32 字节）还是“sha1”（40 字节）。
+      </p>
+      <p class="para">
+       当使用 <span class="type">array</span> 时，
+       数组的键表示散列算法名称，其对应的值是预期的摘要值。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.security-level">
+      <code class="parameter">security_level</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       设置安全级别。如果未指定，则使用库默认安全级别。
+       安全级别说明请参考 <a href="https://www.openssl.org/docs/man1.1.0/man3/SSL_CTX_get_security_level.html" class="link external">&raquo;&nbsp;SSL_CTX_get_security_level(3)</a>。
+      </p>
+      <p class="para">
+       从 PHP 7.2.0 和 OpenSSL 1.1.0 开始可用。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-context.ssl-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        添加了 <code class="parameter">security_levels</code>。 需要 OpenSSL &gt;= 1.1.0。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-context.ssl-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    因为 <code class="literal">ssl://</code> 是
+    <a href="wrappers.http.html" class="link"><code class="literal">https://</code></a> 和
+    <a href="wrappers.ftp.html" class="link"><code class="literal">ftps://</code></a> 的底层传输协议，
+    所以，<code class="literal">ssl://</code> 的上下文选项也同样适用于
+    <code class="literal">https://</code> 和 <code class="literal">ftps://</code> 上下文。
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    PHP 必须联合 OpenSSL 0.9.8j 或以上版本编译才可以支持 SNI，
+    同时也支持使用 <strong><code>OPENSSL_TLSEXT_SERVER_NAME</code></strong> 
+    来探测 SNI 服务器名称。
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-context.ssl-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="context.socket.html" class="xref">套接字上下文选项</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

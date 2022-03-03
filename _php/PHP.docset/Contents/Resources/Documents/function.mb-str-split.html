@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Given a multibyte string, return an array of its characters</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-split.html">« mb_split</a></li>
+      <li style="float: right;"><a href="function.mb-strcut.html">mb_strcut »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">多字节字符串 函数</a></li>
+    <li>Given a multibyte string, return an array of its characters</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-str-split" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_str_split</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.4.0, PHP 8)</p><p class="refpurpose"><span class="refname">mb_str_split</span> &mdash; <span class="dc-title">Given a multibyte string, return an array of its characters</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mb-str-split-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mb_str_split</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code><span class="initializer"> = 1</span></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$encoding</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+   This function will return an array of strings, it is a version of <span class="function"><a href="function.str-split.html" class="function">str_split()</a></span> with support for encodings of variable character size as well as fixed-size encodings of 1,2 or 4 byte characters.
+   If the <code class="parameter">length</code> parameter is specified, the string is broken down into chunks of the specified length in characters (not bytes).
+   The <code class="parameter">encoding</code> parameter can be optionally specified and it is good practice to do so.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mb-str-split-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">string</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <span class="type">string</span> to split into characters or chunks.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
+
+     <dd>
+
+      <p class="para">
+        If specified, each element of the returned array will be composed of multiple characters instead of a single character.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
+
+     <dd>
+
+      <p class="para"><code class="parameter">encoding</code>
+参数为字符编码。如果省略或是 <strong><code>null</code></strong>，则使用内部字符编码。</p>
+      <p class="para">
+        A string specifying one of the supported encodings.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-str-split-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   <span class="function"><strong>mb_str_split()</strong></span> returns an array of strings.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mb-str-split-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+  <td>8.0.0</td>
+  <td>
+   现在 <code class="parameter">encoding</code> 可以为 null。
+  </td>
+ </tr>
+
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       This function no longer returns <strong><code>false</code></strong> on failure.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mb-str-split-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.str-split.html" class="function" rel="rdfs-seeAlso">str_split()</a> - 将字符串转换为数组</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Time Formats</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="datetime.formats.html">« Supported Date and Time Formats</a></li>
+      <li style="float: right;"><a href="datetime.formats.date.html">Date Formats »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="datetime.formats.html">Supported Date and Time Formats</a></li>
+    <li>Time Formats</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="datetime.formats.time" class="sect1">
+  <h2 class="title">Time Formats</h2>
+  
+  <p class="para">
+   This page describes the different date/time formats that the
+   <span class="classname"><a href="class.datetimeimmutable.html" class="classname">DateTimeImmutable</a></span>, <span class="classname"><a href="class.datetime.html" class="classname">DateTime</a></span>,
+  <span class="function"><a href="function.date-create.html" class="function">date_create()</a></span>,
+  <span class="function"><a href="function.date-create-immutable.html" class="function">date_create_immutable()</a></span>, and
+  <span class="function"><a href="function.strtotime.html" class="function">strtotime()</a></span> parser understands.
+  </p>
+  
+  <table class="doctable table">
+   <caption><strong>Used Symbols</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Description</th>
+      <th>Formats</th>
+      <th>Examples</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">frac</code></td>
+      <td>. [0-9]+</td>
+      <td>&quot;.21342&quot;, &quot;.85&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">hh</code></td>
+      <td>&quot;0&quot;?[1-9] | &quot;1&quot;[0-2]</td>
+      <td>&quot;04&quot;, &quot;7&quot;, &quot;12&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">HH</code></td>
+      <td>[01][0-9] | &quot;2&quot;[0-4]</td>
+      <td>&quot;04&quot;, &quot;07&quot;, &quot;19&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">meridian</code></td>
+      <td>[AaPp] .? [Mm] .? [\0\t ]</td>
+      <td>&quot;A.m.&quot;, &quot;pM&quot;, &quot;am.&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">MM</code></td>
+      <td>[0-5][0-9]</td>
+      <td>&quot;00&quot;, &quot;12&quot;, &quot;59&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">II</code></td>
+      <td>[0-5][0-9]</td>
+      <td>&quot;00&quot;, &quot;12&quot;, &quot;59&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">space</code></td>
+      <td>[ \t]</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">tz</code></td>
+      <td>&quot;(&quot;? [A-Za-z]{1,6} &quot;)&quot;? | [A-Z][a-z]+([_/][A-Z][a-z]+)+</td>
+      <td>&quot;CEST&quot;, &quot;Europe/Amsterdam&quot;, &quot;America/Indiana/Knox&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">tzcorrection</code></td>
+      <td>&quot;GMT&quot;? [+-] <code class="literal">hh</code> &quot;:&quot;? <code class="literal">MM</code>?</td>
+      <td>&quot;+0400&quot;, &quot;GMT-07:00&quot;, &quot;-07:00&quot;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  
+  <table class="doctable table">
+   <caption><strong>12 Hour Notation</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Examples</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Hour only, with meridian</td>
+      <td><code class="literal">hh</code> <code class="literal">space</code>? <code class="literal">meridian</code></td>
+      <td>&quot;4 am&quot;, &quot;5PM&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Hour and minutes, with meridian</td>
+      <td><code class="literal">hh</code> [.:] <code class="literal">MM</code> <code class="literal">space</code>? <code class="literal">meridian</code></td>
+      <td>&quot;4:08 am&quot;, &quot;7:19P.M.&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Hour, minutes and seconds, with meridian</td>
+      <td><code class="literal">hh</code> [.:] <code class="literal">MM</code> [.:] <code class="literal">II</code> <code class="literal">space</code>? <code class="literal">meridian</code></td>
+      <td>&quot;4:08:37 am&quot;, &quot;7:19:19P.M.&quot;</td>
+     </tr>
+
+     <tr>
+      <td>MS SQL (Hour, minutes, seconds and fraction with meridian)</td>
+      <td><code class="literal">hh</code> &quot;:&quot; <code class="literal">MM</code> &quot;:&quot; <code class="literal">II</code> [.:] [0-9]+ <code class="literal">meridian</code></td>
+      <td>&quot;4:08:39:12313am&quot;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  
+  <table class="doctable table">
+   <caption><strong>24 Hour Notation</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Description</th>
+      <th>Format</th>
+      <th>Examples</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Hour and minutes</td>
+      <td>&#039;t&#039;? <code class="literal">HH</code> [.:] <code class="literal">MM</code></td>
+      <td>&quot;04:08&quot;, &quot;19.19&quot;, &quot;T23:43&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Hour and minutes, no colon</td>
+      <td>&#039;t&#039;? <code class="literal">HH</code> <code class="literal">MM</code></td>
+      <td>&quot;0408&quot;, &quot;t1919&quot;, &quot;T2343&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Hour, minutes and seconds</td>
+      <td>&#039;t&#039;? <code class="literal">HH</code> [.:] <code class="literal">MM</code> [.:] <code class="literal">II</code></td>
+      <td>&quot;04.08.37&quot;, &quot;t19:19:19&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Hour, minutes and seconds, no colon</td>
+      <td>&#039;t&#039;? <code class="literal">HH</code> <code class="literal">MM</code> <code class="literal">II</code></td>
+      <td>&quot;040837&quot;, &quot;T191919&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Hour, minutes, seconds and timezone</td>
+      <td>&#039;t&#039;? <code class="literal">HH</code> [.:] <code class="literal">MM</code> [.:] <code class="literal">II</code> <code class="literal">space</code>? ( <code class="literal">tzcorrection</code> | <code class="literal">tz</code> )</td>
+      <td>&quot;040837CEST&quot;, &quot;T191919-0700&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Hour, minutes, seconds and fraction</td>
+      <td>&#039;t&#039;? <code class="literal">HH</code> [.:] <code class="literal">MM</code> [.:] <code class="literal">II</code> <code class="literal">frac</code></td>
+      <td>&quot;04.08.37.81412&quot;, &quot;19:19:19.532453&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Time zone information</td>
+      <td><code class="literal">tz</code> | <code class="literal">tzcorrection</code></td>
+      <td>&quot;CEST&quot;, &quot;Europe/Amsterdam&quot;, &quot;+0430&quot;, &quot;GMT-06:00&quot;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div></div></div></body></html>

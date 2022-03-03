@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>输入输出流</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.usage.html">« 用法</a></li>
+      <li style="float: right;"><a href="features.commandline.interactive.html">交互式 shell »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">PHP 的命令行模式</a></li>
+    <li>输入输出流</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.io-streams" class="section">
+  <h2 class="title">输入输出流</h2>
+  
+  
+  <p class="para">
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 为 I/O 流定义了一些常量，以使命令行变量编程更容易一些。
+  </p>
+  
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>CLI 特定常量</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>常量</th>
+       <th>描述</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><strong><code>STDIN</code></strong></td>
+       <td>
+        <p class="para">已经打开的 <code class="literal">stdin</code> 流。使得无需再用以下方式打开：
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stdin&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://stdin'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       如果想从 <code class="literal">stdin</code> 中读取一行内容，可以使用如下方式：
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$line&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">STDIN</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;从&nbsp;STDIN&nbsp;读取一行<br /></span><span style="color: #0000BB">fscanf</span><span style="color: #007700">(</span><span style="color: #0000BB">STDIN</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%d\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$number</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;从&nbsp;STDIN&nbsp;读取数字<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       </p></td>
+      </tr>
+
+      <tr>
+       <td><strong><code>STDOUT</code></strong></td>
+       <td><p class="para">
+       已经打开的 <code class="literal">stdout</code> 流。使得无需再用以下方式打开：
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stdout&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://stdout'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       </p></td>
+      </tr>
+
+      <tr>
+       <td><strong><code>STDERR</code></strong></td>
+       <td>
+        <p class="para">
+         已经打开的 <code class="literal">stderr</code> 流。使得无需再用以下方式打开：
+         <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stderr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://stderr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+         </div>
+
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  
+  <p class="para">
+   综上所述，则无需打开 <code class="literal">stderr</code> 流，只需使用常量代替流资源：
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">php -r &#039;fwrite(STDERR, &quot;stderr\n&quot;);&#039;</pre>
+</div>
+   </div>
+
+   无须显式关闭这些流，因为它们会在脚本结束时由 PHP 自动关闭。
+  </p>
+  
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    如果从 <code class="literal">stdin</code> 中读取 PHP 脚本，则这些常量不可用。
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

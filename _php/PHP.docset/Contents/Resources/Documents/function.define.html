@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>定义一个常量</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.constant.html">« constant</a></li>
+      <li style="float: right;"><a href="function.defined.html">defined »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">杂项 函数</a></li>
+    <li>定义一个常量</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.define" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">define</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">define</span> &mdash; <span class="dc-title">定义一个常量</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.define-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>define</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$constant_name</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$case_insensitive</code><span class="initializer"> = <strong><code>false</code></strong></span></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+  在运行时定义一个常量。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.define-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">constant_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       常量名。
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        可以用 <span class="function"><strong>define()</strong></span> 定义保留关键词甚至无效名称的常量，它的值可以（仅可以）通过
+        <span class="function"><a href="function.constant.html" class="function">constant()</a></span> 获取。
+        不过，不推荐这么做。
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       常量的值。在 PHP 5 中，<code class="parameter">value</code> 必须是
+       <span class="type"><span class="type scalar">scalar</span></span> 值（<span class="type">int</span>、
+       <span class="type">float</span>、<span class="type">string</span>、<span class="type">boolean</span> 或
+       <strong><code>null</code></strong>）。在 PHP 7 中， <span class="type">array</span> 值也被允许。
+      </p>
+      <div class="warning"><strong class="warning">警告</strong>
+       <p class="para">
+        常量还可以定义为 <span class="type">resource</span> 类型，但并不推荐这样做，因为可能会有不可预知的行为发生。
+       </p>
+      </div>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">case_insensitive</code></dt>
+
+     <dd>
+
+      <p class="para">
+       如果设置为 <strong><code>true</code></strong>，则该常量不区分大小写。默认是区分大小写的。比如，
+       <code class="literal">CONSTANT</code> 和 <code class="literal">Constant</code> 代表了不同的值。
+      </p>
+      <div class="warning"><strong class="warning">警告</strong>
+       <p class="simpara">
+        PHP 7.3.0 起废弃了定义不区分大小写的常量。
+       </p>
+      </div>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        不区分大小写的常量以小写的形式储存。
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.define-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.define-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.3.0</td>
+       <td>
+        废弃了 <code class="parameter">case_insensitive</code>，并将在 8.0.0 版中移除。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        允许 <span class="type">array</span> 的值。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.define-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-3396">
+    <p><strong>示例 #1 定义常量</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"CONSTANT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world."</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;"Hello&nbsp;world."<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Constant</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;"Constant"&nbsp;并导致&nbsp;Notice<br /><br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">"GREETING"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;you."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">GREETING</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;"Hello&nbsp;you."<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Greeting</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;"Hello&nbsp;you."<br /><br />//&nbsp;&nbsp;PHP&nbsp;7&nbsp;起就可以运行了<br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'ANIMALS'</span><span style="color: #007700">,&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'bird'<br /></span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;"cat"<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-3397">
+    <p><strong>示例 #2 以保留名称定义常量</strong></p>
+    <div class="example-contents"><p>
+     本例子说明了以 <a href="language.constants.predefined.html" class="link">魔术常量</a> 相同名称定义常量的<em class="emphasis">能力</em>。
+     由于行为结果过于令人迷惑，所以实践中不推荐。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">defined</span><span style="color: #007700">(</span><span style="color: #DD0000">'__LINE__'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'__LINE__'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #DD0000">'__LINE__'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__LINE__</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   <div class="example-contents"><p>以上例程会输出：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(false)
+bool(true)
+string(4) &quot;test&quot;
+int(5)
+</pre></div>
+   </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.define-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.defined.html" class="function" rel="rdfs-seeAlso">defined()</a> - 检查某个名称的常量是否存在</span></li>
+    <li class="member"><span class="function"><a href="function.constant.html" class="function" rel="rdfs-seeAlso">constant()</a> - 返回一个常量的值</span></li>
+    <li class="member">关于 <a href="language.constants.html" class="link">常量</a> 的章节</li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

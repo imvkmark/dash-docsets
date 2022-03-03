@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>返回已发送的 HTTP 响应头（或准备发送的）</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.header.html">« header</a></li>
+      <li style="float: right;"><a href="function.headers-sent.html">headers_sent »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.network.html">网络 函数</a></li>
+    <li>返回已发送的 HTTP 响应头（或准备发送的）</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.headers-list" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">headers_list</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">headers_list</span> &mdash; <span class="dc-title">返回已发送的 HTTP 响应头（或准备发送的）</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.headers-list-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>headers_list</strong></span>(): <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>headers_list()</strong></span> 会返回准备发送给浏览器/客户端的 HTTP 头列表。
+   检测这些头是否已经发送，使用 <span class="function"><a href="function.headers-sent.html" class="function">headers_sent()</a></span>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.headers-list-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">此函数没有参数。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.headers-list-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回数字索引的头数组。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.headers-list-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4350">
+    <p><strong>示例 #1 使用 <span class="function"><strong>headers_list()</strong></span> 的例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;setcookie()&nbsp;会自己添加一个响应头&nbsp;*/<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;添加自定义的响应头<br />&nbsp;大多数客户端会主动忽略&nbsp;*/<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Example-Test:&nbsp;foo"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;响应中指定内容为明文&nbsp;text&nbsp;*/<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;text/plain;&nbsp;charset=UTF-8'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;所以会发送什么头呢？&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">headers_list</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(3) {
+  [0]=&gt;
+  string(19) &quot;Set-Cookie: foo=bar&quot;
+  [1]=&gt;
+  string(17) &quot;Example-Test: foo&quot;
+  [2]=&gt;
+  string(39) &quot;Content-Type: text/plain; charset=UTF-8&quot;
+}
+
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.headers-list-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+<p class="para">
+ 数据头只会在SAPI支持时得到处理和输出。
+</p>
+</p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.headers-list-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.headers-sent.html" class="function" rel="rdfs-seeAlso">headers_sent()</a> - 检测 HTTP 头是否已经发送</span></li>
+    <li class="member"><span class="function"><a href="function.header.html" class="function" rel="rdfs-seeAlso">header()</a> - 发送原生 HTTP 头</span></li>
+    <li class="member"><span class="function"><a href="function.setcookie.html" class="function" rel="rdfs-seeAlso">setcookie()</a> - 发送 Cookie</span></li>
+    <li class="member"><span class="function"><a href="function.apache-response-headers.html" class="function" rel="rdfs-seeAlso">apache_response_headers()</a> - 获得全部 HTTP 响应头信息</span></li>
+    <li class="member"><span class="function"><a href="function.http-response-code.html" class="function" rel="rdfs-seeAlso">http_response_code()</a> - 获取/设置响应的 HTTP 状态码</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

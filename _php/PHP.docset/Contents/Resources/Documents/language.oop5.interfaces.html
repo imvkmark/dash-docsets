@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>对象接口</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.abstract.html">« 抽象类</a></li>
+      <li style="float: right;"><a href="language.oop5.traits.html">Trait »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">类与对象</a></li>
+    <li>对象接口</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.interfaces" class="sect1">
+ <h2 class="title">对象接口</h2>
+ <p class="para">
+  使用接口（interface），可以指定某个类必须实现哪些方法，但不需要定义这些方法的具体内容。
+  由于接口（interface）和类（class）、trait 共享了命名空间，所以它们不能重名。
+ </p>
+ <p class="para">
+  接口就像定义一个标准的类一样，通过 <code class="literal">interface</code> 关键字替换掉
+  <code class="literal">class</code> 关键字来定义，但其中所有的方法都是空的。
+ </p>
+ <p class="para">
+  接口中定义的所有方法都必须是 public ，这是接口的特性。
+ </p>
+ <p class="para">
+  在实践中，往往出于两个辅助目的使用接口：
+ </p>
+ <ul class="simplelist">
+  <li class="member">
+   因为实现了同一个接口，所以开发者创建的对象虽然源自不同的类，但可能可以交换使用。
+   常用于多个数据库的服务访问、多个支付网关、不同的缓存策略等。
+   可能不需要任何代码修改，就能切换不同的实现方式。
+  </li>
+  <li class="member">
+   能够让函数与方法接受一个符合接口的参数，而不需要关心对象如何做、如何实现。
+   这些接口常常命名成类似 <code class="literal">Iterable</code>、<code class="literal">Cacheable</code>、<code class="literal">Renderable</code>，
+   以便于体现出功能的含义。
+  </li>
+ </ul>
+ <p class="para">
+  接口可以定义<a href="language.oop5.magic.html" class="link">魔术方法</a>，以便要求类（class）实现这些方法。
+ </p>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <p class="para">
+   虽然没有禁止，但是强烈建议不要在接口中使用 <a href="language.oop5.decon.html#language.oop5.decon.constructor" class="link">构造器</a>。
+   因为这样在对象实现接口时，会大幅降低灵活性。
+   此外，也不能强制确保构造器遵守继承规则，将导致不可预料的行为结果。
+  </p>
+ </p></blockquote>
+
+
+ <div class="sect2" id="language.oop5.interfaces.implements">
+  <h3 class="title">实现（<code class="literal">implements</code>）</h3>
+  <p class="para">   
+   要实现一个接口，使用 <code class="literal">implements</code>
+   操作符。类中必须实现接口中定义的所有方法，否则会报一个致命错误。
+   类可以实现多个接口，用逗号来分隔多个接口的名称。
+  </p>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    类实现（implement）两个接口时，如果它们定义了相同名称的方法，只有签名相同的时候才是允许的。
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    实现接口的时候，class 中的参数名称不必和接口完全一致。
+    然而， PHP 8.0 起语法开始支持<a href="functions.arguments.html#functions.named-arguments" class="link">命名参数</a>，
+    也就是说调用方会依赖接口中参数的名称。
+    因此，强烈建议开发者的参数的命名，在类和接口中保持一致。
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    接口也可以通过 <a href="language.oop5.inheritance.html" class="link">extends</a> 操作符扩展。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    类实现接口时，必须以<a href="language.oop5.basic.html#language.oop.lsp" class="link">兼容的签名</a>定义接口中所有方法。
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="sect2" id="language.oop5.interfaces.constants">
+  <h3 class="title"><code class="literal">常量</code></h3>
+  <p class="para"> 
+   接口中也可以定义常量。接口常量和<a href="language.oop5.constants.html" class="link">类常量</a>的使用完全相同， 在 PHP 8.1.0 之前
+   不能被子类或子接口所覆盖。
+  </p>
+ </div>
+
+ <div class="sect2" id="language.oop5.interfaces.examples">
+  <h3 class="title">范例</h3>
+  <div class="example" id="language.oop5.interfaces.examples.ex1">
+   <p><strong>示例 #1 接口示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;声明一个'Template'接口<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">Template<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHtml</span><span style="color: #007700">(</span><span style="color: #0000BB">$template</span><span style="color: #007700">);<br />}<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;实现接口<br />//&nbsp;下面的写法是正确的<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">WorkingTemplate&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Template<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$vars&nbsp;</span><span style="color: #007700">=&nbsp;[];<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHtml</span><span style="color: #007700">(</span><span style="color: #0000BB">$template</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$template&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'{'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'}'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$template</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$template</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;下面的写法是错误的，会报错，因为没有实现&nbsp;getHtml()：<br />//&nbsp;Fatal&nbsp;error:&nbsp;Class&nbsp;BadTemplate&nbsp;contains&nbsp;1&nbsp;abstract&nbsp;methods<br />//&nbsp;and&nbsp;must&nbsp;therefore&nbsp;be&nbsp;declared&nbsp;abstract&nbsp;(Template::getHtml)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">BadTemplate&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Template<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$vars&nbsp;</span><span style="color: #007700">=&nbsp;[];<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <div class="example" id="language.oop5.interfaces.examples.ex2">
+   <p><strong>示例 #2 可扩充的接口</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Baz&nbsp;$baz</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;正确写法<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Baz&nbsp;$baz</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;错误写法会导致一个致命错误<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">D&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo&nbsp;$foo</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+  </div>
+  <div class="example" id="language.oop5.interfaces.examples.ex3">
+   <p><strong>示例 #3 扩展多个接口</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">();<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">D&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">C<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+  </div>
+  <div class="example" id="language.oop5.interfaces.examples.ex4">
+   <p><strong>示例 #4 使用接口常量</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Interface&nbsp;constant'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;输出接口常量<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">B</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;错误写法，因为常量不能被覆盖。接口常量的概念和类常量是一样的。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Class&nbsp;constant'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;输出：&nbsp;Class&nbsp;constant<br />//&nbsp;在&nbsp;PHP&nbsp;8.1.0&nbsp;之前，不能正常运行<br />//&nbsp;因为之前还不允许覆盖类常量。<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">B</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <div class="example" id="language.oop5.interfaces.examples.ex5">
+   <p><strong>示例 #5 抽象（abstract）类的接口使用</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">string&nbsp;$s</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">string</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(</span><span style="color: #0000BB">int&nbsp;$i</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">int</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;抽象类可能仅实现了接口的一部分。<br />//&nbsp;扩展该抽象类时必须实现剩余部分。<br /></span><span style="color: #007700">abstract&nbsp;class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">string&nbsp;$s</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">string<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(</span><span style="color: #0000BB">int&nbsp;$i</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">int<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <div class="example" id="language.oop5.interfaces.examples.ex6">
+   <p><strong>示例 #6 同时使用扩展和实现</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">One<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /><br />interface&nbsp;</span><span style="color: #0000BB">Usable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /><br />interface&nbsp;</span><span style="color: #0000BB">Updatable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;关键词顺序至关重要：&nbsp;'extends'&nbsp;必须在前面<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Two&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">One&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Usable</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">Updatable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">
+   接口加上类型约束，提供了一种很好的方式来确保某个对象包含有某些方法。参见
+   <a href="language.operators.type.html" class="link">instanceof</a> 操作符和<a href="language.types.declarations.html" class="link">类型声明</a>。
+  </p>
+ </div>
+
+</div></div></div></body></html>

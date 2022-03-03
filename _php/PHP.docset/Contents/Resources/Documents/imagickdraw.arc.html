@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Draws an arc</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagickdraw.annotation.html">« ImagickDraw::annotation</a></li>
+      <li style="float: right;"><a href="imagickdraw.bezier.html">ImagickDraw::bezier »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagickdraw.html">ImagickDraw</a></li>
+    <li>Draws an arc</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagickdraw.arc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ImagickDraw::arc</h1>
+  <p class="verinfo">(PECL imagick 2, PECL imagick 3)</p><p class="refpurpose"><span class="refname">ImagickDraw::arc</span> &mdash; <span class="dc-title">Draws an arc</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagickdraw.arc-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ImagickDraw::arc</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$sx</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$sy</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$ex</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$ey</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$sd</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$ed</code></span><br>): <span class="type">bool</span></div>
+
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">本函数还未编写文档，仅有参数列表。</p></div>
+  <p class="para">
+   Draws an arc falling within a specified bounding rectangle on the image.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagickdraw.arc-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">sx</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Starting x ordinate of bounding rectangle
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">sy</code></dt>
+
+     <dd>
+
+      <p class="para">
+       starting y ordinate of bounding rectangle
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">ex</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ending x ordinate of bounding rectangle
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">ey</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ending y ordinate of bounding rectangle
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">sd</code></dt>
+
+     <dd>
+
+      <p class="para">
+       starting degrees of rotation
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">ed</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ending degrees of rotation
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-imagickdraw.arc-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   没有返回值。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-imagickdraw.arc-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+    <div class="example" id="example-2840">
+      <p><strong>示例 #1 <span class="function"><strong>ImagickDraw::arc()</strong></span> example</strong></p>
+      <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">arc</span><span style="color: #007700">(</span><span style="color: #0000BB">$strokeColor</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fillColor</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$backgroundColor</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$startX</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$startY</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$endX</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$endY</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$startAngle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$endAngle</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Create&nbsp;a&nbsp;ImagickDraw&nbsp;object&nbsp;to&nbsp;draw&nbsp;into.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">ImagickDraw</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStrokeWidth</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStrokeColor</span><span style="color: #007700">(</span><span style="color: #0000BB">$strokeColor</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFillColor</span><span style="color: #007700">(</span><span style="color: #0000BB">$fillColor</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStrokeWidth</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">arc</span><span style="color: #007700">(</span><span style="color: #0000BB">$startX</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$startY</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$endX</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$endY</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$startAngle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$endAngle</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Create&nbsp;an&nbsp;image&nbsp;object&nbsp;which&nbsp;the&nbsp;draw&nbsp;commands&nbsp;can&nbsp;be&nbsp;rendered&nbsp;into<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$image&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newImage</span><span style="color: #007700">(</span><span style="color: #0000BB">IMAGE_WIDTH</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMAGE_HEIGHT</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$backgroundColor</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setImageFormat</span><span style="color: #007700">(</span><span style="color: #DD0000">"png"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Render&nbsp;the&nbsp;draw&nbsp;commands&nbsp;in&nbsp;the&nbsp;ImagickDraw&nbsp;object&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;//into&nbsp;the&nbsp;image.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">drawImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$draw</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Send&nbsp;the&nbsp;image&nbsp;to&nbsp;the&nbsp;browser<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type:&nbsp;image/png"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getImageBlob</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+    </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

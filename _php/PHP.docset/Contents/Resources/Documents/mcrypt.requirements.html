@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>需求</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mcrypt.setup.html">« 安装／配置</a></li>
+      <li style="float: right;"><a href="mcrypt.installation.html">安装 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mcrypt.setup.html">安装／配置</a></li>
+    <li>需求</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mcrypt.requirements" class="section">
+  <h2 class="title">需求</h2>
+  <p class="para">
+   这些函数需要使用 <a href="http://mcrypt.sourceforge.net/" class="link external">&raquo;&nbsp;mcrypt</a> 库。
+   请从 <a href="http://mcrypt.sourceforge.net/" class="link external">&raquo;&nbsp;http://mcrypt.sourceforge.net/</a>
+   下载 <var class="filename">libmcrypt-x.x.tar.gz</var>，
+   并按以下指导完成安装。
+  </p>
+  <p class="simpara">
+   你需要使用 libmcrypt 2.5.6 或更高版本。
+  </p>
+  <p class="para">
+   PHP 5.2 的 Windows 二进制发行版中已经包含了本库。
+   PHP 5.3 的 Windows 二进制发行版中开始使用 MCrypt 静态库，
+   所以不再需要 DLL。
+  </p>
+  <p class="para">
+   如果使用 libmcrypt 2.4.x 或更高版本链接编译 PHP，支持以下附加的分组加密算法：
+   CAST，LOKI97，RIJNDAEL，SAFERPLUS，SERPENT，
+   以及以下流密码：ENIGMA（加密）， PANAMA，RC4 和 WAKE。
+   如果使用 libmcrypt 2.4.x 或更高版本，那么还支持 nOFB 密码模式。
+  </p>
+ </div></div></div></body></html>

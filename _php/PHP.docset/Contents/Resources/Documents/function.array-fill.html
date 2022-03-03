@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>用给定的值填充数组</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.array-fill-keys.html">« array_fill_keys</a></li>
+      <li style="float: right;"><a href="function.array-filter.html">array_filter »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">数组 函数</a></li>
+    <li>用给定的值填充数组</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.array-fill" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_fill</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">array_fill</span> &mdash; <span class="dc-title">用给定的值填充数组</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.array-fill-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>array_fill</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$start_index</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+   用 <code class="parameter">value</code> 参数的值填充 <code class="parameter">count</code> 个元素到数组，
+   开始键名由 <code class="parameter">start_index</code> 参数指定。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.array-fill-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">start_index</code></dt>
+
+     <dd>
+
+      <p class="para">
+       返回的数组的第一个索引值。
+      </p>
+      <p class="para">
+       如果 <code class="parameter">start_index</code> 是负数，
+       那么返回的数组的第一个索引将会是
+       <code class="parameter">start_index</code> ，而后面索引则从0开始。
+          (参见 <a href="function.array-fill.html#function.array-fill.example.basic" class="link">例子</a>)。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt>
+<code class="parameter">count</code></dt>
+
+     <dd>
+
+      <p class="para">
+       要插入元素的数量。
+       必须大于或等于 0。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt>
+<code class="parameter">value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       用来填充的值。
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-fill-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回填充后的数组。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.array-fill-errors">
+  <h3 class="title">错误／异常</h3>
+  <p class="para">
+   如果 <code class="parameter">count</code> 小于零，将会抛出 <strong><code>E_WARNING</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.array-fill-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="function.array-fill.example.basic">
+    <p><strong>示例 #1 <span class="function"><strong>array_fill()</strong></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_fill</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_fill</span><span style="color: #007700">(-</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pear'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [5]  =&gt; banana
+    [6]  =&gt; banana
+    [7]  =&gt; banana
+    [8]  =&gt; banana
+    [9]  =&gt; banana
+    [10] =&gt; banana
+)
+Array
+(
+    [-2] =&gt; pear
+    [0] =&gt; pear
+    [1] =&gt; pear
+    [2] =&gt; pear
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.array-fill-notes">
+  <h3 class="title">注释</h3>
+  <p class="para">
+   参见手册上<a href="language.types.array.html" class="link">数组</a>一节里关于负数的键的详细解释。
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.array-fill-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.array-fill-keys.html" class="function" rel="rdfs-seeAlso">array_fill_keys()</a> - 使用指定的键和值填充数组</span></li>
+    <li class="member"><span class="function"><a href="function.str-repeat.html" class="function" rel="rdfs-seeAlso">str_repeat()</a> - 重复一个字符串</span></li>
+    <li class="member"><span class="function"><a href="function.range.html" class="function" rel="rdfs-seeAlso">range()</a> - 根据范围创建数组，包含指定的元素</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

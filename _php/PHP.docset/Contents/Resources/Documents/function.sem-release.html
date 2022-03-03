@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Release a semaphore</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.sem-get.html">« sem_get</a></li>
+      <li style="float: right;"><a href="function.sem-remove.html">sem_remove »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sem.html">Semaphore 函数</a></li>
+    <li>Release a semaphore</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.sem-release" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sem_release</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">sem_release</span> &mdash; <span class="dc-title">Release a semaphore</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.sem-release-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>sem_release</strong></span>(<span class="methodparam"><span class="type"><a href="class.sysvsemaphore.html" class="type SysvSemaphore">SysvSemaphore</a></span> <code class="parameter">$semaphore</code></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>sem_release()</strong></span> releases the semaphore if it
+   is currently acquired by the calling process, otherwise
+   a warning is generated.
+  </p>
+  <p class="para">
+   After releasing the semaphore, <span class="function"><a href="function.sem-acquire.html" class="function">sem_acquire()</a></span>
+   may be called to re-acquire it.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.sem-release-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">semaphore</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A Semaphore as returned by
+       <span class="function"><a href="function.sem-get.html" class="function">sem_get()</a></span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sem-release-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.sem-release-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        <code class="parameter">semaphore</code> expects a <span class="classname"><a href="class.sysvsemaphore.html" class="classname">SysvSemaphore</a></span>
+        instance now; previously, a <span class="type">resource</span> was expected.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.sem-release-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.sem-get.html" class="function" rel="rdfs-seeAlso">sem_get()</a> - Get a semaphore id</span></li>
+    <li class="member"><span class="function"><a href="function.sem-acquire.html" class="function" rel="rdfs-seeAlso">sem_acquire()</a> - Acquire a semaphore</span></li>
+   </ul>
+  </p>
+ </div>
+  
+
+</div></div></div></body></html>

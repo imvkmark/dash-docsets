@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>为 SQL 查询里的字符串添加引号</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.query.html">« PDO::query</a></li>
+      <li style="float: right;"><a href="pdo.rollback.html">PDO::rollBack »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>为 SQL 查询里的字符串添加引号</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.quote" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::quote</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.2.1)</p><p class="refpurpose"><span class="refname">PDO::quote</span> &mdash; <span class="dc-title">
+   为 SQL 查询里的字符串添加引号
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.quote-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::quote</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$parameter_type</code><span class="initializer"> = PDO::PARAM_STR</span></span>): <span class="type">string</span></div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>PDO::quote()</strong></span> 为输入的字符串添加引号（如果有需要），并对特殊字符进行转义，且引号的风格和底层驱动适配。
+  </p>
+  <p class="para">
+   如果使用此函数构建 SQL 语句，<em class="emphasis">强烈</em>建议使用 <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span> 配合参数构建，而不是用  <span class="function"><strong>PDO::quote()</strong></span> 把用户输入的数据拼接进 SQL 语句。
+   使用 prepare 语句处理参数，不仅仅可移植性更好，而且更方便、免疫 SQL 注入；相对于拼接 SQL 更快，客户端和服务器都能缓存编译后的 SQL 查询。
+  </p>
+  <p class="para">
+   不是所有的 PDO 驱动都实现了此功能（例如 PDO_ODBC）。
+   考虑使用 prepare 代替。
+  </p>
+  <div class="caution"><strong class="caution">警告</strong>
+   <h1 class="title">安全性：默认字符集</h1>
+   <p class="para">
+    字符集不仅仅要在数据库服务器上设置，也要为数据库连接设置（取决于驱动），它影响了 <span class="methodname"><strong>PDO::quote()</strong></span>。
+   
+    更多信息可参考<a href="pdo.drivers.html" class="link">PDO 驱动文档</a>。
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-pdo.quote-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">string</code></dt>
+
+      <dd>
+
+       <p class="para">
+        要添加引号的字符串。
+       </p>
+      </dd>
+
+     
+    
+     <dt>
+<code class="parameter">parameter_type</code></dt>
+
+      <dd>
+
+       <p class="para">
+        为驱动提示数据类型，以便选择引号风格。
+       </p>
+      </dd>
+
+     
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.quote-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回加引号的字符串，理论上可以安全用于 SQL 语句。 如果驱动不支持这种方式，将返回 <strong><code>false</code></strong> 。
+  </p>
+ </div>
+
+
+ 
+
+ <div class="refsect1 examples" id="refsect1-pdo.quote-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-1020">
+    <p><strong>示例 #1 普通字符串加引号</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite:/home/lynn/music.sql3'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;简单字符串&nbsp;*/<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Nice'</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"Unquoted&nbsp;string:&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"Quoted&nbsp;string:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Unquoted string: Nice
+Quoted string: &#039;Nice&#039;
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-1021">
+    <p><strong>示例 #2 危险字符串加引号</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite:/home/lynn/music.sql3'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;危险字符串&nbsp;*/<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Naughty&nbsp;\'&nbsp;string'</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"Unquoted&nbsp;string:&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"Quoted&nbsp;string:"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Unquoted string: Naughty &#039; string
+Quoted string: &#039;Naughty &#039;&#039; string&#039;
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-1022">
+    <p><strong>示例 #3 复杂字符串加引号</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite:/home/lynn/music.sql3'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;复杂字符串&nbsp;*/<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Co'mpl''ex&nbsp;\"st'\"ring"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"Unquoted&nbsp;string:&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"Quoted&nbsp;string:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Unquoted string: Co&#039;mpl&#039;&#039;ex &quot;st&#039;&quot;ring
+Quoted string: &#039;Co&#039;&#039;mpl&#039;&#039;&#039;&#039;ex &quot;st&#039;&#039;&quot;ring&#039;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdo.quote-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="pdo.prepare.html" class="function" rel="rdfs-seeAlso">PDO::prepare()</a> - 准备要执行的语句，并返回语句对象</span></li>
+    <li class="member"><span class="function"><a href="pdostatement.execute.html" class="function" rel="rdfs-seeAlso">PDOStatement::execute()</a> - 执行一条预处理语句</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

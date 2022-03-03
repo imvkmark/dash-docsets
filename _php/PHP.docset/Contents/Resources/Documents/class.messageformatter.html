@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>The MessageFormatter class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="normalizer.normalize.html">« Normalizer::normalize</a></li>
+      <li style="float: right;"><a href="messageformatter.create.html">MessageFormatter::create »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.intl.html">intl</a></li>
+    <li>The MessageFormatter class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.messageformatter" class="reference">
+ <h1 class="title">The MessageFormatter class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p>
+
+  
+  <div class="section" id="messageformatter.intro">
+   <h2 class="title">简介</h2>
+   <p class="simpara">
+    MessageFormatter is a concrete class that enables users to produce
+    concatenated, language-neutral messages. The methods supplied in this
+    class are used to build all the messages that are seen by end users.
+   </p>
+   <p class="simpara">
+    The MessageFormatter class assembles messages from various fragments (such
+    as text fragments, numbers, and dates) supplied by the program. Because of
+    the MessageFormatter class, the program does not need to know the order of
+    the fragments. The class uses the formatting specifications for the
+    fragments to assemble them into a message that is contained in a single
+    string within a resource bundle. For example, MessageFormatter enables you
+    to print the phrase &quot;Finished printing x out of y files...&quot; in a manner
+    that still allows for flexibility in translation.
+   </p>
+   <p class="simpara">
+    Previously, an end user message was created as a sentence and handled as a
+    string. This procedure created problems for localizers because the
+    sentence structure, word order, number format and so on are very different
+    from language to language. The language-neutral way to create messages
+    keeps each part of the message separate and provides keys to the data.
+    Using these keys, the MessageFormatter class can concatenate the parts of
+    the message, localize them, and display a well-formed string to the end
+    user.
+   </p>
+   <p class="simpara">
+    MessageFormatter takes a set of objects, formats them, and then inserts
+    the formatted strings into the pattern at the appropriate places. Choice
+    formats can be used in conjunction with MessageFormatter to handle
+    plurals, match numbers, and select from an array of items. Typically, the
+    message format will come from resources and the arguments will be
+    dynamically set at runtime.
+   </p>
+  </div>
+  
+
+  <div class="section" id="messageformatter.synopsis">
+   <h2 class="title">类摘要</h2>
+
+   
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">MessageFormatter</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="messageformatter.create.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="messageformatter.create.html" class="methodname">create</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>): <span class="type"><span class="type">?</span><span class="type"><a href="class.messageformatter.html" class="type MessageFormatter">MessageFormatter</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="messageformatter.formatmessage.html" class="methodname">formatMessage</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$values</code></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="messageformatter.format.html" class="methodname">format</a></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$values</code></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="messageformatter.geterrorcode.html" class="methodname">getErrorCode</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="messageformatter.geterrormessage.html" class="methodname">getErrorMessage</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="messageformatter.getlocale.html" class="methodname">getLocale</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="messageformatter.getpattern.html" class="methodname">getPattern</a></span>(): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="messageformatter.parsemessage.html" class="methodname">parseMessage</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="messageformatter.parse.html" class="methodname">parse</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="messageformatter.setpattern.html" class="methodname">setPattern</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>): <span class="type">bool</span></div>
+
+   }</div>
+   
+
+  </div>
+
+  <div class="section" id="messageformatter.seealso">
+   <h2 class="title">参见</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member">
+      <a href="https://unicode-org.github.io/icu/userguide/format_parse/" class="link external">&raquo;&nbsp;
+       ICU formatting documentation
+      </a>
+     </li>
+     <li class="member">
+      <a href="https://unicode-org.github.io/icu/userguide/format_parse/messages/" class="link external">&raquo;&nbsp;
+       ICU message formatting description
+      </a>
+     </li>
+     <li class="member">
+      <a href="https://unicode-org.github.io/icu/userguide/format_parse/messages/" class="link external">&raquo;&nbsp;ICU message formatters</a>
+     </li>
+     <li class="member">
+      <a href="http://icu-project.org/apiref/icu4c/classChoiceFormat.html#details" class="link external">&raquo;&nbsp;ICU choice formatters</a>
+     </li>
+    </ul>
+   </p>
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="messageformatter.create.html">MessageFormatter::create</a> — Constructs a new Message Formatter</li><li><a href="messageformatter.formatmessage.html">MessageFormatter::formatMessage</a> — Quick format message</li><li><a href="messageformatter.format.html">MessageFormatter::format</a> — Format the message</li><li><a href="messageformatter.geterrorcode.html">MessageFormatter::getErrorCode</a> — Get the error code from last operation</li><li><a href="messageformatter.geterrormessage.html">MessageFormatter::getErrorMessage</a> — Get the error text from the last operation</li><li><a href="messageformatter.getlocale.html">MessageFormatter::getLocale</a> — Get the locale for which the formatter was created</li><li><a href="messageformatter.getpattern.html">MessageFormatter::getPattern</a> — Get the pattern used by the formatter</li><li><a href="messageformatter.parsemessage.html">MessageFormatter::parseMessage</a> — Quick parse input string</li><li><a href="messageformatter.parse.html">MessageFormatter::parse</a> — Parse input string according to pattern</li><li><a href="messageformatter.setpattern.html">MessageFormatter::setPattern</a> — Set the pattern used by the formatter</li></ul>
+</div>
+</div></div></body></html>

@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>DateInterval 类</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="datetimezone.listidentifiers.html">« DateTimeZone::listIdentifiers</a></li>
+      <li style="float: right;"><a href="dateinterval.construct.html">DateInterval::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.datetime.html">日期/时间</a></li>
+    <li>DateInterval 类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.dateinterval" class="reference">
+
+ <h1 class="title">DateInterval 类</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
+
+
+  <div class="section" id="dateinterval.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+      表示一个时间周期的类。
+   </p>
+   <p class="para">
+    一个时间周期表示固定量的时间（多少年，月，天，小时等），
+    也可以表示一个字符串格式的相对时间，
+    当表示相对时间的时候，字符串格式是 <span class="classname"><a href="class.datetime.html" class="classname">DateTime</a></span> 类的构造函数所支持的格式。
+   </p>
+  </div>
+
+
+  <div class="section" id="dateinterval.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">DateInterval</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 属性 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.y">$<var class="varname">y</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">integer</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.m">$<var class="varname">m</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">integer</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.d">$<var class="varname">d</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">integer</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.h">$<var class="varname">h</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">integer</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.i">$<var class="varname">i</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">integer</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.s">$<var class="varname">s</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">float</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.f">$<var class="varname">f</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">integer</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.invert">$<var class="varname">invert</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.days">$<var class="varname">days</var></a></var>;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="dateinterval.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$duration</code></span>)</div>
+
+    
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="dateinterval.createfromdatestring.html" class="methodname">createFromDateString</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$datetime</code></span>): <span class="type"><span class="type"><a href="class.dateinterval.html" class="type DateInterval">DateInterval</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="dateinterval.format.html" class="methodname">format</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>): <span class="type">string</span></div>
+
+
+   }</div>
+
+
+  </div>
+  
+  <div class="section" id="dateinterval.props">
+   <h2 class="title">属性</h2>
+   <dl>
+    
+     <dt id="dateinterval.props.y"><var class="varname">y</var></dt>
+
+     <dd>
+
+      <p class="para">
+       多少年。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.m"><var class="varname">m</var></dt>
+
+     <dd>
+
+      <p class="para">
+       多少月。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.d"><var class="varname">d</var></dt>
+
+     <dd>
+
+      <p class="para">
+       多少天。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.h"><var class="varname">h</var></dt>
+
+     <dd>
+
+      <p class="para">
+       多少小时。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.i"><var class="varname">i</var></dt>
+
+     <dd>
+
+      <p class="para">
+       多少分钟。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.s"><var class="varname">s</var></dt>
+
+     <dd>
+
+      <p class="para">
+       多少秒。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.f"><var class="varname">f</var></dt>
+
+     <dd>
+
+      <p class="para">
+       多少微秒。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.invert"><var class="varname">invert</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="literal">1</code> 表示一个负的时间周期，
+       <code class="literal">0</code> 表示一个正的时间周期。
+       请参见： <span class="methodname"><a href="dateinterval.format.html" class="methodname">DateInterval::format()</a></span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.days"><var class="varname">days</var></dt>
+
+     <dd>
+
+      <p class="para">
+       如果 DateInterval 对象是由
+       <span class="function"><a href="datetime.diff.html" class="function">DateTime::diff()</a></span> 函数创建的，
+       那么它表示开始日期和结束日期之间包含了多少天。
+       否则，<var class="varname">days</var> 属性为 <strong><code>false</code></strong>。
+      </p>
+      <p class="para">
+       在 PHP 5.4.20/5.5.4 之前版本中，此属性不会为 <strong><code>false</code></strong>，
+       而是 -99999。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  <div class="section" id="dateinterval.changelog">
+   <h2 class="title">更新日志</h2>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>版本</th>
+        <th>说明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>7.1.0</td>
+        <td>增加 <var class="varname">f</var> 属性。</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="dateinterval.construct.html">DateInterval::__construct</a> — Creates a new DateInterval object</li><li><a href="dateinterval.createfromdatestring.html">DateInterval::createFromDateString</a> — Sets up a DateInterval from the relative parts of the string</li><li><a href="dateinterval.format.html">DateInterval::format</a> — Formats the interval</li></ul>
+</div>
+</div></div></body></html>

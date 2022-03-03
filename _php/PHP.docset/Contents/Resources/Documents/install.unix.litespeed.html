@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Unix 系统下的 LiteSpeed、OpenLiteSpeed Web 服务器</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.unix.lighttpd-14.html">« Unix 平台的 Lighttpd 1.4</a></li>
+      <li style="float: right;"><a href="install.unix.commandline.html">CGI 和命令行设置 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.unix.html">Unix 系统下的安装</a></li>
+    <li>Unix 系统下的 LiteSpeed、OpenLiteSpeed Web 服务器</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.unix.litespeed" class="sect1">
+ <h2 class="title">Unix 系统下的 LiteSpeed、OpenLiteSpeed Web 服务器</h2>
+
+ <p class="para">
+  LiteSpeed PHP 是一个通过 LiteSpeed SAPI 方式和 LiteSpeed 协同工作的 PHP 优化编译器。LSPHP 有自己的进程和独立的二进制包，可用作简单的命令行二进制文件在命令行中执行 PHP 脚本。
+ </p>
+
+ <p class="para">
+  LSAPI 是一个高度优化的 API，允许 LiteSpeed 与第三方 web 引擎之间进行通信。它的协议和 FCGI 很像，但更加高效。
+ </p>
+
+ <p class="para">
+  本文档将包含安装和配置 PHP 的 LSAPI，并将 LSAPI 适用于 LiteSpeed Web 服务器和 OpenLiteSpeed Web 服务器。
+ </p>
+
+ <p class="para">
+  本文档假设 LSWS 或者 OLS 使用默认路径和标记安装。这两个 web 服务器的默认路径为： /usr/local/lsws，并且都可以从 bin 子目录下运行。
+ </p>
+
+ <p class="para">
+  请注意：本文档中对版本号使用 <code class="literal">x</code> 替代，以确保本文档在将来保持正确，请根据需要替换对应的版本号。
+ </p>
+
+ <ol type="1">
+  <li class="listitem">
+   <p class="para">
+    要获取和安装 LiteSpeed Web 服务器或者 OpenLiteSpeed Web 服务器，请访问 LiteSpeed Web 服务器文档 
+    <a href="https://docs.litespeedtech.com/products/lsws/installation/" class="link external">&raquo;&nbsp;安装页面</a>
+    或者 OpenLiteSpeed 文档 
+    <a href="https://openlitespeed.org/kb/category/installation/more-installation-methods/" class="link external">&raquo;&nbsp;安装页面</a>.
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    获取并且解压PHP源码：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+mkdir /home/php
+cd /home/php
+wget http://us1.php.net/get/php-x.x.x.tar.gz/from/this/mirror
+tar -zxvf php-x.x.x.tar.gz
+cd php-x.x.x
+</pre></div>
+    </div>
+   </div>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    配置并构建 PHP。这里可以根据各种选项来定制 PHP，例如需要开启哪些扩展。运行 ./configure --help 可以获得可用的选项列表。在示例中，我们将使用 LiteSpeed Web 服务器默认推荐的配置选项：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+./configure ... &#039;--with-litespeed&#039;
+make
+sudo make install
+</pre></div>
+    </div>
+   </div>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    检查 LSPHP 是否安装
+   </p>
+
+   <p class="para">
+    检查 PHP 是否成功安装的一种最简单的方式是运行以下代码：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+cd /usr/local/lsws/fcgi-bin/
+./lsphp5 -v
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    它将会返回新构建的 PHP 信息：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP 5.6.17 (litespeed) (built: Mar 22 2016 11:34:19)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    注意括号中的 <code class="literal">litespeed</code>。这意味着构建的 PHP 支持 LSAPI。
+   </p>
+  </li>
+ </ol>
+
+ <p class="para">
+  按照上面的步骤，LiteSpeed / OpenLiteSpeed Web 服务器已经作为 PHP 的 SAPI 扩展来运行。LSWS / OLS 和 PHP 更多的配置选项，请查看 LiteSpeed 文档：
+  <a href="https://docs.litespeedtech.com/extapp/php/configuration/control/" class="link external">&raquo;&nbsp;PHP</a>.
+ </p>
+
+ <p class="para">
+  从命令行使用 LSPHP：
+ </p>
+
+ <p class="para">
+  LSPHP(LSAPI + PHP) 命令行模式，适用于远程服务器上没必要运行 web 服务，
+  但是又需要处理 PHP 程序的情况。它常用于本地独立的 web 服务器处理 PHP 程序。
+  这个设置适合将 PHP 的处理拆分到远程服务器上，具有良好的服务可伸缩性。
+ </p>
+
+ <p class="para">
+  从远程服务器的命令行中启动 lsphp 服务：
+  LSPHP 是可执行文件，可以手动启动，通过命令行选项 -b socket_address 来绑定到 IPv4，IPv6，或者 Unix 域套接字地址上。
+ </p>
+
+ <p class="para">
+  例如：
+ </p>
+
+ <p class="para">
+  LSPHP 绑定到所有 IPv4 和 IPv6 地址的 3000 端口：
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+/path/to/lsphp -b [::]:3000
+</pre></div>
+  </div>
+ </div>
+
+ <p class="para">
+  LSPHP 绑定到所有 IPv4 地址的 3000 端口：
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+/path/to/lsphp -b *:3000
+</pre></div>
+  </div>
+ </div>
+
+ <p class="para">
+  LSPHP 绑定到 192.168.0.2:3000：
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+/path/to/lsphp -b 192.168.0.2:3000
+</pre></div>
+  </div>
+ </div>
+
+ <p class="para">
+  LSPHP 通过 Unix 域套接字<code class="literal">/tmp/lsphp_manual.sock</code> 接受请求：
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+/path/to/lsphp -b /tmp/lsphp_manual.sock
+</pre></div>
+  </div>
+ </div>
+
+ <p class="para">
+  在 LSPHP 执行前设置环境变量：
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP_LSAPI_MAX_REQUESTS=500 PHP_LSAPI_CHILDREN=35 /path/to/lsphp -b IP_address:port
+</pre></div>
+  </div>
+ </div>
+
+ <p class="para">
+  目前 LiteSpeed PHP 可适用于 LiteSpeed Web 服务器，OpenLiteSpeed Web 服务器和 Apache mod_lsapi 一起使用。有关服务器端的配置的步骤，请浏览相关的文档页面：
+  <a href="https://docs.litespeedtech.com/extapp/php/getting_started/" class="link external">&raquo;&nbsp;LiteSpeed Web 服务器</a> 
+  和 <a href="https://openlitespeed.org/kb/category/installation/php-installation-guides/" class="link external">&raquo;&nbsp;OpenLiteSpeed</a>。
+ </p>
+
+ <p class="para">
+  LSPHP 也可以通过其它的方式来安装。
+ </p>
+
+ <p class="para">
+  CentOS：
+  在 CentOS 系统中，LSPHP 可以从 LiteSpeed 存储库或 Remi 存储库中通过 <a href="https://docs.litespeedtech.com/extapp/php/getting_started/#litespeed-repo-search-packages" class="link external">&raquo;&nbsp;RPM</a> 的方式安装。
+ </p>
+
+ <p class="para">
+  Debian：
+  在 Debian 系统中，LSPHP 可以从 LiteSpeed 存储库中通过 <a href="https://docs.litespeedtech.com/extapp/php/getting_started/#litespeed-repo-search-packages" class="link external">&raquo;&nbsp;apt</a> 的方式安装。
+ </p>
+
+ <p class="para">
+  cPanel：
+  访问相应的 <a href="https://docs.litespeedtech.com/cp/cpanel/quickstart/#easyapache-integration" class="link external">&raquo;&nbsp;wiki 页面</a>了解如何通过 cPanel 和 LSWS/OLS 在 EasyApache4 中安装 LSPHP。
+ </p>
+
+ <p class="para">
+  Plesk：
+  Plesk 可以在 CentOS，CloudLinux，Debian 和 Ubuntu 上使用 LSPHP，想获取更多的信息，请参考对应的<a href="https://docs.litespeedtech.com/cp/plesk/" class="link external">&raquo;&nbsp;文档页面</a>
+ </p>
+</div></div></div></body></html>

@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>ArrayIterator 类</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="appenditerator.valid.html">« AppendIterator::valid</a></li>
+      <li style="float: right;"><a href="arrayiterator.append.html">ArrayIterator::append »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="spl.iterators.html">迭代器</a></li>
+    <li>ArrayIterator 类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.arrayiterator" class="reference">
+ <h1 class="title">ArrayIterator 类</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5, PHP 7, PHP 8)</p>
+ 
+
+  <div class="section" id="arrayiterator.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    这个迭代器允许在遍历数组和对象时删除和更新值与键。
+   </p>
+   <p class="para">
+    当你想多次遍历相同数组时你需要实例化 ArrayObject，然后让这个实例创建一个 ArrayIterator 实例。
+    当你想遍历相同数组时多次你需要实例 ArrayObject 并且让这个实例创建一个 ArrayIterator 实例，然后使用
+    <a href="control-structures.foreach.html" class="link">foreach</a> 或者手动调用 getIterator() 方法。
+   </p>
+  </div>
+
+ 
+  <div class="section" id="arrayiterator.synopsis">
+   <h2 class="title">类摘要</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">ArrayIterator</strong>
+     </span>
+ 
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.seekableiterator.html" class="interfacename">SeekableIterator</a></span><span class="oointerface">,  <a href="class.arrayaccess.html" class="interfacename">ArrayAccess</a></span><span class="oointerface">,  <a href="class.serializable.html" class="interfacename">Serializable</a></span><span class="oointerface">,  <a href="class.countable.html" class="interfacename">Countable</a></span> {</div>
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 常量 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.arrayiterator.html#arrayiterator.constants.std-prop-list"><var class="varname">STD_PROP_LIST</var></a></var><span class="initializer"> = 1</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.arrayiterator.html#arrayiterator.constants.array-as-props"><var class="varname">ARRAY_AS_PROPS</var></a></var><span class="initializer"> = 2</span>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">object</span></span> <code class="parameter">$array</code><span class="initializer"> = []</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.append.html" class="methodname">append</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.asort.html" class="methodname">asort</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>SORT_REGULAR</code></strong></span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.count.html" class="methodname">count</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.current.html" class="methodname">current</a></span>(): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.getarraycopy.html" class="methodname">getArrayCopy</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.getflags.html" class="methodname">getFlags</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.key.html" class="methodname">key</a></span>(): <span class="type"><span class="type">string</span>|<span class="type">int</span>|<span class="type">null</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.ksort.html" class="methodname">ksort</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>SORT_REGULAR</code></strong></span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.natcasesort.html" class="methodname">natcasesort</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.natsort.html" class="methodname">natsort</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.next.html" class="methodname">next</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.offsetexists.html" class="methodname">offsetExists</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.offsetget.html" class="methodname">offsetGet</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.offsetset.html" class="methodname">offsetSet</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.offsetunset.html" class="methodname">offsetUnset</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.rewind.html" class="methodname">rewind</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.seek.html" class="methodname">seek</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.serialize.html" class="methodname">serialize</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.setflags.html" class="methodname">setFlags</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.uasort.html" class="methodname">uasort</a></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.uksort.html" class="methodname">uksort</a></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.unserialize.html" class="methodname">unserialize</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayiterator.valid.html" class="methodname">valid</a></span>(): <span class="type">bool</span></div>
+
+   }</div>
+ 
+  </div>
+ 
+  <div class="section" id="arrayiterator.constants">
+   <h2 class="title">预定义常量</h2>
+   <div class="section" id="arrayiterator.constants.flags">
+    <h2 class="title">ArrayIterator 标记</h2>
+    <dl>
+
+     
+      <dt id="arrayiterator.constants.std-prop-list"><strong><code>ArrayIterator::STD_PROP_LIST</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Properties of the object have their normal functionality when accessed as list (var_dump, foreach, etc.).</p>
+      </dd>
+
+     
+
+     
+      <dt id="arrayiterator.constants.array-as-props"><strong><code>ArrayIterator::ARRAY_AS_PROPS</code></strong></dt>
+
+      <dd>
+
+       <p class="para">可以通过属性访问条目（读写都支持）。</p>
+      </dd>
+
+     
+    </dl>
+
+   </div>
+  </div>
+  
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="arrayiterator.append.html">ArrayIterator::append</a> — Append an element</li><li><a href="arrayiterator.asort.html">ArrayIterator::asort</a> — Sort entries by values</li><li><a href="arrayiterator.construct.html">ArrayIterator::__construct</a> — Construct an ArrayIterator</li><li><a href="arrayiterator.count.html">ArrayIterator::count</a> — Count elements</li><li><a href="arrayiterator.current.html">ArrayIterator::current</a> — Return current array entry</li><li><a href="arrayiterator.getarraycopy.html">ArrayIterator::getArrayCopy</a> — Get array copy</li><li><a href="arrayiterator.getflags.html">ArrayIterator::getFlags</a> — Get behavior flags</li><li><a href="arrayiterator.key.html">ArrayIterator::key</a> — Return current array key</li><li><a href="arrayiterator.ksort.html">ArrayIterator::ksort</a> — Sort entries by keys</li><li><a href="arrayiterator.natcasesort.html">ArrayIterator::natcasesort</a> — Sort entries naturally, case insensitive</li><li><a href="arrayiterator.natsort.html">ArrayIterator::natsort</a> — Sort entries naturally</li><li><a href="arrayiterator.next.html">ArrayIterator::next</a> — Move to next entry</li><li><a href="arrayiterator.offsetexists.html">ArrayIterator::offsetExists</a> — Check if offset exists</li><li><a href="arrayiterator.offsetget.html">ArrayIterator::offsetGet</a> — Get value for an offset</li><li><a href="arrayiterator.offsetset.html">ArrayIterator::offsetSet</a> — Set value for an offset</li><li><a href="arrayiterator.offsetunset.html">ArrayIterator::offsetUnset</a> — Unset value for an offset</li><li><a href="arrayiterator.rewind.html">ArrayIterator::rewind</a> — Rewind array back to the start</li><li><a href="arrayiterator.seek.html">ArrayIterator::seek</a> — Seek to position</li><li><a href="arrayiterator.serialize.html">ArrayIterator::serialize</a> — Serialize</li><li><a href="arrayiterator.setflags.html">ArrayIterator::setFlags</a> — Set behaviour flags</li><li><a href="arrayiterator.uasort.html">ArrayIterator::uasort</a> — Sort with a user-defined comparison function and maintain index association</li><li><a href="arrayiterator.uksort.html">ArrayIterator::uksort</a> — Sort by keys using a user-defined comparison function</li><li><a href="arrayiterator.unserialize.html">ArrayIterator::unserialize</a> — Unserialize</li><li><a href="arrayiterator.valid.html">ArrayIterator::valid</a> — Check whether array contains more entries</li></ul>
+</div>
+</div></div></body></html>

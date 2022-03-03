@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>返回当前 FTP 连接的各种不同的选项设置</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ftp-fput.html">« ftp_fput</a></li>
+      <li style="float: right;"><a href="function.ftp-get.html">ftp_get »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ftp.html">FTP 函数</a></li>
+    <li>返回当前 FTP 连接的各种不同的选项设置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ftp-get-option" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ftp_get_option</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ftp_get_option</span> &mdash; <span class="dc-title">返回当前 FTP 连接的各种不同的选项设置</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.ftp-get-option-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ftp_get_option</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$ftp_stream</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   此函数会返回连接句柄为 <code class="parameter">ftp_stream</code>，指定键值 <code class="parameter">option</code> 的值。
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.ftp-get-option-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
+
+     <dd>
+
+      <p class="para">
+        FTP 连接资源句柄。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">option</code></dt>
+
+     <dd>
+
+      <p class="para">
+        截止到目前，支持的选项有：
+       <table class="doctable table">
+        <caption><strong>支持的运行时 FTP 选项</strong></caption>
+        
+         <tbody class="tbody">
+          <tr>
+           <td><strong><code>FTP_TIMEOUT_SEC</code></strong></td>
+           <td>
+            返回当前设定的网络操作的超时时间。
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code>FTP_AUTOSEEK</code></strong></td>
+           <td>
+            此选项打开时返回 <strong><code>true</code></strong>，否则返回 <strong><code>false</code></strong>。
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ftp-get-option-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+    如果成功则返回选项的值，否则，如果给定的参数 <code class="parameter">option</code>
+    选项不被支持则返回 <strong><code>false</code></strong>，同时会抛出一条警告（warning）信息。
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.ftp-get-option-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4182">
+    <p><strong>示例 #1 <span class="function"><strong>ftp_get_option()</strong></span> 示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Get&nbsp;the&nbsp;timeout&nbsp;of&nbsp;the&nbsp;given&nbsp;FTP&nbsp;stream<br /></span><span style="color: #0000BB">$timeout&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_get_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_TIMEOUT_SEC</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.ftp-get-option-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ftp-set-option.html" class="function" rel="rdfs-seeAlso">ftp_set_option()</a> - 设置各种 FTP 运行时选项</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

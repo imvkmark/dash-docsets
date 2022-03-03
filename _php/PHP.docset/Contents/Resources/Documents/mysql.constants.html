@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>预定义常量</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="changelog.mysql.html">« 更新日志</a></li>
+      <li style="float: right;"><a href="mysql.examples.html">范例 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysql.html">Mysql（原始）</a></li>
+    <li>预定义常量</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysql.constants" class="appendix">
+ <h1>预定义常量</h1>
+
+ <p class="simpara">下列常量由此扩展定义，且仅在此扩展编译入 PHP 或在运行时动态载入时可用。</p>
+ <p class="para">
+  在 PHP 4.3.0 以后的版本中，允许在
+  <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> 函数和 <span class="function"><a href="function.mysql-pconnect.html" class="function">mysql_pconnect()</a></span>
+  函数中指定更多的客户端标记。下面列出所定义的常量：
+  <table id="mysql.client-flags" class="doctable table">
+   <caption><strong>MySQL 客户端常量</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>常量</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr id="constant.mysql-client-compress">
+       <td><strong><code>MYSQL_CLIENT_COMPRESS</code></strong></td>
+       <td>使用压缩的通讯协议</td>
+      </tr>
+
+      <tr id="constant.mysql-client-ignore-space">
+       <td><strong><code>MYSQL_CLIENT_IGNORE_SPACE</code></strong></td>
+       <td>允许在函数名后留空格位</td>
+      </tr>
+
+      <tr id="constant.mysql-client-interactive">
+       <td><strong><code>MYSQL_CLIENT_INTERACTIVE</code></strong></td>
+       <td>允许设置断开连接之前所空闲等候的 interactive_timeout 时间（代替 wait_timeout）。</td>
+      </tr>
+
+      <tr id="constant.mysql-client-ssl">
+       <td><strong><code>MYSQL_CLIENT_SSL</code></strong></td>
+       <td>
+        使用 SSL 加密。本标志仅在 MySQL 客户端库版本为
+        4.x 或更高版本时可用。在 PHP 4 和 Windows 版的 PHP 5
+        安装包中绑定的都是 3.23.x。
+       </td>
+      </tr>
+
+     </tbody>
+    
+  </table>
+
+ </p>
+
+ <p class="para">
+  <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> 函数使用一个常量来表示所返回数组的类型。下面是常量的定义：
+  <table class="doctable table">
+   <caption><strong>MySQL fetch 常量</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>常量</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr id="constant.mysql-assoc">
+      <td><strong><code>MYSQL_ASSOC</code></strong></td>
+      <td>
+       返回的数据列使用字段名作为数组的索引名。
+      </td>
+     </tr>
+
+     <tr id="constant.mysql-both">
+      <td><strong><code>MYSQL_BOTH</code></strong></td>
+      <td>
+       返回的数据列使用字段名及数字索引作为数组的索引名。
+      </td>
+     </tr>
+
+     <tr id="constant.mysql-num">
+      <td><strong><code>MYSQL_NUM</code></strong></td>
+      <td>
+       返回的数据列使用数字索引作为数组的索引名。索引从 0 开始，表示返回结果的第一个字段。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+</div></div></body></html>

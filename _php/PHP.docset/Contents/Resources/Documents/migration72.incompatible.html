@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>不向下兼容的变更</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration72.constants.html">« 新全局常量</a></li>
+      <li style="float: right;"><a href="migration72.deprecated.html">PHP 7.2.x 中废弃的功能 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration72.html">从 PHP 7.1.x 移植到 PHP 7.2.x</a></li>
+    <li>不向下兼容的变更</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration72.incompatible" class="sect1">
+ <h2 class="title">不向下兼容的变更</h2>
+
+ <div class="sect2" id="migration72.incompatible.number_format-no-neg-zero">
+  <h3 class="title">防止 <span class="function"><a href="function.number-format.html" class="function">number_format()</a></span> 返回负零</h3>
+
+  <p class="para">
+   之前版本中，<span class="function"><a href="function.number-format.html" class="function">number_format()</a></span>
+   有可能会返回 <code class="literal">-0</code>。虽然这是符合 IEEE 754
+   规范的，但是这样会导致可读性不好，新版本中会将这样的负数去掉。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">number_format</span><span style="color: #007700">(-</span><span style="color: #0000BB">0.01</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;新版本输出&nbsp;string(1)&nbsp;"0"&nbsp;旧版本输出&nbsp;string(2)&nbsp;"-0"</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.object-array-casts">
+  <h3 class="title">转换对象和数组中的数字键</h3>
+
+  <p class="para">
+   将数组转换为对象，或将对象转换为数组时，数字键现在得到了更好的处理（无论是通过显式转换还是通过
+   <span class="function"><a href="function.settype.html" class="function">settype()</a></span> 函数）。
+  </p>
+
+  <p class="para">
+   这意味着现在可以访问数组中的整数(或者说是字符串整数)键，这些键会映射到对象中：
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;array&nbsp;to&nbsp;object<br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;(object)</span><span style="color: #0000BB">$arr</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'0'</span><span style="color: #007700">},&nbsp;</span><span style="color: #FF8000">//&nbsp;新写法<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">}&nbsp;</span><span style="color: #FF8000">//&nbsp;新写法<br /></span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">以上例程会输出：</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(stdClass)#1 (1) {
+  [&quot;0&quot;]=&gt;    // string key now, rather than integer key
+  int(1)
+}
+int(1)
+int(1)
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   从对象转换成的数组中的整数（或者说是字符串整数）键现在也可以直接访问：
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;object&nbsp;to&nbsp;array<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;class&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">}&nbsp;=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />};<br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;(array)</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #FF8000">//&nbsp;新写法<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">]&nbsp;</span><span style="color: #FF8000">//&nbsp;新写法<br /></span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">以上例程会输出：</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [0]=&gt;    // integer key now, rather than string key
+  int(1)
+}
+int(1)
+int(1)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.no-null-to-get_class">
+  <h3 class="title"><span class="function"><a href="function.get-class.html" class="function">get_class()</a></span> 函数不再接受 <strong><code>null</code></strong> 参数</h3>
+
+  <p class="para">
+   之前版本中，传递 <strong><code>null</code></strong> 给 <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span>
+   函数将返回当前类名。在新版本中，此行为会抛出一个
+   <strong><code>E_WARNING</code></strong> 错误。如果想实现与之前版本同样的效果，请不要传递任何参数进来。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.warn-on-non-countable-types">
+  <h3 class="title">计算非可数类型（non-countable）时发出警告</h3>
+
+  <p class="para">
+   对非可数类型调用 <span class="function"><a href="function.count.html" class="function">count()</a></span>（或
+   <span class="function"><a href="function.sizeof.html" class="function">sizeof()</a></span>）函数，会抛出一个
+   <strong><code>E_WARNING</code></strong> 错误。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />var_dump</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">),&nbsp;</span><span style="color: #FF8000">//&nbsp;NULL&nbsp;is&nbsp;not&nbsp;countable<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">),&nbsp;</span><span style="color: #FF8000">//&nbsp;integers&nbsp;are&nbsp;not&nbsp;countable<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">),&nbsp;</span><span style="color: #FF8000">//&nbsp;strings&nbsp;are&nbsp;not&nbsp;countable<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">stdclass</span><span style="color: #007700">),&nbsp;</span><span style="color: #FF8000">//&nbsp;objects&nbsp;not&nbsp;implementing&nbsp;the&nbsp;Countable&nbsp;interface&nbsp;are&nbsp;not&nbsp;countable<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">])&nbsp;</span><span style="color: #FF8000">//&nbsp;arrays&nbsp;are&nbsp;countable<br /></span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">以上例程会输出：</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+int(0)
+int(1)
+int(1)
+int(1)
+int(2)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.hash-ext-to-objects">
+  <h3 class="title">ext/hash 从资源变成对象</h3>
+
+  <p class="para">
+   As part of the long-term migration away from resources, the <a href="book.hash.html" class="link">Hash</a>
+   extension has been updated to use objects instead of resources. The change should be
+   seamless for PHP developers, except for where
+   <span class="function"><a href="function.is-resource.html" class="function">is_resource()</a></span> checks have been made (which will need
+   updating to <span class="function"><a href="function.is-object.html" class="function">is_object()</a></span> instead).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.ssl-tls-defaults">
+  <h3 class="title">SSL/TLS 的默认选项的改进</h3>
+
+  <p class="para">
+   下列默认选项被修改：
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">tls://</code> 默认为 TLSv1.0 or TLSv1.1 or TLSv1.2
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">ssl://</code> 成为 <code class="literal">tls://</code> 的别名
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">STREAM_CRYPTO_METHOD_TLS_*</code> 常量默认为 TLSv1.0
+     或 TLSv1.1 + TLSv1.2，替代之前的 TLSv1.0
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.gettype-on-closed-resource">
+  <h3 class="title"><span class="function"><a href="function.gettype.html" class="function">gettype()</a></span> 在闭包资源中的返回值</h3>
+
+  <p class="para">
+   之前版本中，如果在一个闭包资源中使用 <span class="function"><a href="function.gettype.html" class="function">gettype()</a></span>
+   会返回字符串 <code class="literal">&quot;unknown type&quot;</code>，现在将会返回字符
+   <code class="literal">&quot;resource (closed)&quot;</code>。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.is_object-on-incomplete_class">
+  <h3 class="title"><span class="function"><a href="function.is-object.html" class="function">is_object()</a></span> 和 <span class="classname"><strong class="classname">__PHP_Incomplete_Class</strong></span></h3>
+
+  <p class="para">
+   之前版本中，对 <span class="classname"><strong class="classname">__PHP_Incomplete_Class</strong></span>
+   调用 <span class="function"><a href="function.is-object.html" class="function">is_object()</a></span> 函数会返回
+   <strong><code>false</code></strong>，现在会返回 <strong><code>true</code></strong>。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.undefined-constants">
+  <h3 class="title">提升未定义常量的错误级别</h3>
+
+  <p class="para">
+   调用未定义的常量，现在会抛出一个
+   <strong><code>E_WARNING</code></strong> 错误(之前版本中为 <strong><code>E_NOTICE</code></strong>)。在下一个
+   PHP 大版本中，将会抛出一个
+   <span class="classname"><a href="class.error.html" class="classname">Error</a></span> 错误。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.windows-support">
+  <h3 class="title">Windows 支持</h3>
+
+  <p class="para">
+   官方支持的最低 Windows 版本为 Windows 7/Server
+   2008 R2。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.trait-properties">
+  <h3 class="title">Checks on default property values of traits</h3>
+
+  <p class="para">
+   Compatibility checks upon default trait property values will no longer
+   perform casting.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.object-reserved-word">
+  <h3 class="title"><code class="literal">object</code> 保留字的变化</h3>
+
+  <p class="para">
+   <code class="literal">object</code> 在之前的 PHP 7.0 版本
+   中被声明为软保留字（soft-reserved）。现在变更为强制保留字，禁止在任何类或接口中使用该名称。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.netware-support">
+  <h3 class="title">NetWare 支持</h3>
+
+  <p class="para">
+   NetWare 已不再被支持。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.array-unique">
+  <h3 class="title"><span class="function"><a href="function.array-unique.html" class="function">array_unique()</a></span> with <strong><code>SORT_STRING</code></strong></h3>
+
+  <p class="para">
+   While <span class="function"><a href="function.array-unique.html" class="function">array_unique()</a></span> with <strong><code>SORT_STRING</code></strong>
+   formerly copied the array and removed non-unique elements (without packing
+   the array afterwards), now a new array is built by adding the
+   unique elements. This can result in different numeric indexes.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.bcmod-and-floats">
+  <h3 class="title"><span class="function"><a href="function.bcmod.html" class="function">bcmod()</a></span> changes with floats</h3>
+
+  <p class="para">
+   The <span class="function"><a href="function.bcmod.html" class="function">bcmod()</a></span> function no longer truncates fractional
+   numbers to integers. As such, its behavior now follows
+   <span class="function"><a href="function.fmod.html" class="function">fmod()</a></span>, rather than the <code class="literal">%</code> operator.
+   For example <code class="literal">bcmod(&#039;4&#039;, &#039;3.5&#039;)</code> now returns
+   <code class="literal">0.5</code> instead of <code class="literal">1</code>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.hash-functions">
+  <h3 class="title">Hashing functions and non-cryptographic hashes</h3>
+
+  <p class="para">
+   The <span class="function"><a href="function.hash-hmac.html" class="function">hash_hmac()</a></span>, <span class="function"><a href="function.hash-hmac-file.html" class="function">hash_hmac_file()</a></span>,
+   <span class="function"><a href="function.hash-pbkdf2.html" class="function">hash_pbkdf2()</a></span>, and <span class="function"><a href="function.hash-init.html" class="function">hash_init()</a></span> (with
+   <strong><code>HASH_HMAC</code></strong>) functions no longer accept non-cryptographic
+   hashes.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.json_decode-changes">
+  <h3 class="title"><span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span> 函数变更</h3>
+
+  <p class="para">
+   The <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span> function option,
+   <strong><code>JSON_OBJECT_AS_ARRAY</code></strong>, is now used if the second
+   parameter (assoc) is <strong><code>null</code></strong>. Previously,
+   <strong><code>JSON_OBJECT_AS_ARRAY</code></strong> was always ignored.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.rand-mt_rand-output">
+  <h3 class="title"><span class="function"><a href="function.rand.html" class="function">rand()</a></span> and <span class="function"><a href="function.mt-rand.html" class="function">mt_rand()</a></span> output</h3>
+
+  <p class="para">
+   Sequences generated by <span class="function"><a href="function.rand.html" class="function">rand()</a></span> and
+   <span class="function"><a href="function.mt-rand.html" class="function">mt_rand()</a></span> for a specific seed may differ from PHP 7.1 on
+   64-bit machines (due to the fixing of a modulo bias bug in the
+   implementation).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.sqlsafe_mode-ini-setting">
+  <h3 class="title"><a href="ini.core.html#ini.sql.safe-mode" class="link"><code class="parameter">sql.safe_mode</code></a> ini 选项移除</h3>
+
+  <p class="para">
+   <code class="parameter">sql.safe_mode</code> ini 设置项已被移除。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.date_parse_from_format">
+  <h3 class="title">Changes to <span class="function"><a href="function.date-parse.html" class="function">date_parse()</a></span> and <span class="function"><a href="function.date-parse-from-format.html" class="function">date_parse_from_format()</a></span></h3>
+
+  <p class="para">
+   The <code class="literal">zone</code> element of the array returned by <span class="function"><a href="function.date-parse.html" class="function">date_parse()</a></span> and
+   <span class="function"><a href="function.date-parse-from-format.html" class="function">date_parse_from_format()</a></span> represents seconds instead of
+   minutes now, and its sign is inverted. For instance <code class="literal">-120</code>
+   is now <code class="literal">7200</code>.
+  </p>
+ </div>
+
+  <div class="sect2" id="migration72.incompatible.cookie-decode">
+  <h3 class="title">Incoming Cookies</h3>
+
+  <p class="para">
+   As of PHP 7.2.34, the <em class="emphasis">names</em> of incoming cookies are no
+   longer url-decoded for security reasons.
+  </p>
+ </div>
+ 
+</div></div></div></body></html>

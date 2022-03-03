@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>执行 SQL 语句，以 PDOStatement 对象形式返回结果集</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.prepare.html">« PDO::prepare</a></li>
+      <li style="float: right;"><a href="pdo.quote.html">PDO::quote »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>执行 SQL 语句，以 PDOStatement 对象形式返回结果集</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::query</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">PDO::query</span> &mdash; <span class="dc-title">
+    执行 SQL 语句，以 PDOStatement 对象形式返回结果集
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.query-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>): <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span></div>
+
+
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_COLUMN</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$colno</code></span>): <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span></div>
+
+
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_CLASS</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$classname</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$ctorargs</code></span><br>): <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span></div>
+
+
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_INTO</code></span>, <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>): <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>PDO::query()</strong></span> 在单次函数调用内执行 SQL 语句，以 PDOStatement 对象形式返回结果集（如果有数据的话）。
+   
+  </p>
+  <p class="para">
+   如果反复调用同一个查询，用 <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span> 准备 PDOStatement 对象，并用 <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> 执行语句，将具有更好的性能。
+  </p>
+  <p class="para">
+    如果没有完整获取结果集内的数据，就调用下一个 <span class="function"><strong>PDO::query()</strong></span>，将可能调用失败。
+   应当在执行下一个 <span class="function"><strong>PDO::query()</strong></span> 前，先用 <span class="function"><a href="pdostatement.closecursor.html" class="function">PDOStatement::closeCursor()</a></span> 释放数据库PDOStatement 关联的资源。
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+     如果传入函数的参数数量超过一个，多余的参数将相当于调用结果对象 <span class="function"><a href="pdostatement.setfetchmode.html" class="function">PDOStatement::setFetchMode()</a></span> 方法。
+   </p>
+  </p></blockquote>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-pdo.query-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">statement</code></dt>
+
+      <dd>
+
+       <p class="para">
+         需要准备、执行的 SQL 语句。
+       </p>
+       <p class="para">
+         查询里的数据应该用<a href="pdo.quote.html" class="link">恰当的形式转义</a>。
+       </p>
+      </dd>
+
+     
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.query-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+    <span class="function"><strong>PDO::query()</strong></span> 返回 PDOStatement 对象，或在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdo.query-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-1019">
+    <p><strong>示例 #1 展示 PDO::query 的使用</strong></p>
+    <div class="example-contents"><p>
+      <span class="function"><strong>PDO::query()</strong></span> 一个不错的功能是：执行 SELECT 语句，并能够循环遍历结果集。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">getFruit</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;color,&nbsp;calories&nbsp;FROM&nbsp;fruit&nbsp;ORDER&nbsp;BY&nbsp;name'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'color'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'calories'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+apple   red     150
+banana  yellow  250
+kiwi    brown   75
+lemon   yellow  25
+orange  orange  300
+pear    green   150
+watermelon      pink    90
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-pdo.query-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="pdo.exec.html" class="function" rel="rdfs-seeAlso">PDO::exec()</a> - 执行一条 SQL 语句，并返回受影响的行数</span></li>
+    <li class="member"><span class="function"><a href="pdo.prepare.html" class="function" rel="rdfs-seeAlso">PDO::prepare()</a> - 准备要执行的语句，并返回语句对象</span></li>
+    <li class="member"><span class="function"><a href="pdostatement.execute.html" class="function" rel="rdfs-seeAlso">PDOStatement::execute()</a> - 执行一条预处理语句</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

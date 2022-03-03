@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Creates image from a data</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.rrd-first.html">« rrd_first</a></li>
+      <li style="float: right;"><a href="function.rrd-info.html">rrd_info »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.rrd.html">RRD 函数</a></li>
+    <li>Creates image from a data</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.rrd-graph" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">rrd_graph</h1>
+  <p class="verinfo">(PECL rrd &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">rrd_graph</span> &mdash; <span class="dc-title">Creates image from a data</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.rrd-graph-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>rrd_graph</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>): <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+   Creates image for a particular data from RRD file.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.rrd-graph-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   
+    <dt>
+<code class="parameter">filename</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The filename to output the graph to. This will generally end in either
+      <code class="literal">.png</code>, <code class="literal">.svg</code> or
+      <code class="literal">.eps</code>, depending on the format you want to output.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">options</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Options for generating image. See man page of rrd graph for all
+      possible options. All options (data definitions, variable definitions, etc.)
+      are allowed.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.rrd-graph-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Array with information about generated image is returned, 或者在失败时返回 <strong><code>false</code></strong>.
+  </p>
+ </div>
+
+</div></div></div></body></html>

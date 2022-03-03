@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>在 Windows 上手动安装 PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.windows.recommended.html">« Windows 系统下的推荐配置</a></li>
+      <li style="float: right;"><a href="install.windows.building.html">从源程序编译 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.windows.html">Windows 系统下的安装</a></li>
+    <li>在 Windows 上手动安装 PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.windows.manual" class="sect1">
+ <h2 class="title">在 Windows 上手动安装 PHP</h2>
+ <div class="sect2">
+  <h3 class="title">选择 Web 服务器</h3>
+  <div class="sect3">
+   <h4 class="title">IIS</h4>
+     <p class="para">
+      IIS 是 Windows 内置的服务。在
+      Windows 服务器版本上，请使用服务器管理（Server Manager）来添加 IIS 规则。同时需要设置 CGI 角色规则。在
+      Windows 桌面版本上，需要使用控制面板中的 &quot;添加/删除程序&quot; 功能来添加 IIS。请参阅微软的官方文档的  <a href="https://docs.microsoft.com/en-us/previous-versions/ms181052(v=vs.80)" class="link external">&raquo;&nbsp;详细说明</a>。
+
+      对于桌面 web app 开发者，你也可以选择 IIS/Express 或 PHP Desktop。
+      <div class="example" id="example-19">
+       <p><strong>示例 #1 命令行下配置 IIS 和 PHP</strong></p>
+       <div class="example-contents">
+<div class="cdata"><pre>
+
+@echo off
+
+REM download .ZIP file of PHP build from http://windows.php.net/downloads/
+
+REM path to directory you decompressed PHP .ZIP file into (no trailing \)
+set phppath=c:\php
+
+
+REM Clear current PHP handlers
+%windir%\system32\inetsrv\appcmd clear config /section:system.webServer/fastCGI
+REM The following command will generate an error message if PHP is not installed. This can be ignored.
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /-[name=&#039;PHP_via_FastCGI&#039;]
+
+REM Set up the PHP handler
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI /+[fullPath=&#039;%phppath%\php-cgi.exe&#039;]
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /+[name=&#039;PHP_via_FastCGI&#039;,path=&#039;*.php&#039;,verb=&#039;*&#039;,modules=&#039;FastCgiModule&#039;,scriptProcessor=&#039;%phppath%\php-cgi.exe&#039;,resourceType=&#039;Unspecified&#039;]
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
+
+REM Configure FastCGI Variables
+%windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /[fullPath=&#039;%phppath%\php-cgi.exe&#039;].instanceMaxRequests:10000
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+&quot;[fullPath=&#039;%phppath%\php-cgi.exe&#039;].environmentVariables.[name=&#039;PHP_FCGI_MAX_REQUESTS&#039;,value=&#039;10000&#039;]&quot;
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+&quot;[fullPath=&#039;%phppath%\php-cgi.exe&#039;].environmentVariables.[name=&#039;PHPRC&#039;,value=&#039;%phppath%\php.ini&#039;]&quot;
+</pre></div>
+       </div>
+
+      </div>
+     </p>
+    </div>
+    <div class="sect3">
+     <h4 class="title">Apache</h4>
+     <p class="para">
+      有几个用于 Windows 的 Apache 版本。
+      推荐 ApacheLounge 编译的 Apache，但是其他选项（比如 XAMPP、 WampServer、 BitNami）提供了自动安装工具。
+      PHP 可以在带有 mod_php 或者 mod_fastcgi 的 Apache 上使用。
+      mod_php 需要使用相同版本的 Visual C 和 相同的 CPU （x86 或 x64） 编译的 Apache TS 版本。
+     </p>
+    </div>
+  </div>
+
+ <div class="sect2">
+  <h3 class="title">选择编译版本</h3>
+  <p class="para">
+   从 Windows 专用站点下载适合产品环境使用的 PHP 预编译版本：
+   <a href="http://windows.php.net/download/" class="link external">&raquo;&nbsp;http://windows.php.net/download/</a>。
+   所有的编译都经过优化（<abbr class="abbrev">PGO</abbr>），并且 QA 和 GA版本都经过彻底测试。
+  </p>
+  <p class="para">
+   PHP 编译版本有四种类型：
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">Thread-Safe(TS) - 线程安全，用于单进程 web 服务器，例如带有 mod_php 的 Apache</p>
+    </li>
+    <li class="listitem">
+     <p class="para">Non-Thread-Safe(NTS) - 非线程安全，用于 IIS 和其他 FastCGI web 服务器（使用带有 mod_fastcgi 的 Apache），并且推荐命令行脚本也用此版本</p>
+    </li>
+    <li class="listitem">
+     <p class="para">x86 - 用于 32 位系统。</p>
+    </li>
+    <li class="listitem">
+     <p class="para">x64 - 用于 64 位系统。</p>
+    </li>
+   </ul>
+  </p>
+ </div>
+</div></div></div></body></html>

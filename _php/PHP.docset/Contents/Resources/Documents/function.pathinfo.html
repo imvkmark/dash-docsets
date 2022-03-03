@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>返回文件路径的信息</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.parse-ini-string.html">« parse_ini_string</a></li>
+      <li style="float: right;"><a href="function.pclose.html">pclose »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">文件系统函数</a></li>
+    <li>返回文件路径的信息</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.pathinfo" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pathinfo</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">pathinfo</span> &mdash; <span class="dc-title">返回文件路径的信息</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.pathinfo-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>pathinfo</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>PATHINFO_ALL</code></strong></span></span>): <span class="type"><span class="type">array</span>|<span class="type">string</span></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>pathinfo()</strong></span> 返回一个关联数组包含有 <code class="parameter">path</code>
+   的信息。返回关联数组还是字符串取决于 <code class="parameter">flags</code>。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    有关取得当前路径信息的说明，请阅读 <a href="language.variables.predefined.html" class="link">预定义变量</a> 一节。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    <span class="function"><strong>pathinfo()</strong></span> 纯粹基于输入字符串操作，
+    它不会受实际文件系统和类似 &quot;<code class="literal">..</code>&quot; 的路径格式影响。
+   </p>
+  </p></blockquote>
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    <span class="function"><strong>pathinfo()</strong></span> 是本地化的，所以为了让它能正确地解析一个包含多字节编码的路径，
+    必须使用 <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> 函数来设置地区信息。
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pathinfo-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">path</code></dt>
+
+     <dd>
+
+      <p class="para">
+       要解析的路径。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       如果指定了，将会返回指定元素；它们包括：
+       <strong><code>PATHINFO_DIRNAME</code></strong>、
+       <strong><code>PATHINFO_BASENAME</code></strong>、
+       <strong><code>PATHINFO_EXTENSION</code></strong>、
+       <strong><code>PATHINFO_FILENAME</code></strong>。
+      </p>
+      <p class="para">如果没有指定 <code class="parameter">flags</code> 默认是返回全部的单元。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pathinfo-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   如果没有传入 <code class="parameter">options</code> ，将会返回包括以下单元的数组 <span class="type">array</span>：<code class="literal">dirname</code>，<code class="literal">basename</code>
+   和 <code class="literal">extension</code>（如果有），以及<code class="literal">filename</code>。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    如果 <code class="parameter">path</code> 有一个以上的扩展名，
+    <strong><code>PATHINFO_EXTENSION</code></strong> 只返回最后一个，而
+    <strong><code>PATHINFO_FILENAME</code></strong> 仅剥离最后一个。
+    （参考第一个示例）。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    如果 <code class="parameter">path</code> 没有扩展名，返回数据中就不会有
+    <code class="literal">extension</code> 元素。（参考第二个示例）
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    如果 <code class="parameter">path</code> 中的 <code class="literal">basename</code> 以点开始，
+    那后面的字符串将被解释为 <code class="literal">extension</code> ，
+    并且 <code class="literal">filename</code> 为空。（参考第三个示例）
+   </p>
+  </p></blockquote>
+  <p class="para">
+   如果 <code class="parameter">flags</code> 存在的，
+   则返回一个包含请求元素的 <span class="type">string</span>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pathinfo-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-2148">
+    <p><strong>示例 #1 <span class="function"><strong>pathinfo()</strong></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$path_parts&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pathinfo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/www/htdocs/inc/lib.inc.php'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'dirname'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'basename'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'extension'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'filename'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+/www/htdocs/inc
+lib.inc.php
+php
+lib.inc
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2149">
+    <p><strong>示例 #2 <span class="function"><strong>pathinfo()</strong></span> 对比空扩展名和无扩展名之间区别的示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$path_parts&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pathinfo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/emptyextension.'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'extension'</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">$path_parts&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pathinfo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/noextension'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'extension'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(0) &quot;&quot;
+
+Notice: Undefined index: extension in test.php on line 6
+NULL
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2150">
+    <p><strong>示例 #3 <span class="function"><strong>pathinfo()</strong></span> 形如 .file 的示例</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">pathinfo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/some/path/.test'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+     <div class="cdata"><pre>
+Array
+(
+    [dirname] =&gt; /some/path
+    [basename] =&gt; .test
+    [extension] =&gt; test
+    [filename] =&gt;
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pathinfo-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.dirname.html" class="function" rel="rdfs-seeAlso">dirname()</a> - 返回路径中的目录部分</span></li>
+    <li class="member"><span class="function"><a href="function.basename.html" class="function" rel="rdfs-seeAlso">basename()</a> - 返回路径中的文件名部分</span></li>
+    <li class="member"><span class="function"><a href="function.parse-url.html" class="function" rel="rdfs-seeAlso">parse_url()</a> - 解析 URL，返回其组成部分</span></li>
+    <li class="member"><span class="function"><a href="function.realpath.html" class="function" rel="rdfs-seeAlso">realpath()</a> - 返回规范化的绝对路径名</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

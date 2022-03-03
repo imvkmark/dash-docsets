@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>PDO 类</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.lobs.html">« 大对象 (LOBs)</a></li>
+      <li style="float: right;"><a href="pdo.begintransaction.html">PDO::beginTransaction »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.pdo.html">PDO</a></li>
+    <li>PDO 类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.pdo" class="reference">
+ <h1 class="title"> PDO 类</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.1.0)</p>
+ 
+
+  <div class="section" id="pdo.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+   代表 PHP 和数据库服务之间的一个连接
+   </p>
+  </div>
+
+ 
+  <div class="section" id="pdo.synopsis">
+   <h2 class="title">类摘要</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">PDO</strong>
+     </span>
+     {</div>
+
+ 
+    <div class="constructorsynopsis dc-description">
+   <span class="methodname"><a href="pdo.construct.html" class="methodname">__construct</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$dsn</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$username</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$password</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$driver_options</code><span class="initializer"> = ?</span></span><br>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.begintransaction.html" class="methodname">beginTransaction</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.commit.html" class="methodname">commit</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.errorcode.html" class="methodname">errorCode</a></span>(): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="pdo.errorinfo.html" class="methodname">errorInfo</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.exec.html" class="methodname">exec</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.getattribute.html" class="methodname">getAttribute</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$attribute</code></span>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="pdo.getavailabledrivers.html" class="methodname">getAvailableDrivers</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.intransaction.html" class="methodname">inTransaction</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.lastinsertid.html" class="methodname">lastInsertId</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="pdo.prepare.html" class="methodname">prepare</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$driver_options</code><span class="initializer"> = array()</span></span>): <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="pdo.query.html" class="methodname">query</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>): <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="pdo.quote.html" class="methodname">quote</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$parameter_type</code><span class="initializer"> = PDO::PARAM_STR</span></span>): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.rollback.html" class="methodname">rollBack</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="methodname"><a href="pdo.setattribute.html" class="methodname">setAttribute</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$attribute</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type">bool</span></div>
+
+
+ 
+   }</div>
+  </div>
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="pdo.begintransaction.html">PDO::beginTransaction</a> — 启动一个事务</li><li><a href="pdo.commit.html">PDO::commit</a> — 提交一个事务</li><li><a href="pdo.construct.html">PDO::__construct</a> — 创建一个表示数据库连接的 PDO 实例</li><li><a href="pdo.errorcode.html">PDO::errorCode</a> — 获取跟数据库句柄上一次操作相关的 SQLSTATE</li><li><a href="pdo.errorinfo.html">PDO::errorInfo</a> — Fetch extended error information associated with the last operation on the database handle</li><li><a href="pdo.exec.html">PDO::exec</a> — 执行一条 SQL 语句，并返回受影响的行数</li><li><a href="pdo.getattribute.html">PDO::getAttribute</a> — 取回一个数据库连接的属性</li><li><a href="pdo.getavailabledrivers.html">PDO::getAvailableDrivers</a> — 返回一个可用驱动的数组</li><li><a href="pdo.intransaction.html">PDO::inTransaction</a> — 检查是否在一个事务内</li><li><a href="pdo.lastinsertid.html">PDO::lastInsertId</a> — 返回最后插入行的ID或序列值</li><li><a href="pdo.prepare.html">PDO::prepare</a> — 准备要执行的语句，并返回语句对象</li><li><a href="pdo.query.html">PDO::query</a> — 执行 SQL 语句，以 PDOStatement 对象形式返回结果集</li><li><a href="pdo.quote.html">PDO::quote</a> — 为 SQL 查询里的字符串添加引号</li><li><a href="pdo.rollback.html">PDO::rollBack</a> — 回滚一个事务</li><li><a href="pdo.setattribute.html">PDO::setAttribute</a> — 设置属性</li></ul>
+</div>
+</div></div></body></html>

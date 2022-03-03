@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Creates a new SimpleXMLElement object</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="simplexmlelement.children.html">« SimpleXMLElement::children</a></li>
+      <li style="float: right;"><a href="simplexmlelement.count.html">SimpleXMLElement::count »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.simplexmlelement.html">SimpleXMLElement</a></li>
+    <li>Creates a new SimpleXMLElement object</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="simplexmlelement.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SimpleXMLElement::__construct</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SimpleXMLElement::__construct</span> &mdash; <span class="dc-title">
+   Creates a new SimpleXMLElement object
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-simplexmlelement.construct-description">
+  <h3 class="title">说明</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>SimpleXMLElement::__construct</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$dataIsURL</code><span class="initializer"> = <strong><code>false</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceOrPrefix</code><span class="initializer"> = &quot;&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$isPrefix</code><span class="initializer"> = <strong><code>false</code></strong></span></span><br>)</div>
+
+  <p class="para rdfs-comment">
+   Creates a new <span class="classname"><a href="class.simplexmlelement.html" class="classname">SimpleXMLElement</a></span> object.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-simplexmlelement.construct-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">data</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A well-formed XML string or the path or URL to an XML document if 
+       <code class="parameter">dataIsURL</code> is <strong><code>true</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Optionally used to specify <a href="libxml.constants.html" class="link">additional
+       Libxml parameters</a>, which affect reading of XML documents. Options which affect the
+       output of XML documents (e.g. <strong><code>LIBXML_NOEMPTYTAG</code></strong>) are silently ignored.
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        It may be necessary to pass <strong><code><a href="libxml.constants.html#constant.libxml-parsehuge" class="link">LIBXML_PARSEHUGE</a></code></strong>
+        to be able to process deeply nested XML or very large text nodes.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">dataIsURL</code></dt>
+
+     <dd>
+
+      <p class="para">
+       By default, <code class="parameter">dataIsURL</code> is <strong><code>false</code></strong>. Use <strong><code>true</code></strong> to
+       specify that <code class="parameter">data</code> is a path or URL to an XML 
+       document instead of <span class="type">string</span> data.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">namespaceOrPrefix</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Namespace prefix or URI.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">isPrefix</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <strong><code>true</code></strong> if <code class="parameter">namespaceOrPrefix</code> is a prefix, <strong><code>false</code></strong> if it&#039;s a URI;
+       defaults to <strong><code>false</code></strong>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-simplexmlelement.construct-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns a <span class="type"><a href="class.simplexmlelement.html" class="type SimpleXMLElement">SimpleXMLElement</a></span> object representing 
+   <code class="parameter">data</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-simplexmlelement.construct-errors">
+  <h3 class="title">错误／异常</h3>
+  <p class="para">
+   Produces an <strong><code>E_WARNING</code></strong> error message for each error
+   found in the XML data and additionally throws an <span class="classname"><a href="class.exception.html" class="classname">Exception</a></span> if the XML data
+   could not be parsed.
+  </p>
+  <div class="tip"><strong class="tip">小技巧</strong>
+   <p class="para">
+    Use <span class="function"><a href="function.libxml-use-internal-errors.html" class="function">libxml_use_internal_errors()</a></span> to suppress all XML
+    errors, and <span class="function"><a href="function.libxml-get-errors.html" class="function">libxml_get_errors()</a></span> to iterate over them
+    afterwards.
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-simplexmlelement.construct-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     Listed examples may include <code class="literal">example.php</code>,
+     which refers to the XML string found in the first example
+     of the <a href="simplexml.examples-basic.html" class="link">basic usage</a> guide.
+    </p>
+   </p></blockquote>
+   <div class="example" id="example-5267">
+    <p><strong>示例 #1 Create a SimpleXMLElement object</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'example.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$sxe&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$sxe</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">movie</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">title</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP: Behind the Parser
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5268">
+    <p><strong>示例 #2 Create a SimpleXMLElement object from a URL</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$sxe&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.org/document.xml'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$sxe</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">asXML</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-simplexmlelement.construct-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="simplexml.examples-basic.html" class="xref">Basic SimpleXML usage</a></li>
+    <li class="member"><span class="function"><a href="function.simplexml-load-string.html" class="function" rel="rdfs-seeAlso">simplexml_load_string()</a> - Interprets a string of XML into an object</span></li>
+    <li class="member"><span class="function"><a href="function.simplexml-load-file.html" class="function" rel="rdfs-seeAlso">simplexml_load_file()</a> - Interprets an XML file into an object</span></li>
+    <li class="member"><a href="simplexml.examples-errors.html" class="xref">Dealing with XML errors</a></li>
+    <li class="member"><span class="function"><a href="function.libxml-use-internal-errors.html" class="function" rel="rdfs-seeAlso">libxml_use_internal_errors()</a> - Disable libxml errors and allow user to fetch error information as needed</span></li>
+    <li class="member"><span class="function"><a href="function.libxml-set-streams-context.html" class="function" rel="rdfs-seeAlso">libxml_set_streams_context()</a> - Set the streams context for the next libxml document load or write</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

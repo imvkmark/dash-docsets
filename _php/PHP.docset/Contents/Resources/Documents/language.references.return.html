@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>引用返回</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.references.pass.html">« 引用传递</a></li>
+      <li style="float: right;"><a href="language.references.unset.html">取消引用 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.references.html">引用的解释</a></li>
+    <li>引用返回</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.references.return" class="sect1">
+  <h2 class="title">引用返回</h2>
+  <p class="para">
+   引用返回用在当想用函数找到引用应该被绑定在哪一个变量上面时。
+    <em class="emphasis">不要</em>用返回引用来增加性能，引擎足够聪明来自己进行优化。
+    仅在有合理的技术原因时才返回引用！
+    使用此语法返回引用：
+   <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">42</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;&amp;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$myValue&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;$myValue&nbsp;是对&nbsp;$obj-&gt;value&nbsp;的引用，即&nbsp;42。<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$myValue</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;打印&nbsp;$obj-&gt;value&nbsp;的新值，即&nbsp;2。<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+   本例中 <var class="varname">getValue</var> 函数所返回的对象的属性将被赋值，
+    而不是拷贝，就和没有用引用语法一样。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    和参数传递不同，这里必须在两个地方都用 <code class="literal">&amp;</code>
+    符号——指出返回的是一个引用，而不是通常的一个拷贝，同样也指出 <var class="varname">$myValue</var>
+    是作为引用的绑定，而不是通常的赋值。
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    如果试图这样从函数返回引用：<code class="literal">return
+    ($this-&gt;value);</code>，这将<em class="emphasis">不会</em>起作用，
+     因为在试图返回一个<em class="emphasis">表达式</em>的结果而不是一个引用的变量。
+     只能从函数返回引用变量——没别的方法。
+   </span>
+  </p></blockquote>
+   <p class="para">
+     要使用返回的引用，必须使用引用赋值：
+     <div class="informalexample">
+       <div class="example-contents">
+         <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+     </div>
+     要将返回的引用传递给另外一个需要引用的函数，可以使用如下语法：
+     <div class="informalexample">
+       <div class="example-contents">
+         <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">array_push</span><span style="color: #007700">(</span><span style="color: #0000BB">collector</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+     </div>
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+       注意 <code class="literal">array_push(&amp;collector(), &#039;foo&#039;);</code> 将 
+       <em class="emphasis">不</em> 起作用，它会导致 Fatal 错误。
+     </span>
+   </p></blockquote>
+ </div></div></div></body></html>

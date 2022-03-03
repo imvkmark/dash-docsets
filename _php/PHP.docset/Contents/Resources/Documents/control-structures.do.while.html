@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>do-while</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.while.html">« while</a></li>
+      <li style="float: right;"><a href="control-structures.for.html">for »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">流程控制</a></li>
+    <li>do-while</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.do.while" class="sect1">
+ <h2 class="title">do-while</h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="simpara">
+  <code class="literal">do-while</code> 循环和 <code class="literal">while</code>
+  循环非常相似，区别在于表达式的值是在每次循环结束时检查而不是开始时。和一般的
+  <code class="literal">while</code> 循环主要的区别是 <code class="literal">do-while</code>
+  的循环语句保证会执行一次（表达式的真值在每次循环结束后检查），然而在一般的
+  <code class="literal">while</code> 循环中就不一定了（表达式真值在循环开始时检查，如果一开始就为
+  <strong><code>false</code></strong> 则整个循环立即终止）。
+ </p>
+ <p class="para">
+  <code class="literal">do-while</code> 循环只有一种语法：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />do&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}&nbsp;while&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  以上循环将正好运行一次，因为经过第一次循环后，当检查表达式的真值时，其值为
+  <strong><code>false</code></strong>（<var class="varname">$i</var> 不大于 0）而导致循环终止。
+ </p>
+ <p class="para">
+  资深的 C 语言用户可能熟悉另一种不同的 <code class="literal">do-while</code>
+  循环用法，把语句放在 <code class="literal">do-while</code>(0) 之中，在循环内部用
+  <a href="control-structures.break.html" class="link"><code class="literal">break</code></a>
+  语句来结束执行循环。以下代码片段示范了此方法：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;not&nbsp;big&nbsp;enough"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">$factor</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$minimum_limit</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;ok"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;process&nbsp;i&nbsp;*/<br /><br /></span><span style="color: #007700">}&nbsp;while(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+   可以使用 <a href="control-structures.goto.html" class="link"><code class="literal">goto</code></a> 跳出循环，取代这种 hack 的方式。
+ </p>
+</div></div></div></body></html>

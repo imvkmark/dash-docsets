@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>怎样修改配置设定</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="configuration.changes.modes.html">« 配置可被设定范围</a></li>
+      <li style="float: right;"><a href="langref.html">语言参考 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="configuration.html">运行时配置</a></li>
+    <li>怎样修改配置设定</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="configuration.changes" class="sect1">
+  <h2 class="title">怎样修改配置设定</h2>
+  
+  <div class="sect2" id="configuration.changes.apache">
+   <h3 class="title">PHP 运行于 Apache 模块方式</h3>
+   <p class="simpara">
+    当使用 PHP 作为 Apache 模块时，也可以用 Apache
+    的配置文件（例如 <var class="filename">httpd.conf</var>）和 <var class="filename">.htaccess</var>
+    文件中的指令来修改 PHP 的配置设定。需要有“AllowOverride
+    Options”或“AllowOverride All”权限才可以。
+   </p>
+   
+   <p class="para">
+    有几个 Apache 指令可以使用户在 Apache
+    配置文件内部修改 PHP 的配置。哪些指令属于
+    <strong><code>PHP_INI_ALL</code></strong>，<strong><code>PHP_INI_PERDIR</code></strong>
+    或 <strong><code>PHP_INI_SYSTEM</code></strong> 中的哪一个，请参考附录中的
+    <a href="ini.list.html" class="link">php.ini 配置选项列表</a>。
+   </p>
+   
+   <p class="para">
+    <dl>
+     
+      <dt>
+
+       <code class="systemitem systemitem">php_value</code>
+       <code class="parameter">name</code>
+       <code class="parameter">value</code>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        设定指定的值。只能用于
+        <strong><code>PHP_INI_ALL</code></strong> 或 <strong><code>PHP_INI_PERDIR</code></strong>
+        类型的指令。要清除先前设定的值，把 value 设为 <code class="literal">none</code>。
+       </p>
+       <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <span class="simpara">
+         不要用 <code class="systemitem systemitem">php_value</code> 设定布尔值。应该用
+         <code class="systemitem systemitem">php_flag</code>（见下面）。
+        </span>
+       </p></blockquote>
+      </dd>
+
+     
+     
+      <dt>
+
+       <code class="systemitem systemitem">php_flag</code>
+       <code class="parameter">name</code>
+       <code class="parameter">on|off</code>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        用来设定布尔值的配置指令。仅能用于
+        <strong><code>PHP_INI_ALL</code></strong> 和
+        <strong><code>PHP_INI_PERDIR</code></strong> 类型的指令。
+       </p>
+      </dd>
+
+     
+     
+      <dt>
+
+       <code class="systemitem systemitem">php_admin_value</code>
+       <code class="parameter">name</code>
+       <code class="parameter">value</code>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        设定指定的指令的值。<em class="emphasis">不能用于</em> <var class="filename">.htaccess</var>
+        文件。任何用 <code class="systemitem systemitem">php_admin_value</code>
+        设定的指令都不能被 <var class="filename">.htaccess</var> 或 virtualhost
+        中的指令覆盖。要清除先前设定的值，把 value 设为 <code class="literal">none</code>。
+       </p>
+      </dd>
+
+     
+     
+      <dt>
+
+       <code class="systemitem systemitem">php_admin_flag</code>
+       <code class="parameter">name</code>
+       <code class="parameter">on|off</code>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        用来设定布尔值的配置指令。<em class="emphasis">不能用于</em> <var class="filename">.htaccess</var>
+        文件。任何用 <code class="systemitem systemitem">php_admin_flag</code>
+        设定的指令都不能被 <var class="filename">.htaccess</var> 或 virtualhost
+        中的指令覆盖。
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+   <p class="para">
+    <div class="example" id="example-29">
+     <p><strong>示例 #1 Apache 配置例子</strong></p>
+     <div class="example-contents">
+<div class="inicode"><pre class="inicode">&lt;IfModule mod_php5.c&gt;
+  php_value include_path &quot;.:/usr/local/lib/php&quot;
+  php_admin_flag engine on
+&lt;/IfModule&gt;
+&lt;IfModule mod_php4.c&gt;
+  php_value include_path &quot;.:/usr/local/lib/php&quot;
+  php_admin_flag engine on
+&lt;/IfModule&gt;</pre>
+</div>
+     </div>
+
+    </div>
+   </p>
+   <div class="caution"><strong class="caution">警告</strong>
+    <p class="para">
+     PHP 常量不存在于 PHP 之外。例如在
+     <var class="filename">httpd.conf</var> 中不能使用 PHP 常量如
+     <strong><code>E_ALL</code></strong> 或 <strong><code>E_NOTICE</code></strong> 来设定
+     <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a>
+     指令，因为其无意义，实际等于
+     <em class="emphasis">0</em>。应该用相应的掩码值来替代。这些常量可以在
+     <var class="filename">php.ini</var> 中使用。
+    </p>
+   </div>
+  </div>
+  
+  
+
+  <div class="sect2" id="configuration.changes.windows">
+   <h3 class="title">通过 Windows 注册表修改 PHP 配置</h3>
+   <p class="simpara">
+    在 Windows 下运行 PHP 时，可以用 Windows
+    注册表以目录为单位来修改配置。配置值存放于注册表项
+    <code class="literal">HKLM\SOFTWARE\PHP\Per Directory Values</code>
+    下面，子项对应于路径名。例如对于目录
+    <code class="literal">c:\inetpub\wwwroot</code> 的配置值会存放于
+    <code class="literal">HKLM\SOFTWARE\PHP\Per Directory Values\c\inetpub\wwwroot</code>
+    项下面。其中的设定对于任何位于此目录及其任何子目录的脚本都有效。项中的值的名称是
+    PHP 配置指令的名字，值的数据是字符串格式的指令值。值中的 PHP
+    常量不被解析。不过只有可修改范围是 <strong><code>PHP_INI_USER</code></strong>
+    的配置值可以用此方法设定，<strong><code>PHP_INI_PERDIR</code></strong>
+    的值就不行。因为这些配置对于每次请求来说是只读的。
+   </p>
+  </div>
+  
+  
+
+
+
+
+  <div class="sect2" id="configuration.changes.other">
+   <h3 class="title">其它接口下的 PHP</h3>
+   <p class="para">
+    无论怎样运行 PHP，都可以在脚本中通过 <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>
+    而在运行时修改某个值。更多信息见手册中
+    <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span> 的页面。
+   </p>
+   <p class="para">
+    如果对自己系统中的配置设定及其当前值的完整列表感兴趣，可以运行
+    <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> 函数并查看其结果的页面。也可以在运行时用
+    <span class="function"><a href="function.ini-get.html" class="function">ini_get()</a></span> 或
+    <span class="function"><a href="function.get-cfg-var.html" class="function">get_cfg_var()</a></span> 取得个别配置指令的值。
+   </p>
+  </div>
+ </div></div></div></body></html>

@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安全外壳协议 2</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="wrappers.phar.html">« phar://</a></li>
+      <li style="float: right;"><a href="wrappers.rar.html">rar:// »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="wrappers.html">支持的协议和封装协议</a></li>
+    <li>安全外壳协议 2</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="wrappers.ssh2" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ssh2://</h1>
+   <p class="refpurpose"><span class="refname">ssh2://</span> &mdash; <span class="dc-title">安全外壳协议 2</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-wrappers.ssh2-description">
+  <h3 class="title">说明</h3>
+  <p class="para">
+   <var class="filename">ssh2.shell://</var>
+   <var class="filename">ssh2.exec://</var>
+   <var class="filename">ssh2.tunnel://</var>
+   <var class="filename">ssh2.sftp://</var>
+   <var class="filename">ssh2.scp://</var> (PECL)
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>该封装器默认没有激活</strong><br />
+   <span class="simpara">
+    为了使用 <var class="filename">ssh2.*://</var> 封装协议，
+    你必须安装来自 <a href="https://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a> 的 <a href="https://pecl.php.net/package/ssh2" class="link external">&raquo;&nbsp;SSH2</a> 扩展。
+   </span>
+  </p></blockquote>
+
+  <p class="simpara">
+   除了支持传统的 URI 登录信息，ssh2 封装协议也支持通过 URL 的主机（host）部分来复用打开连接。 
+  </p>
+ </div>
+
+
+ <div class="refsect1 usage" id="refsect1-wrappers.ssh2-usage"> 
+  <h3 class="title">用法</h3>
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.shell://user:pass@example.com:22/xterm</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.exec://user:pass@example.com:22/usr/local/bin/somecmd</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.tunnel://user:pass@example.com:22/192.168.0.1:14</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">ssh2.sftp://user:pass@example.com:22/path/to/filename</var></span></li>
+  </ul>
+ </div>
+ 
+
+ <div class="refsect1 options" id="refsect1-wrappers.ssh2-options">
+  <h3 class="title">可选项</h3>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>封装协议概要</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>属性</th>
+       <th>ssh2.shell</th>
+       <th>ssh2.exec</th>
+       <th>ssh2.tunnel</th>
+       <th>ssh2.sftp</th>
+       <th>ssh2.scp</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>受 <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a> 影响</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>允许读取</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>允许写入</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>允许追加</td>
+       <td>No</td>
+       <td>No</td>
+       <td>No</td>
+       <td>Yes（当服务器支持的时候）</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>允许同时读和写</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>Yes</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>支持 <span class="function"><a href="function.stat.html" class="function">stat()</a></span></td>
+       <td>No</td>
+       <td>No</td>
+       <td>No</td>
+       <td>Yes</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>支持 <span class="function"><a href="function.unlink.html" class="function">unlink()</a></span></td>
+       <td>No</td>
+       <td>No</td>
+       <td>No</td>
+       <td>Yes</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>支持 <span class="function"><a href="function.rename.html" class="function">rename()</a></span></td>
+       <td>No</td>
+       <td>No</td>
+       <td>No</td>
+       <td>Yes</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>支持 <span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span></td>
+       <td>No</td>
+       <td>No</td>
+       <td>No</td>
+       <td>Yes</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>支持 <span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span></td>
+       <td>No</td>
+       <td>No</td>
+       <td>No</td>
+       <td>Yes</td>
+       <td>No</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+
+  
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>上下文选项（Context）</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>名称</th>
+       <th>用法</th>
+       <th>默认</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><code class="literal">session</code></td>
+       <td>重复使用预连接的 ssh2 资源</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">sftp</code></td>
+       <td>重复使用预先分配的 sftp 资源</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">methods</code></td>
+       <td>密钥交换（key exchange）、主机密钥（hostkey）、cipher、压缩和 MAC 方法</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">callbacks</code></td>
+       <td class="empty">&nbsp;</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">username</code></td>
+       <td>以该用户名连接</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">password</code></td>
+       <td>使用的密码来进行密码验证</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">pubkey_file</code></td>
+       <td>用于验证的公钥（public key）文件</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">privkey_file</code></td>
+       <td>用于验证的私钥（private key）文件</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">env</code></td>
+       <td>需要设置的环境变量的关联数组</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">term</code></td>
+       <td>在分配一个 pty 时请求的终端类型</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">term_width</code></td>
+       <td>在分配一个 pty 时请求的终端宽度</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">term_height</code></td>
+       <td>在分配一个 pty 时请求的终端宽度高度</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">term_units</code></td>
+       <td>term_width 和 term_height 的单位</td>
+       <td><strong><code>SSH2_TERM_UNIT_CHARS</code></strong></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 examples" id="refsect1-wrappers.ssh2-examples">
+  <h3 class="title">范例</h3>
+  <div class="example" id="example-410">
+   <p><strong>示例 #1 从一个活跃的连接中打开流</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$session&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ssh2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ssh2_auth_pubkey_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$session</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'username'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/home/username/.ssh/id_rsa.pub'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'/home/username/.ssh/id_rsa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secret'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stream&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"ssh2.tunnel://</span><span style="color: #0000BB">$session</span><span style="color: #DD0000">/remote.example.com:1234"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+<div class="example" id="example-411">
+   <p><strong>示例 #2 <var class="varname">$session</var> 变量必须保持可用！</strong></p>
+   <div class="example-contents"><p>
+    为了使用 <var class="filename">ssh2.*://$session</var> 封装协议，
+    必须保留 <var class="varname">$session</var> 资源变量。下面的代码就不会有预期的效果：
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$session&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ssh2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ssh2_auth_pubkey_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$session</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'username'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/home/username/.ssh/id_rsa.pub'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'/home/username/.ssh/id_rsa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secret'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$connection_string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"ssh2.sftp://</span><span style="color: #0000BB">$session</span><span style="color: #DD0000">/"</span><span style="color: #007700">;<br />unset(</span><span style="color: #0000BB">$session</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stream&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$connection_string&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"path/to/file"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+    unset() 会关闭 session，因为 <var class="varname">$connection_string</var> 不保存对 <var class="varname">$session</var>
+    变量的引用，只是源自它的字符串转换。当离开（像函数）作用域隐性调用 <span class="function"><a href="function.unset.html" class="function">unset()</a></span> 时，也会发生这种情况。
+   </p></div>
+  </div>
+  
+ </div>
+
+
+</div></div></div></body></html>

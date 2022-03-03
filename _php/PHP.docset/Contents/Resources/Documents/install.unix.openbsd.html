@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>在 OpenBSD 系统下的安装</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.unix.commandline.html">« CGI 和命令行设置</a></li>
+      <li style="float: right;"><a href="install.unix.solaris.html">针对 Solaris 的安装提示 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.unix.html">Unix 系统下的安装</a></li>
+    <li>在 OpenBSD 系统下的安装</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.unix.openbsd" class="sect1">
+ <h2 class="title">在 OpenBSD 系统下的安装</h2>
+ <p class="para">
+  本章节的内容和提示仅限于将 PHP 安装到 
+  <a href="http://www.openbsd.org/" class="link external">&raquo;&nbsp;OpenBSD 5.8</a> 系统上。
+ </p>
+ <div class="sect2" id="install.openbsd.packages">
+  <h3 class="title">使用二进制包安装</h3>
+  <p class="simpara">
+   使用二进制包安装 PHP 到 OpenBSD 系统上是被推荐的同时也是最简单的方法。PHP
+   核心包已经从其他模块中分离出来了并且每个模块可以被独立的安装／卸载而不影响其他模块。所有这些安装
+   PHP 需要的文件可以在 OpenBSD 光盘或者在 FTP 站点上找到。
+  </p>
+  <p class="simpara">
+   需要安装的 PHP 核心包的文件是 
+   <var class="filename">php</var>，它包含了基本的引擎（包括 gettext 和
+   iconv）。其次，可能还需要安装一些模块包，如：<var class="filename">php-mysql</var> 或 
+   <var class="filename">php-imap</var>。需要使用命令 
+   <strong class="command">phpxs</strong> 去激活它，并且再通过修改 <var class="filename">php.ini</var> 文件来屏蔽他们。
+  </p>
+  <div class="example" id="install.openbsd.ports.example">
+   <p><strong>示例 #1 在 OpenBSD 系统下的软件包的安装示例</strong></p>
+   <div class="example-contents">
+<div class="cdata"><pre>
+# pkg_add php
+# pkg_add php-fpm
+# pkg_add php-mysql
+  （安装 PEAR 库）
+# pkg_add pear
+
+Follow the instructions shown with each package!
+
+  (移除包)
+# pkg_delete php
+# pkg_delete php-fpm
+# pkg_delete php-mysql
+# pkg_delete pear
+</pre></div>
+   </div>
+
+  </div>
+  <p class="simpara">
+   阅读用户手册中的 
+   <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=packages" class="link external">&raquo;&nbsp;packages(7)</a>
+   部分，可以得到更多 OpenBSD 系统下有关二进制软件包的信息。
+  </p>
+ </div>
+ <div class="sect2" id="install.openbsd.ports">
+  <h3 class="title">使用软件包</h3>
+  <p class="simpara">
+   同样可以使用<a href="http://www.openbsd.org/faq/ports/ports.html" class="link external">&raquo;&nbsp;软件包目录（ports
+   tree）</a>来编译 PHP 的源代码。然而，这样的安装方式仅仅是建议对
+   OpenBSD 非常熟悉的高级用户去做。PHP4 的软件包被分别分为了两个子目录：core
+   和 extensions。其中 extensions 目录产生了所有 PHP
+   所支持的子模块。如果不希望创建并且使用这些模块中的某些模块，请使用
+   FLAVOR <strong class="command">no_*</strong> 参数。例如，如果希望跳过编译
+   imap 模块，设置 FLAVOR 为 <strong class="command">no_imap</strong>即可。
+  </p>
+ </div>
+ <div class="sect2" id="install.openbsd.faq">
+  <h3 class="title">常见问题</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">Apache 和 Nginx 不再是 OpenBSD 上的默认服务器，但他们都可以在 ports 和包中找到。 
+    新的默认服务器也被称为 “httpd”。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     默认安装的 httpd 运行于 
+     <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=chroot" class="link external">&raquo;&nbsp;chroot(2) jail</a> 内，将限制 PHP 脚本只能访问 
+     <var class="filename">/var/www</var>下面的文件。需要建立 
+     <var class="filename">/var/www/tmp</var> 目录来存放 PHP session 文件，或使用其它的
+     session 后端。此外，数据库套接字需要被放入 jail 或者侦听 
+     <var class="filename">localhost</var>接口。如果使用网络函数，某些 
+     <var class="filename">/etc</var> 下面的文件例如 
+     <var class="filename">/etc/resolv.conf</var> 和 
+     <var class="filename">/etc/services</var> 需要被移动到 
+     <var class="filename">/var/www/etc</var> 中去。OpenBSD PEAR 包会自动安装到正确的
+     chroot 目录中。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     对应于 <a href="http://www.libgd.org/" class="link external">&raquo;&nbsp;gd</a> 扩展的 OpenBSD 5.7+
+     包需要预先安装 XFree86。通过添加 <var class="filename">xbase.tgz</var> 文件集到 post-installation （参阅 OpenBSD FAQ#4） 中。
+    </span>
+   </li>
+  </ul>
+ </div>
+</div></div></div></body></html>

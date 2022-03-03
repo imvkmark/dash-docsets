@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>The MongoDB\Driver\ReadConcern class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb-driver-readpreference.unserialize.html">« MongoDB\Driver\ReadPreference::unserialize</a></li>
+      <li style="float: right;"><a href="mongodb-driver-readconcern.bsonserialize.html">MongoDB\Driver\ReadConcern::bsonSerialize »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mongodb.html">MongoDB\Driver</a></li>
+    <li>The MongoDB\Driver\ReadConcern class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.mongodb-driver-readconcern" class="reference">
+
+ <h1 class="title">The MongoDB\Driver\ReadConcern class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(mongodb &gt;=1.1.0)</p>
+
+
+  <div class="section" id="mongodb-driver-readconcern.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    <span class="classname"><strong class="classname">MongoDB\Driver\ReadConcern</strong></span> controls the level of
+    isolation for read operations for replica sets and replica set shards. This
+    option requires MongoDB 3.2 or later.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-readconcern.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">MongoDB\Driver\ReadConcern</strong>
+     </span>
+
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span><span class="oointerface">,  <a href="class.serializable.html" class="interfacename">Serializable</a></span> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readconcern.html#mongodb-driver-readconcern.constants.linearizable"><var class="varname">AVAILABLE</var></a></var><span class="initializer"> = &quot;available&quot;</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readconcern.html#mongodb-driver-readconcern.constants.linearizable"><var class="varname">LINEARIZABLE</var></a></var><span class="initializer"> = &quot;linearizable&quot;</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readconcern.html#mongodb-driver-readconcern.constants.local"><var class="varname">LOCAL</var></a></var><span class="initializer"> = &quot;local&quot;</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readconcern.html#mongodb-driver-readconcern.constants.majority"><var class="varname">MAJORITY</var></a></var><span class="initializer"> = &quot;majority&quot;</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readconcern.html#mongodb-driver-readconcern.constants.snapshot"><var class="varname">SNAPSHOT</var></a></var><span class="initializer"> = &quot;snapshot&quot;</span>;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readconcern.bsonserialize.html" class="methodname">bsonSerialize</a></span>(): <span class="type">object</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readconcern.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$level</code><span class="initializer"> = ?</span></span>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readconcern.getlevel.html" class="methodname">getLevel</a></span>(): <span class="type"><span class="type">?</span><span class="type">string</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readconcern.isdefault.html" class="methodname">isDefault</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readconcern.serialize.html" class="methodname">serialize</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readconcern.unserialize.html" class="methodname">unserialize</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$serialized</code></span>): <span class="type"><span class="type void">void</span></span></div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="mongodb-driver-readconcern.constants">
+   <h2 class="title">预定义常量</h2>
+   <dl>
+
+    
+     <dt id="mongodb-driver-readconcern.constants.available"><strong><code>MongoDB\Driver\ReadConcern::AVAILABLE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Default for reads against secondaries when
+       <code class="literal">afterClusterTime</code>and <code class="literal">level</code> are
+       unspecified.
+      </p>
+      <p class="para">
+       The query returns the instance&#039;s most recent data. Provides no
+       guarantee that the data has been written to a majority of the replica set
+       members (i.e. may be rolled back).
+      </p>
+      <p class="para">
+       For unsharded collections (including collections in a standalone
+       deployment or a replica set deployment), <code class="literal">&quot;local&quot;</code> and
+       <code class="literal">&quot;available&quot;</code> read concerns behave identically.
+      </p>
+      <p class="para">
+       For a sharded cluster, <code class="literal">&quot;available&quot;</code> read concern
+       provides greater tolerance for partitions since it does not wait to
+       ensure consistency guarantees. However, a query with
+       <code class="literal">&quot;available&quot;</code> read concern may return orphan documents
+       if the shard is undergoing chunk migrations since the
+       <code class="literal">&quot;available&quot;</code> read concern, unlike
+       <code class="literal">&quot;local&quot;</code> read concern, does not contact the
+       shard&#039;s primary nor the config servers for updated metadata.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readconcern.constants.linearizable"><strong><code>MongoDB\Driver\ReadConcern::LINEARIZABLE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       The query returns data that reflects all successful writes issued with a
+       write concern of <code class="literal">&quot;majority&quot;</code> <em class="emphasis">and</em>
+       acknowledged prior to the start of the read operation. For replica sets
+       that run with <code class="literal">writeConcernMajorityJournalDefault</code> set
+       to <strong><code>true</code></strong>, linearizable read concern returns data that will never be
+       rolled back.
+      </p>
+      <p class="para">
+       With <code class="literal">writeConcernMajorityJournalDefault</code> set to
+       <strong><code>false</code></strong>, MongoDB will not wait for <code class="literal">w: &quot;majority&quot;</code>
+       writes to be durable before acknowledging the writes. As such,
+       <code class="literal">&quot;majority&quot;</code> write operations could possibly roll back
+       in the event of a loss of a replica set member.
+      </p>
+      <p class="para">
+       You can specify linearizable read concern for read operations on the
+       primary only.
+      </p>
+      <p class="para">
+       Linearizable read concern guarantees only apply if read
+       operations specify a query filter that uniquely identifies a single
+       document.
+      </p>
+      <div class="tip"><strong class="tip">小技巧</strong>
+       <p class="simpara">
+        Always use <code class="literal">maxTimeMS</code> with linearizable read concern
+        in case a majority of data bearing members are unavailable.
+        <code class="literal">maxTimeMS</code> ensures that the operation does not block
+        indefinitely and instead ensures that the operation returns an error if
+        the read concern cannot be fulfilled.
+       </p>
+      </div>
+      <p class="para">
+       Linearizable read concern requires MongoDB 3.4.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readconcern.constants.local"><strong><code>MongoDB\Driver\ReadConcern::LOCAL</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Default for reads against primary if <code class="literal">level</code> is
+       unspecified and for reads against secondaries if <code class="literal">level</code>
+       is unspecified but <code class="literal">afterClusterTime</code> is specified.
+      </p>
+      <p class="para">
+       The query returns the instance&#039;s most recent data. Provides no
+       guarantee that the data has been written to a majority of the replica set
+       members (i.e. may be rolled back).
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readconcern.constants.majority"><strong><code>MongoDB\Driver\ReadConcern::MAJORITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       The query returns the instance&#039;s most recent data acknowledged as
+       having been written to a majority of members in the replica set.
+      </p>
+      <p class="para">
+       To use read concern level of <code class="literal">&quot;majority&quot;</code>, replica sets
+       must use WiredTiger storage engine and election protocol version 1.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readconcern.constants.snapshot"><strong><code>MongoDB\Driver\ReadConcern::SNAPSHOT</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Read concern <code class="literal">&quot;snapshot&quot;</code> is available for
+       multi-document transactions, and starting in MongoDB 5.0, certain read
+       operations outside of multi-document transactions.
+      </p>
+      <p class="para">
+       If the transaction is not part of a causally consistent session, upon
+       transaction commit with write concern <code class="literal">&quot;majority&quot;</code>, the
+       transaction operations are guaranteed to have read from a snapshot of
+       majority-committed data.
+      </p>
+      <p class="para">
+       If the transaction is part of a causally consistent session, upon
+       transaction commit with write concern <code class="literal">&quot;majority&quot;</code>, the
+       transaction operations are guaranteed to have read from a snapshot of
+       majority-committed data that provides causal consistency with the
+       operation immediately preceding the transaction start.
+      </p>
+      <p class="para">
+       Outside of multi-document transactions, read concern
+       <code class="literal">&quot;snapshot&quot;</code> is available on primaries and secondaries
+       for the following read operations: <code class="literal">find</code>,
+       <code class="literal">aggregate</code>, and <code class="literal">distinct</code> (on
+       unsharded collections). All other read commands prohibit
+       <code class="literal">&quot;snapshot&quot;</code>.
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+  <div class="section">
+   <h2 class="title">更新日志</h2>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>版本</th>
+        <th>说明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>PECL mongodb 1.11.0</td>
+        <td>
+         <p class="para">
+          Added the <strong><code>MongoDB\Driver\ReadConcern::SNAPSHOT</code></strong>
+          constant.
+         </p>
+        </td>
+       </tr>
+
+       <tr>
+        <td>PECL mongodb 1.7.0</td>
+        <td>
+         Implements <span class="interfacename"><a href="class.serializable.html" class="interfacename">Serializable</a></span>.
+        </td>
+       </tr>
+
+       <tr>
+        <td>PECL mongodb 1.4.0</td>
+        <td>
+         <p class="para">
+          Added the <strong><code>MongoDB\Driver\ReadConcern::AVAILABLE</code></strong>
+          constant.
+         </p>
+        </td>
+       </tr>
+
+       <tr>
+        <td>PECL mongodb 1.2.0</td>
+        <td>
+         <p class="para">
+          Added the
+          <strong><code>MongoDB\Driver\ReadConcern::LINEARIZABLE</code></strong>
+          constant.
+         </p>
+         <p class="para">
+          Implements <span class="interfacename"><a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span>.
+         </p>
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+  <div class="section" id="mongodb-driver-readconcern.seealso">
+   <h2 class="title">参见</h2>
+  <ul class="simplelist">
+   <li class="member"><a href="https://docs.mongodb.com/manual/reference/read-concern/" class="link external">&raquo;&nbsp;Read Concern reference</a></li>
+  </ul>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="mongodb-driver-readconcern.bsonserialize.html">MongoDB\Driver\ReadConcern::bsonSerialize</a> — Returns an object for BSON serialization</li><li><a href="mongodb-driver-readconcern.construct.html">MongoDB\Driver\ReadConcern::__construct</a> — Create a new ReadConcern</li><li><a href="mongodb-driver-readconcern.getlevel.html">MongoDB\Driver\ReadConcern::getLevel</a> — Returns the ReadConcern's &quot;level&quot; option</li><li><a href="mongodb-driver-readconcern.isdefault.html">MongoDB\Driver\ReadConcern::isDefault</a> — Checks if this is the default read concern</li><li><a href="mongodb-driver-readconcern.serialize.html">MongoDB\Driver\ReadConcern::serialize</a> — Serialize a ReadConcern</li><li><a href="mongodb-driver-readconcern.unserialize.html">MongoDB\Driver\ReadConcern::unserialize</a> — Unserialize a ReadConcern</li></ul>
+</div>
+</div></div></body></html>

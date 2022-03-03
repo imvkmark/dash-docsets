@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>前一个错误信息</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reserved.variables.cookies.html">« $_COOKIE</a></li>
+      <li style="float: right;"><a href="reserved.variables.httpresponseheader.html">$http_response_header »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.variables.html">预定义变量</a></li>
+    <li>前一个错误信息</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reserved.variables.phperrormsg" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">$php_errormsg</h1>
+  <p class="refpurpose"><span class="refname">$php_errormsg</span> &mdash; <span class="dc-title">前一个错误信息</span></p>
+
+ </div>
+
+ <div id="reserved.variables.phperrormsg-refsynopsisdiv">
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">本特性已自 PHP 7.2.0
+起<em class="emphasis">废弃</em>。强烈建议不要使用本特性。</p></div>
+  <p class="simpara">
+   用 <span class="function"><a href="function.error-get-last.html" class="function">error_get_last()</a></span> 函数代替。 
+  </p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-reserved.variables.phperrormsg-description">
+  <h3 class="title">说明</h3>
+  <p class="para">
+   <var class="varname">$php_errormsg</var> 变量包含由 PHP 生成的最新错误信息。这个变量只在错误发生的作用域内可用，并且要求 <a href="errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> 配置项是开启的（默认是关闭的）。
+  </p>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="simpara">
+    如果用户定义了错误处理句柄（<span class="function"><a href="function.set-error-handler.html" class="function">set_error_handler()</a></span>）并且返回 <strong><code>false</code></strong> 的时候，<var class="varname">$php_errormsg</var> 就会被设置。
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-reserved.variables.phperrormsg-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        可使 <var class="varname">$php_errormsg</var> 可用的 
+        <a href="errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> 指令已被删除。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        可使 <var class="varname">$php_errormsg</var> 可用的 
+        <a href="errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> 指令已被弃用。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-reserved.variables.phperrormsg-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="variable.phperrormsg.basic">
+    <p><strong>示例 #1 <var class="varname">$php_errormsg</var> 范例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">@</span><span style="color: #0000BB">strpos</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$php_errormsg</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Wrong parameter count for strpos()
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reserved.variables.phperrormsg-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.error-get-last.html" class="function" rel="rdfs-seeAlso">error_get_last()</a> - 获取最后发生的错误</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

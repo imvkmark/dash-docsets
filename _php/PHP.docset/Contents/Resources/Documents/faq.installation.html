@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安装常见问题</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="faq.databases.html">« 数据库问题</a></li>
+      <li style="float: right;"><a href="faq.build.html">编译问题 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li>安装常见问题</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="faq.installation" class="chapter">
+  <h1>安装常见问题</h1>
+
+  
+  <p class="para">本章包括了安装 PHP 的常见问题。PHP 可以用于几乎任何操作系统（可能除了 OS X 之前的 MacOS 之外），以及几乎任何 web 服务器。</p>
+  <p class="para">要安装 PHP，请按照
+  <a href="install.html" class="link">安装与配置</a>一章中的指示进行。</p>
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.installation.apache2">
+        为什么不应该在实际运作环境中的 Apache2 中使用线程化的 MPM？
+      </a></li><li><a href="#faq.installation.phpini">
+        Unix/Windows：应该上哪儿去找我的 php.ini 文件？
+      </a></li><li><a href="#faq.installation.nodata">
+        Unix：我安装了 PHP，但每次我打开一个页面时，只得到一条&ldquo;Document Contains No Data&rdquo;消息！这是怎么回事？
+      </a></li><li><a href="#faq.installation.processing">
+        Unix：我从 RPMS 安装了 PHP，但是 Apache 不处理 PHP 页面！这是怎么回事？
+      </a></li><li><a href="#faq.installation.frontpage">
+        Unix：我给 Apache 加上了 FrontPage extensions 补丁，结果 PHP 突然不工作了。PHP 和 Apache FrontPage extensions 兼容吗？
+      </a></li><li><a href="#faq.installation.blankscreen">
+        Unix/Windows：我已经安装了 PHP，但当我试着通过浏览器访问 PHP 脚本时，得到了一个空白页面。
+      </a></li><li><a href="#faq.installation.500error">
+        Unix/Windows：我已经安装了 PHP，但当我试着通过浏览器访问 PHP 脚本时，得到了一个服务器的 500 错误。
+      </a></li><li><a href="#faq.installation.undefinedsyms">
+        某些操作系统：我已经在不出错的情况下安装了 PHP，但当我试着启动 Apache 时得到了一个未定义符号错误： 
+        [mybox:user /src/php4] root# apachectl configtest apachectl: /usr/local/apache/bin/httpd Undefined symbols: _compress _uncompress
+      </a></li><li><a href="#faq.installation.cgierror">
+        Windows：我已经安装了 PHP，但当我试着通过浏览器访问 PHP 脚本时，得到如下错误： 
+        cgi error: The specified CGI application misbehaved by not returning a complete set of HTTP headers. The headers it did return are:
+      </a></li><li><a href="#faq.installation.phpandiis">
+        Windows：我已经照着所有的说明做了，但还是不能让 PHP 和 IIS 一起工作！
+      </a></li><li><a href="#faq.installation.forceredirect">
+        当在 IIS，PWS，OmniHTTPD 或者 Xitami 中以 CGI 方式运行 PHP 时，出现如下错误：
+        Security Alert! PHP CGI cannot be accessed directly..
+      </a></li><li><a href="#faq.installation.findphpini">
+        怎样得知我的 php.ini 是否被找到和应用了？似乎我做的修改都没有生效。
+      </a></li><li><a href="#faq.installation.addtopath">
+        怎样将 PHP 目录加入到 Windows 路径 
+        PATH中去？
+      </a></li><li><a href="#faq.installation.phprc">
+        怎样使 php.ini 文件在 Windows 下被 PHP 所用？
+      </a></li><li><a href="#faq.installation.apache.multiviews">
+        有可能使 PHP 运作于 Apache 的 content negotiation（MultiViews 选项）吗？
+      </a></li><li><a href="#faq.installation.requestmethods">
+        PHP 是否仅限于处理 GET 和 POST 请求方法？
+      </a></li></ol></div>
+    <dl class="qandaentry" id="faq.installation.apache2">
+      <dt><strong>
+        为什么不应该在实际运作环境中的 Apache2 中使用线程化的 MPM？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">PHP 是粘合剂。它将几十种第三方的库粘合到一起来创建很酷的 web 应用，并通过很直观且易于学习的语言界面使其看上去好像一个整体。PHP 的灵活与强大依赖于底层平台的稳定与耐用。起码需要将一个可运作的操作系统，一个可运作的 web 服务器以及可运作的第三方库粘合起来。其中任何一方不运作了，PHP 都需要有方法来识别出问题并且快速解决。如果没有完全独立的执行线程，完全独立的内存单元和稳定的空间对付每个请求，那底层架构就太复杂以至于不稳定因素更容易进入到 PHP 系统中。</p>
+        <p class="para">如果必须要用线程化的 MPM，看看 FastCGI 配置，使 PHP 运行于自己独立的内存空间中。</p>
+        <p class="para">最后需要指出，不使用线程化 MPM 的警告在 Windows 系统中没那么强烈，因为 Windows 中的大多数库都理应在多线程下安全运行。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.phpini">
+      <dt><strong>
+        Unix/Windows：应该上哪儿去找我的 <var class="filename">php.ini</var> 文件？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">UNIX 中默认在 
+        <var class="filename">/usr/local/lib</var>目录中，也就是 
+        <var class="filename">&lt;install-path&gt;/lib</var>。很多人会在编译时通过 
+        <a href="configure.about.html#configure.with-config-file-path" class="link">--with-config-file-path</a>标记来改变路径。例如可以将路径设为： 
+        <div class="example-contents"><div class="shellcode"><pre class="shellcode">--with-config-file-path=/etc</pre>
+</div></div>
+然后从发行包中将 
+        <var class="filename">php.ini-dist</var>拷贝为 
+        <var class="filename">/etc/php.ini</var>并编辑它来作出想要的修改。</p>
+        <div class="example-contents"><div class="shellcode"><pre class="shellcode">--with-config-file-scan-dir=PATH</pre>
+</div></div>
+
+        <p class="para">Windows 中 <var class="filename">php.ini</var> 文件的默认路径在 Windows 目录下。如果使用的是 Apache 服务器，则会首先在 Apache 的安装目录中寻找 <var class="filename">php.ini</var>，例如 
+        <var class="filename">C:\Program Files\Apache Group\Apache</var>。这样同一台机器上不同版本的 Apache 就可以有不同的 <var class="filename">php.ini</var> 文件。</p>
+        <p class="para">参见
+        <a href="configuration.file.html" class="link">配置文件</a>。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.nodata">
+      <dt><strong>
+        Unix：我安装了 PHP，但每次我打开一个页面时，只得到一条“Document Contains No Data”消息！这是怎么回事？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">这可能意味着 PHP 发生了某类错误而导致了 core dump。查看服务器的错误日志看看是不是这样，再用一个小的测试例子试着重现此问题。如果你会用“gdb”的话，那么在 bug 报告中提供回溯跟踪很有助于帮开发人员查明问题。如果你用 Apache 的模块方式使用 PHP，试着这么做： 
+        <ul class="itemizedlist">
+          <li class="listitem">
+            <p class="para">停止 httpd 进程</p>
+          </li>
+          <li class="listitem">
+            <p class="para">gdb httpd</p>
+          </li>
+          <li class="listitem">
+            <p class="para">停止 httpd 进程</p>
+          </li>
+          <li class="listitem">
+            <p class="para">&gt; run -X -f /path/to/httpd.conf</p>
+          </li>
+          <li class="listitem">
+            <p class="para">然后在你的浏览器中访问导致错误的 URL</p>
+          </li>
+          <li class="listitem">
+            <p class="para">&gt; run -X -f /path/to/httpd.conf</p>
+          </li>
+          <li class="listitem">
+            <p class="para">如果你遇到 core dump，gdb 此时就会通知你</p>
+          </li>
+          <li class="listitem">
+            <p class="para">输入：bt</p>
+          </li>
+          <li class="listitem">
+            <p class="para">你应该在 bug 报告中包括回溯追踪记录。应该提交到 
+            <a href="https://github.com/php/php-src/issues" class="link external">&raquo;&nbsp;https://github.com/php/php-src/issues</a></p>
+          </li>
+        </ul></p>
+        <p class="para">如果你的脚本使用了正则表达式函数（
+        <span class="function"><strong>ereg()</strong></span>等），应该确认在编译 PHP 和 Apache 时使用了同一个正则表达式包。在 PHP 和 Apache 1.3.x 中应该自动就是这样。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.processing">
+      <dt><strong>
+        Unix：我从 RPMS 安装了 PHP，但是 Apache 不处理 PHP 页面！这是怎么回事？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">假定你的 Apache 和 PHP 都是从 RPM 包中安装的，你需要在 <var class="filename">httpd.conf</var> 文件中取消以下部分或所有行的注释，或者把它们添加到该文件中： 
+        <div class="example-contents">
+          <div class="apache-confcode"><pre class="apache-confcode"># Extra Modules
+AddModule mod_php.c
+AddModule mod_perl.c
+
+# Extra Modules
+LoadModule php_module         modules/mod_php.so
+LoadModule php5_module        modules/libphp5.so
+LoadModule perl_module        modules/libperl.so</pre>
+</div>
+</div>
+并且把： 
+        <div class="example-contents">
+          <div class="apache-confcode"><pre class="apache-confcode">AddType application/x-httpd-php .php</pre>
+</div>
+</div>
+添加到全局属性中，或者添加到你希望加入 PHP 支持的虚拟域中。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.frontpage">
+      <dt><strong>
+        Unix：我给 Apache 加上了 FrontPage extensions 补丁，结果 PHP 突然不工作了。PHP 和 Apache FrontPage extensions 兼容吗？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">兼容的。PHP 可以和 FrontPage extensions 一起工作，问题是 FrontPage 补丁修改了几个 PHP 依赖的 Apache 构造。在 FrontPage 补丁安装之后之后重新编译 PHP（用“make clean ; make”）可以解决此问题。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.blankscreen">
+      <dt><strong>
+        Unix/Windows：我已经安装了 PHP，但当我试着通过浏览器访问 PHP 脚本时，得到了一个空白页面。
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">用浏览器中的“查看源文件”，你可能会发现能看到 PHP 脚本的源程序。这意味着 web 服务器没有把脚本发送给 PHP 解释。服务器配置在某处有问题，请对照 PHP 安装说明仔细检查服务器配置。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.500error">
+      <dt><strong>
+        Unix/Windows：我已经安装了 PHP，但当我试着通过浏览器访问 PHP 脚本时，得到了一个服务器的 500 错误。
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">当服务器尝试运行 PHP 时出了错。要想看到有意义的错误信息，在命令行中转到 PHP 可执行程序（Windows 中是 
+        <var class="filename">php.exe</var>）所在目录下并运行 
+        <strong class="command">php -i</strong>。如果 PHP 运行有任何问题，那么会显示相应的错误信息，这将给你下一步要做什么的线索。如果你得到满屏幕 HTML 代码（
+        <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>函数的输出）的话说明 PHP 本身工作正常，你的问题可能和你的服务器配置有关，要仔细检查。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.undefinedsyms">
+      <dt><strong>
+        某些操作系统：我已经在不出错的情况下安装了 PHP，但当我试着启动 Apache 时得到了一个未定义符号错误： 
+        <div class="example-contents"><div class="shellcode"><pre class="shellcode">[mybox:user /src/php4] root# apachectl configtest apachectl: /usr/local/apache/bin/httpd Undefined symbols: _compress _uncompress</pre>
+</div></div>
+
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">这实际上和 PHP 没有关系，而和 MySQL 的客户端库有关。有的需要 
+        <strong class="option configure">--with-zlib</strong>，有的不需要。这个问题也包括在 MySQL 的 FAQ 中。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.cgierror">
+      <dt><strong>
+        Windows：我已经安装了 PHP，但当我试着通过浏览器访问 PHP 脚本时，得到如下错误： 
+        <div class="example-contents screen">cgi error: The specified CGI application misbehaved by not returning a complete set of HTTP headers. The headers it did return are:</div>
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">这个错误信息意味着 PHP 根本就不能产生任何输出。要想看到有意义的错误信息，在命令行中转到 PHP 可执行程序（Windows 中是 
+        <var class="filename">php.exe</var>）所在目录下并运行 
+        <strong class="command">php -i</strong>。如果 PHP 运行有任何问题，那么会显示相应的错误信息，这将给你下一步要做什么的线索。如果你得到满屏幕 HTML 代码（
+        <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>函数的输出）的话说明 PHP 本身工作正常。</p>
+        <p class="para">一旦 PHP 在命令行中工作正常，试着通过浏览器再次访问脚本。如果还失败的话那可能是如下原因之一：</p>
+        <ul class="itemizedlist">
+          <li class="listitem">
+            <span class="simpara">文件权限问题，你的 PHP 脚本，
+            <var class="filename">php.exe</var>，
+            <var class="filename">php4ts.dll</var>，<var class="filename">php.ini</var> 或任何你要加载的 PHP 扩展库是匿名 internet 用户 
+            <code class="literal">ISUR_&lt;machinename&gt;</code>无权访问的。</span>
+          </li>
+          <li class="listitem">
+            <span class="simpara">脚本文件不存在（或者有可能不在你以为的地方，注意 web 文档的目录）。注意在 IIS 中通过 Internet 服务管理器设定脚本映射时选中“检查文件是否存在”可以捕捉到此错误。这样一来如果脚本文件不存在的话服务器就会返回一个 404 错误信息。还有一个额外的好处就是 IIS 会基于 NTLanMan 权限来替你对脚本文件做任何所需要的认证。</span>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.phpandiis">
+      <dt><strong>
+        Windows：我已经照着所有的说明做了，但还是不能让 PHP 和 IIS 一起工作！
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">确认需要运行 PHP 脚本的任何用户有权限运行 
+        <var class="filename">php.exe</var>！IIS 使用了一个在安装 IIS 时添加的匿名用户，这个用户需要有访问 
+        <var class="filename">php.exe</var>的权限。同样任何认证用户也需要执行 
+        <var class="filename">php.exe</var>的权限。在 IIS4 中你还需要告诉它 PHP 是一个脚本引擎。此外，你可能还需要阅读
+        <a href="faq.installation.html#faq.installation.forceredirect" class="link">此常见问题</a>。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.forceredirect">
+      <dt><strong>
+        当在 IIS，PWS，OmniHTTPD 或者 Xitami 中以 CGI 方式运行 PHP 时，出现如下错误：
+        <code class="literal">Security Alert! PHP CGI cannot be accessed directly.</code>.
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">必须将 
+        <a href="ini.core.html#ini.cgi.force-redirect" class="link">cgi.force_redirect</a>选项设为 
+        <code class="literal">0</code>。 默认值为 
+        <code class="literal">1</code>，因此要确认此选项没有被注释掉（用 
+        <code class="literal">;</code>）。和其它选项一样，是在 <var class="filename">php.ini</var> 中设定的。</p>
+        <p class="para">因为默认值是 
+        <code class="literal">1</code>，因此你必须百分之百确认使用了正确的 <var class="filename">php.ini</var> 文件。详细信息请阅读
+        <a href="faq.installation.html#faq.installation.findphpini" class="link">此常见问题</a>。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.findphpini">
+      <dt><strong>
+        怎样得知我的 <var class="filename">php.ini</var> 是否被找到和应用了？似乎我做的修改都没有生效。
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">要确认你的 <var class="filename">php.ini</var> 被 PHP 使用了，调用 
+        <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>，在接近开头的位置有一项叫做 
+        <code class="literal">Configuration File (php.ini)</code>。这里将告诉你 PHP 在哪里找到了 <var class="filename">php.ini</var> 并且是否使用了。如果只显示一个目录则 没有使用任何 <var class="filename">php.ini</var> 文件，你应将你的 <var class="filename">php.ini</var> 文件放到该目录中。如果 <var class="filename">php.ini</var> 包括在该路径中则它已被应用了。</p>
+        <p class="para">如果 <var class="filename">php.ini</var> 被使用了并且你是以模块方式运行 PHP 的，确保在修改了 <var class="filename">php.ini</var> 之后重新启动你的 web server。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.addtopath">
+      <dt><strong>
+        怎样将 PHP 目录加入到 Windows 路径 
+        <var class="varname">PATH</var>中去？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">在 Windows NT，2000，XP 和 2003 下： 
+        <ul class="itemizedlist">
+          <li class="listitem">
+            <p class="para">进入控制面板并打开“系统”图标（开始 -&gt; 设置 -&gt; 控制面板 -&gt; 系统，Windows XP/2003 中是：开始 -&gt; 控制面板 -&gt; 系统）</p>
+          </li>
+          <li class="listitem">
+            <p class="para">选择“高级”标签页</p>
+          </li>
+          <li class="listitem">
+            <p class="para">点击“环境变量”按钮</p>
+          </li>
+          <li class="listitem">
+            <p class="para">在“系统变量”栏中</p>
+          </li>
+          <li class="listitem">
+            <p class="para">找到 Path 这一项（可能需要向下滚动才能找到）</p>
+          </li>
+          <li class="listitem">
+            <p class="para">鼠标双击 Path 这一项</p>
+          </li>
+          <li class="listitem">
+            <p class="para">在最后加入你的 PHP 目录，包括前面的“;”（例如：
+            <code class="literal">;C:\php</code>）</p>
+          </li>
+          <li class="listitem">
+            <p class="para">点击“确定”并重新启动电脑</p>
+          </li>
+        </ul></p>
+        <p class="para">在 Windows 98/Me 中需要编辑 
+        <var class="filename">autoexec.bat</var>文件： 
+        <ul class="itemizedlist">
+          <li class="listitem">
+            <p class="para">打开记事本（开始 -&gt; 运行，然后输入 notepad 并点确定）</p>
+          </li>
+          <li class="listitem">
+            <p class="para">打开 
+            <var class="filename">C:\autoexec.bat</var>文件</p>
+          </li>
+          <li class="listitem">
+            <p class="para">找到这么一行：PATH=C:\WINDOWS;C:\WINDOWS\COMMAND;..... 并在最后加上 
+            <code class="literal">;C:\php</code></p>
+          </li>
+          <li class="listitem">
+            <p class="para">保存文件并重新启动电脑</p>
+          </li>
+        </ul></p>
+        <blockquote class="note"><p><strong class="note">注意</strong>: 
+          <span class="simpara">记住在上述修改之后重新启动，以确保对 
+          <var class="varname">PATH</var>的改变生效。</span>
+        </p></blockquote>
+        <p class="para">PHP 手册过去提倡把文件拷贝到 Windows 系统目录中去，这是因为该目录（
+        <var class="filename">C:\Windows</var>，
+        <var class="filename">C:\WINNT</var>，等等）默认就在系统路径中。但是把文件拷贝到 Windows 系统目录中这一方式早已不被提倡，还可能造成问题。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.phprc">
+      <dt><strong>
+        怎样使 <var class="filename">php.ini</var> 文件在 Windows 下被 PHP 所用？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">
+         有几种方法可以做到这一点。如果您使用的是 Apache，
+         请参阅 Apache 文档，否则
+         您必须设置<var class="varname">PHPRC</var>环境变量。
+        </p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.apache.multiviews">
+      <dt><strong>
+        有可能使 PHP 运作于 Apache 的 content negotiation（MultiViews 选项）吗？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">如果到 PHP 文件的连接包含扩展名，一切都运行完美。本解答只针对到 PHP 文件的连接不包含扩展名时，而希望通过 content negotiation 来从不包含扩展名的 URL 来选择 PHP 文件的情况。在此种情况下，将 
+        <code class="literal">AddType application/x-httpd-php .php</code>替换为： 
+        <div class="example-contents">
+          <div class="apache-confcode"><pre class="apache-confcode"># PHP 4
+AddHandler php-script php
+AddType text/html php
+
+# PHP 5
+AddHandler php5-script php
+AddType text/html php</pre>
+</div>
+</div>
+此方案对于 Apache 1 不适用，因为 PHP 模块不捕获 
+        <code class="literal">php-script</code>。</p>
+      </dd>
+    </dl>
+    <dl class="qandaentry" id="faq.installation.requestmethods">
+      <dt><strong>
+        PHP 是否仅限于处理 GET 和 POST 请求方法？
+      </strong></dt>
+      <dd class="answer">
+        <p class="para">不是，PHP 有可能处理任何请求方法，例如 CONNECT。适当的回应状态可以用 
+        <span class="function"><a href="function.header.html" class="function">header()</a></span>发送。如果仅需要处理 GET 和 POST 方法，可以通过如下的 Apache 配置实现： 
+        <div class="example-contents">
+          <div class="apache-confcode"><pre class="apache-confcode">&lt;LimitExcept GET POST&gt;
+Deny from all
+&lt;/LimitExcept&gt;</pre>
+</div>
+</div>
+</p>
+      </dd>
+    </dl>
+  
+</div>
+</div></div></body></html>

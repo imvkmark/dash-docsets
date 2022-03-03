@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>OAuthException 类</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oauthprovider.tokenhandler.html">« OAuthProvider::tokenHandler</a></li>
+      <li style="float: right;"><a href="book.soap.html">SOAP »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.oauth.html">OAuth</a></li>
+    <li>OAuthException 类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.oauthexception" class="reference">
+
+ <h1 class="title">OAuthException 类</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL OAuth &gt;= 0.99.1)</p>
+
+
+  <div class="section" id="oauthexception.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    当使用 OAuth 扩展发生异常错误时，抛出此异常和包含了一些有用的调试信息。   </p>
+  </div>
+
+
+  <div class="section" id="oauthexception.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">OAuthException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+       <a href="class.exception.html" class="classname">Exception</a>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 属性 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+      <var class="varname"><a href="class.oauthexception.html#oauthexception.props.lastresponse">$<var class="varname">lastResponse</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+      <var class="varname"><a href="class.oauthexception.html#oauthexception.props.debuginfo">$<var class="varname">debugInfo</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 继承的属性 */</div>
+    <div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.exception.html#exception.props.message">$<var class="varname">message</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.exception.html#exception.props.string">$<var class="varname">string</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.exception.html#exception.props.code">$<var class="varname">code</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.exception.html#exception.props.file">$<var class="varname">file</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.exception.html#exception.props.line">$<var class="varname">line</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">array</span>
+      <var class="varname"><a href="class.exception.html#exception.props.trace">$<var class="varname">trace</var></a></var><span class="initializer"> = []</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.exception.html#exception.props.previous">$<var class="varname">previous</var></a></var><span class="initializer"> = null</span>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 继承的方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getmessage.html" class="methodname">Exception::getMessage</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getprevious.html" class="methodname">Exception::getPrevious</a></span>(): <span class="type"><span class="type">?</span><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getcode.html" class="methodname">Exception::getCode</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getfile.html" class="methodname">Exception::getFile</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.getline.html" class="methodname">Exception::getLine</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.gettrace.html" class="methodname">Exception::getTrace</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="exception.gettraceasstring.html" class="methodname">Exception::getTraceAsString</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="exception.tostring.html" class="methodname">Exception::__toString</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">private</span> <span class="methodname"><a href="exception.clone.html" class="methodname">Exception::__clone</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="oauthexception.props">
+   <h2 class="title">属性</h2>
+   <dl>
+    
+     <dt id="oauthexception.props.lastresponse"><var class="varname">lastResponse</var></dt>
+
+     <dd>
+
+      <p class="para">发生异常时的响应，如果有的话</p>
+     </dd>
+
+    
+    
+     <dt id="oauthexception.props.debuginfo"><var class="varname">debugInfo</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+ </div>
+
+</div>
+</div></div></body></html>

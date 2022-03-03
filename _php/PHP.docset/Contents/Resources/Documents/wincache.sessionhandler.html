@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>WinCache Session Handler</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="wincache.stats.html">« WinCache Statistics Script</a></li>
+      <li style="float: right;"><a href="wincache.reroutes.html">WinCache Functions Reroutes »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="wincache.setup.html">安装／配置</a></li>
+    <li>WinCache Session Handler</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="wincache.sessionhandler" class="section">
+  <h2 class="title">WinCache Session Handler</h2>
+  <p class="para">
+   The WinCache session handler (available since WinCache 1.1.0) can be used to configure PHP to store the session data in shared memory session cache. 
+   Using shared memory instead of the default file session storage helps improve performance of PHP applications 
+   that store large amount of data in session objects. Wincache session cache uses file-backed shared memory, which ensures 
+   that the session data is not lost during recycling of IIS application pools.
+  </p>
+  <p class="para">
+   To configure PHP to use WinCache session handler set the <var class="filename">php.ini</var> setting 
+   <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a> to <em class="emphasis">wincache</em>. 
+   By default the Windows temporary file location is used for storing the 
+   session data. To change the location of the session file use 
+   <a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a> directive.
+   <div class="example" id="example-632">
+    <p><strong>示例 #1 Enabling WinCache session handler</strong></p>
+    <div class="example-contents">
+<div class="php.inicode"><pre class="php.inicode">session.save_handler = wincache
+session.save_path = C:\inetpub\temp\session\</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

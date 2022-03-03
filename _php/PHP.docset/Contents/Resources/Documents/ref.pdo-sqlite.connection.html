@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Connecting to SQLite databases</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.pdo-sqlite.html">« SQLite (PDO)</a></li>
+      <li style="float: right;"><a href="pdo.sqlitecreateaggregate.html">PDO::sqliteCreateAggregate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></li>
+    <li>Connecting to SQLite databases</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.pdo-sqlite.connection" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">PDO_SQLITE DSN</h1>
+    <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PECL PDO_SQLITE &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">PDO_SQLITE DSN</span> &mdash; <span class="dc-title">Connecting to SQLite databases</span></p>
+
+   </div>
+
+   <div class="refsect1 description" id="refsect1-ref.pdo-sqlite.connection-description">
+    <h3 class="title">说明</h3>
+    <p class="para">
+     The PDO_SQLITE Data Source Name (DSN) is composed of the following elements:
+     <dl>
+      
+       <dt>
+DSN prefix (SQLite 3)</dt>
+
+       <dd>
+
+        <p class="para">
+         The DSN prefix is <strong class="userinput"><code>sqlite:</code></strong>.
+         <ul class="itemizedlist">
+          <li class="listitem">
+           <p class="para">
+            To access a database on disk, the absolute path has to be appended to the
+            DSN prefix.
+           </p>
+          </li>
+          <li class="listitem">
+           <p class="para">
+            To create a database in memory, <code class="literal">:memory:</code> has to be appended
+            to the DSN prefix.
+           </p>
+          </li>
+          <li class="listitem">
+           <p class="para">
+            If the DSN consists of the DSN prefix only, a temporary database is used,
+            which is deleted when the connection is closed.
+           </p>
+          </li>
+         </ul>
+        </p>
+       </dd>
+
+      
+     </dl>
+
+    </p>
+   </div>
+
+   <div class="refsect1 examples" id="refsect1-ref.pdo-sqlite.connection-examples">
+    <h3 class="title">范例</h3>
+    <p class="para">
+     <div class="example" id="example-1080">
+      <p><strong>示例 #1 PDO_SQLITE DSN examples</strong></p>
+      <div class="example-contents"><p>
+       The following examples show PDO_SQLITE DSN for connecting to
+       SQLite databases:
+       <div class="example-contents">
+<div class="cdata"><pre>
+sqlite:/opt/databases/mydb.sq3
+sqlite::memory:
+sqlite:
+</pre></div>
+       </div>
+
+      </p></div>
+     </div>
+    </p>
+   </div>
+
+  </div></div></div></body></html>

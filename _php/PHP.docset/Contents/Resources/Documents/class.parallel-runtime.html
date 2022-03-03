@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>The parallel\Runtime class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="parallel.run.html">« parallel\run</a></li>
+      <li style="float: right;"><a href="parallel-runtime.construct.html">parallel\Runtime::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.parallel.html">parallel</a></li>
+    <li>The parallel\Runtime class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.parallel-runtime" class="reference">
+
+ <h1 class="title">The parallel\Runtime class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(0.8.0)</p>
+
+  <div class="section">
+    <h2 class="title">Runtime Objects</h2>
+    <p class="para">
+     Each runtime represents a single PHP thread, the thread is created (and bootstrapped) upon construction. 
+     The thread then waits for tasks to be scheduled: Scheduled tasks will be executed FIFO and then the thread will resume waiting until 
+     more tasks are scheduled, or it&#039;s closed, killed, or destroyed by the normal scoping rules of PHP objects.
+    </p>
+    <div class="warning"><strong class="warning">警告</strong>
+     <p class="para">
+      When a runtime is destroyed by the normal scoping rules of PHP objects, it will first execute all of the tasks that were scheduled,
+      and block while doing so. 
+     </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="title">Runtime Bootstrapping</h2>
+    <p class="para">
+     When a new runtime is created, it does not share code with the thread (or process) that created it. This means it doesn&#039;t have the same
+     classes and functions loaded, nor the same autoloader set. In some cases, a very lightweight runtime is desirable because the tasks that
+     will be scheduled do not need access to the code in the parent thread. In those cases where the tasks do need to access the same code, it
+     is enough to set an autoloader as the bootstrap.
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      preloading may be used in conjunction with parallel, in this case preloaded code is available without bootstrapping
+     </p>
+    </p></blockquote>
+  </div>
+
+  <div class="section" id="parallel-runtime.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+      <span class="modifier">class</span> <strong class="classname">parallel\Runtime</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Create */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="parallel-runtime.construct.html" class="methodname">__construct</a></span>()</div>
+<div class="constructorsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-runtime.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$bootstrap</code></span>)</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Execute */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-runtime.run.html" class="methodname">run</a></span>(<span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <code class="parameter">$task</code></span>): <span class="type"><span class="type">?</span><span class="type"><span class="type Future">Future</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-runtime.run.html" class="methodname">run</a></span>(<span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <code class="parameter">$task</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$argv</code></span>): <span class="type"><span class="type">?</span><span class="type"><span class="type Future">Future</span></span></span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Join */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-runtime.close.html" class="methodname">close</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-runtime.kill.html" class="methodname">kill</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="parallel-runtime.construct.html">parallel\Runtime::__construct</a> — Runtime Construction</li><li><a href="parallel-runtime.run.html">parallel\Runtime::run</a> — Execution</li><li><a href="parallel-runtime.close.html">parallel\Runtime::close</a> — Runtime Graceful Join</li><li><a href="parallel-runtime.kill.html">parallel\Runtime::kill</a> — Runtime Join</li></ul>
+</div>
+</div></div></body></html>

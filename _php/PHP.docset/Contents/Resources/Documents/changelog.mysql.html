@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>更新日志</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysql.resources.html">« 资源类型</a></li>
+      <li style="float: right;"><a href="mysql.constants.html">预定义常量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysql.html">Mysql（原始）</a></li>
+    <li>更新日志</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="changelog.mysql" class="appendix">
+ <h1>更新日志</h1>
+
+ <p class="para">对本扩展的类／函数／方法有以下更新。</p>
+
+ <div class="simplesect">
+  <h3 class="title">ext/mysql 扩展更新日志概要</h3>
+  <p class="para">
+   ext/mysql 扩展相关的更新日志。
+  </p>
+ </div>
+
+ <div class="simplesect" id="changelog.mysql.global">
+  <h3 class="title">全局 ext/mysql 的变更</h3>
+  <p class="para">
+   以下列表是整个 ext/mysql 扩展的变动更新。
+  </p>
+  <p class="para">
+   <table id="changelog.mysql.global.table" class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <p class="para">
+         此扩展已从 PHP 中移除。详见
+         <a href="mysqlinfo.api.choosing.html" class="xref">Choosing an API</a>.
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        <p class="para">
+         此扩展已经不建议使用。通过 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>、<span class="function"><a href="function.mysql-pconnect.html" class="function">mysql_pconnect()</a></span>
+         或任何由 <code class="literal">mysql_*</code> 函数实现的 MySQL 数据库连接将产生
+         <strong><code>E_DEPRECATED</code></strong> 错误。
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        <p class="para">
+         所有旧的废弃函数和别名现在会产生
+         <strong><code>E_DEPRECATED</code></strong> 错误。这些函数分别是：
+        </p>
+        <p class="para">
+         mysql(), mysql_fieldname(), mysql_fieldtable(), mysql_fieldlen(), mysql_fieldtype(), mysql_fieldflags(), mysql_selectdb(),
+         mysql_createdb(), mysql_dropdb(), mysql_freeresult(), mysql_numfields(), mysql_numrows(), mysql_listdbs(), mysql_listtables(),
+         mysql_listfields(), mysql_db_name(), mysql_dbname(), mysql_tablename() 和 mysql_table_name()。
+         </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="simplesect" id="changelog.mysql.functions">
+  <h3 class="title">函数的变更项</h3>
+  <p class="para">
+   以下列表为  ext/mysql 函数完整的更新历史项。
+  </p>
+  <table class='doctable table' rules='groups'><thead><tr><th>Version</th><th>Function</th><th>Description</th></tr></thead></tbody></table>
+ </div>
+
+</div>
+</div></div></body></html>

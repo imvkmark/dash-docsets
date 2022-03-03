@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>寻找与模式匹配的文件路径</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fwrite.html">« fwrite</a></li>
+      <li style="float: right;"><a href="function.is-dir.html">is_dir »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">文件系统函数</a></li>
+    <li>寻找与模式匹配的文件路径</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.glob" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">glob</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">glob</span> &mdash; <span class="dc-title">寻找与模式匹配的文件路径</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.glob-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>glob</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>glob()</strong></span> 函数依照 libc glob() 函数使用的规则寻找所有与
+   <code class="parameter">pattern</code> 匹配的文件路径，类似于一般 shells
+   所用的规则一样。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.glob-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
+
+     <dd>
+
+      <p class="para">
+       匹配模式（pattern）。
+       不进行缩写扩展或参数替代。
+      </p>
+      <p class="para">
+       特殊字符：
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">*</code> - 匹配零个或多个字符。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">?</code> - 只匹配单个字符（任意字符）。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">[...]</code> - 匹配一组字符中的一个字符。
+          如果第一个字符是 <code class="literal">!</code>，则为否定模式，
+          即匹配不在这组字符中的任意字符。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">\</code> - 只要没有使用 <strong><code>GLOB_NOESCAPE</code></strong> 标记，该字符会转义后面的字符。
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       有效标记有：
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>GLOB_MARK</code></strong> - 在每个返回的项目中加一个斜线
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+           <strong><code>GLOB_NOSORT</code></strong> - 按照文件在目录中出现的原始顺序返回（不排序）
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>GLOB_NOCHECK</code></strong> - 如果没有文件匹配则返回用于搜索的模式
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>GLOB_NOESCAPE</code></strong> - 反斜线不转义元字符
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>GLOB_BRACE</code></strong> - 扩充 {a,b,c} 来匹配 &#039;a&#039;，&#039;b&#039; 或 &#039;c&#039;
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>GLOB_ONLYDIR</code></strong> - 仅返回与模式匹配的目录项
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>GLOB_ERR</code></strong> - 停止并读取错误信息（比如说不可读的目录），默认的情况下忽略所有错误
+         </span>
+        </li>
+       </ul>
+       <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <span class="simpara">
+         <strong><code>GLOB_BRACE</code></strong> 在一些非 GNU 系统上无效，比如 Solaris 和  Alpine Linux 。
+        </span>
+       </p></blockquote>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.glob-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回包含有匹配文件和目录的数组，没有匹配文件时返回空数组，出错返回 <strong><code>false</code></strong>。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    在个别操作系统上，无法区分是否为空匹配或错误。
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.glob-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-2129">
+    <p><strong>示例 #1 怎样用 <span class="function"><strong>glob()</strong></span> 方便地替代
+    <span class="function"><a href="function.opendir.html" class="function">opendir()</a></span> 和相关函数</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">glob</span><span style="color: #007700">(</span><span style="color: #DD0000">"*.txt"</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;size&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+funclist.txt size 44686
+funcsummary.txt size 267625
+quickref.txt size 137820
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.glob-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">此函数不能作用于<a href="features.remote-files.html" class="link">远程文件</a>，被检查的文件必须是可通过服务器的文件系统访问的。</span></p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    此函数在一些系统上还不能工作（例如一些旧的 Sun OS）。
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.glob-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.opendir.html" class="function" rel="rdfs-seeAlso">opendir()</a> - 打开目录句柄</span></li>
+    <li class="member"><span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - 从目录句柄中读取条目</span></li>
+    <li class="member"><span class="function"><a href="function.closedir.html" class="function" rel="rdfs-seeAlso">closedir()</a> - 关闭目录句柄</span></li>
+    <li class="member"><span class="function"><a href="function.fnmatch.html" class="function" rel="rdfs-seeAlso">fnmatch()</a> - 用模式匹配文件名</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

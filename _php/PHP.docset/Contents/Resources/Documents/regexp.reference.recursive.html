@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>递归模式</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.reference.comments.html">« 注释</a></li>
+      <li style="float: right;"><a href="regexp.reference.performance.html">性能 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reference.pcre.pattern.syntax.html">PCRE 正则语法</a></li>
+    <li>递归模式</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="regexp.reference.recursive" class="section">
+  <h2 class="title">递归模式</h2>
+  <p class="para">
+  考虑匹配圆括号内字符串的问题，允许无限嵌套括号。如果不使用递归，
+  最好的方式是使用一个模式匹配固定深度的嵌套。它不能处理任意深度的嵌套。 perl 
+  5.6 提供了一个实验性的功能允许正则表达式递归。
+  特殊项 (?R) 提供了递归的这种特殊用法。
+  这个PCRE模式解决了圆括号问题(假设
+   <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_EXTENDED</a> 选项被设置了，
+  因此空白字符被忽略)：
+
+   <code class="literal">\( ( (?&gt;[^()]+) | (?R) )* \)</code>
+  </p>
+  <p class="para">
+  首先，它匹配一个左括号。
+  然后它匹配任意数量的非括号字符序列或一个模式自身的递归匹配(比如，
+  一个正确的括号子串)，最终，匹配一个右括号。
+  </p>
+  <p class="para">
+  这个例子模式包含无限重复的嵌套，因此使用了一次性子组匹配非括号字符，
+  这在模式应用到模式不匹配的字符串时非常重要。比如，
+  当它应用到
+
+   <code class="literal">(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa()</code>
+
+   时就会很快的产生”不匹配”结果。
+  然而，如果不使用一次性子组，这个匹配将会运行很长时间，
+  因为有很多途径让 + 和 * 重复限定分隔目标字符串，
+  并且在报告失败之前需要测试所有路径。
+  </p>
+  <p class="para">
+  所有捕获子组最终被设置的捕获值都是从递归最外层子模式捕获的值。
+  如果上面的模式匹配
+
+   <code class="literal">(ab(cd)ef)</code>
+
+   ，捕获子组最终被设置的值为 ”ef”，
+  即顶级得到的最后一个值。如果增加了额外的括号
+
+   <code class="literal">\( ( ( (?&gt;[^()]+) | (?R) )* ) \)</code>
+   捕获到的字符串就是顶层括号的匹配内容 ”ab(cd)ef”。
+  如果在模式中有超过 15 个捕获括号，
+  PCRE 在递归期间就会使用 pcre_malloc 分配额外的内存来存储数据，
+  随后通过 pcre_free 释放他们。如果没有内存可被分配，它就仅保存前 15 个捕获括号，
+  在递归内部无法给出内存不够用的错误。
+  </p>
+  
+  <p class="para">
+  <code class="literal">(?1)</code>、<code class="literal">(?2)</code> 等可以用于递归子组。
+   这同样可以用于命名子组：
+  <code class="literal">(?P&gt;name)</code> 或 <code class="literal">(?P&amp;name)</code>。
+  </p>
+  <p class="para">
+  如果递归子组语法在它提到的子组括号外部使用(无论是子组数字序号还是子组名称)，
+  这个操作就相当于程序设计语言中的子程序。
+  前面一些有一个例子指出模式 <code class="literal">(sens|respons)e and \1ibility</code> 匹配 ”sense and
+  responsibility” 和 ”response and responsibility”，但是不匹配 ”sense and
+  responsibility”。如果用模式 <code class="literal">(sens|respons)e and
+  (?1)ibility</code> 替代，
+  它会像匹配那两个字符串一样匹配 ”sense and responsibility”。
+  这种引用方式意义是紧接着匹配引用的子模式。(译注:
+  后向引用只匹配引用的子组之前匹配的结果,
+  这里的递归语法引用是拿引用的子模式重新匹配。)
+  </p>
+  
+  <p class="para">
+  目标字符串的最大长度是 int 型变量可以存储的最大正整数。然而，
+  PCRE 使用递归处理子组和无限重复。
+  这就是说对于某些模式可用的栈空间可能会受目标字符串限制。
+  </p>
+
+ </div></div></div></body></html>

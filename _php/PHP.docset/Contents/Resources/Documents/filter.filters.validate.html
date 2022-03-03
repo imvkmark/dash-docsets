@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Validate filters</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="filter.filters.html">« Types of filters</a></li>
+      <li style="float: right;"><a href="filter.filters.sanitize.html">Sanitize filters »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="filter.filters.html">Types of filters</a></li>
+    <li>Validate filters</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="filter.filters.validate" class="section">
+  <h2 class="title">Validate filters</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Listing of filters for validation</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Options</th>
+        <th>Flags</th>
+        <th>Description</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>
+         <strong><code>FILTER_VALIDATE_BOOLEAN</code></strong>,
+         <strong><code>FILTER_VALIDATE_BOOL</code></strong>
+        </td>
+        <td>&quot;boolean&quot;</td>
+        <td>
+         <code class="parameter">default</code>
+        </td>
+        <td>
+          <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>
+         <p class="para">
+          Returns <strong><code>true</code></strong> for &quot;1&quot;, &quot;true&quot;, &quot;on&quot; and &quot;yes&quot;.
+          Returns <strong><code>false</code></strong> otherwise.
+         </p>
+         <p class="para">
+          If <strong><code>FILTER_NULL_ON_FAILURE</code></strong> is set, <strong><code>false</code></strong> is
+          returned only for &quot;0&quot;, &quot;false&quot;, &quot;off&quot;, &quot;no&quot;, and &quot;&quot;, and
+          <strong><code>null</code></strong> is returned for all non-boolean values.
+         </p>
+        </td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_DOMAIN</code></strong></td>
+        <td>&quot;validate_domain&quot;</td>
+        <td>
+         <code class="parameter">default</code>
+        </td>
+        <td>
+         <strong><code>FILTER_FLAG_HOSTNAME</code></strong>,
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>
+         <p class="para">
+          Validates whether the domain name label lengths are valid.
+         </p>
+         <p class="para">
+          Validates domain names against RFC 1034, RFC 1035, RFC 952,
+          RFC 1123, RFC 2732, RFC 2181, and RFC 1123. Optional flag
+          <strong><code>FILTER_FLAG_HOSTNAME</code></strong> adds ability to
+          specifically validate hostnames (they must start with an
+          alphanumeric character and contain only alphanumerics or
+          hyphens).
+         </p>
+        </td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_EMAIL</code></strong></td>
+        <td>&quot;validate_email&quot;</td>
+        <td>
+         <code class="parameter">default</code>
+        </td>
+        <td>
+         <strong><code>FILTER_FLAG_EMAIL_UNICODE</code></strong>,
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>
+         <p class="para">
+          Validates whether the value is a valid e-mail address.
+         </p>
+         <p class="para">
+          In general, this validates e-mail addresses against the <code class="literal">addr-spec</code>syntax in
+          <a href="http://www.faqs.org/rfcs/rfc822" class="link external">&raquo;&nbsp;RFC 822</a>, with the exceptions that comments and whitespace folding
+          and dotless domain names
+          are not supported.
+         </p>
+        </td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_FLOAT</code></strong></td>
+        <td>&quot;float&quot;</td>
+        <td>
+         <code class="parameter">default</code>,
+         <code class="parameter">decimal</code>,
+         <code class="parameter">min_range</code>,
+         <code class="parameter">max_range</code>
+        </td>
+        <td>
+         <strong><code>FILTER_FLAG_ALLOW_THOUSAND</code></strong>,
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>Validates value as float, optionally from the specified range, and converts to float on success.</td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_INT</code></strong></td>
+        <td>&quot;int&quot;</td>
+        <td>
+         <code class="parameter">default</code>,
+         <code class="parameter">min_range</code>,
+         <code class="parameter">max_range</code>
+        </td>
+        <td>
+         <strong><code>FILTER_FLAG_ALLOW_OCTAL</code></strong>,
+         <strong><code>FILTER_FLAG_ALLOW_HEX</code></strong>,
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>Validates value as integer, optionally from the specified range, and converts to int on success.</td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_IP</code></strong></td>
+        <td>&quot;validate_ip&quot;</td>
+        <td>
+         <code class="parameter">default</code>
+        </td>
+        <td>
+         <strong><code>FILTER_FLAG_IPV4</code></strong>,
+         <strong><code>FILTER_FLAG_IPV6</code></strong>,
+         <strong><code>FILTER_FLAG_NO_PRIV_RANGE</code></strong>,
+         <strong><code>FILTER_FLAG_NO_RES_RANGE</code></strong>,
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>
+         Validates value as IP address, optionally only IPv4 or IPv6 or not
+         from private or reserved ranges.
+        </td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_MAC</code></strong></td>
+        <td>&quot;validate_mac_address&quot;</td>
+        <td>
+         <code class="parameter">default</code>
+        </td>
+        <td>
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>Validates value as MAC address.</td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_REGEXP</code></strong></td>
+        <td>&quot;validate_regexp&quot;</td>
+        <td>
+         <code class="parameter">default</code>,
+         <code class="parameter">regexp</code>
+        </td>
+        <td>
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>
+         Validates value against <code class="parameter">regexp</code>, a
+         <a href="book.pcre.html" class="link">Perl-compatible</a> regular expression.
+        </td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_URL</code></strong></td>
+        <td>&quot;validate_url&quot;</td>
+        <td>
+         <code class="parameter">default</code>
+        </td>
+        <td>
+         <strong><code>FILTER_FLAG_SCHEME_REQUIRED</code></strong>,
+         <strong><code>FILTER_FLAG_HOST_REQUIRED</code></strong>,
+         <strong><code>FILTER_FLAG_PATH_REQUIRED</code></strong>,
+         <strong><code>FILTER_FLAG_QUERY_REQUIRED</code></strong>,
+         <strong><code>FILTER_NULL_ON_FAILURE</code></strong>
+        </td>
+        <td>Validates value as URL (according to <a href="http://www.faqs.org/rfcs/rfc2396" class="link external">&raquo;&nbsp;http://www.faqs.org/rfcs/rfc2396</a>), optionally with required components. Beware a valid URL may not specify the HTTP protocol <code class="literal">http://</code> so further validation may be required to determine the URL uses an expected protocol, e.g. <code class="literal">ssh://</code> or <code class="literal">mailto:</code>. Note that the function will only find ASCII URLs to be valid; internationalized domain names (containing non-ASCII characters) will fail.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     When <code class="parameter">default</code> is set to option,
+     <code class="parameter">default</code>&#039;s value is used if value is not validated.
+    </p>
+   </p></blockquote>
+
+  <div class="simplesect">
+   <h3 class="title">更新日志</h3>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>版本</th>
+        <th>说明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>8.0.0</td>
+        <td>
+         Added <strong><code>FILTER_VALIDATE_BOOL</code></strong> as an alias for <strong><code>FILTER_VALIDATE_BOOLEAN</code></strong>.
+         Using <strong><code>FILTER_VALIDATE_BOOL</code></strong> is preferred.
+        </td>
+       </tr>
+
+       <tr>
+        <td>7.4.0</td>
+        <td>
+         Added <code class="parameter">min_range</code> and <code class="parameter">max_range</code>
+         options for <strong><code>FILTER_VALIDATE_FLOAT</code></strong>.
+        </td>
+       </tr>
+
+       <tr>
+        <td>7.0.0</td>
+        <td>
+         Added <strong><code>FILTER_FLAG_HOSTNAME</code></strong> and <strong><code>FILTER_VALIDATE_DOMAIN</code></strong>.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div></div></div></body></html>

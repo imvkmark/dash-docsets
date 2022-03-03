@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>运行时配置</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mail.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="mail.resources.html">资源类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mail.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mail.configuration" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+ <table class="doctable table">
+  <caption><strong>Mail 配置选项</strong></caption>
+  
+   <thead>
+     <tr>
+      <th>名字</th>
+      <th>默认</th>
+      <th>可修改范围</th>
+      <th>更新日志</th>
+     </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+     <tr>
+     <td><a href="mail.configuration.html#ini.mail.add-x-header" class="link">mail.add_x_header</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td>自 PHP 5.3.0 起生效</td>
+    </tr>
+
+    <tr>
+     <td><a href="mail.configuration.html#ini.mail.log" class="link">mail.log</a></td>
+     <td>NULL</td>
+     <td>PHP_INI_PERDIR</td>
+     <td>自 PHP 5.3.0 起生效</td>
+    </tr>
+
+    <tr>
+     <td><a href="mail.configuration.html#ini.smtp" class="link">SMTP</a></td>
+     <td>&quot;localhost&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="mail.configuration.html#ini.smtp-port" class="link">smtp_port</a></td>
+     <td>&quot;25&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 4.3.0 起可用</td>
+    </tr>
+
+    <tr>
+     <td><a href="mail.configuration.html#ini.sendmail-from" class="link">sendmail_from</a></td>
+     <td>NULL</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="mail.configuration.html#ini.sendmail-path" class="link">sendmail_path</a></td>
+     <td>NULL</td>
+     <td>PHP_INI_SYSTEM</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+ 有关 PHP_INI_* 样式的更多详情与定义，见 <a href="configuration.changes.modes.html" class="xref">配置可被设定范围</a>。
+ </p>
+ 
+ <p class="para">这是配置指令的简短说明。</p>
+ 
+
+ <p class="para">
+ <dl>
+  
+   <dt id="ini.mail.add-x-header">
+    <code class="parameter">mail.add_x_header</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Add <code class="literal">X-PHP-Originating-Script</code> that will include UID of
+     the script followed by the filename.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.mail.log">
+    <code class="parameter">mail.log</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     The path to a log file that will log all <span class="function"><a href="function.mail.html" class="function">mail()</a></span> calls.
+     Log entries include the full path of the script, line number,
+     <code class="literal">To</code> address and headers.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.smtp">
+    <code class="parameter">SMTP</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     仅用于 Windows：PHP 在 <span class="function"><a href="function.mail.html" class="function">mail()</a></span> 函数中用来发送邮件的
+     SMTP 服务器的主机名称或者 IP 地址。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.smtp-port">
+    <code class="parameter">smtp_port</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     仅用于 Windows：<code class="literal">SMTP</code> 服务器的端口号，默认为 25。自
+     PHP 4.3.0 起可用。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.sendmail-from">
+    <code class="parameter">sendmail_from</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     在 Windows 下用 PHP 发送邮件时的“From:”邮件地址的值。该选项同时设置了
+     “Return-Path:”头。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.sendmail-path">
+    <code class="parameter">sendmail_path</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     <strong class="command">sendmail</strong> 程序的路径，通常为
+     <var class="filename">/usr/sbin/sendmail</var> 或
+     <var class="filename">/usr/lib/sendmail</var>。<strong class="command">configure</strong>
+     脚本会尝试找到该程序并设定为默认值，但是如果失败的话，可以在这里设定。
+    </p>
+    <p class="para">
+     不使用 <strong class="command">sendmail</strong> 的系统应将此指令设定为其邮件系统提供的
+     sendmail 替代程序，如果有的话。例如，<a href="http://cr.yp.to/qmail.html" class="link external">&raquo;&nbsp;Qmail</a>
+     用户通常可以设为
+     <var class="filename">/var/qmail/bin/sendmail</var> 或
+     <var class="filename">/var/qmail/bin/qmail-inject</var>。
+    </p>
+    <p class="para">
+     <strong class="command">qmail-inject</strong> 不需要任何选项就能正确处理邮件。
+    </p>
+    <p class="para">
+     此指令也可用于 Windows。如果设定，<var class="varname">smtp</var>，<var class="varname">smtp_port</var>
+     和 <var class="varname">sendmail_from</var> 都被忽略并运行指定的命令。
+    </p>
+   </dd>
+
+  
+ </dl>
+
+
+ </p>
+</div></div></div></body></html>

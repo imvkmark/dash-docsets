@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Compresses the entire tar/zip archive using Gzip or Bzip2 compression</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phardata.buildfromiterator.html">« PharData::buildFromIterator</a></li>
+      <li style="float: right;"><a href="phardata.compressfiles.html">PharData::compressFiles »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phardata.html">PharData</a></li>
+    <li>Compresses the entire tar/zip archive using Gzip or Bzip2 compression</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phardata.compress" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharData::compress</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">PharData::compress</span> &mdash; <span class="dc-title">Compresses the entire tar/zip archive using Gzip or Bzip2 compression</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phardata.compress-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>PharData::compress</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$compression</code></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$extension</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">?</span><span class="type"><a href="class.phardata.html" class="type PharData">PharData</a></span></span></div>
+
+
+  <p class="para rdfs-comment">
+   For tar archives, this method compresses the entire archive using
+   gzip compression or bzip2 compression.  The resulting file can be processed with the
+   gunzip command/bunzip command, or accessed directly and transparently with the Phar
+   extension.
+  </p>
+  <p class="para">
+   For zip archives, this method fails with an exception.
+   The <a href="ref.zlib.html" class="link">zlib</a> extension must be enabled to compress
+   with gzip compression, the <a href="ref.bzip2.html" class="link">bzip2</a> extension must be
+   enabled in order to compress with bzip2 compression.
+  </p>
+  <p class="para">
+   In addition, this method automatically renames the archive, appending <code class="literal">.gz</code>,
+   <code class="literal">.bz2</code> or removing the extension if passed <code class="literal">Phar::NONE</code> to
+   remove compression.  Alternatively, a file extension may be specified with the second
+   parameter.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phardata.compress-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">compression</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Compression must be one of <code class="literal">Phar::GZ</code>,
+       <code class="literal">Phar::BZ2</code> to add compression, or <code class="literal">Phar::NONE</code>
+       to remove compression.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">extension</code></dt>
+
+     <dd>
+
+      <p class="para">
+       By default, the extension is <code class="literal">.tar.gz</code> or <code class="literal">.tar.bz2</code>
+       for compressing a tar, and <code class="literal">.tar</code> for decompressing.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-phardata.compress-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   A <span class="classname"><a href="class.phardata.html" class="classname">PharData</a></span> object is returned on success,
+   or <strong><code>null</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-phardata.compress-errors">
+  <h3 class="title">错误／异常</h3>
+  <p class="para">
+   Throws <span class="classname"><a href="class.badmethodcallexception.html" class="classname">BadMethodCallException</a></span> if
+   the <a href="ref.zlib.html" class="link">zlib</a>
+   extension is not available, or the <a href="ref.bzip2.html" class="link">bzip2</a> extension
+   is not enabled.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-phardata.compress-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">extension</code> is now nullable.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-phardata.compress-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-748">
+    <p><strong>示例 #1 A <span class="function"><strong>PharData::compress()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.tar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile2.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">GZ</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;copies&nbsp;to&nbsp;/path/to/my.tar.gz<br /></span><span style="color: #0000BB">$p2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">BZ2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;copies&nbsp;to&nbsp;/path/to/my.tar.bz2<br /></span><span style="color: #0000BB">$p3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">NONE</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;exception:&nbsp;/path/to/my.tar&nbsp;already&nbsp;exists<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phardata.compress-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="phar.compress.html" class="function" rel="rdfs-seeAlso">Phar::compress()</a> - Compresses the entire Phar archive using Gzip or Bzip2 compression</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

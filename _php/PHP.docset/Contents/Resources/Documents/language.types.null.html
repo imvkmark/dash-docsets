@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>NULL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.resource.html">« Resource 资源类型</a></li>
+      <li style="float: right;"><a href="language.types.callable.html">Callback / Callable 类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">类型</a></li>
+    <li>NULL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.null" class="sect1">
+ <h2 class="title">NULL</h2>
+  
+ <p class="para">
+   特殊的 <strong><code>null</code></strong> 值表示一个变量没有值。<span class="type">NULL</span> 类型唯一可能的值就是 <strong><code>null</code></strong>。
+ </p>
+
+ <p class="para">
+  在下列情况下一个变量被认为是 <strong><code>null</code></strong>：
+ </p>
+
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    被赋值为 <strong><code>null</code></strong>。
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    尚未被赋值。
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    被 <span class="function"><a href="function.unset.html" class="function">unset()</a></span>。
+   </p>
+  </li>
+ </ul>
+  
+ <div class="sect2" id="language.types.null.syntax">
+  <h3 class="title">语法</h3>
+
+  <p class="para">
+    <strong><code>null</code></strong> 类型只有一个值，就是不区分大小写的常量 <strong><code>null</code></strong>。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+    参见 <span class="function"><a href="function.is-null.html" class="function">is_null()</a></span> 和 <span class="function"><a href="function.unset.html" class="function">unset()</a></span>。
+  </p>
+
+ </div>
+
+ <div class="sect2" id="language.types.null.casting">
+  <h3 class="title">转换到 <code class="literal">NULL</code></h3>
+
+  <p class="para">
+   <div class="warning"><strong class="warning">警告</strong><p class="simpara"> 本特性自 PHP 7.2.0 
+起<em class="emphasis">废弃</em>，并且自 PHP 8.0.0 起被<em class="emphasis">移除</em>。
+强烈建议不要使用本特性。</p></div>
+  </p>
+  
+  <p class="para">
+   使用 <code class="literal">(unset) $var</code> 将一个变量转换为 <span class="type">null</span>
+   将<em class="emphasis">不会</em>删除该变量或 unset 其值。仅是返回 <strong><code>null</code></strong> 值而已。
+  </p>
+
+ </div>
+
+</div></div></div></body></html>

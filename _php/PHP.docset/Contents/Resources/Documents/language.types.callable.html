@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Callback / Callable 类型</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.null.html">« NULL</a></li>
+      <li style="float: right;"><a href="language.types.declarations.html">类型声明 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">类型</a></li>
+    <li>Callback / Callable 类型</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.callable" class="sect1">
+ <h2 class="title">Callback / Callable 类型</h2>
+ 
+ <p class="para">
+ 回调可以通过 <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> 类型声明来表示。
+ </p>
+
+ <p class="para">
+  一些函数如 <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> 或
+  <span class="function"><a href="function.usort.html" class="function">usort()</a></span> 可以接受用户自定义的回调函数作为参数。回调函数不止可以是简单函数，还可以是对象的方法，包括静态类方法。
+ </p>
+
+ <div class="sect2" id="language.types.callable.passing">
+  <h3 class="title">传递</h3>
+
+  <p class="para">
+   PHP是将函数以<span class="type">string</span>形式传递的。
+   可以使用任何内置或用户自定义函数，但除了语言结构例如：<span class="function"><a href="function.array.html" class="function">array()</a></span>，<span class="function"><a href="function.echo.html" class="function">echo</a></span>，<span class="function"><a href="function.empty.html" class="function">empty()</a></span>，<span class="function"><a href="function.eval.html" class="function">eval()</a></span>，<span class="function"><a href="function.exit.html" class="function">exit()</a></span>，<span class="function"><a href="function.isset.html" class="function">isset()</a></span>，<span class="function"><a href="function.list.html" class="function">list()</a></span>，<span class="function"><a href="function.print.html" class="function">print</a></span>
+   或 <span class="function"><a href="function.unset.html" class="function">unset()</a></span>。
+  </p>
+
+  <p class="para">
+   一个已实例化的 <span class="type">object</span> 的方法被作为 <span class="type">array</span> 传递，下标 0 包含该 <span class="type">object</span>，下标 1 包含方法名。
+   在同一个类里可以访问 protected 和 private 方法。
+  </p>
+
+  <p class="para">
+   静态类方法可以不实例化 <span class="type">object</span> 传递，只需要在下标为 0 的位置传递类名而不是 
+   <span class="type">object</span> ，或者传递 <code class="literal">&#039;ClassName::methodName&#039;</code>。
+  </p>
+
+  <p class="para">
+   回调参数不仅可以使用普通的用户自定义函数，也接受 <a href="functions.anonymous.html" class="link">匿名函数</a> 
+   和 <a href="functions.arrow.html" class="link">箭头函数</a>。
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    从 PHP 8.1.0 开始，还可以使用 <a href="functions.first_class_callable_syntax.html" class="link">First-class 可调用语法</a> 创建匿名函数。
+   </p>
+  </p></blockquote>
+
+  <p class="para">
+   通常情况下，任何实现了 <a href="language.oop5.magic.html#object.invoke" class="link">__invoke()</a> 的对象都可以传入回调参数。
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-75">
+    <p><strong>示例 #1 回调函数示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;回调函数示范<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_callback_function</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'hello&nbsp;world!'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;回调方法示范<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">myCallbackMethod</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;类型&nbsp;1：简单的回调<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_callback_function'</span><span style="color: #007700">);&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;类型&nbsp;2：静态类方法回调<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'MyClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;类型&nbsp;3：对象方法回调<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;类型&nbsp;4：静态类方法回调<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'MyClass::myCallbackMethod'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;类型&nbsp;5：父级静态类回调<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"A\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"B\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'parent::who'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;A<br /><br />//&nbsp;类型&nbsp;6：实现&nbsp;__invoke&nbsp;的对象用于回调<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__invoke</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'PHP!'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-76">
+    <p><strong>示例 #2 使用 Closure 的示例</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;闭包<br /></span><span style="color: #0000BB">$double&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$a</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #FF8000">//&nbsp;这是数字范围<br /></span><span style="color: #0000BB">$numbers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">range</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;这里使用闭包作为回调，<br />//&nbsp;将范围内的每个元素数值翻倍<br /></span><span style="color: #0000BB">$new_numbers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">$double</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$numbers</span><span style="color: #007700">);<br /><br />print&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$new_numbers</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+2 4 6 8 10
+</pre></div>
+    </div>
+   </div>
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">在函数中注册有多个回调内容时(如使用
+<span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> 与 <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span>)，如在前一个回调中有未捕获的异常，其后的将不再被调用。</p></p></blockquote>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,1147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>运行时配置</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="session.resources.html">资源类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="session.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.configuration" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+ <table class="doctable table">
+  <caption><strong>会话配置选项</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>名字</th>
+     <th>默认</th>
+     <th>可修改范围</th>
+     <th>更新日志</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a></td>
+     <td>&quot;&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.name" class="link">session.name</a></td>
+     <td>&quot;PHPSESSID&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a></td>
+     <td>&quot;files&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.gc-probability" class="link">session.gc_probability</a></td>
+     <td>&quot;1&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.gc-divisor" class="link">session.gc_divisor</a></td>
+     <td>&quot;100&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.gc-maxlifetime" class="link">session.gc_maxlifetime</a></td>
+     <td>&quot;1440&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a></td>
+     <td>&quot;php&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cookie-lifetime" class="link">session.cookie_lifetime</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cookie-path" class="link">session.cookie_path</a></td>
+     <td>&quot;/&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cookie-domain" class="link">session.cookie_domain</a></td>
+     <td>&quot;&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cookie-secure" class="link">session.cookie_secure</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>在 PHP 7.2.0 之前，默认值是 <code class="literal">&quot;&quot;</code>。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cookie-httponly" class="link">session.cookie_httponly</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>在 PHP 7.2.0 之前，默认值是 <code class="literal">&quot;&quot;</code>。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cookie-samesite" class="link">session.cookie_samesite</a></td>
+     <td>&quot;&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.3.0 起有效</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.use-strict-mode" class="link">session.use_strict_mode</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 5.5.2 起有效</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.use-cookies" class="link">session.use_cookies</a></td>
+     <td>&quot;1&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.use-only-cookies" class="link">session.use_only_cookies</a></td>
+     <td>&quot;1&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.referer-check" class="link">session.referer_check</a></td>
+     <td>&quot;&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cache-limiter" class="link">session.cache_limiter</a></td>
+     <td>&quot;nocache&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cache-expire" class="link">session.cache_expire</a></td>
+     <td>&quot;180&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.use-trans-sid" class="link">session.use_trans_sid</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.trans-sid-tags" class="link">session.trans_sid_tags</a></td>
+     <td>&quot;a=href,area=href,frame=src,form=&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起有效。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.trans-sid-hosts" class="link">session.trans_sid_hosts</a></td>
+     <td><code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code></td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起有效。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.sid-length" class="link">session.sid_length</a></td>
+     <td>&quot;32&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起有效。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.sid-bits-per-character" class="link">session.sid_bits_per_character</a></td>
+     <td>&quot;4&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起有效。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.upload-progress.enabled" class="link">session.upload_progress.enabled</a></td>
+     <td>&quot;1&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.upload-progress.cleanup" class="link">session.upload_progress.cleanup</a></td>
+     <td>&quot;1&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.upload-progress.prefix" class="link">session.upload_progress.prefix</a></td>
+     <td>&quot;upload_progress_&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.upload-progress.name" class="link">session.upload_progress.name</a></td>
+     <td>&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.upload-progress.freq" class="link">session.upload_progress.freq</a></td>
+     <td>&quot;1%&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.upload-progress.min-freq" class="link">session.upload_progress.min_freq</a></td>
+     <td>&quot;1&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.lazy-write" class="link">session.lazy_write</a></td>
+     <td>&quot;1&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.hash-function" class="link">session.hash_function</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起移除。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.hash-bits-per-character" class="link">session.hash_bits_per_character</a></td>
+     <td>&quot;4&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起移除。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.entropy-file" class="link">session.entropy_file</a></td>
+     <td>&quot;&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起移除。</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.entropy-length" class="link">session.entropy_length</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>自 PHP 7.1.0 起移除。</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+ 有关 PHP_INI_* 样式的更多详情与定义，见 <a href="configuration.changes.modes.html" class="xref">配置可被设定范围</a>。
+ </p>
+ <p class="para">
+  会话管理系统支持许多配置选项，可以在自己的 <var class="filename">php.ini</var> 文件中设定。这里只是个简短的概览。
+ <dl>
+
+  
+   <dt id="ini.session.save-handler">
+    <code class="parameter">session.save_handler</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.save_handler</code>
+     定义处理器（handler）名称，可以获取/储存关联 session 数据。
+     默认为
+     <code class="literal">files</code>。
+     注意不同的扩展可能会注册它们各自的 <code class="literal">save_handler</code>。
+     <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> 提到的预装数据，包含了注册过的 hander。
+     可以参考 <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span>。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.save-path">
+    <code class="parameter">session.save_path</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.save_path</code> 定义了传递给存储处理器的参数。如果选择了默认的
+     files 文件处理器，则此值是创建文件的路径。默认为
+     <code class="literal">/tmp</code>。参见
+     <span class="function"><a href="function.session-save-path.html" class="function">session_save_path()</a></span>。
+    </span>
+    <p class="para">
+     此指令还有一个可选的 <code class="literal">N</code> 参数来决定会话文件分布的目录深度。例如，设定为
+     <code class="literal">&#039;5;/tmp&#039;</code> 将使创建的会话文件和路径类似于
+     <code class="literal">/tmp/4/b/1/e/3/sess_4b1e384ad74619bd212e236e52a5a174If</code>。要使用
+     <code class="literal">N</code> 参数，必须在使用前先创建好这些目录。在 <var class="filename">ext/session</var>
+     目录下有个小的 shell 脚本名叫 <var class="filename">mod_files.sh</var>，windows 版本是 <var class="filename">mod_files.bat</var>
+     可以用来做这件事。此外注意如果使用了 <code class="literal">N</code> 参数并且大于
+     0，那么将不会执行自动垃圾回收，更多信息见 <var class="filename">php.ini</var>。另外如果用了 <code class="literal">N</code>
+     参数，要确保将 <code class="literal">session.save_path</code> 的值用双引号 &quot;quotes&quot;
+     括起来，因为分隔符分号（ <code class="literal">;</code>）在 <var class="filename">php.ini</var> 中也是注释符号。
+    </p>
+    <p class="para">
+     文件储存模块默认使用 mode 600 创建文件。通过 修改可选参数 <code class="literal">MODE</code> 来改变这种默认行为：
+     <code class="literal">N;MODE;/path</code> ，其中 <code class="literal">MODE</code> 是 mode 的八进制表示。 
+      <code class="literal">MODE</code> 设置不影响进程的掩码(umask)。
+    </p>
+    <div class="warning"><strong class="warning">警告</strong>
+     <p class="para">
+      如果将此设定为一个全局可读的目录，例如
+      <var class="filename">/tmp</var>（默认值），服务器上的其他用户有可能通过该目录的文件列表破解会话。
+     </p>
+    </div>
+    <div class="caution"><strong class="caution">警告</strong>
+     <p class="para">
+      使用以上描述的可选目录层级参数 <code class="literal">N</code> 时请注意，对于绝大多数站点，
+      大于1或者2的值会不太合适——因为这需要创建大量的目录：
+      例如，值设置为 3 需要在文件系统上创建 <code class="literal">64^3</code> 个目录，
+      将浪费很多空间和 inode。
+     </p>
+     <p class="para">
+      仅仅在绝对肯定站点足够大时，才可以设置 <code class="literal">N</code> 大于2。
+     </p>
+    </div>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.name">
+    <code class="parameter">session.name</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.name</code> 指定会话名以用做 cookie 的名字。只能由字母数字组成，默认为
+     <code class="literal">PHPSESSID</code>。参见 <span class="function"><a href="function.session-name.html" class="function">session_name()</a></span>。
+    </span>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.session.auto-start">
+    <code class="parameter">session.auto_start</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.auto_start</code> 指定会话模块是否在请求开始时自动启动一个会话。默认为
+     <code class="literal">0</code>（不启动）。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.serialize-handler">
+    <code class="parameter">session.serialize_handler</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.serialize_handler</code> 定义用来序列化／反序列化的处理器名字。
+     当前支持 PHP 序列化格式 (名为 <code class="literal">php_serialize</code>)、 PHP
+      PHP 内部格式 (名为 <code class="literal">php</code> 及
+     <code class="literal">php_binary</code>) 和 WDDX  (名为
+     <code class="literal">wddx</code>)。
+     
+     如果 PHP 编译时加入了 <a href="ref.wddx.html" class="link">WDDX
+     支持</a>，则只能用 WDDX。
+     <code class="literal">php_serialize</code> 在内部简单地直接使用
+     serialize/unserialize 函数，并且不会有 <code class="literal">php</code>
+     和 <code class="literal">php_binary</code> 所具有的限制。
+     
+     使用较旧的序列化处理器导致 $_SESSION 的索引既不能是数字也不能包含特殊字符(<code class="literal">|</code> and <code class="literal">!</code>) 。
+     
+     使用 <code class="literal">php_serialize</code> 避免脚本退出时，数字及特殊字符索引导致出错。
+     
+     默认使用
+      <code class="literal">php</code>。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.gc-probability">
+    <code class="parameter">session.gc_probability</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.gc_probability</code> 与
+     <code class="literal">session.gc_divisor</code> 合起来用来管理 gc（garbage collection
+     垃圾回收）进程启动的概率。默认为 <code class="literal">1</code>。详见 <a href="session.configuration.html#ini.session.gc-divisor" class="link">session.gc_divisor</a>。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.gc-divisor">
+    <code class="parameter">session.gc_divisor</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.gc_divisor</code> 与
+     <code class="literal">session.gc_probability</code> 合起来定义了在每个会话初始化时启动
+     gc（garbage collection 垃圾回收）进程的概率。此概率用
+     gc_probability/gc_divisor 计算得来。例如 1/100
+     意味着在每个请求中有 1% 的概率启动 gc 进程。<code class="literal">session.gc_divisor</code>
+     默认为 <code class="literal">100</code>。
+    </span>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.session.gc-maxlifetime">
+    <code class="parameter">session.gc_maxlifetime</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.gc_maxlifetime</code> 指定过了多少秒之后数据就会被视为“垃圾”并被清除。
+    垃圾搜集可能会在 session 启动的时候开始（
+     取决于<a href="session.configuration.html#ini.session.gc-probability" class="link">session.gc_probability</a> 和
+     <a href="session.configuration.html#ini.session.gc-divisor" class="link">session.gc_divisor</a>）。
+    </span>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      如果不同的脚本具有不同的
+      <code class="literal">session.gc_maxlifetime</code>
+      数值但是共享了同一个地方存储会话数据，则具有最小数值的脚本会清理数据。此情况下，与
+      <a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a> 一起使用本指令。
+     </p>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.referer-check">
+    <code class="parameter">session.referer_check</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.referer_check</code> 包含有用来检查每个 HTTP
+     Referer 的子串。如果客户端发送了 Referer
+     信息但是在其中并未找到该子串，则嵌入的会话 ID 会被标记为无效。默认为空字符串。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.entropy-file">
+    <code class="parameter">session.entropy_file</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.entropy_file</code> 给出了一个到外部资源（文件）的路径，该资源将在会话
+     ID 创建进程中被用作附加的熵值资源。例如在许多 Unix 系统下都可以用
+     <code class="literal">/dev/random</code> 或 <code class="literal">/dev/urandom</code>。
+    </span>
+    <span class="simpara">
+     在 Windows 上也支持此功能。
+     设置  <code class="literal">session.entropy_length</code> 为非零的值将使 PHP 使用 Windows Random API 作为熵值源。
+    </span>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">
+       PHP 7.1.0 中移除。
+      </span>
+     <span class="simpara">
+     在 <code class="literal">/dev/urandom</code> 或 <code class="literal">/dev/arandom</code> 可用的时候，
+      <code class="literal">session.entropy_file</code>  默认使用它们。
+     </span>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.entropy-length">
+    <code class="parameter">session.entropy_length</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.entropy_length</code> 指定了从上面的文件中读取的字节数。默认为
+     <code class="literal">0</code>（禁用）。
+    </span>
+    <span class="simpara">
+      PHP 7.1.0 中移除。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.use-strict-mode">
+    <code class="parameter">session.use_strict_mode</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.use_strict_mode</code>
+     设置是否启用严格 session id 模式。
+     开启此模式后，模块不会接受未初始化过的 session ID。
+     从浏览器端传入未初始化的 session ID 后，将会发送一个新的 session ID 给它。
+     通过 session 启用严格模式可固定 session 以保护应用。
+     默认为 <code class="literal">0</code> （禁用）。
+    </span>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+      开启 <code class="literal">session.use_strict_mode</code> 是常规的 session 安全强制性措施。
+      建议所有站点都开启此模式。
+      可以参考 <span class="function"><a href="function.session-create-id.html" class="function">session_create_id()</a></span> 例子中的代码。
+     </span>
+    </p></blockquote>
+    <div class="warning"><strong class="warning">警告</strong>
+     <p class="para">
+      如果 <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span> 注册的自定义 session 处理器
+      没有实现 <span class="methodname"><strong>SessionUpdateTimestampHandlerInterface::validateId()</strong></span>，
+      也没有相应提供 <code class="parameter">validate_sid</code> 回调，那么无论上述指令的值如何设置，
+      实际上严格 session ID 模式都是关闭状态的。
+      尤其需要注意<em class="emphasis">没有</em>
+      实现 <span class="methodname"><strong>SessionHandler::validateId()</strong></span>
+      的 <span class="classname"><a href="class.sessionhandler.html" class="classname">SessionHandler</a></span>。
+     </p>
+    </div>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.use-cookies">
+    <code class="parameter">session.use_cookies</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.use_cookies</code> 指定是否在客户端用
+     cookie 来存放会话 ID。默认为 <code class="literal">1</code>（启用）。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.use-only-cookies">
+    <code class="parameter">session.use_only_cookies</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.use_only_cookies</code> 指定是否在客户端<em class="emphasis">仅仅</em>使用 cookie 来存放会话 ID。。启用此设定可以防止有关通过
+     URL 传递会话 ID 的攻击。默认值为<code class="literal">1</code>（启用）
+    </span>
+   </dd>
+
+  
+
+
+  
+   <dt id="ini.session.cookie-lifetime">
+    <code class="parameter">session.cookie_lifetime</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.cookie_lifetime</code> 以秒数指定了发送到浏览器的
+     cookie 的生命周期。值为 0
+     表示“直到关闭浏览器”。默认为
+     <code class="literal">0</code>。参见
+     <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span> 和
+     <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>。
+    </span>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      过期时间是根据服务器时间设置的，
+      它没有必要和浏览器端的时间一致。
+     </p>
+    </p></blockquote> 
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.cookie-path">
+    <code class="parameter">session.cookie_path</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.cookie_path</code> 指定了要设定会话 cookie 的路径。默认为
+     <code class="literal">/</code>。参见
+     <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span> 和
+     <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.cookie-domain">
+    <code class="parameter">session.cookie_domain</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.cookie_domain</code> 指定了要设定会话 cookie
+     的域名。默认为无，表示根据 cookie 规范产生 cookie 的主机名。参见
+     <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span> 和
+     <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.cookie-secure">
+    <code class="parameter">session.cookie_secure</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.cookie_secure</code> 指定是否仅通过安全连接发送
+     cookie。默认为 <code class="literal">off</code>。此设定是 PHP 4.0.4 添加的。参见
+     <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span> 和
+     <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.cookie-httponly">
+    <code class="parameter">session.cookie_httponly</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     设置 cookie 仅能够通过 HTTP 协议访问。
+     它意味着 cookie 无法通过类似 JavaScript 这样的脚本语言访问。
+     该设置可有效避免 XSS 攻击窃取身份（但并非所有浏览器都支持）。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.cookie-samesite">
+    <code class="parameter">session.cookie_samesite</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     Allows servers to assert that a cookie ought not to be sent along with
+     cross-site requests. This assertion allows user agents to mitigate the risk
+     of cross-origin information leakage, and provides some protection against
+     cross-site request forgery attacks. Note that this is not supported by all
+     browsers.
+     An empty value means that no SameSite cookie attribute will be set.
+     <code class="literal">Lax</code> and <code class="literal">Strict</code> mean that the cookie
+     will not be sent cross-domain for POST requests; <code class="literal">Lax</code>
+     will sent the cookie for cross-domain GET requests, while <code class="literal">Strict</code>
+     will not.
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.cache-limiter">
+    <code class="parameter">session.cache_limiter</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.cache_limiter</code>
+     指定会话页面所使用的缓冲控制方法（
+     <code class="literal">none</code>/<code class="literal">nocache</code>/
+     <code class="literal">private</code>/<code class="literal">
+       private_no_expire</code>/<code class="literal">public</code>）。默认为
+     <code class="literal">nocache</code>。参见
+     <span class="function"><a href="function.session-cache-limiter.html" class="function">session_cache_limiter()</a></span> 文档查看各个值的含义。
+    </span>
+   </dd>
+
+  
+
+
+  
+   <dt id="ini.session.cache-expire">
+    <code class="parameter">session.cache_expire</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.cache_expire</code> 以分钟数指定缓冲的会话页面的存活期，此设定对
+     nocache 缓冲控制方法无效。默认为 <code class="literal">180</code>。参见
+     <span class="function"><a href="function.session-cache-expire.html" class="function">session_cache_expire()</a></span>。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.use-trans-sid">
+    <code class="parameter">session.use_trans_sid</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.use_trans_sid</code> 指定是否启用透明 SID
+     支持。默认为 <code class="literal">0</code>（禁用）。
+    </span>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+      基于 URL 的会话管理比基于 cookie 的会话管理有更多安全风险。例如用户有可能通过
+      email 将一个包含有效的会话 ID 的 URL 发给他的朋友，或者用户总是有可能在收藏夹中存有一个包含会话
+      ID 的 URL 来以同样的会话 ID 去访问站点。
+     </span>
+     <span class="simpara">
+      自 PHP 7.1.0 开始，透明 SID 开始使用完整的 URL 绝对路径，例如 https://php.net/。
+      在此之前 PHP 只会使用相对路径。使用 <a href="session.configuration.html#ini.session.trans-sid-hosts" class="link">session.trans_sid_hosts</a> 定义重写的目标 host。
+     </span>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+    <dt id="ini.session.trans-sid-tags">
+     <code class="parameter">session.trans_sid_tags</code>
+     <span class="type">string</span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      开启支持透明 sid 时， <code class="literal">session.trans_sid_tags</code>
+      指定是否需要重写 HTML 标签来包含 session id。
+      默认为
+      <code class="literal">a=href,area=href,frame=src,input=src,form=</code>
+     </span>
+     <span class="simpara">
+      <code class="literal">form</code> 是个特殊标签。
+      <code class="literal">&lt;input hidden=&quot;session_id&quot; name=&quot;session_name&quot;&gt;</code>
+      作为表单变量添加。
+     </span>
+     <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">
+       PHP 7.1.0 之前，<a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a>
+       用于此目的。
+       PHP 7.1.0 之后，<code class="literal">fieldset</code> 不再作为特殊标签对待。
+      </span>
+     </p></blockquote>
+    </dd>
+
+   
+
+  
+   <dt id="ini.session.trans-sid-hosts">
+    <code class="parameter">session.trans_sid_hosts</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     当透明 sid 支持开启时，<code class="literal">session.trans_sid_hosts</code>
+     设置了要重写包含 session 的主机名，
+     默认为 <code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code>。
+     多个主机用半角逗号 &quot;,&quot; 分隔；主机名之间不能用空格。
+     例如 <code class="literal">php.net,wiki.php.net,bugs.php.net</code>。
+    </span>
+   </dd>
+
+  
+
+  
+    <dt id="ini.session.sid-length">
+     <code class="parameter">session.sid_length</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      通过 <code class="literal">session.sid_length</code> 可以设置
+      session ID 字符串长度。
+      Session ID 的长度可以是在 22 到 256 之间。
+     </span>
+     <span class="simpara">
+      默认是 32。
+      如果需要较好的兼容性可以设置为 32、40 等。
+      较长的 session ID 会更难猜测。
+      推荐至少要 32 个字符。
+     </span>
+     <div class="tip"><strong class="tip">小技巧</strong>
+      <p class="para">
+       Compatibility Note: Use 32 instead of
+       <code class="literal">session.hash_function</code>=0 (MD5) and
+       <code class="literal">session.hash_bits_per_character</code>=4,
+       <code class="literal">session.hash_function</code>=1 (SHA1) and
+       <code class="literal">session.hash_bits_per_character</code>=6. Use 26 instead of
+       <code class="literal">session.hash_function</code>=0 (MD5) and
+       <code class="literal">session.hash_bits_per_character</code>=5. Use 22 instead of
+       <code class="literal">session.hash_function</code>=0 (MD5) and
+       <code class="literal">session.hash_bits_per_character</code>=6.
+       必须正确配置 INI 值，让 session ID 至少有 128 比特（bits）。
+       不要忘了为 <code class="literal">session.sid_bits_per_character</code>
+       设置合适的值；否则将会有一个较弱的 session ID。
+      </p>
+     </div> 
+     <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">
+       PHP 7.1.0 中加入该设置。
+      </span>
+     </p></blockquote>
+    </dd>
+
+   
+
+   
+    <dt id="ini.session.sid-bits-per-character">
+     <code class="parameter">session.sid_bits_per_character</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      <code class="literal">session.sid_bits_per_character</code> 设置要编码 session ID 字符的比特数。
+      可能的设置有：
+      &#039;4&#039;（0-9、a-f）、&#039;5&#039;（0-9、a-v）、&#039;6&#039;（0-9、a-z、A-Z、&quot;-&quot;、&quot;,&quot;）。
+     </span>
+     <span class="simpara">
+      默认为 4。
+      更多的比特数会产生更强健的 session ID。
+      对于绝大多数环境，推荐值是 5。
+     </span>
+     <p class="para">
+     </p>
+     <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">
+       PHP 7.1.0 中加入该设置。
+      </span>
+     </p></blockquote>
+    </dd>
+
+   
+
+  
+   <dt id="ini.session.hash-function">
+    <code class="parameter">session.hash_function</code>
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.hash_function</code> 允许用户指定生成会话
+     ID 的散列算法。&#039;0&#039; 表示 MD5（128 位），&#039;1&#039; 表示 SHA-1（160 位）。
+    </span>
+    <p class="para">
+     还可以指定 <a href="ref.hash.html" class="link">hash 扩展</a>（开启的时候）
+     支持的任意算法，例如 <code class="literal">sha512</code> 或
+     <code class="literal">whirlpool</code>。
+     可通过 <span class="function"><a href="function.hash-algos.html" class="function">hash_algos()</a></span> 函数获取支持的算法完整名单。
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      PHP 7.1.0 中已经移除。
+     </p>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.hash-bits-per-character">
+    <code class="parameter">session.hash_bits_per_character</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.hash_bits_per_character</code>
+     允许用户定义将二进制散列数据转换为可读的格式时每个字符存放多少个比特。可能值为
+     &#039;4&#039;（0-9，a-f），&#039;5&#039;（0-9，a-v），以及 &#039;6&#039;（0-9，a-z，A-Z，&quot;-&quot;，&quot;,&quot;）。
+    </span>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      这是 PHP 5 引进的。
+     </p>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.upload-progress.enabled">
+    <code class="parameter">session.upload_progress.enabled</code>
+    <span class="type">boolean</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     Enables upload progress tracking, populating the <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> variable.
+     Defaults to 1, enabled.
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.upload-progress.cleanup">
+    <code class="parameter">session.upload_progress.cleanup</code>
+    <span class="type">boolean</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     Cleanup the progress information as soon as all POST data has been read
+     (i.e. upload completed). Defaults to 1, enabled.
+    </span>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+      It is highly recommended to keep this feature enabled.
+     </span>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.upload-progress.prefix">
+    <code class="parameter">session.upload_progress.prefix</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     A prefix used for the upload progress key in the <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var>.
+     This key will be concatenated with the value of
+     <code class="literal">$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</code> to
+     provide a unique index.
+    </span>
+    <span class="simpara">
+     Defaults to &quot;upload_progress_&quot;.
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.upload-progress.name">
+    <code class="parameter">session.upload_progress.name</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     The name of the key to be used in <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> storing
+     the progress information. See also
+     <a href="session.configuration.html#ini.session.upload-progress.prefix" class="link">session.upload_progress.prefix</a>.
+    </span>
+    <span class="simpara">
+     If <code class="literal">$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</code>
+     is not passed or available, upload progressing will not be recorded.
+    </span>
+    <span class="simpara">
+     Defaults to &quot;PHP_SESSION_UPLOAD_PROGRESS&quot;.
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.upload-progress.freq">
+    <code class="parameter">session.upload_progress.freq</code>
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     Defines how often the upload progress information should be updated.
+     This can be defined in bytes (i.e. &quot;update progress information after every 100 bytes&quot;), or in percentages (i.e. &quot;update progress information after receiving every 1% of the whole filesize&quot;).
+    </span>
+    <span class="simpara">
+     Defaults to &quot;1%&quot;.
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.upload-progress.min-freq">
+    <code class="parameter">session.upload_progress.min_freq</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     The minimum delay between updates, in seconds.
+     Defaults to &quot;1&quot; (one second).
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.lazy-write">
+    <code class="parameter">session.lazy_write</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.lazy_write</code>，设置成 1 的含义是：
+     只有 session 数据发生变化时才需要重新写入。默认为开启状态 1。
+    </span>
+   </dd>
+
+  
+
+ </dl>
+
+ </p>
+
+ <p class="para">
+  Upload progress will not be registered unless
+  session.upload_progress.enabled is enabled, and the
+  $_POST[ini_get(&quot;session.upload_progress.name&quot;)] variable is set.
+  See <a href="session.upload-progress.html" class="link">Session Upload Progress</a> for mor details on this functionality.
+ </p>
+
+
+</div></div></div></body></html>

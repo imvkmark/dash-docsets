@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>The com class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="com.examples.arrays.html">« Arrays and Array-style COM properties</a></li>
+      <li style="float: right;"><a href="com.construct.html">com::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.com.html">COM</a></li>
+    <li>The com class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.com" class="reference">
+ 
+ <h1 class="title">The com class</h1>
+ <div class="partintro"><p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p>
+
+
+  <div class="section" id="com.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    The com class allows you to instantiate an OLE compatible COM object and
+    call its methods and access its properties.
+   </p>
+  </div>
+
+
+  <div class="section" id="com.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">com</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+       <a href="class.variant.html" class="classname">variant</a>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="com.construct.html" class="methodname">__construct</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$module_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$server_name</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$codepage</code><span class="initializer"> = <strong><code>CP_ACP</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$typelib</code><span class="initializer"> = &quot;&quot;</span></span><br>)</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="class.com.overloadedmethods">
+   <h2 class="title">Overloaded Methods</h2>
+   <p class="para">
+    The returned object is an overloaded object, which means that PHP does
+    not see any fixed methods as it does with regular classes; instead, any
+    property or method accesses are passed through to COM.
+   </p>
+   <p class="para">
+    PHP will automatically detect methods that accept
+    parameters by reference, and will automatically convert regular PHP
+    variables to a form that can be passed by reference.  This means that you
+    can call the method very naturally; you needn&#039;t go to any extra effort in
+    your code.
+   </p>
+  </div>
+
+  <div class="section" id="class.com.examples">
+   <h2 class="title">com examples</h2>
+   <p class="para">
+    <div class="example" id="example.com1">
+     <p><strong>示例 #1 com example (1)</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;starting&nbsp;word<br /></span><span style="color: #0000BB">$word&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">com</span><span style="color: #007700">(</span><span style="color: #DD0000">"word.application"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;instantiate&nbsp;Word"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Loaded&nbsp;Word,&nbsp;version&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$word</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Version</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//bring&nbsp;it&nbsp;to&nbsp;front<br /></span><span style="color: #0000BB">$word</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Visible&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//open&nbsp;an&nbsp;empty&nbsp;document<br /></span><span style="color: #0000BB">$word</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Documents</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Add</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//do&nbsp;some&nbsp;weird&nbsp;stuff<br /></span><span style="color: #0000BB">$word</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Selection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">TypeText</span><span style="color: #007700">(</span><span style="color: #DD0000">"This&nbsp;is&nbsp;a&nbsp;test..."</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$word</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Documents</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">SaveAs</span><span style="color: #007700">(</span><span style="color: #DD0000">"Useless&nbsp;test.doc"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//closing&nbsp;word<br /></span><span style="color: #0000BB">$word</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Quit</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//free&nbsp;the&nbsp;object<br /></span><span style="color: #0000BB">$word&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    </div>
+   </p>
+   <p class="para">
+    <div class="example" id="example.com2">
+     <p><strong>示例 #2 com example (2)</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">com</span><span style="color: #007700">(</span><span style="color: #DD0000">"ADODB.Connection"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Cannot&nbsp;start&nbsp;ADO"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Open</span><span style="color: #007700">(</span><span style="color: #DD0000">"Provider=SQLOLEDB;&nbsp;Data&nbsp;Source=localhost;<br />Initial&nbsp;Catalog=database;&nbsp;User&nbsp;ID=user;&nbsp;Password=password"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$rs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Execute</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;sometable"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Recordset<br /><br /></span><span style="color: #0000BB">$num_columns&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$rs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Fields</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Count</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$num_columns&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$num_columns</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fld</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$rs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Fields</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$rowcount&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />while&nbsp;(!</span><span style="color: #0000BB">$rs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">EOF</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$num_columns</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$fld</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">value&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rowcount</span><span style="color: #007700">++;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;increments&nbsp;rowcount<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MoveNext</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">$rs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Close</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$rs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="com.construct.html">com::__construct</a> — com class constructor</li></ul>
+</div>
+</div></div></body></html>

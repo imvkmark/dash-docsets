@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>引用定位</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.references.unset.html">« 取消引用</a></li>
+      <li style="float: right;"><a href="reserved.variables.html">预定义变量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.references.html">引用的解释</a></li>
+    <li>引用定位</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.references.spot" class="sect1">
+  <h2 class="title">引用定位</h2>
+  <p class="simpara">
+   许多 PHP 的语法结构是通过引用机制实现的，所以上述有关引用绑定的一切也都适用于这些结构。
+    一些结构，例如引用传递和返回，已经在上面提到了。
+    其它使用引用的结构有：
+  </p>
+
+  <div class="sect2" id="references.global">
+   <h3 class="title">global 引用</h3>
+   <p class="para">
+    当用 <strong class="command">global $var</strong> 声明一个变量时实际上建立了一个到全局变量的引用。
+     也就是说和这样做是相同的：
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"var"</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    这意味着，例如，unset <var class="varname">$var</var> 不会 unset 全局变量。
+   </p>
+  </div>
+
+  <div class="sect2" id="references.this">
+   <h3 class="title"><code class="literal">$this</code></h3>
+   <p class="simpara">
+    在一个对象的方法中，<var class="varname">$this</var> 永远是调用它的对象的引用。
+   </p>
+  </div>
+ </div></div></div></body></html>

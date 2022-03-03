@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>检查字段是否为 null</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-fetch.html">« oci_fetch</a></li>
+      <li style="float: right;"><a href="function.oci-field-name.html">oci_field_name »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">OCI8 函数</a></li>
+    <li>检查字段是否为 null</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-field-is-null" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_field_is_null</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_field_is_null</span> &mdash; <span class="dc-title">检查字段是否为 <strong><code>null</code></strong></span></p>
+
+ </div>
+ <div class="refsect1 unknown-seealsp" id="refsect1-function.oci-field-is-null-unknown-seealsp">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>oci_field_is_null</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$statement</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$field</code></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   如果 <code class="parameter">statement</code> 语句结果中返回的
+   <code class="parameter">field</code> 字段的值是
+   <strong><code>null</code></strong>，<span class="function"><strong>oci_field_is_null()</strong></span> 返回
+   <strong><code>true</code></strong>。<code class="parameter">field</code> 参数可以是字段的索引或字段名（大写字母）。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    在 PHP 5.0.0 之前的版本必须使用 <span class="function"><a href="function.ocicolumnisnull.html" class="function">ocicolumnisnull()</a></span>
+    替代本函数。该函数名仍然可用，为向下兼容作为
+    <span class="function"><strong>oci_field_is_null()</strong></span> 的别名。不过其已被废弃，不推荐使用。
+   </p>
+  </p></blockquote>
+ </div>
+
+</div></div></div></body></html>

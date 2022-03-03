@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>运算符优先级</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.html">« 运算符</a></li>
+      <li style="float: right;"><a href="language.operators.arithmetic.html">算术运算符 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">运算符</a></li>
+    <li>运算符优先级</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.precedence" class="sect1">
+   <h2 class="title">运算符优先级</h2>
+   <p class="para">
+    运算符优先级指定了两个表达式绑定得有多“紧密”。例如，表达式 <code class="literal">1 + 5 *
+    3</code> 的结果是 <code class="literal">16</code> 而不是 <code class="literal">18</code>
+    是因为乘号（“*”）的优先级比加号（“+”）高。必要时可以用括号来强制改变优先级。例如：<code class="literal">(1
+    + 5) * 3</code> 的值为 <code class="literal">18</code>。
+   </p>
+   <p class="para">
+    如果运算符优先级相同，那运算符的结合方向决定了该如何运算。例如，&quot;-&quot;是左联的，那么 <code class="literal">1 - 2 - 3</code> 就等同于 <code class="literal">(1 - 2) - 3</code>
+    并且结果是 <code class="literal">-4</code>. 另外一方面，&quot;=&quot;是右联的，所以 <code class="literal">$a = $b = $c</code> 等同于
+    <code class="literal">$a = ($b = $c)</code>。
+   </p>
+   <p class="para">
+    没有结合的相同优先级的运算符不能连在一起使用，例如
+    <code class="literal">1 &lt; 2 &gt; 1</code> 在PHP是不合法的。但另外一方面表达式
+    <code class="literal">1 &lt;= 1 == 1</code> 是合法的, 因为 <code class="literal">==</code> 的优先级低于
+    <code class="literal">&lt;=</code>。
+   </p>
+   <p class="para">
+    关联性仅对二（三）元操作符有意义。
+    一元操作符是前缀或者后缀，所以不适用该概念。
+    例如 <code class="literal">!!$a</code> 仅可分为 <code class="literal">!(!$a)</code>。
+   </p>
+   <p class="para">
+    括号的使用，哪怕在不是必要的场合下，通过括号的配对来明确标明运算顺序，而非靠运算符优先级和结合性来决定，通常能够增加代码的可读性。
+   </p>
+   <p class="para">
+    下表按照优先级从高到低列出了运算符。同一行中的运算符具有相同优先级，此时它们的结合方向决定求值顺序。
+    <table class="doctable table">
+     <caption><strong>运算符优先级</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>结合方向</th>
+        <th>运算符</th>
+        <th>附加信息</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>不适用</td>
+        <td>
+         <code class="literal">clone</code>
+         <code class="literal">new</code>
+        </td>
+        <td><a href="language.oop5.cloning.html" class="link">clone</a> 和 <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a></td>
+       </tr>
+
+       <tr>
+        <td>右</td>
+        <td><code class="literal">**</code></td>
+        <td><a href="language.operators.arithmetic.html" class="link">算术运算符</a></td>
+       </tr>
+
+       <tr>
+        <td>不适用</td>
+        <td>
+         <code class="literal">+</code> 
+         <code class="literal">-</code> 
+         <code class="literal">++</code>
+         <code class="literal">--</code>
+         <code class="literal">~</code>
+         <code class="literal">(int)</code>
+         <code class="literal">(float)</code>
+         <code class="literal">(string)</code>
+         <code class="literal">(array)</code>
+         <code class="literal">(object)</code>
+         <code class="literal">(bool)</code>
+         <code class="literal">@</code>
+        </td>
+        <td>
+         <a href="language.operators.arithmetic.html" class="link">算术</a> (一元 <code class="literal">+</code> 和 <code class="literal">-</code>)，
+         <a href="language.operators.increment.html" class="link">递增/递减</a>，
+         <a href="language.operators.bitwise.html" class="link">按位</a>，
+         <a href="language.types.type-juggling.html#language.types.typecasting" class="link">类型转换</a> 和 
+         <a href="language.operators.errorcontrol.html" class="link">错误控制</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">instanceof</code></td>
+        <td>
+         <a href="language.operators.type.html" class="link">类型</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>不适用</td>
+        <td><code class="literal">!</code></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">逻辑运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td>
+         <code class="literal">*</code>
+         <code class="literal">/</code>
+         <code class="literal">%</code>
+        </td>
+        <td>
+         <a href="language.operators.arithmetic.html" class="link">算术运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td>
+         <code class="literal">+</code>
+         <code class="literal">-</code>
+         <code class="literal">.</code>
+        </td>
+        <td>
+         <a href="language.operators.arithmetic.html" class="link">算数</a> (二元 <code class="literal">+</code> 和 <code class="literal">-</code>)，
+         <a href="language.operators.array.html" class="link">array</a> 和 
+         <a href="language.operators.string.html" class="link">string</a> （<code class="literal">.</code> PHP 8.0.0 前可用）
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td>
+         <code class="literal">&lt;&lt;</code>
+         <code class="literal">&gt;&gt;</code>
+        </td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">位运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">.</code></td>
+        <td>
+         <a href="language.operators.string.html" class="link">string</a> （PHP 8.0.0 起可用）
+        </td>
+       </tr>
+
+       <tr>
+        <td>无</td>
+        <td>
+         <code class="literal">&lt;</code>
+         <code class="literal">&lt;=</code>
+         <code class="literal">&gt;</code>
+         <code class="literal">&gt;=</code>
+        </td>
+        <td>
+         <a href="language.operators.comparison.html" class="link">比较运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>无</td>
+        <td>
+         <code class="literal">==</code>
+         <code class="literal">!=</code>
+         <code class="literal">===</code>
+         <code class="literal">!==</code>
+         <code class="literal">&lt;&gt;</code>
+         <code class="literal">&lt;=&gt;</code>
+        </td>
+        <td>
+         <a href="language.operators.comparison.html" class="link">比较运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">&amp;</code></td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">位运算符</a> 和 <a href="language.references.html" class="link">引用</a></td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">^</code></td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">位运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">|</code></td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">位运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">&amp;&amp;</code></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">逻辑运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">||</code></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">逻辑运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>右</td>
+        <td><code class="literal">??</code></td>
+        <td>
+         <a href="language.operators.comparison.html#language.operators.comparison.coalesce" class="link">null 合并运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>无关联</td>
+        <td><code class="literal">? :</code></td>
+        <td>
+         <a href="language.operators.comparison.html#language.operators.comparison.ternary" class="link">三元运算符</a>
+         (PHP 8.0.0 之前左联)
+        </td>
+       </tr>
+
+       <tr>
+        <td>右</td>
+        <td>
+         <code class="literal">=</code>
+         <code class="literal">+=</code>
+         <code class="literal">-=</code>
+         <code class="literal">*=</code>
+         <code class="literal">**=</code>
+         <code class="literal">/=</code>
+         <code class="literal">.=</code>
+         <code class="literal">%=</code>
+         <code class="literal">&amp;=</code>
+         <code class="literal">|=</code>
+         <code class="literal">^=</code>
+         <code class="literal">&lt;&lt;=</code>
+         <code class="literal">&gt;&gt;=</code>
+         <code class="literal">??=</code>
+        </td>
+        <td>
+         <a href="language.operators.assignment.html" class="link">赋值运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>不适用</td>
+        <td><code class="literal">yield from</code></td>
+        <td>
+         <a href="language.generators.syntax.html#control-structures.yield.from" class="link">yield from</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>不适用</td>
+        <td><code class="literal">yield</code></td>
+        <td>
+         <a href="language.generators.syntax.html#control-structures.yield" class="link">yield</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>不适用</td>
+        <td><code class="literal">print</code></td>
+        <td><span class="function"><a href="function.print.html" class="function">print</a></span></td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">and</code></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">逻辑运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">xor</code></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">逻辑运算符</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>左</td>
+        <td><code class="literal">or</code></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">逻辑运算符</a>
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   <p class="para">
+    <div class="example" id="example-107">
+     <p><strong>示例 #1 结合方向</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;(3&nbsp;*&nbsp;3)&nbsp;%&nbsp;5&nbsp;=&nbsp;4<br />//&nbsp;PHP&nbsp;的三元操作符跟&nbsp;C/C++&nbsp;有区别<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;(true&nbsp;?&nbsp;0&nbsp;:&nbsp;true)&nbsp;?&nbsp;1&nbsp;:&nbsp;2&nbsp;=&nbsp;2&nbsp;(PHP&nbsp;8.0.0&nbsp;前可用)<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;=&nbsp;($b&nbsp;+=&nbsp;3)&nbsp;-&gt;&nbsp;$a&nbsp;=&nbsp;5,&nbsp;$b&nbsp;=&nbsp;5<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    运算符优先级和关联方式仅决定表达式如何分组，不指定计算顺序。
+    一般情况下， PHP 不指定表达式的计算顺序，并且代码避免指定假设执行顺序，
+    因为行为会在 PHP 版本间发生变化或者依赖于旁边的代码。
+    <div class="example" id="example-108">
+     <p><strong>示例 #2 未定义执行顺序</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">++;&nbsp;</span><span style="color: #FF8000">//&nbsp;可能会输出&nbsp;2&nbsp;或&nbsp;3<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;&nbsp;</span><span style="color: #FF8000">//&nbsp;可能会设置索引&nbsp;1&nbsp;或&nbsp;2<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <div class="example" id="example-109">
+     <p><strong>示例 #3 <code class="literal">+</code>、<code class="literal">-</code> 、<code class="literal">.</code> 具有相同的优先级</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;这行可能会导致不可预料的输出：<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"x&nbsp;minus&nbsp;one&nbsp;equals&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">",&nbsp;or&nbsp;so&nbsp;I&nbsp;hope\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;因为它是这样计算的：（PHP&nbsp;8.0.0&nbsp;之前版本）<br /></span><span style="color: #007700">echo&nbsp;((</span><span style="color: #DD0000">"x&nbsp;minus&nbsp;one&nbsp;equals&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;or&nbsp;so&nbsp;I&nbsp;hope\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;可以使用括号来强制指定优先级：<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"x&nbsp;minus&nbsp;one&nbsp;equals&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">$x</span><span style="color: #007700">-</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;or&nbsp;so&nbsp;I&nbsp;hope\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>以上例程会输出：</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+-1, or so I hope
+-1, or so I hope
+x minus one equals 3, or so I hope
+</pre></div>
+     </div>
+    </div>
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     尽管 <code class="literal">=</code> 比其它大多数的运算符的优先级低，PHP
+     仍旧允许类似如下的表达式：<code class="literal">if (!$a = foo())</code>，在此例中
+     <code class="literal">foo()</code> 的返回值被赋给了 <var class="varname">$a</var>。
+    </p>
+   </p></blockquote>
+   <div class="sect2">
+    <h3 class="title">更新日志</h3>
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>版本</th>
+        <th>说明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>8.0.0</td>
+        <td>
+         现在，字符串连接符（<code class="literal">.</code>）的优先级比算数加/减（<code class="literal">+</code> 和 
+         <code class="literal">-</code>）、按位左/右移（<code class="literal">&lt;&lt;</code> 和 
+         <code class="literal">&gt;&gt;</code>）更低。在此之前，它的优先级与 <code class="literal">+</code>、
+         <code class="literal">-</code> 相同，并且比 <code class="literal">&lt;&lt;</code>、 
+         <code class="literal">&gt;&gt;</code> 更高。
+        </td>
+       </tr>
+
+       <tr>
+        <td>8.0.0</td>
+        <td>
+         三元运算符（<code class="literal">? :</code>）是现在是非关联的；以前它是左联的。
+        </td>
+       </tr>
+
+       <tr>
+        <td>7.4.0</td>
+        <td>
+         已弃用在无括号的表达式中依赖字符串连接（<code class="literal">.</code>）相对于算数加/减（<code class="literal">+</code> 或者
+          <code class="literal">-</code>）或者按位左/右移（<code class="literal">&lt;&lt;</code> 或者 
+          <code class="literal">&gt;&gt;</code>）的优先级的使用方法。
+        </td>
+       </tr>
+
+       <tr>
+        <td>7.4.0</td>
+        <td>
+         不推荐使用三元运算符（<code class="literal">? :</code>）的左联。
+         即已弃用嵌套多个未带括号的三元运算符。
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </div>
+  </div></div></div></body></html>

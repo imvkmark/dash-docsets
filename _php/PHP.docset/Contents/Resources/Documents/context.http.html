@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>HTTP context 的选项列表</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="context.socket.html">« 套接字上下文选项</a></li>
+      <li style="float: right;"><a href="context.ftp.html">FTP 上下文选项 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="context.html">上下文（Context）选项和参数</a></li>
+    <li>HTTP context 的选项列表</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="context.http" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">HTTP context 选项</h1>
+  <p class="refpurpose"><span class="refname">HTTP context 选项</span> &mdash; <span class="dc-title">HTTP context 的选项列表</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-context.http-description">
+  <h3 class="title">说明</h3>
+  <p class="para">
+   提供给 <code class="literal">http://</code> 和 <code class="literal">https://</code> 传输协议的 context 选项。
+   transports.
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-context.http-options">
+  <h3 class="title">可选项</h3>
+  <p class="para">
+   <dl>
+    
+     <dt id="context.http.method">
+      <code class="parameter">method</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       远程服务器支持的 <strong><code>GET</code></strong>，<strong><code>POST</code></strong> 或其它 HTTP 方法。
+      </p>
+      <p class="para">
+       默认值是 <strong><code>GET</code></strong>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.header">
+      <code class="parameter">header</code>
+      <span class="type">array</span> 或 <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       请求期间发送的附加 header 。此选项中的值将覆盖其他值
+       （如 <code class="literal">User-agent:</code>， <code class="literal">Host:</code> 和 
+        <code class="literal">Authentication:</code>)，
+        即使在执行 <code class="literal">Location:</code> 重定向时也是如此。
+        所以，如果启用了 <code class="parameter">follow_location</code>
+        就不建议设置 <code class="literal">Host:</code> header。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.user-agent">
+      <code class="parameter">user_agent</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       要发送的 header <code class="literal">User-Agent:</code> 的值。如果在上面的 
+       <code class="literal">header</code> context 选项中没有指定 user-agent，此值将被使用。
+      </p>
+      <p class="para">
+       默认使用 <var class="filename">php.ini</var>  中设置的 <a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.content">
+      <code class="parameter">content</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       在 header 后面要发送的额外数据。通常使用POST或PUT请求。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.proxy">
+      <code class="parameter">proxy</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       URI 指定的代理服务器的地址。(e.g.
+       <code class="literal">tcp://proxy.example.com:5100</code>).
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.request-fulluri">
+      <code class="parameter">request_fulluri</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       当设置为 <strong><code>true</code></strong> 时，在构建请求时将使用整个 URI 。(例如：
+       <code class="literal">GET http://www.example.com/path/to/file.html HTTP/1.0</code>)。
+       虽然这是一个非标准的请求格式，但某些代理服务器需要它。
+      </p>
+      <p class="para">
+       默认值是 <strong><code>false</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.follow-location">
+      <code class="parameter">follow_location</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       跟随 <code class="literal">Location</code> header 的重定向。设置为 <code class="literal">0</code> 以禁用。
+      </p>
+      <p class="para">
+       默认值是 <code class="literal">1</code>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.max-redirects">
+      <code class="parameter">max_redirects</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       跟随重定向的最大次数。值为 <code class="literal">1</code> 或更少则意味不跟随重定向。
+      </p>
+      <p class="para">
+       默认值是 <code class="literal">20</code>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.protocol-version">
+      <code class="parameter">protocol_version</code>
+      <span class="type">float</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       HTTP 协议版本。
+      </p>
+      <p class="para">
+       PHP 8.0.0 起默认值是 <code class="literal">1.1</code>。在此之前默认值是 <code class="literal">1.0</code>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.timeout">
+      <code class="parameter">timeout</code>
+      <span class="type">float</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       读取超时时间，单位为秒（s），用 <span class="type">float</span> 指定(e.g. <code class="literal">10.5</code>)。
+      </p>
+      <p class="para">
+       默认使用 <var class="filename">php.ini</var> 中设置的 <a href="filesystem.configuration.html#ini.default-socket-timeout" class="link">default_socket_timeout</a>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.ignore-errors">
+      <code class="parameter">ignore_errors</code>
+      <span class="type">bool</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       即使是故障状态码依然获取内容。
+      </p>
+      <p class="para">
+       默认值为 <strong><code>false</code></strong>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-context.http-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="context.http.example-post">
+    <p><strong>示例 #1 获取一个页面并发送 POST 数据</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$postdata&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'var1'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'some&nbsp;content'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'var2'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'doh'<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$opts&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'http'&nbsp;</span><span style="color: #007700">=&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'method'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'POST'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'header'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Content-type:&nbsp;application/x-www-form-urlencoded'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'content'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$postdata<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$context&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opts</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.com/submit.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="context.http.example-fetch-ignore-redirect">
+    <p><strong>示例 #2 忽略重定向并获取 header 和内容</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"http://www.example.org/header.php"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$opts&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'http'&nbsp;</span><span style="color: #007700">=&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'method'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'GET'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'max_redirects'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'ignore_errors'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$context&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opts</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stream&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;header&nbsp;信息和&nbsp;stream&nbsp;的元数据一样<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">stream_get_meta_data</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;$url&nbsp;的实际数据<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">stream_get_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-context.http-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>底层 socket stream 上下文选项</strong><br />
+   <span class="simpara">
+    Additional context options may be supported by the
+    <a href="transports.inet.html" class="link">underlying transport</a>
+    For <code class="literal">http://</code> streams, refer to context
+    options for the <code class="literal">tcp://</code> transport.  For
+    <code class="literal">https://</code> streams, refer to context options
+    for the <code class="literal">ssl://</code> transport.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>HTTP 状态行</strong><br />
+   <span class="simpara">
+    When this stream wrapper follows a redirect, the
+    <code class="literal">wrapper_data</code> returned by
+    <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> might not necessarily contain
+    the HTTP status line that actually applies to the content data at index
+    <code class="literal">0</code>.
+   </span>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array (
+  &#039;wrapper_data&#039; =&gt;
+  array (
+    0 =&gt; &#039;HTTP/1.0 301 Moved Permanently&#039;,
+    1 =&gt; &#039;Cache-Control: no-cache&#039;,
+    2 =&gt; &#039;Connection: close&#039;,
+    3 =&gt; &#039;Location: http://example.com/foo.jpg&#039;,
+    4 =&gt; &#039;HTTP/1.1 200 OK&#039;,
+    ...
+</pre></div>
+   </div>
+   <span class="simpara">
+    第一个请求返回 <code class="literal">301</code> （永久重定向），
+    因此 stream 包装器自动跟随重定向到获得 <code class="literal">200</code> 
+    响应（index = <code class="literal">4</code>）。
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-context.http-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="wrappers.http.html" class="xref">http://</a></li>
+    <li class="member"><a href="context.socket.html" class="xref">套接字上下文选项</a></li>
+    <li class="member"><a href="context.ssl.html" class="xref">SSL 上下文选项</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

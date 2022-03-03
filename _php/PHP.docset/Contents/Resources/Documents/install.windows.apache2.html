@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Microsoft Windows 下的 Apache 2.x</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.windows.commandline.html">« PHP 在 Microsoft Windows 下的命令行方式</a></li>
+      <li style="float: right;"><a href="install.windows.troubleshooting.html">Windows 下 PHP 故障排除 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.windows.html">Windows 系统下的安装</a></li>
+    <li>Microsoft Windows 下的 Apache 2.x</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.windows.apache2" class="sect1">
+ <h2 class="title">Microsoft Windows 下的 Apache 2.x</h2>
+ <p class="para">
+  本节包括在 Microsoft Windows 系统中针对 Apache 2.x 安装 PHP 的指导与说明。
+ </p>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <p class="para">
+   请先阅读<a href="install.windows.manual.html" class="link">手工安装步骤</a>！
+  </p>
+ </p></blockquote>
+ <p class="para">
+  强烈建议阅读 <a href="http://httpd.apache.org/docs/current/" class="link external">&raquo;&nbsp;Apache 文档</a> 来加深对
+  Apache 2.x 服务器的基本理解。此外在继续下去之前考虑先阅读一下 Apache 2.x 的 
+  <a href="http://httpd.apache.org/docs/current/platform/windows.html" class="link external">&raquo;&nbsp;Windows 下使用说明</a>。
+ </p>
+
+ <p class="para">
+  下载最新版本的 <a href="https://www.apachelounge.com/download/" class="link external">&raquo;&nbsp;Apache 2.x</a>
+  以及适合的 PHP 版本。先完成<a href="install.windows.manual.html" class="link">手工安装步骤</a>后再回来继续将
+  PHP 集成入 Apache。
+ </p>
+ 
+ <p class="para">
+  Windows 下有三种方法使 PHP 工作于 Apache 2.x 之中。可以以 handler、CGI、或者 FastCGI 方式运行 PHP。
+ </p>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">记住当在
+Windows 环境下的 Apache 配置文件中添加路径值时，所有的反斜线，如
+<var class="filename">c:\directory\file.ext</var>，应转换为正斜线：
+<var class="filename">c:/directory/file.ext</var>。对目录来说，也必须由斜线结尾。</span></p></blockquote>
+
+ <div class="sect2" id="install.windows.apache2.module">
+  <h3 class="title">以 Apache handler 方式安装</h3>
+  <p class="para">
+   需要将以下几行加入到 Apache 的 <var class="filename">httpd.conf</var> 配置文件中以加载 Apache 2.x 的 PHP 模块：
+   <div class="example" id="example-21">
+    <p><strong>示例 #1 PHP 在 Apache 2.x 中作为 handler</strong></p>
+    <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode"># 在 PHP 8.0.0 之前，模块的名称是 php7_module
+LoadModule php_module &quot;c:/php/php8apache2_4.dll&quot;
+&lt;FilesMatch \.php$&gt;
+    SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;
+# 配置 php.ini 的路径
+PHPIniDir &quot;C:/php&quot;</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    必须使用实际的 PHP 路径替换掉上例中的 <var class="filename">c:/php/</var>。
+    确保在 <code class="literal">LoadModule</code> 指令中引用的文件位于所指定的位置。
+    PHP 7 使用 <var class="filename">php7apache2_4.dll</var>，
+    PHP 8 使用  <var class="filename">php8apache2_4.dll</var>。
+   </span>
+  </p></blockquote>
+ </div>
+
+ <div class="sect2" id="install.windows.apache2.cgi">
+  <h3 class="title">以 CGI 方式运行 PHP</h3>
+  <p class="para">
+   要更好地理解在 Apache 下运行 CGI，请参阅
+   <a href="http://httpd.apache.org/docs/current/howto/cgi.html" class="link external">&raquo;&nbsp;Apache CGI 文档</a>。
+  </p>
+  <p class="para">
+   要将 PHP 以 CGI 方式运行，需要将 php-cgi 文件放入到用
+   ScriptAlias 指令所指定的 CGI 目录中。
+  </p>
+  <p class="para">
+   然后需要给 PHP 文件中添加 <code class="literal">#!</code> 的一行来指明 PHP 可执行文件的位置：
+   <div class="example" id="example-22">
+    <p><strong>示例 #2 Apache 2.x 下 CGI 方式的 PHP</strong></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+#!C:/php/php.exe
+&lt;?php
+  phpinfo();
+?&gt;
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+  <div class="warning"><strong class="warning">警告</strong><p class="para">服务器使用 CGI 方式进行部署可能存在几个公开的缺陷。请阅读
+<a href="security.cgi-bin.html" class="link">CGI 安全</a>一章 以学习 如何抵御这些攻击。</p></div>
+ </div>
+
+ <div class="sect2" id="install.windows.apache2.fastcgi">
+  <h3 class="title">以 FastCGI 方式运行 PHP</h3>
+
+  <p class="para">
+   以 FastCGI 方式运行 PHP 比起 CGI 方式有很多优点。设定的方式很直接：
+  </p>
+  <p class="para">
+   从 <a href="https://www.apachelounge.com/download/" class="link external">&raquo;&nbsp;https://www.apachelounge.com</a>
+   取得 <code class="literal">mod_fcgid</code>，该站点有 Win32 可执行文件的下载。按照下载文件中的指示安装此模块。
+  </p>
+  <p class="para">
+   按以下方法配置 web 服务器，注意用自己系统上的路径替换其中相应的内容：
+   
+   <div class="example" id="example-23">
+    <p><strong>示例 #3 配置 Apache 以 FastCGI 方式运行 PHP</strong></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+LoadModule fcgid_module modules/mod_fcgid.so  
+
+# php.ini 文件的位置
+FcgidInitialEnv PHPRC        &quot;c:/php&quot; 
+
+&lt;FilesMatch \.php$&gt;
+    SetHandler fcgid-script
+&lt;/FilesMatch&gt;
+FcgidWrapper &quot;c:/php/php-cgi.exe&quot; .php  
+</pre></div>
+   </div>
+
+   </div>
+   此时具有 .php 后缀的文件将被 PHP FastCGI 所解析执行。
+  </p>
+ </div>
+</div></div></div></body></html>

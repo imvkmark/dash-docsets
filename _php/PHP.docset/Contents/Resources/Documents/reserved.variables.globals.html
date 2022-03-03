@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>引用全局作用域中可用的全部变量</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.variables.superglobals.html">« 超全局变量</a></li>
+      <li style="float: right;"><a href="reserved.variables.server.html">$_SERVER »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.variables.html">预定义变量</a></li>
+    <li>引用全局作用域中可用的全部变量</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reserved.variables.globals" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">$GLOBALS</h1>
+  <p class="refpurpose"><span class="refname">$GLOBALS</span> &mdash; <span class="dc-title">引用全局作用域中可用的全部变量</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-reserved.variables.globals-description">
+  <h3 class="title">说明</h3>
+  <p class="para">
+   关联数组 <span class="type">array</span>，包含当前脚本内定义成全局范围的所有变量的引用。
+   数组的键就是变量的名字。
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-reserved.variables.globals-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="variable.globals.basic">
+    <p><strong>示例 #1 <var class="varname">$GLOBALS</var> 范例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"local&nbsp;variable"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'$foo&nbsp;in&nbsp;global&nbsp;scope:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'$foo&nbsp;in&nbsp;current&nbsp;scope:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Example&nbsp;content"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+$foo in global scope: Example content
+$foo in current scope: local variable
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    从 PHP 8.1.0 起，不再支持对整个 <var class="varname">$GLOBALS</var> 数组的写访问：
+    <div class="example" id="variable.globals.entire_write_error">
+     <p><strong>示例 #2 写入整个 <var class="varname">$GLOBALS</var> 将会导致错误。</strong></p>
+     <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;</span><span style="color: #FF8000">//&nbsp;生成编译时错误：<br />&nbsp;</span><span style="color: #0000BB">$GLOBALS&nbsp;</span><span style="color: #007700">=&nbsp;[];<br />&nbsp;</span><span style="color: #0000BB">$GLOBALS&nbsp;</span><span style="color: #007700">+=&nbsp;[];<br />&nbsp;</span><span style="color: #0000BB">$GLOBALS&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />&nbsp;</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">;<br />&nbsp;unset(</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">);<br />&nbsp;</span><span style="color: #0000BB">array_pop</span><span style="color: #007700">(</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">);<br />&nbsp;</span><span style="color: #FF8000">//&nbsp;...以及对&nbsp;$GLOBALS&nbsp;的任何其他写入/读写操作<br />&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-reserved.variables.globals-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">“Superglobal”也称为自动化的全局变量。这就表示其在脚本的所有作用域中都是可用的。不需要在函数或方法中用
+<strong class="command">global $variable;</strong> 来访问它。</p></p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>变量可用性</strong><br />
+   <p class="para">
+    与所有其他<a href="language.variables.superglobals.html" class="link">超全局变量</a>不同，<var class="varname">$GLOBALS</var>在PHP中总是可用的。
+    </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+     从 PHP 8.1.0 起， <var class="varname">$GLOBALS</var> 现在是全局符号表的只读副本。
+     也就是说，全局变量不能通过副本进行修改。
+     在之前的版本中，<var class="varname">$GLOBALS</var> 数组和 PHP 数组通常传值的行为不一样，全局变量可通过副本修改。
+     <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;8.1.0&nbsp;之前<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$globals&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;表面意义的按值复制<br /></span><span style="color: #0000BB">$globals</span><span style="color: #007700">[</span><span style="color: #DD0000">'a'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;int(2)<br /><br />//&nbsp;从&nbsp;PHP&nbsp;8.1.0&nbsp;起<br />//&nbsp;这不再修改&nbsp;$a。先前的行为违反了按值语义。<br /></span><span style="color: #0000BB">$globals&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$globals</span><span style="color: #007700">[</span><span style="color: #DD0000">'a'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;要恢复以前的行为，请迭代其副本并将每个属性分配回&nbsp;$GLOBALS。<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">$globals&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+</div></div></div></body></html>

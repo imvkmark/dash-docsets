@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Formats the interval</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="dateinterval.createfromdatestring.html">« DateInterval::createFromDateString</a></li>
+      <li style="float: right;"><a href="class.dateperiod.html">DatePeriod »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.dateinterval.html">DateInterval</a></li>
+    <li>Formats the interval</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="dateinterval.format" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DateInterval::format</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DateInterval::format</span> &mdash; <span class="dc-title">Formats the interval</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-dateinterval.format-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DateInterval::format</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>): <span class="type">string</span></div>
+
+  <p class="para rdfs-comment">
+   Formats the interval.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-dateinterval.format-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">format</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <table class="doctable table">
+        <caption><strong>
+         The following characters are recognized in the
+         <code class="parameter">format</code> parameter string.
+         Each format character must be prefixed by a percent sign
+         (<code class="literal">%</code>).
+        </strong></caption>
+        
+         <thead>
+          <tr>
+           <th><code class="parameter">format</code> character</th>
+           <th>Description</th>
+           <th>Example values</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><code class="literal">%</code></td>
+           <td>Literal <code class="literal">%</code></td>
+           <td><code class="literal">%</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">Y</code></td>
+           <td>Years, numeric, at least 2 digits with leading 0</td>
+           <td><code class="literal">01</code>, <code class="literal">03</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">y</code></td>
+           <td>Years, numeric</td>
+           <td><code class="literal">1</code>, <code class="literal">3</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">M</code></td>
+           <td>Months, numeric, at least 2 digits with leading 0</td>
+           <td><code class="literal">01</code>, <code class="literal">03</code>, <code class="literal">12</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">m</code></td>
+           <td>Months, numeric</td>
+           <td><code class="literal">1</code>, <code class="literal">3</code>, <code class="literal">12</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">D</code></td>
+           <td>Days, numeric, at least 2 digits with leading 0</td>
+           <td><code class="literal">01</code>, <code class="literal">03</code>, <code class="literal">31</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">d</code></td>
+           <td>Days, numeric</td>
+           <td><code class="literal">1</code>, <code class="literal">3</code>, <code class="literal">31</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">a</code></td>
+           <td>Total number of days as a result of a <span class="methodname"><a href="datetime.diff.html" class="methodname">DateTime::diff()</a></span> or <code class="literal">(unknown)</code> otherwise</td>
+           <td><code class="literal">4</code>, <code class="literal">18</code>, <code class="literal">8123</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">H</code></td>
+           <td>Hours, numeric, at least 2 digits with leading 0</td>
+           <td><code class="literal">01</code>, <code class="literal">03</code>, <code class="literal">23</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">h</code></td>
+           <td>Hours, numeric</td>
+           <td><code class="literal">1</code>, <code class="literal">3</code>, <code class="literal">23</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">I</code></td>
+           <td>Minutes, numeric, at least 2 digits with leading 0</td>
+           <td><code class="literal">01</code>, <code class="literal">03</code>, <code class="literal">59</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">i</code></td>
+           <td>Minutes, numeric</td>
+           <td><code class="literal">1</code>, <code class="literal">3</code>, <code class="literal">59</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">S</code></td>
+           <td>Seconds, numeric, at least 2 digits with leading 0</td>
+           <td><code class="literal">01</code>, <code class="literal">03</code>, <code class="literal">57</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">s</code></td>
+           <td>Seconds, numeric</td>
+           <td><code class="literal">1</code>, <code class="literal">3</code>, <code class="literal">57</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">F</code></td>
+           <td>Microseconds, numeric, at least 6 digits with leading
+           0</td>
+           <td><code class="literal">007701</code>, <code class="literal">052738</code>, <code class="literal">428291</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">f</code></td>
+           <td>Microseconds, numeric</td>
+           <td><code class="literal">7701</code>, <code class="literal">52738</code>, <code class="literal">428291</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">R</code></td>
+           <td>Sign &quot;<code class="literal">-</code>&quot; when negative, &quot;<code class="literal">+</code>&quot; when positive</td>
+           <td><code class="literal">-</code>, <code class="literal">+</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">r</code></td>
+           <td>Sign &quot;<code class="literal">-</code>&quot; when negative, empty when positive</td>
+           <td><code class="literal">-</code>, <code class="literal"></td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-dateinterval.format-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns the formatted interval.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-dateinterval.format-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.1.0</td>
+       <td>The <code class="literal">F</code> and <code class="literal">f</code> format
+        characters were added.</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-dateinterval.format-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-2007">
+    <p><strong>示例 #1 <span class="classname"><a href="class.dateinterval.html" class="classname">DateInterval</a></span> example</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$interval&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P2Y4DT6H8M'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%d&nbsp;days'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+     <div class="cdata"><pre>
+4 days
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2008">
+    <p><strong>示例 #2 <span class="classname"><a href="class.dateinterval.html" class="classname">DateInterval</a></span> and carry over points</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$interval&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P32D'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%d&nbsp;days'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+     <div class="cdata"><pre>
+32 days
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2009">
+    <p><strong>示例 #3 
+     <span class="classname"><a href="class.dateinterval.html" class="classname">DateInterval</a></span> and
+     <span class="methodname"><a href="datetime.diff.html" class="methodname">DateTime::diff()</a></span> with the %a and %d modifiers
+    </strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$january&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">'2010-01-01'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$february&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">'2010-02-01'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$interval&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$february</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">diff</span><span style="color: #007700">(</span><span style="color: #0000BB">$january</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;%a&nbsp;will&nbsp;output&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;days.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%a&nbsp;total&nbsp;days'</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;While&nbsp;%d&nbsp;will&nbsp;only&nbsp;output&nbsp;the&nbsp;number&nbsp;of&nbsp;days&nbsp;not&nbsp;already&nbsp;covered&nbsp;by&nbsp;the<br />//&nbsp;month.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'%m&nbsp;month,&nbsp;%d&nbsp;days'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+     <div class="cdata"><pre>
+31 total days
+1 month, 0 days
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-dateinterval.format-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    The <span class="methodname"><strong>DateInterval::format()</strong></span> method does not 
+    recalculate carry over points in time strings nor in date segments. This 
+    is expected because it is not possible to overflow values like <code class="literal">&quot;32 days&quot;</code>
+    which could be interpreted as anything from <code class="literal">&quot;1 month and 4 days&quot;</code> 
+    to <code class="literal">&quot;1 month and 1 day&quot;</code>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-dateinterval.format-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="datetime.diff.html" class="methodname" rel="rdfs-seeAlso">DateTime::diff()</a> - Returns the difference between two DateTime objects</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>执行一条 SQL 语句，并返回受影响的行数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.errorinfo.html">« PDO::errorInfo</a></li>
+      <li style="float: right;"><a href="pdo.getattribute.html">PDO::getAttribute »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>执行一条 SQL 语句，并返回受影响的行数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.exec" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::exec</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDO::exec</span> &mdash; <span class="dc-title">
+   执行一条 SQL 语句，并返回受影响的行数
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.exec-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>PDO::exec</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>): <span class="type">int</span></div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>PDO::exec()</strong></span> 在一个单独的函数调用中执行一条 SQL 语句，返回受此语句影响的行数。
+  </p>
+  <p class="para">
+   <span class="function"><strong>PDO::exec()</strong></span> 不会从一条 SELECT 语句中返回结果。对于在程序中只需要发出一次的 SELECT 语句，可以考虑使用 <span class="function"><a href="pdo.query.html" class="function">PDO::query()</a></span>。对于需要发出多次的语句，可用 <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span> 来准备一个 PDOStatement 对象并用 <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> 发出语句。
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-pdo.exec-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">statement</code></dt>
+
+      <dd>
+
+       <p class="para">
+        要被预处理和执行的 SQL 语句。
+       </p>
+       <p class="para">
+        查询中的数据应该被 <a href="pdo.quote.html" class="link">妥善地转义</a> 。
+       </p>
+      </dd>
+
+     
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.exec-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   <span class="function"><strong>PDO::exec()</strong></span> 返回受修改或删除 SQL 语句影响的行数。如果没有受影响的行，则 <span class="function"><strong>PDO::exec()</strong></span> 返回 0。
+  </p>
+
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">此函数可能返回布尔值
+<strong><code>false</code></strong>，但也可能返回等同于 <strong><code>false</code></strong> 的非布尔值。请阅读 <a href="language.types.boolean.html" class="link">布尔类型</a>章节以获取更多信息。应使用
+<a href="language.operators.comparison.html" class="link">===
+运算符</a>来测试此函数的返回值。</p></div>
+  <p class="para">
+   下面例子依赖 <span class="function"><strong>PDO::exec()</strong></span> 的返回值是不正确的，其中受影响行数为 0 的语句会导致调用 <span class="function"><a href="function.die.html" class="function">die()</a></span> ：
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">()&nbsp;or&nbsp;die(</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorInfo</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdo.exec-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-1014">
+    <p><strong>示例 #1 发出一条 DELETE 语句</strong></p>
+    <div class="example-contents"><p>
+     计算由一条不带 WHERE 字句的 DELETE 语句删除的行数。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dbh&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'odbc:sample'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'db2inst1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ibmdb2'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;&nbsp;删除&nbsp;FRUIT&nbsp;数据表中满足条件的所有行&nbsp;*/<br /></span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;fruit&nbsp;WHERE&nbsp;colour&nbsp;=&nbsp;'red'"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;返回被删除的行数&nbsp;*/<br /></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Deleted&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #DD0000">&nbsp;rows.\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Deleted 1 rows.
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-pdo.exec-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="pdo.prepare.html" class="function" rel="rdfs-seeAlso">PDO::prepare()</a> - 准备要执行的语句，并返回语句对象</span></li>
+    <li class="member"><span class="function"><a href="pdo.query.html" class="function" rel="rdfs-seeAlso">PDO::query()</a> - 执行 SQL 语句，以 PDOStatement 对象形式返回结果集</span></li>
+    <li class="member"><span class="function"><a href="pdostatement.execute.html" class="function" rel="rdfs-seeAlso">PDOStatement::execute()</a> - 执行一条预处理语句</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

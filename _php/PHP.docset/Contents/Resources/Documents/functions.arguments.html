@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>函数的参数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="functions.user-defined.html">« 用户自定义函数</a></li>
+      <li style="float: right;"><a href="functions.returning-values.html">返回值 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.functions.html">函数</a></li>
+    <li>函数的参数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="functions.arguments" class="sect1">
+   <h2 class="title">函数的参数</h2>
+
+   <p class="simpara">
+    通过参数列表可以传递信息到函数，即以逗号作为分隔符的表达式列表。函数在实际调用之前，值参数是从左向右求值的（<em class="emphasis">及早</em>求值）。
+   </p>
+
+   <p class="para">
+    PHP 支持按值传递参数（默认），<a href="functions.arguments.html#functions.arguments.by-reference" class="link">通过引用传递参数</a> 以及 <a href="functions.arguments.html#functions.arguments.default" class="link">默认参数</a>。也支持
+    <a href="functions.arguments.html#functions.variable-arg-list" class="link">可变长度参数列表</a> 和
+    <a href="functions.arguments.html#functions.named-arguments" class="link">命名参数</a>。
+   </p>
+   <p class="para">
+    <div class="example" id="example-153">
+     <p><strong>示例 #1 向函数传递数组</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">takes_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;+&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;=&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]+</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    从 PHP 8.0.0 开始，函数参数列表可以包含一个尾部的逗号，这个逗号将被忽略。这在参数列表较长或包含较长的变量名的情况下特别有用，这样可以方便地垂直列出参数。
+   </p>
+   <div class="example" id="example-154">
+    <p><strong>示例 #2 函数参数使用尾部逗号</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">takes_many_args</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$first_arg</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$second_arg</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a_very_long_argument_name</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$arg_with_default&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$again&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'a&nbsp;default&nbsp;string'</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;在&nbsp;8.0.0&nbsp;之前，这个尾部的逗号是不允许的。<br /></span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;...<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <p class="para">
+    从 PHP 8.0.0 开始，废弃在可选参数后声明强制参数。可以通过删除默认值来解决。
+    此规则一个例外是 <code class="code">Type $param = null</code> 形式的参数，
+    其中 <strong><code>null</code></strong> 默认值使类型隐性允许为空。
+    这种做法依然允许，但是推荐使用显性可为 null 的类型代替。
+   </p>
+   <div class="example" id="example-155">
+    <p><strong>示例 #3 强制参数后声明可选参数</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;[],&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{}&nbsp;</span><span style="color: #FF8000">//&nbsp;之前<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;之后<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(</span><span style="color: #0000BB">A&nbsp;$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{}&nbsp;</span><span style="color: #FF8000">//&nbsp;同时可用<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(?</span><span style="color: #0000BB">A&nbsp;$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;官方推荐的写法<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <div class="sect2" id="functions.arguments.by-reference">
+    <h3 class="title">通过引用传递参数</h3>
+
+    <p class="simpara">
+     默认情况下，函数参数通过值传递（因而即使在函数内部改变参数的值，它并不会改变函数外部的值）。如果希望允许函数修改它的参数值，必须通过引用传递参数。
+    </p>
+    <p class="para">
+     如果想要函数的一个参数总是通过引用传递，可以在函数定义中该参数的前面加上符号 &amp;：
+    </p>
+    <p class="para">
+     <div class="example" id="example-156">
+      <p><strong>示例 #4 用引用传递函数参数</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">add_some_extra</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'and&nbsp;something&nbsp;extra.'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;string,&nbsp;'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">add_some_extra</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;'This&nbsp;is&nbsp;a&nbsp;string,&nbsp;and&nbsp;something&nbsp;extra.'<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+   <div class="sect2" id="functions.arguments.default">
+    <h3 class="title">默认参数的值</h3>
+
+    <p class="para">
+     函数可以定义 C++ 风格的标量参数默认值，如下所示：
+    </p>
+    <p class="para">
+     <div class="example" id="example-157">
+      <p><strong>示例 #5 在函数中使用默认参数</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">makecoffee</span><span style="color: #007700">(</span><span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"cappuccino"</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"Making&nbsp;a&nbsp;cup&nbsp;of&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #DD0000">.\n"</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">makecoffee</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">makecoffee</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">makecoffee</span><span style="color: #007700">(</span><span style="color: #DD0000">"espresso"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Making a cup of cappuccino.
+Making a cup of .
+Making a cup of espresso.
+</pre></div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     PHP 还允许使用数组 <span class="type">array</span> 和特殊类型 <strong><code>null</code></strong> 作为默认参数，例如：
+    </p>
+    <p class="para">
+     <div class="example" id="example-158">
+      <p><strong>示例 #6 使用非标量类型作为默认参数</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">makecoffee</span><span style="color: #007700">(</span><span style="color: #0000BB">$types&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"cappuccino"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$coffeeMaker&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$device&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">is_null</span><span style="color: #007700">(</span><span style="color: #0000BB">$coffeeMaker</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">"hands"&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">$coffeeMaker</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"Making&nbsp;a&nbsp;cup&nbsp;of&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">join</span><span style="color: #007700">(</span><span style="color: #DD0000">",&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$types</span><span style="color: #007700">).</span><span style="color: #DD0000">"&nbsp;with&nbsp;</span><span style="color: #0000BB">$device</span><span style="color: #DD0000">.\n"</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">makecoffee</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">makecoffee</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"cappuccino"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"lavazza"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"teapot"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     默认值必须是常量表达式，不能是诸如变量，类成员，或者函数调用等。
+    </p>
+    <p class="para">
+     注意当使用默认参数时，任何默认参数必须放在任何非默认参数的右侧；否则，函数将不会按照预期的情况工作。考虑下面的代码片断：
+    </p>
+    <p class="para">
+     <div class="example" id="example-159">
+      <p><strong>示例 #7 函数默认参数的不正确用法</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"acidophilus"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$flavour</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"Making&nbsp;a&nbsp;bowl&nbsp;of&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #DD0000">&nbsp;</span><span style="color: #0000BB">$flavour</span><span style="color: #DD0000">.\n"</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #DD0000">"raspberry"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;不会按照预期工作<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: Missing argument 2 in call to makeyogurt() in
+/usr/local/etc/httpd/htdocs/phptest/functest.html on line 41
+Making a bowl of raspberry .
+</pre></div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     现在，比较上面的例子和这个例子：
+    </p>
+    <p class="para">
+     <div class="example" id="example-160">
+      <p><strong>示例 #8 函数默认参数正确的用法</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">$flavour</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"acidophilus"</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"Making&nbsp;a&nbsp;bowl&nbsp;of&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #DD0000">&nbsp;</span><span style="color: #0000BB">$flavour</span><span style="color: #DD0000">.\n"</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #DD0000">"raspberry"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;按预期工作<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Making a bowl of acidophilus raspberry.
+</pre></div>
+      </div>
+     </div>
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+      传引用的参数也可以有默认值。
+     </span>
+    </p></blockquote>
+   </div>
+
+   <div class="sect2" id="functions.variable-arg-list">
+    <h3 class="title">可变数量的参数列表</h3>
+
+    <p class="simpara">
+     PHP 在用户自定义函数中支持可变数量的参数列表。由
+     <code class="literal">...</code> 语法实现。
+    </p>
+
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+      还可以使用以下函数来获取可变参数
+      <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>、
+      <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span> 和
+      <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span>，不建议使用此方式，请使用
+      <code class="literal">...</code> 来替代。
+     </span>
+    </p></blockquote>
+
+    <p class="para">
+     包含 <code class="literal">...</code>
+     的参数，会转换为指定参数变量的一个数组，见以下示例：
+
+     <div class="example" id="example-161">
+      <p><strong>示例 #9 使用 <code class="literal">...</code> 来访问变量参数</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(...</span><span style="color: #0000BB">$numbers</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$numbers&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$acc</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+10
+</pre></div>
+      </div>
+     </div>
+    </p>
+
+    <p class="para">
+    也可以使用 <code class="literal">...</code> 语法来传递 <span class="type">array</span> 或
+     <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>
+     做为参数到函数中：
+
+     <div class="example" id="example-162">
+      <p><strong>示例 #10 使用 <code class="literal">...</code> 来传递参数</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(...[</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">]).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">];<br />echo&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(...</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+3
+3
+</pre></div>
+      </div>
+     </div>
+    </p>
+
+    <p class="para">
+     你可以在
+     <code class="literal">...</code> 前指定正常的位置参数。在这种情况下，只有不符合位置参数的尾部参数才会被添加到
+     <code class="literal">...</code> 生成的数组中。
+    </p>
+
+    <p class="para">
+     你也可以在
+     <code class="literal">...</code> 标记前添加一个
+     <a href="language.types.declarations.html" class="link">类型声明</a>。如果存在这种情况，那么
+     <code class="literal">...</code> 捕获的所有参数都必须匹配参数类型。
+
+
+     <div class="example" id="example-163">
+      <p><strong>示例 #11 输入提示的变量参数</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">total_intervals</span><span style="color: #007700">(</span><span style="color: #0000BB">$unit</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">DateInterval&nbsp;</span><span style="color: #007700">...</span><span style="color: #0000BB">$intervals</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$intervals&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$unit</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P1D'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P2D'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">total_intervals</span><span style="color: #007700">(</span><span style="color: #DD0000">'d'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">).</span><span style="color: #DD0000">'&nbsp;days'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;这将会失败，因为&nbsp;null&nbsp;不是&nbsp;DateInterval&nbsp;对象。<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">total_intervals</span><span style="color: #007700">(</span><span style="color: #DD0000">'d'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+3 days
+Catchable fatal error: Argument 2 passed to total_intervals() must be an instance of DateInterval, null given, called in - on line 14 and defined in - on line 2
+</pre></div>
+      </div>
+     </div>
+    </p>
+
+    <p class="para">
+      最后，你还可以给参数传递
+     <a href="functions.arguments.html#functions.arguments.by-reference" class="link">引用变量</a>，通过在
+      <code class="literal">...</code> 前加上一个 (<code class="literal">&amp;</code>) 符号来实现。
+    </p>
+
+    <div class="sect3" id="functions.variable-arg-list.old">
+     <h4 class="title">旧版本的 PHP</h4>
+
+     <p class="para">
+      不需要特殊的语法来声明一个函数是可变的；但是访问函数的参数必须使用
+      <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>, <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>
+      和 <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> 函数。
+     </p>
+
+     <p class="para">
+      上面的第一个例子在早期 PHP 版本中的实现如下：
+
+      <div class="example" id="example-164">
+       <p><strong>示例 #12 在 PHP 早期版本中访问可变参数</strong></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$acc</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       <div class="example-contents"><p>以上例程会输出：</p></div>
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+10
+</pre></div>
+       </div>
+      </div>
+     </p>
+    </div>
+
+   </div>
+
+   <div class="sect2" id="functions.named-arguments">
+    <h3 class="title">命名参数</h3>
+
+    <p class="para">
+     PHP 8.0.0 开始引入了命名参数作为现有位置参数的扩展。命名参数允许根据参数名而不是参数位置向函数传参。这使得参数的含义自成体系，参数与顺序无关，并允许任意跳过默认值。
+    </p>
+
+    <p class="para">
+     命名参数通过在参数名前加上冒号来传递。允许使用保留关键字作为参数名。参数名必须是一个标识符，不允许动态指定。
+    </p>
+
+    <div class="example" id="example-165">
+     <p><strong>示例 #13 命名参数的语法</strong></p>
+     <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />myFunction</span><span style="color: #007700">(</span><span style="color: #0000BB">paramName</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_foobar</span><span style="color: #007700">(array:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;不支持。<br /></span><span style="color: #0000BB">function_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$variableStoringParamName</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+    <div class="example" id="example-166">
+     <p><strong>示例 #14 通过位置传参与命名参数的对比</strong></p>
+     <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;使用顺序传递参数：<br /></span><span style="color: #0000BB">array_fill</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;使用命名参数：<br /></span><span style="color: #0000BB">array_fill</span><span style="color: #007700">(</span><span style="color: #0000BB">start_index</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">value</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+    <p class="para">
+     指定参数的传递顺序并不重要。
+    </p>
+
+    <div class="example" id="example-167">
+     <p><strong>示例 #15 参数顺序不同的示例（同上例）</strong></p>
+     <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />array_fill</span><span style="color: #007700">(</span><span style="color: #0000BB">value</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">start_index</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+    <p class="para">
+     命名参数也可以与位置参数相结合使用。此种情况下，命名参数必须在位置参数之后。也可以只指定一个函数的部分可选参数，而不考虑它们的顺序。
+    </p>
+
+    <div class="example" id="example-168">
+     <p><strong>示例 #16 命名参数与位置参数结合使用</strong></p>
+     <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">double_encode</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;等价于<br /></span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ENT_QUOTES&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">ENT_SUBSTITUTE&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">ENT_HTML401</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'UTF-8'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+    <p class="para">
+     Passing the same parameter multiple times results in an Error exception.
+    </p>
+
+    <div class="example" id="example-169">
+     <p><strong>示例 #17 Error exception when passing the same parameter multiple times</strong></p>
+     <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">)&nbsp;{&nbsp;...&nbsp;}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">param</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">param</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;错误：命名参数&nbsp;$param&nbsp;覆盖了之前的参数<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">param</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;错误：命名参数&nbsp;$param&nbsp;覆盖了之前的参数<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+   </div>
+  </div></div></div></body></html>

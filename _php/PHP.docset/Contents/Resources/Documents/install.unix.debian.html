@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Debian GNU/Linux 安装说明</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.unix.solaris.html">« 针对 Solaris 的安装提示</a></li>
+      <li style="float: right;"><a href="install.macosx.html">macOS 系统下的安装 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.unix.html">Unix 系统下的安装</a></li>
+    <li>Debian GNU/Linux 安装说明</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.unix.debian" class="sect1">
+ <h2 class="title">Debian GNU/Linux 安装说明</h2>
+ <p class="para">
+  本节包含了在 
+  <a href="http://www.debian.org/" class="link external">&raquo;&nbsp;Debian GNU/Linux</a>
+  下安装 PHP 的说明和提示。
+ </p>
+ <div class="warning"><strong class="warning">警告</strong>
+  <p class="para">
+   这里不支持非官方的第三方发行包。任何错误应报告给
+   Debian 开发组，除非该错误在使用从官方<a href="https://www.php.net/downloads.php" class="link external">&raquo;&nbsp;下载</a>的最新版时仍能重现。
+  </p>
+ </div>
+ <p class="para">
+  尽管在 Unix 下编译 PHP 的指示也适用于 Debian，本节包含有一些特定信息，例如使用
+  <code class="literal">apt</code> 或者 <code class="literal">aptitude</code>
+  命令。本节中这两条命令可以互换。
+ </p>
+
+ <div class="sect2" id="install.unix.debian.apt">
+  <h3 class="title">使用 APT</h3>
+   <p class="simpara">
+    首先，注意其它有关的包可能需要
+    <code class="literal">libapache-mod-php</code> 集成入
+    Apache 2，以及 PEAR 的 <code class="literal">php-pear</code>。
+   </p>
+   <p class="simpara">
+    其次，在安装一个包之前，最好先确定该包是最新版。通常可以运行命令
+    <strong class="command">apt update</strong>。
+   </p>
+   <div class="example" id="install.unix.debian.apt.example">
+    <p><strong>示例 #1 Debian 下将 PHP 安装入 Apache 2 的例子</strong></p>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode"># apt install php-common libapache2-mod-php php-cli</pre>
+</div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    APT 将自动安装 Apache 2 的 PHP
+    模块以及所有依赖的库并激活之。应重启动
+    Apache 以使更改生效，例如：
+   </p>
+   <div class="example" id="install.unix.debian.apt.example2">
+    <p><strong>示例 #2 安装完 PHP 后停止并启动 Apache</strong></p>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode"># /etc/init.d/apache2 stop
+# /etc/init.d/apache2 start</pre>
+</div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect2" id="install.unix.debian.config">
+   <h3 class="title">更好地控制配置</h3>
+   <p class="simpara">
+    上一节中 PHP 仅安装了核心模块。很可能还需要更多模块，例如
+    <a href="book.mysql.html" class="link">MySQL</a>，<a href="book.curl.html" class="link">cURL</a>，<a href="book.image.html" class="link">GD</a>
+    等。这些模块也可以通过 <code class="literal">apt</code> 命令安装。
+   </p>
+   <div class="example" id="install.unix.debian.config.example">
+    <p><strong>示例 #3 取得 PHP 附加软件包的列表</strong></p>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode"># apt-cache search php
+# apt search php | grep -i mysql
+# aptitude search php</pre>
+</div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    以上命令的输出中列出了很多的包，其中有几个针对 PHP
+    的模块例如 php-cgi，php-cli 以及
+    php-dev。决定好要安装哪些之后可以用
+    <code class="literal">apt</code> 或者 <code class="literal">aptitude</code>
+    来安装。Debian 会进行倚赖性检查，会给出提示，例如安装
+    MySQL 和 cURL：
+   </p>
+   <div class="example" id="install.unix.debian.config.example2">
+    <p><strong>示例 #4 安装 PHP 的 MySQL 和 cURL 支持</strong></p>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode"># apt install php-mysql php-curl</pre>
+</div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    APT 会自动把适当的行添加到不同的 <var class="filename">php.ini</var>
+    相关文件中去，例如
+    <var class="filename">/etc/php/7.4/php.ini</var>，<var class="filename">/etc/php/7.4/conf.d/*.ini</var>
+    等，并且根据扩展，还会添加类似
+    <code class="literal">extension=foo.so</code> 的内容。不过还是需要重新启动
+    web 服务器（例如 Apache）以使这些改动生效。
+   </p>
+  </div>
+
+  <div class="sect2" id="install.unix.debian.faq">
+   <h3 class="title">常见问题</h3>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+     如果 PHP 脚本没有通过 web 服务器被解析，则有可能是 PHP
+     没有被加入到 web 服务器的配置文件中，在 Debian
+     中可能是 <var class="filename">/etc/apache2/apache2.conf</var>
+     或类似文件。具体内容参见 Debian 手册。
+     </span>
+    </li>
+   <li class="listitem">
+    <span class="simpara">
+     如果某扩展貌似已经安装，但其函数却又未定义，确保合适的 ini
+     文件已被加载并且 web 服务器在安装后重新启动过。
+    </span>
+   </li>
+    <li class="listitem">
+     <span class="simpara">      
+      在 Debian（以及其它 Linux 变种）下有两个基本命令来安装包：<code class="literal">apt</code>
+      和 <code class="literal">aptitude</code>。不过要解释这两个命令的细微区别已超出本手册范围。
+     </span>
+    </li>
+   </ul>
+ </div>
+</div></div></div></body></html>

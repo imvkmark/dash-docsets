@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>运行时配置</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="soap.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="soap.resources.html">资源类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="soap.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="soap.configuration" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>SOAP 配置选项</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>名字</th>
+      <th>默认</th>
+      <th>可修改范围</th>
+      <th>更新日志</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="soap.configuration.html#ini.soap.wsdl-cache-enabled" class="link">soap.wsdl_cache_enabled</a></td>
+      <td>1</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="soap.configuration.html#ini.soap.wsdl-cache-dir" class="link">soap.wsdl_cache_dir</a></td>
+      <td>/tmp</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="soap.configuration.html#ini.soap.wsdl-cache-ttl" class="link">soap.wsdl_cache_ttl</a></td>
+      <td>86400</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="soap.configuration.html#ini.soap.wsdl-cache" class="link">soap.wsdl_cache</a></td>
+      <td>1</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="soap.configuration.html#ini.soap.wsdl-cache-limit" class="link">soap.wsdl_cache_limit</a></td>
+      <td>5</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+</tbody>
+   
+  </table>
+
+ </p>
+
+ <p class="para">这是配置指令的简短说明。</p>
+
+ <p class="para">
+  <dl>
+   
+     <dt id="ini.soap.wsdl-cache-enabled">
+      <code class="parameter">soap.wsdl_cache_enabled</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Enables or disables the WSDL caching feature.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="ini.soap.wsdl-cache-dir">
+      <code class="parameter">soap.wsdl_cache_dir</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Sets the directory name where the SOAP extension will put cache files.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="ini.soap.wsdl-cache-ttl">
+      <code class="parameter">soap.wsdl_cache_ttl</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Sets the number of seconds (time to live) that cached files will be used
+       instead of the originals.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="ini.soap.wsdl-cache">
+      <code class="parameter">soap.wsdl_cache</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">soap.wsdl_cache_enabled</code> is on, this setting
+       determines the type of caching. It can be any of:
+       <strong><code>WSDL_CACHE_NONE</code></strong> (<code class="literal">0</code>),
+       <strong><code>WSDL_CACHE_DISK</code></strong> (<code class="literal">1</code>),
+       <strong><code>WSDL_CACHE_MEMORY</code></strong> (<code class="literal">2</code>) or
+       <strong><code>WSDL_CACHE_BOTH</code></strong> (<code class="literal">3</code>). This can
+       also be set via the <code class="parameter">options</code> array in the
+       <span class="classname"><a href="class.soapclient.html" class="classname">SoapClient</a></span> or <span class="classname"><a href="class.soapserver.html" class="classname">SoapServer</a></span>
+       constructor.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="ini.soap.wsdl-cache-limit">
+      <code class="parameter">soap.wsdl_cache_limit</code>
+      <span class="type">int</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Maximum number of in-memory cached WSDL files. Adding further files into
+       a full memory cache will delete the oldest files from it.
+      </p>
+     </dd>
+
+    
+
+  </dl>
+
+ </p>
+</div></div></div></body></html>

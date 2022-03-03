@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>while</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.alternative-syntax.html">« 流程控制的替代语法</a></li>
+      <li style="float: right;"><a href="control-structures.do.while.html">do-while »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">流程控制</a></li>
+    <li>while</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.while" class="sect1">
+ <h2 class="title">while</h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="para">
+  <code class="literal">while</code> 循环是 PHP 中最简单的循环类型。它和
+  C 语言中的 <code class="literal">while</code> 表现地一样。<code class="literal">while</code>
+  语句的基本格式是：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+while (expr)
+    statement
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  <code class="literal">while</code> 语句的含意很简单，它告诉 PHP 只要
+  <code class="literal">while</code> 表达式的值为 <strong><code>true</code></strong>
+  就重复执行嵌套中的循环语句。表达式的值在每次开始循环时检查，所以即使这个值在循环语句中改变了，语句也不会停止执行，直到本次循环结束。
+  如果 <code class="literal">while</code> 表达式的值一开始就是 <strong><code>false</code></strong>，则循环语句一次都不会执行。
+ </p>
+ <p class="para">
+  和 <code class="literal">if</code> 语句一样，可以在 <code class="literal">while</code>
+  循环中用花括号括起一个语句组，或者用替代语法：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+while (expr):
+    statement
+    ...
+endwhile;
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  下面两个例子完全一样，都显示数字 1 到 10：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;示例&nbsp;1&nbsp;*/<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />while&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;在自增前（后自增）打印的值将会是&nbsp;$i&nbsp;*/<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">/*&nbsp;示例&nbsp;2&nbsp;*/<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />while&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">):<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;<br />endwhile;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+</div></div></div></body></html>

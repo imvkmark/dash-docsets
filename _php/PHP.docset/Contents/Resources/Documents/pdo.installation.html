@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安装</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.requirements.html">« 需求</a></li>
+      <li style="float: right;"><a href="pdo.configuration.html">运行时配置 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pdo.setup.html">安装／配置</a></li>
+    <li>安装</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.installation" class="section">
+ <h2 class="title">安装</h2>
+ <div class="procedure">
+  <strong class="title">在 Unix 系统上安装 PDO </strong>
+  <ol type="1"><li>
+   <p class="para">
+    PDO 和 <a href="ref.pdo-sqlite.html" class="link">PDO_SQLITE</a> 驱动默认可用。对于自己选择的数据库，需要启用相应的 POD 驱动； 查阅 <a href="pdo.drivers.html" class="link">特定数据库的 PDO 驱动</a> 文档获取更多此内容。
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     当以共享扩展（<em class="emphasis">不推荐</em>）构建 PDO 时，所有 PDO 驱动 <em class="emphasis">必须</em> 在 PDO 自身 <em class="emphasis">之后</em> 加载。
+    </p>
+  </p></blockquote>
+  </li>
+  <li>
+   <p class="para">
+    当作为一个共享模块安装 PDO 时，需要更新 php.ini 文件以便当 PHP 运行时 PDO 扩展能被自动加载。还需要在那里启用具体的数据库驱动；确保它们被列在 pdo.so 那一行之后，因为 PDO 必须在具体的 数据库扩展被载入前初始化。如果静态地构建 PDO 和 具体数据库扩展，可以跳过此步。
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+extension=pdo.so
+</pre></div>
+    </div>
+   </p>
+  </li>
+ </ol></div>
+ <div class="procedure">
+  <strong class="title">Windows 用户</strong>
+  <ol type="1"><li>
+   <p class="para">
+    选择其他具体数据库的 DLL 文件，然后要么在运行时用 <span class="function"><a href="function.dl.html" class="function">dl()</a></span> 载入，
+    要么在 <var class="filename">php.ini</var> 中的 <var class="filename">php_pdo.dll</var> 后面启用。例如：
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+extension=php_pdo.dll
+extension=php_pdo_firebird.dll
+extension=php_pdo_informix.dll
+extension=php_pdo_mssql.dll
+extension=php_pdo_mysql.dll
+extension=php_pdo_oci.dll
+extension=php_pdo_oci8.dll
+extension=php_pdo_odbc.dll
+extension=php_pdo_pgsql.dll
+extension=php_pdo_sqlite.dll  
+</pre></div>
+    </div>
+   </p>
+   <p class="para">
+    那些 DLL 文件应该在系统的<a href="ini.core.html#ini.extension-dir" class="link">extension_dir</a> 中存在。
+   </p>
+  </li>
+ </ol></div>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <p class="para">
+   记住：更改 <var class="filename">php.ini</var> 文件后需要重启 PHP 服务才能使新的配置指令生效。
+  </p>
+ </p></blockquote>
+</div></div></div></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Executes a prepared statement and returns a result set object</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="sqlite3stmt.construct.html">« SQLite3Stmt::__construct</a></li>
+      <li style="float: right;"><a href="sqlite3stmt.getsql.html">SQLite3Stmt::getSQL »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.sqlite3stmt.html">SQLite3Stmt</a></li>
+    <li>Executes a prepared statement and returns a result set object</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="sqlite3stmt.execute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SQLite3Stmt::execute</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SQLite3Stmt::execute</span> &mdash; <span class="dc-title">Executes a prepared statement and returns a result set object</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sqlite3stmt.execute-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>SQLite3Stmt::execute</strong></span>(): <span class="type"><span class="type"><a href="class.sqlite3result.html" class="type SQLite3Result">SQLite3Result</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   Executes a prepared statement and returns a result set object.
+  </p>
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    Result set objects retrieved by calling this method on the same statement
+    object are not independent, but rather share the same underlying structure.
+    Therefore it is recommended to call
+    <span class="methodname"><a href="sqlite3result.finalize.html" class="methodname">SQLite3Result::finalize()</a></span>, before calling
+    <span class="methodname"><strong>SQLite3Stmt::execute()</strong></span> on the same statement object
+    again.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sqlite3stmt.execute-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">此函数没有参数。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sqlite3stmt.execute-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns an <span class="classname"><a href="class.sqlite3result.html" class="classname">SQLite3Result</a></span> object on successful execution of the prepared
+   statement, <strong><code>false</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-sqlite3stmt.execute-seealso">
+  <h3 class="title">参见</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="methodname"><a href="sqlite3.prepare.html" class="methodname" rel="rdfs-seeAlso">SQLite3::prepare()</a> - Prepares an SQL statement for execution</span></li>
+   <li class="member"><span class="methodname"><a href="sqlite3stmt.bindvalue.html" class="methodname" rel="rdfs-seeAlso">SQLite3Stmt::bindValue()</a> - Binds the value of a parameter to a statement variable</span></li>
+   <li class="member"><span class="methodname"><a href="sqlite3stmt.bindparam.html" class="methodname" rel="rdfs-seeAlso">SQLite3Stmt::bindParam()</a> - Binds a parameter to a statement variable</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

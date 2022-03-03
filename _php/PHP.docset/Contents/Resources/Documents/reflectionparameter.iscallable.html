@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Returns whether parameter MUST be callable</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reflectionparameter.isarray.html">« ReflectionParameter::isArray</a></li>
+      <li style="float: right;"><a href="reflectionparameter.isdefaultvalueavailable.html">ReflectionParameter::isDefaultValueAvailable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.reflectionparameter.html">ReflectionParameter</a></li>
+    <li>Returns whether parameter MUST be callable</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reflectionparameter.iscallable" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionParameter::isCallable</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ReflectionParameter::isCallable</span> &mdash; <span class="dc-title">Returns whether parameter MUST be callable</span></p>
+
+ </div>
+
+ <div id="reflectionparameter.iscallable-refsynopsisdiv">
+   <div class="warning"><strong class="warning">警告</strong><p class="simpara">本函数已自 PHP 8.0.0
+ 起被<em class="emphasis">废弃</em>。强烈建议不要依赖本函数。</p></div>
+  <p class="para">See the example below for an alternative way to derive this information.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectionparameter.iscallable-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ReflectionParameter::isCallable</strong></span>(): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+
+  </p>
+
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">本函数还未编写文档，仅有参数列表。</p></div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectionparameter.iscallable-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">此函数没有参数。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectionparameter.iscallable-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns <strong><code>true</code></strong> if the parameter is <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>, <strong><code>false</code></strong> if it is
+   not or <strong><code>null</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-reflectionparameter.iscallable-examples">
+ <h3 class="title">范例</h3>
+ <p class="para">
+  <div class="example" id="example-5067">
+   <p><strong>示例 #1 PHP 8.0.0 equivalent</strong></p>
+   <div class="example-contents"><p>
+    As of PHP 8.0.0, the following code will report if a type supports callables,
+    including as part of a union.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">declaresCallable</span><span style="color: #007700">(</span><span style="color: #0000BB">ReflectionParameter&nbsp;$reflectionParameter</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">bool<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$reflectionType&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$reflectionParameter</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getType</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$reflectionType</span><span style="color: #007700">)&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$types&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$reflectionType&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">ReflectionUnionType<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">$reflectionType</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTypes</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;[</span><span style="color: #0000BB">$reflectionType</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #DD0000">'callable'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">fn</span><span style="color: #007700">(</span><span style="color: #0000BB">ReflectionNamedType&nbsp;$t</span><span style="color: #007700">)&nbsp;=&gt;&nbsp;</span><span style="color: #0000BB">$t</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">$types</span><span style="color: #007700">));<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ </div>
+
+
+</div></div></div></body></html>

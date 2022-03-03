@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>C Type Handles</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.ffi-cdata.html">« FFI\CData</a></li>
+      <li style="float: right;"><a href="ffi-ctype.getalignment.html">FFI\CType::getAlignment »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.ffi.html">FFI</a></li>
+    <li>C Type Handles</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.ffi-ctype" class="reference">
+
+ <h1 class="title">C Type Handles</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 7 &gt;= 7.4.0, PHP 8)</p>
+
+
+  <div class="section" id="ffi-ctype.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="ffi-ctype.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+      <span class="modifier">class</span> <strong class="classname">FFI\CType</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getalignment.html" class="methodname">getAlignment</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getarrayelementtype.html" class="methodname">getArrayElementType</a></span>(): <span class="type"><a href="class.ffi-ctype.html" class="type FFI\CType">FFI\CType</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getarraylength.html" class="methodname">getArrayLength</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getattributes.html" class="methodname">getAttributes</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getenumkind.html" class="methodname">getEnumKind</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getfuncabi.html" class="methodname">getFuncABI</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getfuncparametercount.html" class="methodname">getFuncParameterCount</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getfuncparametertype.html" class="methodname">getFuncParameterType</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>): <span class="type"><a href="class.ffi-ctype.html" class="type FFI\CType">FFI\CType</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getfuncreturntype.html" class="methodname">getFuncReturnType</a></span>(): <span class="type"><a href="class.ffi-ctype.html" class="type FFI\CType">FFI\CType</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getkind.html" class="methodname">getKind</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getname.html" class="methodname">getName</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getpointertype.html" class="methodname">getPointerType</a></span>(): <span class="type"><a href="class.ffi-ctype.html" class="type FFI\CType">FFI\CType</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getsize.html" class="methodname">getSize</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getstructfieldnames.html" class="methodname">getStructFieldNames</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getstructfieldoffset.html" class="methodname">getStructFieldOffset</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ffi-ctype.getstructfieldtype.html" class="methodname">getStructFieldType</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>): <span class="type"><a href="class.ffi-ctype.html" class="type FFI\CType">FFI\CType</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="ffi-ctype.getalignment.html">FFI\CType::getAlignment</a> — Description</li><li><a href="ffi-ctype.getarrayelementtype.html">FFI\CType::getArrayElementType</a> — Description</li><li><a href="ffi-ctype.getarraylength.html">FFI\CType::getArrayLength</a> — Description</li><li><a href="ffi-ctype.getattributes.html">FFI\CType::getAttributes</a> — Description</li><li><a href="ffi-ctype.getenumkind.html">FFI\CType::getEnumKind</a> — Description</li><li><a href="ffi-ctype.getfuncabi.html">FFI\CType::getFuncABI</a> — Description</li><li><a href="ffi-ctype.getfuncparametercount.html">FFI\CType::getFuncParameterCount</a> — Description</li><li><a href="ffi-ctype.getfuncparametertype.html">FFI\CType::getFuncParameterType</a> — Description</li><li><a href="ffi-ctype.getfuncreturntype.html">FFI\CType::getFuncReturnType</a> — Description</li><li><a href="ffi-ctype.getkind.html">FFI\CType::getKind</a> — Description</li><li><a href="ffi-ctype.getname.html">FFI\CType::getName</a> — Description</li><li><a href="ffi-ctype.getpointertype.html">FFI\CType::getPointerType</a> — Description</li><li><a href="ffi-ctype.getsize.html">FFI\CType::getSize</a> — Description</li><li><a href="ffi-ctype.getstructfieldnames.html">FFI\CType::getStructFieldNames</a> — Description</li><li><a href="ffi-ctype.getstructfieldoffset.html">FFI\CType::getStructFieldOffset</a> — Description</li><li><a href="ffi-ctype.getstructfieldtype.html">FFI\CType::getStructFieldType</a> — Description</li></ul>
+</div>
+</div></div></body></html>

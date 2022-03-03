@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Set/Get the default options for mbregex functions</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-regex-encoding.html">« mb_regex_encoding</a></li>
+      <li style="float: right;"><a href="function.mb-scrub.html">mb_scrub »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">多字节字符串 函数</a></li>
+    <li>Set/Get the default options for mbregex functions</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-regex-set-options" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_regex_set_options</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_regex_set_options</span> &mdash; <span class="dc-title">Set/Get the default options for mbregex functions</span></p>
+
+ </div>
+   
+ <div class="refsect1 description" id="refsect1-function.mb-regex-set-options-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mb_regex_set_options</strong></span>(<span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$options</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">string</span></div>
+
+  <p class="simpara">
+   Sets the default options described by <code class="parameter">options</code> 
+   for multibyte regex functions.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mb-regex-set-options-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The options to set. This is a string where each 
+       character is an option. To set a mode, the mode 
+       character must be the last one set, however there 
+       can only be set one mode but multiple options.
+      </p>
+
+      <table class="doctable table">
+       <caption><strong>Regex options</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Option</th>
+          <th>Meaning</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>i</td>
+          <td>Ambiguity match on</td>
+         </tr>
+
+         <tr>
+          <td>x</td>
+          <td>Enables extended pattern form</td>
+         </tr>
+
+         <tr>
+          <td>m</td>
+          <td><code class="literal">&#039;.&#039;</code> matches with newlines</td>
+         </tr>
+
+         <tr>
+          <td>s</td>
+          <td><code class="literal">&#039;^&#039;</code> -&gt; <code class="literal">&#039;\A&#039;</code>, <code class="literal">&#039;$&#039;</code> -&gt; <code class="literal">&#039;\Z&#039;</code></td>
+         </tr>
+
+         <tr>
+          <td>p</td>
+          <td>Same as both the <code class="literal">m</code> and <code class="literal">s</code> options</td>
+         </tr>
+
+         <tr>
+          <td>l</td>
+          <td>Finds longest matches</td>
+         </tr>
+
+         <tr>
+          <td>n</td>
+          <td>Ignores empty matches</td>
+         </tr>
+
+         <tr>
+          <td>e</td>
+          <td><span class="function"><a href="function.eval.html" class="function">eval()</a></span> resulting code</td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+      <table class="doctable table">
+       <caption><strong>Regex syntax modes</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Mode</th>
+          <th>Meaning</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>j</td>
+          <td>Java (Sun java.util.regex)</td>
+         </tr>
+
+         <tr>
+          <td>u</td>
+          <td>GNU regex</td>
+         </tr>
+
+         <tr>
+          <td>g</td>
+          <td>grep</td>
+         </tr>
+
+         <tr>
+          <td>c</td>
+          <td>Emacs</td>
+         </tr>
+
+         <tr>
+          <td>r</td>
+          <td>Ruby</td>
+         </tr>
+
+         <tr>
+          <td>z</td>
+          <td>Perl</td>
+         </tr>
+
+         <tr>
+          <td>b</td>
+          <td>POSIX Basic regex</td>
+         </tr>
+
+         <tr>
+          <td>d</td>
+          <td>POSIX Extended regex</td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-regex-set-options-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   The previous options. If <code class="parameter">options</code> is omitted or <strong><code>null</code></strong>, 
+   it returns the <span class="type">string</span> that describes the current options.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mb-regex-set-options-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       If the parameter <code class="parameter">options</code> is given and not <strong><code>null</code></strong>, the <em class="emphasis">previous</em>
+       options are returned. Formerly, the <em class="emphasis">current</em> options have been returned.
+      </td>
+     </tr>
+
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">options</code> is nullable now.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mb-regex-set-options-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mb-split.html" class="function" rel="rdfs-seeAlso">mb_split()</a> - 使用正则表达式分割多字节字符串</span></li>
+    <li class="member"><span class="function"><a href="function.mb-ereg.html" class="function" rel="rdfs-seeAlso">mb_ereg()</a> - Regular expression match with multibyte support</span></li>
+    <li class="member"><span class="function"><a href="function.mb-eregi.html" class="function" rel="rdfs-seeAlso">mb_eregi()</a> - Regular expression match ignoring case with multibyte support</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

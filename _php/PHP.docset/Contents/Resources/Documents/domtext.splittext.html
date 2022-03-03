@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Breaks this node into two nodes at the specified offset</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domtext.iswhitespaceinelementcontent.html">« DOMText::isWhitespaceInElementContent</a></li>
+      <li style="float: right;"><a href="class.domxpath.html">DOMXPath »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domtext.html">DOMText</a></li>
+    <li>Breaks this node into two nodes at the specified offset</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domtext.splittext" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMText::splitText</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMText::splitText</span> &mdash; <span class="dc-title">
+   Breaks this node into two nodes at the specified offset
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domtext.splittext-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMText::splitText</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>): <span class="type"><span class="type"><a href="class.domtext.html" class="type DOMText">DOMText</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   Breaks this node into two nodes at the specified <code class="parameter">offset</code>, 
+   keeping both in the tree as siblings. 
+  </p>
+  <p class="para">
+   After being split, this node will contain all the content up to the 
+   <code class="parameter">offset</code>. If the original node had a parent node, 
+   the new node is inserted as the next sibling of the original node. 
+   When the <code class="parameter">offset</code> is equal to the length of this node,
+   the new node has no data.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domtext.splittext-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The offset at which to split, starting from 0.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domtext.splittext-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   The new node of the same type, which contains all the content at and after the 
+   <code class="parameter">offset</code>.
+  </p>
+ </div>
+
+</div></div></div></body></html>

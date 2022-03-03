@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>The parallel\Channel class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="parallel-future.value.html">« parallel\Future::value</a></li>
+      <li style="float: right;"><a href="parallel-channel.construct.html">parallel\Channel::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.parallel.html">parallel</a></li>
+    <li>The parallel\Channel class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.parallel-channel" class="reference">
+
+ <h1 class="title">The parallel\Channel class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(0.9.0)</p>
+  <div class="section">
+    <h2 class="title">Unbuffered Channels</h2>
+    <p class="para">
+     An unbuffered channel will block on calls to <span class="methodname"><a href="parallel-channel.send.html" class="methodname">parallel\Channel::send()</a></span> until there is a receiver, and block on calls to 
+     <span class="methodname"><a href="parallel-channel.recv.html" class="methodname">parallel\Channel::recv()</a></span> until there is a sender. This means an unbuffered channel is not only a way to share data among tasks
+     but also a simple method of synchronization.
+    </p>
+    <p class="para">
+     An unbuffered channel is the fastest way to share data among tasks, requiring the least copying.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2 class="title">Buffered Channels</h2>
+    <p class="para">
+     A buffered channel will not block on calls to <span class="methodname"><a href="parallel-channel.send.html" class="methodname">parallel\Channel::send()</a></span> until capacity is reached, calls to 
+     <span class="methodname"><a href="parallel-channel.recv.html" class="methodname">parallel\Channel::recv()</a></span> will block until there is data in the buffer.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2 class="title">Closures over Channels</h2>
+    <p class="para">
+     A powerful feature of parallel channels is that they allow the exchange of closures between tasks (and runtimes).
+    </p>
+    <p class="para">
+     When a closure is sent over a channel the closure is buffered, it doesn&#039;t change the buffering of the channel transmitting the closure, 
+     but it does effect the static scope inside the closure: The same closure sent to different runtimes, or the same runtime, 
+     will not share their static scope.
+    </p>
+    <p class="para">
+     This means that whenever a closure is executed that was transmitted by a channel, static state will be as it was when the closure was buffered.
+    </p>
+  </div>
+
+  <div class="section">
+   <h2 class="title">Anonymous Channels</h2>
+   <p class="para">
+    The anonymous channel constructor allows the programmer to avoid assigning names to every channel: parallel will generate a unique name for anonymous
+    channels.
+   </p>
+  </div>
+
+  <div class="section" id="parallel-channel.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+      <span class="modifier">class</span> <strong class="classname">parallel\Channel</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Anonymous Constructor */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.construct.html" class="methodname">__construct</a></span>()</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>)</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Access */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.make.html" class="methodname">make</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>): <span class="type"><span class="type Channel">Channel</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.make.html" class="methodname">make</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>): <span class="type"><span class="type Channel">Channel</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.open.html" class="methodname">open</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>): <span class="type"><span class="type Channel">Channel</span></span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Sharing */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.recv.html" class="methodname">recv</a></span>(): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.send.html" class="methodname">send</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><span class="type void">void</span></span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Closing */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="parallel-channel.close.html" class="methodname">close</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constant for Infinitely Buffered */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+      <var class="fieldsynopsis_varname"><var class="varname">Infinite</var></var>;</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="parallel-channel.construct.html">parallel\Channel::__construct</a> — Channel Construction</li><li><a href="parallel-channel.make.html">parallel\Channel::make</a> — Access</li><li><a href="parallel-channel.open.html">parallel\Channel::open</a> — Access</li><li><a href="parallel-channel.recv.html">parallel\Channel::recv</a> — Sharing</li><li><a href="parallel-channel.send.html">parallel\Channel::send</a> — Sharing</li><li><a href="parallel-channel.close.html">parallel\Channel::close</a> — Closing</li></ul>
+</div>
+</div></div></body></html>

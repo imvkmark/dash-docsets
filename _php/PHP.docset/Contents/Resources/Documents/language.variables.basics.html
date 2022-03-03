@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>基础</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.variables.html">« 变量</a></li>
+      <li style="float: right;"><a href="language.variables.predefined.html">预定义变量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.variables.html">变量</a></li>
+    <li>基础</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.variables.basics" class="sect1">
+   <h2 class="title">基础</h2>
+
+   <p class="simpara">
+    PHP 中的变量用一个美元符号后面跟变量名来表示。变量名是区分大小写的。
+   </p>
+
+   <p class="para">
+    变量名与 PHP
+    中其它的标签一样遵循相同的规则。一个有效的变量名由字母或者下划线开头，后面跟上任意数量的字母，数字，或者下划线。
+    按照正常的正则表达式，它将被表述为：&#039;<code class="code">^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$</code>&#039;。
+   </p>
+
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     在此所说的字母是 a-z，A-Z，以及 ASCII 字符从 128 到 255（<code class="literal">0x80-0xff</code>）。
+    </span>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     <code class="literal">$this</code> 是一个特殊的变量，它不能被赋值。
+     PHP 7.1.0 之前，间接赋值（例如通过使用<a href="language.variables.variable.html" class="link">可变变量</a>）是可能的。
+    </span>
+   </p></blockquote>
+   
+   <div class="tip"><strong class="tip">小技巧</strong><p class="simpara">请参见<a href="userlandnaming.html" class="xref">用户空间命名指南</a>。</p></div>
+   
+   <p class="para">
+    有关变量的函数信息见<a href="ref.var.html" class="link">变量函数</a>。
+   </p>
+   <p class="para">
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Bob'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$Var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Joe'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$var</span><span style="color: #DD0000">,&nbsp;</span><span style="color: #0000BB">$Var</span><span style="color: #DD0000">"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;输出&nbsp;"Bob,&nbsp;Joe"<br /><br /></span><span style="color: #007700">$</span><span style="color: #0000BB">4site&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'not&nbsp;yet'</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;非法变量名；以数字开头<br /></span><span style="color: #0000BB">$_4site&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'not&nbsp;yet'</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;合法变量名；以下划线开头<br /></span><span style="color: #0000BB">$i站点is&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mansikka'</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;合法变量名；可以用中文<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    变量默认总是传值赋值。那也就是说，当将一个表达式的值赋予一个变量时，整个原始表达式的值被赋值到目标变量。这意味着，例如，当一个变量的值赋予另外一个变量时，改变其中一个变量的值，将不会影响到另外一个变量。有关这种类型的赋值操作，请参阅<a href="language.expressions.html" class="link">表达式</a>一章。
+   </p>
+   <p class="para">
+    PHP 也提供了另外一种方式给变量赋值：<a href="language.references.html" class="link">引用赋值</a>。这意味着新的变量简单的引用（换言之，“成为其别名” 或者 “指向”）了原始变量。改动新的变量将影响到原始变量，反之亦然。
+   </p>
+   <p class="para">
+    使用引用赋值，简单地将一个 &amp;
+    符号加到将要赋值的变量前（源变量）。例如，下列代码片断将输出“My name is Bob”两次：
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Bob'</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;将&nbsp;'Bob'&nbsp;赋给&nbsp;$foo<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;通过&nbsp;$bar&nbsp;引用&nbsp;$foo<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"My&nbsp;name&nbsp;is&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #DD0000">"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;修改&nbsp;$bar&nbsp;变量<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;的值也被修改<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    有一点重要事项必须指出，那就是只有有名字的变量才可以引用赋值。
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;合法的赋值<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;(</span><span style="color: #0000BB">24&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;非法;&nbsp;引用没有名字的表达式<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">test</span><span style="color: #007700">();&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;非法<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    虽然在 PHP 中并不需要初始化变量，但对变量进行初始化是个好习惯。未初始化的变量具有其类型的默认值 - 布尔类型的变量默认值是
+    <strong><code>false</code></strong>，整形和浮点型变量默认值是零，字符串型变量（例如用于 <span class="function"><a href="function.echo.html" class="function">echo</a></span> 
+    中）默认值是空字符串以及数组变量的默认值是空数组。
+   </p>
+   <p class="para">
+    <div class="example" id="example-91">
+     <p><strong>示例 #1 未初始化变量的默认值</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;未设置和未引用（不使用上下文）的变量；输出&nbsp;NULL<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$unset_var</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Boolean&nbsp;usage;&nbsp;outputs&nbsp;'false'&nbsp;(See&nbsp;ternary&nbsp;operators&nbsp;for&nbsp;more&nbsp;on&nbsp;this&nbsp;syntax)<br /></span><span style="color: #007700">echo(</span><span style="color: #0000BB">$unset_bool&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #DD0000">"true\n"&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"false\n"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;String&nbsp;usage;&nbsp;outputs&nbsp;'string(3)&nbsp;"abc"'<br /></span><span style="color: #0000BB">$unset_str&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$unset_str</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Integer&nbsp;usage;&nbsp;outputs&nbsp;'int(25)'<br /></span><span style="color: #0000BB">$unset_int&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;0&nbsp;+&nbsp;25&nbsp;=&gt;&nbsp;25<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$unset_int</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Float/double&nbsp;usage;&nbsp;outputs&nbsp;'float(1.25)'<br /></span><span style="color: #0000BB">$unset_float&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">1.25</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$unset_float</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Array&nbsp;usage;&nbsp;outputs&nbsp;array(1)&nbsp;{&nbsp;&nbsp;[3]=&gt;&nbsp;&nbsp;string(3)&nbsp;"def"&nbsp;}<br /></span><span style="color: #0000BB">$unset_arr</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"def"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;array()&nbsp;+&nbsp;array(3&nbsp;=&gt;&nbsp;"def")&nbsp;=&gt;&nbsp;array(3&nbsp;=&gt;&nbsp;"def")<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$unset_arr</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Object&nbsp;usage;&nbsp;creates&nbsp;new&nbsp;stdClass&nbsp;object&nbsp;(see&nbsp;http://www.php.net/manual/en/reserved.classes.php)<br />//&nbsp;Outputs:&nbsp;object(stdClass)#1&nbsp;(1)&nbsp;{&nbsp;&nbsp;["foo"]=&gt;&nbsp;&nbsp;string(3)&nbsp;"bar"&nbsp;}<br /></span><span style="color: #0000BB">$unset_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$unset_obj</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    依赖未初始化变量的默认值在某些情况下会有问题，例如把一个文件包含到另一个之中时碰上相同的变量名。
+    使用未初始化的变量会发出
+    <a href="" class="link">E_NOTICE</a>
+    错误，但是在向一个未初始化的数组附加单元时不会。<span class="function"><a href="function.isset.html" class="function">isset()</a></span> 语言结构可以用来检测一个变量是否已被初始化。
+   </p>
+  </div></div></div></body></html>

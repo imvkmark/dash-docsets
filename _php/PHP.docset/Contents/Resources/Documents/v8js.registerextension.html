@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Register Javascript extensions for V8Js</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="v8js.getpendingexception.html">« V8Js::getPendingException</a></li>
+      <li style="float: right;"><a href="class.v8jsexception.html">V8JsException »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.v8js.html">V8Js</a></li>
+    <li>Register Javascript extensions for V8Js</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="v8js.registerextension" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">V8Js::registerExtension</h1>
+  <p class="verinfo">(PECL v8js &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">V8Js::registerExtension</span> &mdash; <span class="dc-title">Register Javascript extensions for V8Js</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-v8js.registerextension-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>V8Js::registerExtension</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$extension_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$script</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$dependencies</code><span class="initializer"> = array()</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$auto_enable</code><span class="initializer"> = <strong><code>false</code></strong></span></span><br>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Registers passed Javascript <code class="parameter">script</code> as extension to
+   be used in <span class="classname"><a href="class.v8js.html" class="classname">V8Js</a></span> contexts.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-v8js.registerextension-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   
+    <dt>
+<code class="parameter">extension_name</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the extension to be registered.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">script</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The Javascript code to be registered.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">dependencies</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Array of extension names the extension to be registered depends on. Any such extension is
+      enabled automatically when this extension is loaded.
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        All extensions, including the dependencies, must be registered before any <span class="classname"><a href="class.v8js.html" class="classname">V8Js</a></span>
+        are created which use them.
+       </p>
+      </p></blockquote>
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">auto_enable</code></dt>
+
+    <dd>
+
+     <p class="para">
+      If set to <strong><code>true</code></strong>, the extension will be enabled automatically in all <span class="classname"><a href="class.v8js.html" class="classname">V8Js</a></span> contexts.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-v8js.registerextension-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns <strong><code>true</code></strong> if extension was registered successfully, <strong><code>false</code></strong> otherwise.
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

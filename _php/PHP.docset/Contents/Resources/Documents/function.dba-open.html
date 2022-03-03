@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Open database</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.dba-nextkey.html">« dba_nextkey</a></li>
+      <li style="float: right;"><a href="function.dba-optimize.html">dba_optimize »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.dba.html">DBA 函数</a></li>
+    <li>Open database</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.dba-open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dba_open</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">dba_open</span> &mdash; <span class="dc-title">Open database</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dba-open-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>dba_open</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$mode</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$handler</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">...$args</code></span><br>): <span class="type"><span class="type">resource</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>dba_open()</strong></span> establishes a database instance for
+   <code class="parameter">path</code> with <code class="parameter">mode</code> using
+   <code class="parameter">handler</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dba-open-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">path</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Commonly a regular path in your filesystem.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       It is <code class="literal">r</code> for read access, <code class="literal">w</code> for
+       read/write access to an already existing database, <code class="literal">c</code>
+       for read/write access and database creation if it doesn&#039;t currently exist,
+       and <code class="literal">n</code> for create, truncate and read/write access.
+       The database is created in BTree mode, other modes (like Hash or Queue)
+       are not supported.
+      </p>
+      <p class="para">
+       Additionally you can set the database lock method with the next char. 
+       Use <code class="literal">l</code> to lock the database with a <var class="filename">.lck</var>
+       file or <code class="literal">d</code> to lock the databasefile itself. It is 
+       important that all of your applications do this consistently.
+      </p>
+      <p class="para">
+       If you want to test the access and do not want to wait for the lock 
+       you can add <code class="literal">t</code> as third character. When you are 
+       absolutely sure that you do not require database locking you can do 
+       so by using <code class="literal">-</code> instead of <code class="literal">l</code> or
+       <code class="literal">d</code>. When none of <code class="literal">d</code>, 
+       <code class="literal">l</code> or <code class="literal">-</code> is used, dba will lock
+       on the database file as it would with <code class="literal">d</code>.
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        There can only be one writer for one database file. When you use dba on 
+        a web server and more than one request requires write operations they can
+        only be done one after another. Also read during write is not allowed.
+        The dba extension uses locks to prevent this. See the following table:
+        <table class="doctable table">
+         <caption><strong>DBA locking</strong></caption>
+         
+          <thead>
+           <tr>
+            <th>already open</th>
+            <th><code class="parameter">mode</code> = &quot;rl&quot;</th>
+            <th><code class="parameter">mode</code> = &quot;rlt&quot;</th>
+            <th><code class="parameter">mode</code> = &quot;wl&quot;</th>
+            <th><code class="parameter">mode</code> = &quot;wlt&quot;</th>
+            <th><code class="parameter">mode</code> = &quot;rd&quot;</th>
+            <th><code class="parameter">mode</code> = &quot;rdt&quot;</th>
+            <th><code class="parameter">mode</code> = &quot;wd&quot;</th>
+            <th><code class="parameter">mode</code> = &quot;wdt&quot;</th>
+           </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+           <tr>
+            <td>not open</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+           </tr>
+
+           <tr>
+            <td><code class="parameter">mode</code> = &quot;rl&quot;</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>wait</td>
+            <td>false</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+           </tr>
+
+           <tr>
+            <td><code class="parameter">mode</code> = &quot;wl&quot;</td>
+            <td>wait</td>
+            <td>false</td>
+            <td>wait</td>
+            <td>false</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+           </tr>
+
+           <tr>
+            <td><code class="parameter">mode</code> = &quot;rd&quot;</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>wait</td>
+            <td>false</td>
+           </tr>
+
+           <tr>
+            <td><code class="parameter">mode</code> = &quot;wd&quot;</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>illegal</td>
+            <td>wait</td>
+            <td>false</td>
+            <td>wait</td>
+            <td>false</td>
+           </tr>
+
+          </tbody>
+         
+        </table>
+
+        <ul class="simplelist">
+         <li class="member">ok: the second call will be successful.</li>
+         <li class="member">wait: the second call waits until <span class="function"><a href="function.dba-close.html" class="function">dba_close()</a></span> is called for the first.</li>
+         <li class="member">false: the second call returns false.</li>
+         <li class="member">illegal: you must not mix <code class="literal">&quot;l&quot;</code> and <code class="literal">&quot;d&quot;</code> modifiers for <code class="parameter">mode</code> parameter.</li>
+        </ul>
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">handler</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of the <a href="dba.requirements.html" class="link">handler</a> which
+       shall be used for accessing <code class="parameter">path</code>. It is passed 
+       all optional parameters given to <span class="function"><strong>dba_open()</strong></span> and 
+       can act on behalf of them.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">args</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Optional <span class="type">string</span> parameters which are passed to the driver.
+      </p>
+      <p class="para">
+       The <code class="literal">cdb</code>, <code class="literal">cdb_make</code>, <code class="literal">flatfile</code>,
+       <code class="literal">inifile</code>, <code class="literal">qdbm</code> and <code class="literal">tcadb</code> drivers
+       do not support additional parameters.
+      </p>
+      <p class="para">
+       The <code class="literal">db1</code>, <code class="literal">db2</code>, <code class="literal">db3</code>,
+       <code class="literal">db4</code>, <code class="literal">dbm</code>, <code class="literal">gdbm</code>,
+       and <code class="literal">ndbm</code> drivers supports a single additional parameter <code class="literal">$filemode</code>,
+       which has the same meaning as the <code class="literal">$mode</code> parameter of <span class="function"><a href="function.chmod.html" class="function">chmod()</a></span>,
+       and defaults to <code class="literal">0644</code>.
+      </p>
+      <p class="para">
+       The <code class="literal">lmdb</code> driver accepts two additional parameters. The first
+       allows to specify the <code class="literal">$filemode</code> (see description above), and the
+       second to specify the <code class="literal">$mapsize</code>, where the value should be a multiple
+       of the page size of the OS, or zero, to use the default mapsize. The <code class="literal">$mapsize</code>
+       parameter is supported as of PHP 7.3.14 and 7.4.2, respectively.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dba-open-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns a positive handle on success 或者在失败时返回 <strong><code>false</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.dba-open-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.3.14, 7.4.2</td>
+      <td>
+       The <code class="literal">lmdb</code> driver now supports an additional <code class="literal">$mapsize</code>
+       parameter.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.dba-open-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.dba-popen.html" class="function" rel="rdfs-seeAlso">dba_popen()</a> - Open database persistently</span></li>
+    <li class="member"><span class="function"><a href="function.dba-close.html" class="function" rel="rdfs-seeAlso">dba_close()</a> - Close a DBA database</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

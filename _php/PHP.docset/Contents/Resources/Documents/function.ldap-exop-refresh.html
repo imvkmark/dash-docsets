@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Refresh extended operation helper</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-exop-passwd.html">« ldap_exop_passwd</a></li>
+      <li style="float: right;"><a href="function.ldap-exop-whoami.html">ldap_exop_whoami »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP 函数</a></li>
+    <li>Refresh extended operation helper</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-exop-refresh" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_exop_refresh</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.3.0, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_exop_refresh</span> &mdash; <span class="dc-title">Refresh extended operation helper</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.ldap-exop-refresh-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_exop_refresh</strong></span>(<span class="methodparam"><span class="type"><a href="class.ldap-connection.html" class="type LDAP\Connection">LDAP\Connection</a></span> <code class="parameter">$ldap</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$dn</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$ttl</code></span>): <span class="type"><span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   Performs a Refresh extended operation and returns the data.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ldap-exop-refresh-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   
+    <dt>
+<code class="parameter">ldap</code></dt>
+
+    <dd>
+
+     <p class="para">
+      通过 <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span> 返回的 <span class="classname"><a href="class.ldap-connection.html" class="classname">LDAP\Connection</a></span> 实例。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">dn</code></dt>
+
+    <dd>
+
+     <p class="para">
+       dn of the entry to refresh.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">ttl</code></dt>
+
+    <dd>
+
+     <p class="para">
+       Time in seconds (between 1 and 31557600) that the
+       client requests that the entry exists in the directory before being
+       automatically removed.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-exop-refresh-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   From RFC:
+   The responseTtl field is the time in seconds which the server chooses
+   to have as the time-to-live field for that entry.  It must not be any
+   smaller than that which the client requested, and it may be larger.
+   However, to allow servers to maintain a relatively accurate
+   directory, and to prevent clients from abusing the dynamic
+   extensions, servers are permitted to shorten a client-requested
+   time-to-live value, down to a minimum of 86400 seconds (one day).
+
+   <strong><code>false</code></strong> will be returned on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ldap-exop-refresh-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.1.0</td>
+ <td>
+  现在 <code class="parameter">ldap</code> 参数接受 <span class="classname"><a href="class.ldap-connection.html" class="classname">LDAP\Connection</a></span>
+  实例，之前接受 <a href="language.types.resource.html" class="link">资源(resource)</a>。
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ldap-exop-refresh-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.ldap-exop.html" class="function" rel="rdfs-seeAlso">ldap_exop()</a> - Performs an extended operation</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

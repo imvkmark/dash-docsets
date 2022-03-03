@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>.user.ini 文件</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="configuration.file.html">« 配置文件</a></li>
+      <li style="float: right;"><a href="configuration.changes.modes.html">配置可被设定范围 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="configuration.html">运行时配置</a></li>
+    <li>.user.ini 文件</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="configuration.file.per-user" class="sect1">
+  <h2 class="title">.user.ini 文件</h2>
+  
+  <p class="simpara">
+   PHP 支持基于每个目录的 INI 文件配置。此类文件
+   <em class="emphasis">仅</em>被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner
+   扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 <var class="filename">.htaccess</var> 文件有同样效果。
+  </p>
+  
+  
+
+  <p class="simpara">
+   除了主 <var class="filename">php.ini</var> 之外，PHP 还会在每个目录下扫描 INI
+   文件，从被执行的 PHP 文件所在目录开始一直上升到 web
+   根目录（<var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['DOCUMENT_ROOT']</a></var>
+   所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。
+  </p>
+  <p class="simpara">
+   在 .user.ini 风格的 INI 文件中只有具有 <strong><code>PHP_INI_PERDIR</code></strong>
+   和 <strong><code>PHP_INI_USER</code></strong> 模式的 INI
+   设置可被识别。
+  </p>
+  
+  
+
+  <p class="simpara">
+   两个新的 INI 指令，
+   <a href="ini.core.html#ini.user-ini.filename" class="link">user_ini.filename</a> 和
+   <a href="ini.core.html#ini.user-ini.cache-ttl" class="link">user_ini.cache_ttl</a>
+   控制着用户 INI 文件的使用。
+  </p>
+  
+  <p class="simpara">
+   <a href="ini.core.html#ini.user-ini.filename" class="link">user_ini.filename</a> 设定了 PHP
+   会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP
+   不会搜寻。默认值是 <code class="literal">.user.ini</code>。
+  </p>
+  
+  <p class="simpara">
+   <a href="ini.core.html#ini.user-ini.cache-ttl" class="link">user_ini.cache_ttl</a> 控制着重新读取用户
+   INI 文件的间隔时间。默认是 300 秒（5 分钟）。
+  </p>
+ </div></div></div></body></html>

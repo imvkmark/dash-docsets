@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>返回上一个 MySQL 操作产生的文本错误信息</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-errno.html">« mysql_errno</a></li>
+      <li style="float: right;"><a href="function.mysql-escape-string.html">mysql_escape_string »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">MySQL 函数</a></li>
+    <li>返回上一个 MySQL 操作产生的文本错误信息</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-error" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_error</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_error</span> &mdash; <span class="dc-title">
+     返回上一个 MySQL 操作产生的文本错误信息
+    </span></p>
+
+   </div>
+   <div class="refsect1 unknown-unknown-seealsq" id="refsect1-function.mysql-error-unknown-unknown-seealsq">
+    <h3 class="title">说明</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="methodname"><strong>mysql_error</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$link_identifier</code><span class="initializer"> = ?</span></span>): <span class="type">string</span></div>
+
+    <p class="para rdfs-comment">
+     返回上一个 MySQL 函数的错误文本，如果没有出错则返回
+     <code class="literal">&#039;&#039;</code>（空字符串）。如果没有指定连接资源号，则使用上一个成功打开的连接从
+     MySQL 服务器提取错误信息。
+
+    </p>
+    <p class="para">
+     从 MySQL 数据库后端来的错误不再发出警告，要用
+     <span class="function"><strong>mysql_error()</strong></span> 来提取错误文本。注意本函数仅返回最近一次
+     MySQL 函数的执行（不包括 <span class="function"><strong>mysql_error()</strong></span> 和
+     <span class="function"><a href="function.mysql-errno.html" class="function">mysql_errno()</a></span>）的错误文本，因此如果要使用此函数，确保在调用另一个
+     MySQL 函数之前检查它的值。
+    </p>
+    <p class="para">
+     <div class="example" id="example-1719">
+      <p><strong>示例 #1 mysql_error 例子</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"nonexistentdb"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">mysql_errno</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">":&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">().&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"kossu"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;nonexistenttable"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">mysql_errno</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">":&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       以上例子将产生如下输出：
+      </p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+1049: Unknown database &#039;nonexistentdb&#039;
+1146: Table &#039;kossu.nonexistenttable&#039; doesn&#039;t exist
+</pre></div>
+      </div>
+     </div>
+    </p>
+    <p class="para">
+     参见 <span class="function"><a href="function.mysql-errno.html" class="function">mysql_errno()</a></span>。
+    </p>
+   </div>
+
+  </div></div></div></body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>if</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.intro.html">« 简介</a></li>
+      <li style="float: right;"><a href="control-structures.else.html">else »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">流程控制</a></li>
+    <li>if</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.if" class="sect1">
+ <h2 class="title">if</h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="para">
+  <code class="literal">if</code> 结构是很多语言包括 PHP
+  在内最重要的特性之一，它允许按照条件执行代码片段。PHP 的
+  <code class="literal">if</code> 结构和 C 语言相似：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+&lt;?php
+if (expr)
+  statement
+?&gt;
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+   如同在<a href="language.expressions.html" class="link">表达式</a>一章中定义的，<span class="replaceable">expr</span>
+   按照布尔求值。如果 <span class="replaceable">expr</span>
+   的值为 <strong><code>true</code></strong>，PHP 将执行 <span class="replaceable">statement</span>，如果值为
+   <strong><code>false</code></strong> ——将忽略 <span class="replaceable">statement</span>。有关哪些值被视为
+   <strong><code>false</code></strong> 的更多信息参见<a href="language.types.boolean.html#language.types.boolean.casting" class="link">转换为布尔值</a>一节。
+ </p>
+ <p class="para">
+  如果 <var class="varname">$a</var> 大于 <var class="varname">$b</var>，则以下例子将显示
+  <span class="computeroutput">a is bigger than b</span>：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"a&nbsp;is&nbsp;bigger&nbsp;than&nbsp;b"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  经常需要按照条件执行不止一条语句，当然并不需要给每条语句都加上一个
+  <code class="literal">if</code> 子句。可以将这些语句放入语句组中。例如，如果
+  <var class="varname">$a</var> 大于 <var class="varname">$b</var>，以下代码将显示
+  <span class="computeroutput">a is bigger than b</span> 并且将
+  <var class="varname">$a</var> 的值赋给 <var class="varname">$b</var>：
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"a&nbsp;is&nbsp;bigger&nbsp;than&nbsp;b"</span><span style="color: #007700">;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  <code class="literal">if</code> 语句可以无限层地嵌套在其它
+  <code class="literal">if</code> 语句中，这给程序的不同部分的条件执行提供了充分的弹性。
+ </p>
+</div></div></div></body></html>

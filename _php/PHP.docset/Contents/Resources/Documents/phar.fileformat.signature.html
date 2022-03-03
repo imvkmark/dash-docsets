@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Phar Signature format</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.fileformat.manifestfile.html">« Phar manifest file entry definition</a></li>
+      <li style="float: right;"><a href="class.phar.html">Phar »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="phar.fileformat.html">What makes a phar a phar and not a tar or a zip?</a></li>
+    <li>Phar Signature format</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.fileformat.signature" class="section">
+ <h2 class="title">Phar Signature format</h2>
+ <p class="para">
+  Phars containing a signature always have the signature appended to the
+  end of the Phar archive after the loader, manifest, and file contents.
+  The signature formats supported at this time are MD5, SHA1, SHA256, SHA512,
+  and OPENSSL.
+ </p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Signature format</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Length in bytes</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>varying</td>
+      <td>
+       The actual signature, 20 bytes for an SHA1 signature,
+       16 bytes for an MD5 signature, 32 bytes for an SHA256 signature,
+       and 64 bytes for an SHA512 signature. The length of an OPENSSL
+       signature depends on the size of the private key.
+      </td>
+     </tr>
+
+     <tr>
+      <td>4 bytes</td>
+      <td>
+       Signature flags.  <code class="literal">0x0001</code> is used to
+       define an MD5 signature, <code class="literal">0x0002</code> is used
+       to define an SHA1 signature, <code class="literal">0x0003</code> is used
+       to define an SHA256 signature, and <code class="literal">0x0004</code> is
+       used to define an SHA512 signature.  The SHA256 and SHA512 signature
+       support is available as of API version 1.1.0.
+       <code class="literal">0x0010</code> is used to define an OPENSSL signature, what
+       is available as of API version 1.1.1, if OpenSSL is available.
+      </td>
+     </tr>
+
+     <tr>
+      <td>4 bytes</td>
+      <td>
+       Magic <code class="literal">GBMB</code> used to define the presence of a signature.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div></div></div></body></html>

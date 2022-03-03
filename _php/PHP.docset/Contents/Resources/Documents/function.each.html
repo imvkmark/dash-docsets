@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>返回数组中当前的键／值对并将数组指针向前移动一步</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.current.html">« current</a></li>
+      <li style="float: right;"><a href="function.end.html">end »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">数组 函数</a></li>
+    <li>返回数组中当前的键／值对并将数组指针向前移动一步</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.each" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">each</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">each</span> &mdash; <span class="dc-title">返回数组中当前的键／值对并将数组指针向前移动一步</span></p>
+
+   </div>
+ 
+ <div id="function.each-refsynopsisdiv">
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">本函数已自 PHP 7.2.0
+ 起被<em class="emphasis">废弃</em>，并自 PHP 8.0.0 起被<em class="emphasis">移除</em>。
+ 强烈建议不要依赖本函数。</p></div>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.each-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>each</strong></span>(<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">object</span></span> <code class="parameter reference">&$array</code></span>): <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+       返回数组中当前的键／值对并将数组指针向前移动一步
+  </p>
+    <p class="para">
+     在执行 <span class="function"><strong>each()</strong></span>
+     之后，数组指针将停留在数组中的下一个单元或者当碰到数组结尾时停留在最后一个单元。如果要再用
+     each 遍历数组，必须使用 <span class="function"><a href="function.reset.html" class="function">reset()</a></span>。
+    </p>
+   </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.each-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">array</code></dt>
+
+     <dd>
+
+      <p class="para">
+       输入的数组。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.each-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+    返回 <code class="parameter">array</code> 数组中当前指针位置的键／值对并向前移动数组指针。键值对被返回为四个单元的数组，键名为<code class="literal">0</code>，<code class="literal">1</code>，<code class="literal">key</code>和 <code class="literal">value</code>。单元 <code class="literal">0</code> 和
+     <code class="literal">key</code> 包含有数组单元的键名，<code class="literal">1</code> 和
+     <code class="literal">value</code> 包含有数据。
+  </p>
+  <p class="para">
+     如果内部指针越过了数组的末端，则 <span class="function"><strong>each()</strong></span> 返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.each-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   <div class="example" id="example-4871">
+    <p><strong>示例 #1 <span class="function"><strong>each()</strong></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"bob"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"fred"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"jussi"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"jouni"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"egon"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"marliese"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     <var class="varname">$bar</var> 现在包含有如下的键／值对：
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [1] =&gt; bob
+    [value] =&gt; bob
+    [0] =&gt; 0
+    [key] =&gt; 0
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"Robert"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"Bob"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Seppo"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"Sepi"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <p class="para">
+     <var class="varname">$bar</var> 现在包含有如下的键／值对：
+    </p>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [1] =&gt; Bob
+    [value] =&gt; Bob
+    [0] =&gt; Robert
+    [key] =&gt; Robert
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <span class="function"><strong>each()</strong></span> 经常和 <span class="function"><a href="function.list.html" class="function">list()</a></span>
+     结合使用来遍历数组，例如：
+   <div class="example" id="example-4872">
+    <p><strong>示例 #2 用 <span class="function"><strong>each()</strong></span> 遍历数组</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fruit&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'cranberry'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">reset</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruit</span><span style="color: #007700">);<br />while&nbsp;(list(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruit</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">&nbsp;=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+a =&gt; apple
+b =&gt; banana
+c =&gt; cranberry
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <div class="caution"><strong class="caution">警告</strong>
+     <p class="para">
+      因为将一个数组赋值给另一个数组时会重置原来的数组指针，因此在上边的例子中如果我们在循环内部将
+      <var class="varname">$fruit</var> 赋给了另一个变量的话将会导致无限循环。
+     </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    <span class="function"><strong>each()</strong></span> 也接受对象，但可能会返回意外结果。因此不建议使用
+    <span class="function"><strong>each()</strong></span> 遍历对象属性。
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.each-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.key.html" class="function" rel="rdfs-seeAlso">key()</a> - 从关联数组中取得键名</span></li>
+    <li class="member"><span class="function"><a href="function.list.html" class="function" rel="rdfs-seeAlso">list()</a> - 把数组中的值赋给一组变量</span></li>
+    <li class="member"><span class="function"><a href="function.current.html" class="function" rel="rdfs-seeAlso">current()</a> - 返回数组中的当前值</span></li>
+    <li class="member"><span class="function"><a href="function.reset.html" class="function" rel="rdfs-seeAlso">reset()</a> - 将数组的内部指针指向第一个单元</span></li>
+    <li class="member"><span class="function"><a href="function.next.html" class="function" rel="rdfs-seeAlso">next()</a> - 将数组中的内部指针向前移动一位</span></li>
+    <li class="member"><span class="function"><a href="function.prev.html" class="function" rel="rdfs-seeAlso">prev()</a> - 将数组的内部指针倒回一位</span></li>
+    <li class="member"><a href="control-structures.foreach.html" class="link">foreach</a></li>
+    <li class="member"><a href="language.oop5.iterations.html" class="link">遍历对象</a></li>
+   </ul>
+  </p>
+ </div>
+
+  </div></div></div></body></html>

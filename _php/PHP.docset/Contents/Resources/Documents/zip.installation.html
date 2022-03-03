@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>安装</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="zip.requirements.html">« 需求</a></li>
+      <li style="float: right;"><a href="zip.configuration.html">运行时配置 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="zip.setup.html">安装／配置</a></li>
+    <li>安装</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="zip.installation" class="section">
+ <h2 class="title">安装</h2>
+ 
+ <div class="section" id="zip.installation.new">
+  
+  <div class="section" id="zip.installation.new.linux">
+   <h2 class="title">Linux 系统</h2>
+   <p class="para">
+    从 PHP 7.4.0 开始，必须在编译 PHP 时用
+    <strong class="option configure">--with-zip</strong> 配置选项来提供 zip 支持。之前的 PHP 版本，需要使用
+    <strong class="option configure">--enable-zip</strong> 选项。
+   </p>
+   <p class="para">
+    从 PHP 5.6.0 开始，添加了一个选项
+    <strong class="option configure">--with-libzip=DIR</strong> 用来指定系统的 libzip
+    目录。要求 libzip 最低版本为 0.11，推荐使用 0.11.2 及以上版本。
+   </p>
+   <p class="para">
+    从 PHP 7.3.0 开始, 不鼓励使用捆绑的 libzip 进行构建，但通过在配置中添加
+    <strong class="option configure">--without-libzip</strong> 参数仍然可以实现。
+    从 PHP 7.4.0 开始，捆绑的 libzip 被移除。
+   </p>
+  </div>
+  
+  <div class="section" id="zip.installation.new.windows">
+   <h2 class="title">Windows</h2>
+   <p class="para">
+    PHP 5.3 之后该扩展已经内置。之前的版本，Windows 用户需要在 <var class="filename">php.ini</var> 里使
+    <var class="filename">php_zip.dll</var>
+    可用，以便使用这些函数。
+   </p>
+  </div>
+ </div>
+ 
+ <div class="section" id="zip.pecl.installation">
+  <h2 class="title">通过 PECL 安装</h2>
+  <p class="para">
+   安装此 PECL 扩展相关的信息可在手册中标题为
+<a href="install.pecl.html" class="link">PECL
+扩展的安装</a>章节中找到。更多信息如新的发行版本、下载、源文件、
+维护人员信息及变更日志等，都在此处：
+   <a href="https://pecl.php.net/package/zip" class="link external">&raquo;&nbsp;https://pecl.php.net/package/zip</a>.
+  </p>
+ </div>
+ 
+</div></div></div></body></html>

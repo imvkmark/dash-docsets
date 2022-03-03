@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Specify or get the character encoding in which the messages from the DOMAIN message catalog will be returned</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.gettext.html">« Gettext 函数</a></li>
+      <li style="float: right;"><a href="function.bindtextdomain.html">bindtextdomain »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.gettext.html">Gettext 函数</a></li>
+    <li>Specify or get the character encoding in which the messages from the DOMAIN message catalog will be returned</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.bind-textdomain-codeset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">bind_textdomain_codeset</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">bind_textdomain_codeset</span> &mdash; <span class="dc-title">Specify or get the character encoding in which the messages from the DOMAIN message catalog will be returned</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.bind-textdomain-codeset-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>bind_textdomain_codeset</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$domain</code></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$codeset</code></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>bind_textdomain_codeset()</strong></span> allows to set or get the
+   encoding in which messages from <code class="parameter">domain</code> will be returned by
+   <span class="function"><a href="function.gettext.html" class="function">gettext()</a></span> and similar functions.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.bind-textdomain-codeset-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">domain</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The domain.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">codeset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The code set.
+       If <strong><code>null</code></strong>, the currently set encoding is returned.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.bind-textdomain-codeset-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   A <span class="type">string</span> on success.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.bind-textdomain-codeset-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.3</td>
+      <td>
+       <code class="parameter">codeset</code> is nullable now.
+       Previously, it was not possible to retrieve the currently set encoding.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.bind-textdomain-codeset-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    The <span class="function"><strong>bind_textdomain_codeset()</strong></span> information is maintained per process,
+    not per thread.
+   </p>
+  </p></blockquote>
+ </div>
+
+</div></div></div></body></html>

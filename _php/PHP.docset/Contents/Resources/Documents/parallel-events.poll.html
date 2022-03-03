@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Polling</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="parallel-events.remove.html">« parallel\Events::remove</a></li>
+      <li style="float: right;"><a href="class.parallel-events-input.html">parallel\Events\Input »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.parallel-events.html">parallel\Events</a></li>
+    <li>Polling</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="parallel-events.poll" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">parallel\Events::poll</h1>
+  <p class="verinfo">(0.9.0)</p><p class="refpurpose"><span class="refname">parallel\Events::poll</span> &mdash; <span class="dc-title">Polling</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-parallel-events.poll-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>parallel\Events::poll</strong></span>(): <span class="type"><span class="type">?</span><span class="type"><a href="class.parallel-events-event.html" class="type parallel\Events\Event">parallel\Events\Event</a></span></span></div>
+
+  <p class="para rdfs-comment">
+    Shall poll for the next event
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-parallel-events.poll-returnvalues">
+  <h3 class="title">返回值</h3>
+   <p class="para">
+    Should there be no targets remaining, <strong><code>null</code></strong> shall be returned
+   </p>
+   <p class="para">
+    Should this be a non-blocking loop, and blocking would occur, <strong><code>null</code></strong> shall be returned
+   </p>
+   <p class="para">
+    Otherwise, the <span class="classname"><a href="class.parallel-events-event.html" class="classname">parallel\Events\Event</a></span> returned describes the event.
+   </p>
+ </div>
+
+
+ <div class="refsect1 exceptions" id="refsect1-parallel-events.poll-exceptions">
+  <h3 class="title">Exceptions</h3>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    Shall throw <span class="type"><span class="type parallel\Events\Error\Timeout">parallel\Events\Error\Timeout</span></span> if timeout is used and reached.
+   </p>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

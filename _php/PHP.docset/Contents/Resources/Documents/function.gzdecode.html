@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Decodes a gzip compressed string</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gzcompress.html">« gzcompress</a></li>
+      <li style="float: right;"><a href="function.gzdeflate.html">gzdeflate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.zlib.html">Zlib 函数</a></li>
+    <li>Decodes a gzip compressed string</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.gzdecode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gzdecode</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">gzdecode</span> &mdash; <span class="dc-title">Decodes a gzip compressed string</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.gzdecode-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>gzdecode</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$max_length</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">   
+   This function returns a decoded version of the input
+   <code class="parameter">data</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.gzdecode-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">data</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The data to decode, encoded by <span class="function"><a href="function.gzencode.html" class="function">gzencode()</a></span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">max_length</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The maximum length of data to decode.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gzdecode-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   The decoded string, or <strong><code>false</code></strong> if an error occurred.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gzdecode-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.gzencode.html" class="function" rel="rdfs-seeAlso">gzencode()</a> - Create a gzip compressed string</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

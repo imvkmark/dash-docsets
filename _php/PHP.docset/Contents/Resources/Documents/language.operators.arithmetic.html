@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>算术运算符</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.precedence.html">« 运算符优先级</a></li>
+      <li style="float: right;"><a href="language.operators.assignment.html">赋值运算符 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">运算符</a></li>
+    <li>算术运算符</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.arithmetic" class="sect1">
+   <h2 class="title">算术运算符</h2>
+   <p class="simpara">
+    还记得学校里学到的基本数学知识吗？就和它们一样。
+   </p>
+   <table class="doctable table">
+    <caption><strong>算术运算符</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>例子</th>
+       <th>名称</th>
+       <th>结果</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>+$a</td>
+       <td>标识</td>
+       <td>
+        根据情况将 <var class="varname">$a</var> 转化为 <span class="type">int</span> 或
+        <span class="type">float</span>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>-$a</td>
+       <td>取反</td>
+       <td><var class="varname">$a</var> 的负值。</td>
+      </tr>
+
+      <tr>
+       <td>$a + $b</td>
+       <td>加法</td>
+       <td><var class="varname">$a</var> 和 <var class="varname">$b</var> 的和。</td>
+      </tr>
+
+      <tr>
+       <td>$a - $b</td>
+       <td>减法</td>
+       <td><var class="varname">$a</var> 和 <var class="varname">$b</var> 的差。</td>
+      </tr>
+
+      <tr>
+       <td>$a * $b</td>
+       <td>乘法</td>
+       <td><var class="varname">$a</var> 和 <var class="varname">$b</var> 的积。</td>
+      </tr>
+
+      <tr>
+       <td>$a / $b</td>
+       <td>除法</td>
+       <td><var class="varname">$a</var> 除以 <var class="varname">$b</var> 的商。</td>
+      </tr>
+
+      <tr>
+       <td>$a % $b</td>
+       <td>取模</td>
+       <td><var class="varname">$a</var> 除以 <var class="varname">$b</var> 的余数。</td>
+      </tr>
+
+      <tr>
+       <td>$a ** $b</td>
+       <td>求幂</td>
+       <td> <var class="varname">$a</var> 的 <var class="varname">$b</var>次方的值。</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+   <p class="simpara">
+    除法运算符总是返回浮点数。只有在下列情况例外：两个操作数都是整数（或字符串转换成的整数）并且正好能整除，这时它返回一个整数。
+    整数除法可参考 <span class="function"><a href="function.intdiv.html" class="function">intdiv()</a></span>。
+   </p>
+   <p class="simpara">
+    取模运算符的操作数在运算之前都会转换成 <span class="type">int</span> 。 浮点数取模可参考
+    <span class="function"><a href="function.fmod.html" class="function">fmod()</a></span>。
+   </p>
+   <p class="para">
+    取模运算符 <code class="literal">%</code> 的结果和被除数的符号（正负号）相同。即
+    <code class="literal">$a % $b</code> 的结果和 <var class="varname">$a</var> 的符号相同。例如：
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;(</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;打印&nbsp;2<br /></span><span style="color: #007700">echo&nbsp;(</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">%&nbsp;-</span><span style="color: #0000BB">3</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;打印&nbsp;2<br /></span><span style="color: #007700">echo&nbsp;(-</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;打印&nbsp;-2<br /></span><span style="color: #007700">echo&nbsp;(-</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">%&nbsp;-</span><span style="color: #0000BB">3</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;打印&nbsp;-2<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <div class="sect2">
+    <h3 class="title">参见</h3>
+    <p class="para">
+     <ul class="simplelist">
+      <li class="member"><a href="ref.math.html" class="link">数学函数</a></li>
+     </ul>
+    </p>
+   </div>
+
+  </div></div></div></body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Determine if a file descriptor is an interactive terminal</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.posix-initgroups.html">« posix_initgroups</a></li>
+      <li style="float: right;"><a href="function.posix-kill.html">posix_kill »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.posix.html">POSIX 函数</a></li>
+    <li>Determine if a file descriptor is an interactive terminal</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.posix-isatty" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">posix_isatty</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">posix_isatty</span> &mdash; <span class="dc-title">Determine if a file descriptor is an interactive terminal</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.posix-isatty-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>posix_isatty</strong></span>(<span class="methodparam"><span class="type"><span class="type">resource</span>|<span class="type">int</span></span> <code class="parameter">$file_descriptor</code></span>): <span class="type">bool</span></div>
+
+   <p class="para rdfs-comment">
+    Determines if the file descriptor <code class="parameter">file_descriptor</code> refers to a valid
+    terminal type device.
+  </p>
+ </div>
+
+    
+ <div class="refsect1 parameters" id="refsect1-function.posix-isatty-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+ <dt>
+<code class="parameter">fd</code></dt>
+
+ <dd>
+
+  <p class="para">
+   The file descriptor, which is expected to be either a file
+   <span class="type">resource</span> or an <span class="type">int</span>. An <span class="type">int</span>
+   will be assumed to be a file descriptor that can be passed directly to
+   the underlying system call.
+  </p>
+  <p class="para">
+   In almost all cases, you will want to provide a file <span class="type">resource</span>.
+  </p>
+ </dd>
+
+
+   </dl>
+
+  </p>
+ </div>
+
+       
+ <div class="refsect1 returnvalues" id="refsect1-function.posix-isatty-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns <strong><code>true</code></strong> if <code class="parameter">file_descriptor</code> is an open descriptor connected
+   to a terminal and <strong><code>false</code></strong> otherwise.
+  </p>
+ </div>
+
+       
+ <div class="refsect1 seealso" id="refsect1-function.posix-isatty-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.posix-ttyname.html" class="function" rel="rdfs-seeAlso">posix_ttyname()</a> - Determine terminal device name</span></li>
+    <li class="member"><span class="function"><a href="function.stream-isatty.html" class="function" rel="rdfs-seeAlso">stream_isatty()</a> - Check if a stream is a TTY</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

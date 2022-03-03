@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>防止优先级反转</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="eventconfig.setflags.html">« EventConfig::setFlags</a></li>
+      <li style="float: right;"><a href="class.eventdnsbase.html">EventDnsBase »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.eventconfig.html">EventConfig</a></li>
+    <li>防止优先级反转</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="eventconfig.setmaxdispatchinterval" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">EventConfig::setMaxDispatchInterval</h1>
+  <p class="verinfo">(PECL event &gt;= 2.1.0-alpha)</p><p class="refpurpose"><span class="refname">EventConfig::setMaxDispatchInterval</span> &mdash; <span class="dc-title">防止优先级反转</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-eventconfig.setmaxdispatchinterval-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><strong>EventConfig::setMaxDispatchInterval</strong></span>(<span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_interval</code>
+   </span>, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_callbacks</code>
+   </span>, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$min_priority</code>
+   </span>): <span class="type"><span class="type void">void</span></span></div>
+
+  <p class="para rdfs-comment">
+   在检查更多高优先级事件之前，通过限制可调用低优先级事件的数量来防止优先级反转。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    自
+    <code class="literal">libevent 2.1.0-alpha</code>
+    起可用。
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-eventconfig.setmaxdispatchinterval-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   
+    <dt>
+
+     <code class="parameter">max_interval</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Libevent 应该停止运行回调并检查更多时间的间隔，如果为
+      <strong><code>0</code></strong>，则没有这样的间隔。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">max_callbacks</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      多次回调之后 Libevent 应停止运行并检查更多事件，如果为 
+      <strong><code>-1</code></strong>，则表示不会有这个限制。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">min_priority</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      不应执行低于 <code class="parameter">max_interval</code> 和 
+      <code class="parameter">max_callbacks</code> 优先级的事件。如果设置为 
+      <strong><code>0</code></strong>，它适用于每个优先级事件；如果设置为 
+      <strong><code>1</code></strong>，它适用于优先级在 
+      <strong><code>1</code></strong>及其以上的事件，以此类推。
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-eventconfig.setmaxdispatchinterval-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+</div></div></div></body></html>

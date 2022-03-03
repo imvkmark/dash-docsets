@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Draw Path</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ui-draw-pen.write.html">« UI\Draw\Pen::write</a></li>
+      <li style="float: right;"><a href="ui-draw-path.addrectangle.html">UI\Draw\Path::addRectangle »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.ui.html">UI</a></li>
+    <li>Draw Path</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.ui-draw-path" class="reference">
+
+ <h1 class="title">Draw Path</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(UI 0.9.9)</p>
+
+
+  <div class="section" id="ui-draw-path.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    A Draw Path guides a Draw Pen, telling the Pen where to draw on an Area.
+   </p>
+  </div>
+
+
+  <div class="section" id="ui-draw-path.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">UI\Draw\Path</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ui-draw-path.html#ui-draw-path.constants.winding"><var class="varname">Winding</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ui-draw-path.html#ui-draw-path.constants.alternate"><var class="varname">Alternate</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constructor */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = UI\Draw\Path::Winding</span></span>)</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.addrectangle.html" class="methodname">addRectangle</a></span>(<span class="methodparam"><span class="type"><a href="class.ui-point.html" class="type UI\Point">UI\Point</a></span> <code class="parameter">$point</code></span>, <span class="methodparam"><span class="type"><a href="class.ui-size.html" class="type UI\Size">UI\Size</a></span> <code class="parameter">$size</code></span>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.arcto.html" class="methodname">arcTo</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.ui-point.html" class="type UI\Point">UI\Point</a></span> <code class="parameter">$point</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$angle</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$sweep</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$negative</code></span><br>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.bezierto.html" class="methodname">bezierTo</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.ui-point.html" class="type UI\Point">UI\Point</a></span> <code class="parameter">$point</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$angle</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$sweep</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$negative</code></span><br>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.closefigure.html" class="methodname">closeFigure</a></span>()</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.end.html" class="methodname">end</a></span>()</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.lineto.html" class="methodname">lineTo</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.ui-point.html" class="type UI\Point">UI\Point</a></span> <code class="parameter">$point</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$angle</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$sweep</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$negative</code></span><br>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.newfigure.html" class="methodname">newFigure</a></span>(<span class="methodparam"><span class="type"><a href="class.ui-point.html" class="type UI\Point">UI\Point</a></span> <code class="parameter">$point</code></span>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="ui-draw-path.newfigurewitharc.html" class="methodname">newFigureWithArc</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.ui-point.html" class="type UI\Point">UI\Point</a></span> <code class="parameter">$point</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$angle</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$sweep</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$negative</code></span><br>)</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="ui-draw-path.constants">
+   <h2 class="title">预定义常量</h2>
+   <dl>
+
+    
+     <dt id="ui-draw-path.constants.winding"><strong><code>UI\Draw\Path::Winding</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       This is the default draw path mode
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ui-draw-path.constants.alternate"><strong><code>UI\Draw\Path::Alternate</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       This is the alternate draw path mode
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="ui-draw-path.addrectangle.html">UI\Draw\Path::addRectangle</a> — Draw a Rectangle</li><li><a href="ui-draw-path.arcto.html">UI\Draw\Path::arcTo</a> — Draw an Arc</li><li><a href="ui-draw-path.bezierto.html">UI\Draw\Path::bezierTo</a> — Draw Bezier Curve</li><li><a href="ui-draw-path.closefigure.html">UI\Draw\Path::closeFigure</a> — Close Figure</li><li><a href="ui-draw-path.construct.html">UI\Draw\Path::__construct</a> — Construct a new Path</li><li><a href="ui-draw-path.end.html">UI\Draw\Path::end</a> — Finalize Path</li><li><a href="ui-draw-path.lineto.html">UI\Draw\Path::lineTo</a> — Draw a Line</li><li><a href="ui-draw-path.newfigure.html">UI\Draw\Path::newFigure</a> — Draw Figure</li><li><a href="ui-draw-path.newfigurewitharc.html">UI\Draw\Path::newFigureWithArc</a> — Draw Figure with Arc</li></ul>
+</div>
+</div></div></body></html>

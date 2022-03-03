@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Returns a handle to an already running instance of a COM object</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.com-event-sink.html">« com_event_sink</a></li>
+      <li style="float: right;"><a href="function.com-load-typelib.html">com_load_typelib »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.com.html">COM 函数</a></li>
+    <li>Returns a handle to an already running instance of a COM object</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.com-get-active-object" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">com_get_active_object</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">com_get_active_object</span> &mdash; <span class="dc-title">Returns a handle to an already running instance of a COM object</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.com-get-active-object-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>com_get_active_object</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$prog_id</code></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">int</span><span class="type"></span></span> <code class="parameter">$codepage</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><a href="class.variant.html" class="type variant">variant</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>com_get_active_object()</strong></span> is similar to creating a new
+   instance of a <a href="class.com.html" class="xref">com</a> object, except that it will
+   only return an object to your script if the object is already running.
+   OLE applications use something known as the &quot;<code class="literal">Running Object Table</code>&quot; to
+   allow well-known applications to be launched only once; this function
+   exposes the COM library function GetActiveObject() to get a handle on a
+   running instance.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.com-get-active-object-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">prog_id</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">prog_id</code> must be either the ProgID or CLSID for
+       the object that you want to access (for example
+       <code class="literal">Word.Application</code>).
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">codepage</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Acts in precisely the same way that it does for the <a href="class.com.html" class="xref">com</a> class.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.com-get-active-object-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   If the requested object is running, it will be returned to your script
+   just like any other COM object.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-function.com-get-active-object-errors">
+  <h3 class="title">错误／异常</h3>
+  <p class="para">
+   There are a variety of reasons why this function might fail, the most
+   common being that the object is not already running.  In that situation,
+   the exception error code will be <strong><code>MK_E_UNAVAILABLE</code></strong>;
+   you can use the <code class="literal">getCode</code> method of the exception object
+   to check the exception code.
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 changelog" id="refsect1-function.com-get-active-object-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">codepage</code> is nullable now.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.com-get-active-object-notes">
+  <h3 class="title">注释</h3>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    Using <span class="function"><strong>com_get_active_object()</strong></span> in a web server context
+    is not always a smart idea.  Most COM/OLE applications are not designed
+    to handle more than one client concurrently, even (or especially!)
+    Microsoft Office.  You should read <a href="http://support.microsoft.com/kb/257757" class="link external">&raquo;&nbsp;Considerations for Server-Side
+    Automation of Office</a> for more information on the general issues
+    involved.
+   </p>
+  </div>
+ </div>
+
+</div></div></div></body></html>

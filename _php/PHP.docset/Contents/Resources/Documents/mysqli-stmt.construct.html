@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constructs a new mysqli_stmt object</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli-stmt.close.html">« mysqli_stmt::close</a></li>
+      <li style="float: right;"><a href="mysqli-stmt.data-seek.html">mysqli_stmt::data_seek »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli-stmt.html">MySQLi_STMT</a></li>
+    <li>Constructs a new mysqli_stmt object</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli-stmt.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli_stmt::__construct</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli_stmt::__construct</span> &mdash; <span class="dc-title">Constructs a new <span class="classname"><a href="class.mysqli-stmt.html" class="classname">mysqli_stmt</a></span> object</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli-stmt.construct-description">
+  <h3 class="title">说明</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli_stmt::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$mysql</code></span>, <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$query</code><span class="initializer"> = <strong><code>null</code></strong></span></span>)</div>
+
+  <p class="para rdfs-comment">
+   This method constructs a new <span class="classname"><a href="class.mysqli-stmt.html" class="classname">mysqli_stmt</a></span> object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli-stmt.construct-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">link</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A valid <span class="classname"><a href="class.mysqli.html" class="classname">mysqli</a></span> object.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">query</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The query, as a string. If this parameter is <strong><code>null</code></strong>, then the
+       constructor behaves identically to
+       <span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span>, otherwise it behaves as
+       per <span class="function"><a href="mysqli.prepare.html" class="function">mysqli_prepare()</a></span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mysqli-stmt.construct-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">query</code> is now nullable.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli-stmt.construct-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="mysqli.prepare.html" class="function" rel="rdfs-seeAlso">mysqli_prepare()</a> - 准备执行一个 SQL 语句</span></li>
+    <li class="member"><span class="function"><a href="mysqli.stmt-init.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_init()</a> - 初始化一条语句并返回一个用于mysqli_stmt_prepare(调用)的对象</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>以 Unix 时间戳的方式设置 DateTime 对象</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="datetime.settime.html">« DateTime::setTime</a></li>
+      <li style="float: right;"><a href="datetime.settimezone.html">DateTime::setTimezone »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.datetime.html">DateTime</a></li>
+    <li>以 Unix 时间戳的方式设置 DateTime 对象</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="datetime.settimestamp" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DateTime::setTimestamp</h1>
+  <h1 class="refname">date_timestamp_set</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DateTime::setTimestamp</span> -- <span class="refname">date_timestamp_set</span> &mdash; <span class="dc-title">以 Unix 时间戳的方式设置 DateTime 对象</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-datetime.settimestamp-description">
+  <h3 class="title">说明</h3>
+  <p class="para">面向对象风格</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DateTime::setTimestamp</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$unixtimestamp</code></span>): <span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span></div>
+
+  <p class="para rdfs-comment">过程化风格</p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><a href="function.date-timestamp-set.html" class="methodname">date_timestamp_set</a></span>(<span class="methodparam"><span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> <code class="parameter">$object</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$unixtimestamp</code></span>): <span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span></div>
+
+  <p class="para rdfs-comment">
+   以 Unix 时间戳的方式设置 DateTime 对象的日期和时间。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-datetime.settimestamp-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+   <dt>
+<code class="parameter">object</code></dt>
+
+<dd>
+<p class="para">仅过程化风格：由 <span class="function"><a href="function.date-create.html" class="function">date_create()</a></span> 返回的 <span class="classname"><a href="class.datetime.html" class="classname">DateTime</a></span> 类型的对象。此函数会修改这个对象。</p></dd>
+
+   
+    <dt>
+<code class="parameter">unixtimestamp</code></dt>
+
+    <dd>
+
+     <p class="para">
+      表示日期时间的 Unix 时间戳。
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-datetime.settimestamp-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回被修改的 DateTime 对象， 或者在失败时返回 <strong><code>false</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-datetime.settimestamp-examples">
+  <h3 class="title">范例</h3>
+  <div class="example" id="example-1985">
+   <p><strong>示例 #1 <span class="function"><strong>DateTime::setTimestamp()</strong></span> 例程</strong></p>
+   <div class="example-contents"><p>面向对象风格</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$date&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'U&nbsp;=&nbsp;Y-m-d&nbsp;H:i:s'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setTimestamp</span><span style="color: #007700">(</span><span style="color: #0000BB">1171502725</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'U&nbsp;=&nbsp;Y-m-d&nbsp;H:i:s'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>过程化风格</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$date&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">date_create</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">date_format</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'U&nbsp;=&nbsp;Y-m-d&nbsp;H:i:s'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">date_timestamp_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1171502725</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">date_format</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'U&nbsp;=&nbsp;Y-m-d&nbsp;H:i:s'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+1272508903 = 2010-04-28 22:41:43
+1171502725 = 2007-02-14 20:25:25
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-datetime.settimestamp-notes">
+  <h3 class="title">注释</h3>
+  <p class="para">
+   PHP 5.2 之后的版本中，
+   可以使用 Unix 时间戳作为构造函数的参数生成新的 <span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> 对象，例如：
+  </p>
+  <div class="example" id="example-1986">
+   <p><strong>示例 #2 
+    PHP 5.2 之后的版本中，<span class="function"><strong>DateTime::setTimestamp()</strong></span> 替代方案
+   </strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$ts&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1171502725</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$date&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"@</span><span style="color: #0000BB">$ts</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'U&nbsp;=&nbsp;Y-m-d&nbsp;H:i:s'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+1171502725 = 2007-02-14 20:25:25
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-datetime.settimestamp-seealso">
+  <h3 class="title">参见</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="datetime.gettimestamp.html" class="function" rel="rdfs-seeAlso">DateTime::getTimestamp()</a> - Gets the Unix timestamp</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>
