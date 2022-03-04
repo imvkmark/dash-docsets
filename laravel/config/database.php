@@ -34,7 +34,6 @@ return [
     */
 
     'connections' => [
-
         'sqlite-php-ori' => [
             'driver'                  => 'sqlite',
             'url'                     => env('DATABASE_URL'),
@@ -46,6 +45,13 @@ return [
             'driver'                  => 'sqlite',
             'url'                     => env('DATABASE_URL'),
             'database'                => env('DB_DATABASE_PHP_AIM', database_path('database.sqlite')),
+            'prefix'                  => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+        ],
+        'sqlite-kotlin'  => [
+            'driver'                  => 'sqlite',
+            'url'                     => env('DATABASE_URL'),
+            'database'                => env('DB_DATABASE_KOTLIN', database_path('database.sqlite')),
             'prefix'                  => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],

@@ -2,19 +2,19 @@
 
 namespace App\Console\Commands;
 
-use App\Models\PhpAim;
-use App\Models\PhpOrigin;
+use App\Models\DbPhpAim;
+use App\Models\DbPhpOrigin;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
-class PhpDocsetCommand extends Command
+class PhpCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'php:docset';
+    protected $signature = 'php';
 
     /**
      * The console command description.
@@ -33,8 +33,8 @@ class PhpDocsetCommand extends Command
         // append style
         $this->style();
 
-        $items = PhpOrigin::query()->get();
-        PhpAim::query()->delete();
+        $items = DbPhpOrigin::query()->get();
+        DbPhpAim::query()->delete();
 
         $sql = [];
         foreach ($items as $item) {
@@ -51,7 +51,7 @@ class PhpDocsetCommand extends Command
             $sql[] = compact('name', 'type', 'path');
 
         }
-        PhpAim::query()->insert($sql);
+        DbPhpAim::query()->insert($sql);
         return 0;
     }
 
@@ -64,7 +64,7 @@ class PhpDocsetCommand extends Command
             if (Str::contains($file->getBaseName(), 'medium.css')) {
                 $filename = $file->getPathName();
                 $content  = app('files')->get($filename);
-                if (!Str::contains($content, '/*---- Append By Duoli(https://github.com/imvkmark) ----*/')) {
+                if (!Str::contains($content, '/*---- Append By Duoli(https://github.com/imvkmark/dash-docsets) ----*/')) {
                     $content .= <<<CSS
 
 /*---- Append By Duoli(https://github.com/imvkmark) ----*/

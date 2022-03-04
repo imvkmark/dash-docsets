@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PhpOrigin extends Model
+class DbPhpAim extends Model
 {
-    protected $connection = 'sqlite-php-ori';
+    protected $connection = 'sqlite-php-aim';
 
     protected $table      = 'searchIndex';
 }

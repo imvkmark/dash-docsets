@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PhpAim extends Model
+class DbKotlin extends Model
 {
-    protected $connection = 'sqlite-php-aim';
+    protected $connection = 'sqlite-kotlin';
 
     protected $table      = 'searchIndex';
 }

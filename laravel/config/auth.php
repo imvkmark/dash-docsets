@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\PhpOrigin::class,
+            'model' => App\Models\DbPhpOrigin::class,
         ],
 
         // 'users' => [

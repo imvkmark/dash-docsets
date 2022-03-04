@@ -1,1 +1,3 @@
 /.idea
+*.tgz
+**/*.docset/Contents/Resources/Documents/**
