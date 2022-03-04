@@ -47,11 +47,16 @@ class PhpCommand extends Command
                     return 0;
                 }
                 $startTime = Carbon::now();
-                $this->downloadSite();
-                $this->info('Download Success, Time : ' . Carbon::now()->diffInSeconds($startTime) . 's');
+                if (!file_exists(dirname(base_path(self::$path)) . '/php.cn.tar.gz')){
+                    $this->downloadSite();
+                    $this->info('Download Success, Time : ' . Carbon::now()->diffInSeconds($startTime) . 's');
+                }
+
                 if (!app('files')->exists(base_path(self::$path))) {
                     app('files')->makeDirectory(base_path(self::$path), 0700, true);
                 }
+
+                sleep(0.5);
 
                 pcntl_exec('/usr/bin/tar', [
                     '-zxvf',
@@ -89,10 +94,11 @@ class PhpCommand extends Command
                 $this->info('Index Success');
                 break;
             case 'tar';
+                chdir(base_path('../_php'));
                 pcntl_exec('/usr/bin/tar', [
                     '-zcvf',
-                    base_path('../_php') . '/Php.Cn.docset.tgz',
-                    base_path(self::$path)
+                    'Php.Cn.docset.tgz',
+                    'Php.Cn.docset'
                 ]);
                 break;
         }

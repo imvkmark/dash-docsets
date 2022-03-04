@@ -87,10 +87,11 @@ class KotlinCommand extends Command
                 $this->info('Gen Db Success, Total : ' . $this->allInsert->count(), ', Use ' . Carbon::now()->diffInSeconds($startTime) . 's.');
                 break;
             case 'tar';
+                chdir(base_path('../_kotlin'));
                 pcntl_exec('/usr/bin/tar', [
                     '-zcvf',
-                    base_path('../_kotlin') . '/Kotlin.docset.tgz',
-                    base_path(self::$path)
+                    'Kotlin.docset.tgz',
+                    'Kotlin.docset'
                 ]);
                 break;
         }

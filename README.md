@@ -16,7 +16,6 @@ Php : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/phpdocset.x
 
 Kotlin : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/kotlindocset.xml
 
-![img.png](_php/feed.png)
 
 发布新版本会自行更新
 

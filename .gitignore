@@ -1,5 +1,4 @@
 /.idea
 *.tgz
 *.tar.gz
-**/*.docset/Contents/Resources/Documents/**
 optimizedIndex.dsidx
