@@ -10,6 +10,10 @@
 	<string>kotlin</string>
 	<key>dashIndexFilePath</key>
 	<string>api/latest/jvm/stdlib/index.html</string>
+	<key>DashDocSetFallbackURL</key>
+	<string>https://kotlinlang.org/</string>
+	<key>DashDocSetPlayURL</key>
+	<string>https://play.kotlinlang.org/</string>
 	<key>isDashDocset</key>
 	<true/>
 </dict>

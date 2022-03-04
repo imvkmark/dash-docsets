@@ -19,7 +19,7 @@ class KotlinCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'kotlin {--download}';
+    protected $signature = 'kotlin {type}';
 
     /**
      * The console command description.
@@ -38,51 +38,62 @@ class KotlinCommand extends Command
      */
     public function handle()
     {
-        if ($this->option('download')) {
-            if (app('files')->exists(base_path(self::$path . 'api/latest/jvm/stdlib/index.html'))) {
-                $this->warn('You need delete files manually before download it.');
-                return 0;
-            }
-            $confirm = $this->confirm('Download Need More Time, Will You Continue? Y/N', '');
-            if (strtolower($confirm) !== 'y') {
-                $this->warn('Download Stopped');
-                return 0;
-            }
-            $startTime = Carbon::now();
-            $this->downloadSite();
-            $this->warn('Download Success, Time : ' . Carbon::now($startTime)->diffInMinutes() . 'm');
+        $type = $this->argument('type');
+        switch ($type) {
+            case 'download':
+                if (app('files')->exists(base_path(self::$path . 'api/latest/jvm/stdlib/index.html'))) {
+                    $this->warn('You need delete files manually before download it.');
+                    return 0;
+                }
+                $confirm = $this->confirm('Download Need More Time, Will You Continue?', '');
+                if (strtolower($confirm) !== 'y') {
+                    $this->warn('Download Stopped');
+                    return 0;
+                }
+                $startTime = Carbon::now();
+                $this->downloadSite();
+                $this->info('Download Success, Time : ' . Carbon::now($startTime)->diffInMinutes() . 'm');
+                break;
+            case 'index':
+
+                $this->style();
+
+                if (!app('files')->exists(base_path(self::$path . 'api/latest/jvm/stdlib/index.html'))) {
+                    $this->warn('You need run download first');
+                    return 0;
+                }
+
+                $files           = app('files')->allFiles(base_path(self::$path));
+                $this->allInsert = new Collection();
+                $startTime       = Carbon::now();
+                $trimPath        = 'api/latest/jvm/stdlib/';
+                DbKotlin::query()->delete();
+                foreach ($files as $file) {
+                    /** $file */
+                    /** @var SplFileInfo $file */
+                    if ($file->getExtension() !== 'html') {
+                        continue;
+                    }
+                    $lastCount = $this->allInsert->count();
+                    $this->parse($file);
+
+                    $diff         = Carbon::now()->diffInSeconds($startTime);
+                    $currentCount = $this->allInsert->count();
+                    if ($lastCount !== $currentCount) {
+                        $this->info('Count : ' . $this->allInsert->count() . ', Use time :' . $diff . 's, Path: ' . Str::replace($trimPath, '', $file->getRelativePathname()));
+                    }
+                }
+                //        DbKotlin::query()->insert($this->allInsert->toArray());
+                $this->info('Gen Db Success, Total : ' . $this->allInsert->count(), ', Use ' . Carbon::now()->diffInSeconds($startTime) . 's.');
+                break;
+            case 'tar';
+                pcntl_exec('/usr/bin/tar', [
+                    '-zcvf',
+                    base_path('../_kotlin') . '/Kotlin.docset.tgz',
+                    base_path(self::$path)
+                ]);
+                break;
         }
-
-        if (!app('files')->exists(base_path(self::$path . 'api/latest/jvm/stdlib/index.html'))) {
-            $this->warn('You need run download first');
-            return 0;
-        }
-
-        // append style
-        $this->style();
-
-        $files           = app('files')->allFiles(base_path(self::$path));
-        $this->allInsert = new Collection();
-        $startTime       = Carbon::now();
-        $trimPath        = 'api/latest/jvm/stdlib/';
-        DbKotlin::query()->delete();
-        foreach ($files as $file) {
-            /** $file */
-            /** @var SplFileInfo $file */
-            if ($file->getExtension() !== 'html') {
-                continue;
-            }
-            $lastCount = $this->allInsert->count();
-            $this->parse($file);
-
-            $diff         = Carbon::now()->diffInSeconds($startTime);
-            $currentCount = $this->allInsert->count();
-            if ($lastCount !== $currentCount) {
-                $this->info('Count : ' . $this->allInsert->count() . ', Use time :' . $diff . 's, Path: ' . Str::replace($trimPath, '', $file->getRelativePathname()));
-            }
-        }
-        //        DbKotlin::query()->insert($this->allInsert->toArray());
-        $this->info('Gen Db Success, Total : ' . $this->allInsert->count(), ', Use ' . Carbon::now()->diffInSeconds($startTime) . 's.');
         return 0;
     }
 
@@ -167,16 +178,16 @@ class KotlinCommand extends Command
 
     private function style()
     {
-        $files = app('files')->files(base_path(self::$path . '_/assets/'));
-
+        $files     = app('files')->files(base_path(self::$path . '_/assets/'));
+        $copyright = config('app.copyright');
         foreach ($files as $file) {
             if (Str::contains($file->getBaseName(), 'styles.css')) {
                 $filename = $file->getPathName();
                 $content  = app('files')->get($filename);
-                if (!Str::contains($content, '/*---- Append By Duoli(https://github.com/imvkmark/dash-docsets) ----*/')) {
+                if (!Str::contains($content, $copyright)) {
                     $content .= <<<CSS
 
-/*---- Append By Duoli(https://github.com/imvkmark/dash-docsets) ----*/
+{$copyright}
 /* header & nav */
 header {
     display: none !important;

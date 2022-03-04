@@ -123,7 +123,9 @@ return [
 
     'key' => env('APP_KEY'),
 
-    'cipher' => 'AES-256-CBC',
+    'cipher'    => 'AES-256-CBC',
+
+    'copyright' => '/*---- Append By Duoli(https://github.com/imvkmark/dash-docsets) ----*/',
 
     /*
     |--------------------------------------------------------------------------
