@@ -13,7 +13,9 @@
 订阅 Url Feed :
 
 Php : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/php-docset.xml
+
 Kotlin : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/kotlin-docset.xml
+
 LinuxCommand : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/linux-command-docset.xml
 
 发布新版本会自行更新
