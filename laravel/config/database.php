@@ -34,24 +34,31 @@ return [
     */
 
     'connections' => [
-        'sqlite-php-ori' => [
+        'sqlite-php-ori'  => [
             'driver'                  => 'sqlite',
             'url'                     => env('DATABASE_URL'),
             'database'                => env('DB_DATABASE_PHP_ORI', database_path('database.sqlite')),
             'prefix'                  => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-        'sqlite-php-aim' => [
+        'sqlite-php-aim'  => [
             'driver'                  => 'sqlite',
             'url'                     => env('DATABASE_URL'),
             'database'                => env('DB_DATABASE_PHP_AIM', database_path('database.sqlite')),
             'prefix'                  => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-        'sqlite-kotlin'  => [
+        'sqlite-kotlin'   => [
             'driver'                  => 'sqlite',
             'url'                     => env('DATABASE_URL'),
             'database'                => env('DB_DATABASE_KOTLIN', database_path('database.sqlite')),
+            'prefix'                  => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+        ],
+        'sqlite-wulicode' => [
+            'driver'                  => 'sqlite',
+            'url'                     => env('DATABASE_URL'),
+            'database'                => env('DB_DATABASE_WULICODE', database_path('database.sqlite')),
             'prefix'                  => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
