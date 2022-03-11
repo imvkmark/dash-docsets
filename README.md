@@ -20,9 +20,8 @@ LinuxCommand : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/li
 
 发布新版本会自行更新
 
-**预览**
+![](./_php/feed.png)
 
-![](./_php/preview.png)
 
 ## 当前支持
 
