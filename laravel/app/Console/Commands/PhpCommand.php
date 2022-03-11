@@ -47,7 +47,7 @@ class PhpCommand extends Command
                     return 0;
                 }
                 $startTime = Carbon::now();
-                if (!file_exists(dirname(base_path(self::$path)) . '/php.cn.tar.gz')){
+                if (!file_exists(dirname(base_path(self::$path)) . '/php.cn.tar.gz')) {
                     $this->downloadSite();
                     $this->info('Download Success, Time : ' . Carbon::now()->diffInSeconds($startTime) . 's');
                 }
@@ -144,16 +144,46 @@ CSS;
     private function downloadSite()
     {
         $url = 'https://www.php.net/distributions/manual/php_manual_zh.tar.gz';
-        pcntl_exec('/usr/local/bin/wget', [
-            '--no-parent',
-            '--no-host-directories',
-            '--directory-prefix',
-            base_path(self::$path . '../'),
-            '--output-document',
-            base_path(self::$path . '../php.cn.tar.gz'),
-            '--quiet',
-            '--show-progress',
-            $url
-        ]);
+
+        $commands = [
+            ['/usr/local/bin/wget', [
+                '--no-parent',
+                '--no-host-directories',
+                '--directory-prefix',
+                base_path(self::$path . '../'),
+                '--output-document',
+                base_path(self::$path . '../php.cn.tar.gz'),
+                '--quiet',
+                '--show-progress',
+                $url
+            ]],
+
+        ];
+
+        $children = [];
+        foreach ($commands as $command) {
+            $pid = pcntl_fork();
+            if ($pid === -1) {      //进程创建失败
+                $this->error('fork child process failure!');
+                return;
+            } else if ($pid) {      //父进程处理逻辑
+                $children[] = $pid;
+                pcntl_wait($status, WNOHANG);
+            } else {                //子进程处理逻辑
+                pcntl_exec($command[0], $command[1]);
+            }
+        }
+        while (count($children) > 0) {
+            foreach ($children as $key => $pid) {
+                $res = pcntl_waitpid($pid, $status, WNOHANG);
+
+                // -1代表error, 大于0代表子进程已退出,返回的是子进程的pid,非阻塞时0代表没取到退出子进程
+                if ($res == -1 || $res > 0) {
+                    unset($children[$key]);
+                }
+
+            }
+        }
+        $this->info('Current Left Process ');
     }
 }
