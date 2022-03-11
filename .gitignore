@@ -2,3 +2,5 @@
 *.tgz
 *.tar.gz
 optimizedIndex.dsidx
+yarn.lock
+node_modules

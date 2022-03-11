@@ -1,6 +1,6 @@
 # Docset 生成工具
 
-当前支持 Php, Kotlin
+当前支持 Php, Kotlin, [LinuxCommand](https://github.com/jaywcjlove/linux-command)
 
 ## Docset 使用
 
@@ -12,12 +12,33 @@
 
 订阅 Url Feed :
 
-Php : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/phpdocset.xml
-
-Kotlin : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/kotlindocset.xml
-
+Php : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/php-docset.xml
+Kotlin : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/kotlin-docset.xml
+LinuxCommand : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/linux-command-docset.xml
 
 发布新版本会自行更新
+
+**预览**
+
+![](./_php/preview.png)
+
+## 当前支持
+
+### PHP
+
+可用命令行生成
+
+- PlayGround 支持菜鸟运行工具 [PHP 菜鸟工具](https://c.runoob.com/compile/1/)
+
+### Kotlin
+
+可用命令行生成
+
+- PlayGround 更换为官方Url : https://play.kotlinlang.org/
+
+### LinuxCommand
+
+基于 https://github.com/jaywcjlove/linux-command 不定期生成文档并更新
 
 ## 运行说明
 
@@ -31,17 +52,11 @@ $ php artisan php {type}
  -  tar :      对文档进行打包
 ```
 
-requirement : 
+requirement :
 
 ```
 php > 8.0.2
 ```
-## Feature
-
-- Php : PlayGround 支持菜鸟运行工具 [PHP 菜鸟工具](https://c.runoob.com/compile/1/)
-- Kotlin : PlayGround 更换为官方Url : https://play.kotlinlang.org/
-
-![](./_php/preview.png)
 
 ## 更新注意
 
@@ -52,7 +67,6 @@ php > 8.0.2
 - 打开 Dash, `Preference` -> `Docsets` -> `Php`
 - 右键选择 `Show In Finder`
 - 右键 `PHP.docset` -> `显示包内容`, 找到 `Contents/Resources/docSet.dsidx`
-
 
 ## 参考
 
