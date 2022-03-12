@@ -18,6 +18,8 @@ Kotlin : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/kotlin-d
 
 LinuxCommand : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/linux-command-docset.xml
 
+Wulicode : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/wulicode-docset.xml
+
 发布新版本会自行更新
 
 ![](./_php/feed.png)
