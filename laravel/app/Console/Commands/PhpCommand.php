@@ -18,7 +18,7 @@ class PhpCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'php {type}';
+    protected $signature = 'php {type} {--force}';
 
     /**
      * The console command description.
@@ -37,15 +37,19 @@ class PhpCommand extends Command
         $type = $this->argument('type');
         switch ($type) {
             case 'download';
-                if (app('files')->exists(base_path(self::$path . 'index.html'))) {
+                $force = $this->option('force');
+                if (!$force && app('files')->exists(base_path(self::$path . 'index.html'))) {
                     $this->warn('You need delete files manually before download it.');
                     return 0;
                 }
-                $confirm = $this->confirm('Download Need More Time, Will You Continue?');
-                if (!$confirm) {
-                    $this->warn('Download Stopped');
-                    return 0;
+                if (!$force) {
+                    $confirm = $this->confirm('Download Need More Time, Will You Continue?', '');
+                    if (!$confirm) {
+                        $this->warn('Download Stopped');
+                        return 0;
+                    }
                 }
+
                 $startTime = Carbon::now();
                 if (!file_exists(dirname(base_path(self::$path)) . '/php.cn.tar.gz')) {
                     $this->downloadSite();
@@ -55,8 +59,6 @@ class PhpCommand extends Command
                 if (!app('files')->exists(base_path(self::$path))) {
                     app('files')->makeDirectory(base_path(self::$path), 0700, true);
                 }
-
-                sleep(0.5);
 
                 pcntl_exec('/usr/bin/tar', [
                     '-zxvf',
@@ -132,6 +134,16 @@ body {
 }
 html{
     background: transparent;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    #intro .download, aside.tips, .navbar-search {
+        width: 30% !important;
+        display: none;
+    }
+
+    #intro .blurb, #layout-content {
+        width: auto;
+    }
 }
 CSS;
                     app('files')->put($filename, $content);
