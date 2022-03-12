@@ -2,5 +2,7 @@
 *.tgz
 *.tar.gz
 optimizedIndex.dsidx
+searchKitIndex.dsidx
 yarn.lock
 node_modules
+**/*.docset/Contents/Resources/Documents/

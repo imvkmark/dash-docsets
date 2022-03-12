@@ -8,7 +8,6 @@
         "php": "^8.0.2",
         "ext-pcntl": "*",
         "laravel/framework": "^9.2",
-        "paquettg/php-html-parser": "^3.1",
         "symfony/dom-crawler": "^6.0"
     },
     "autoload": {

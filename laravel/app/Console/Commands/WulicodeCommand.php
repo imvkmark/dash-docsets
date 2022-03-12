@@ -19,7 +19,7 @@ class WulicodeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'wulicode {type}';
+    protected $signature = 'wulicode {type} {--force}';
 
     /**
      * The console command description.
@@ -38,14 +38,17 @@ class WulicodeCommand extends Command
         $type = $this->argument('type');
         switch ($type) {
             case 'download';
-                if (app('files')->exists(base_path(self::$path . 'note/index.html'))) {
+                $force = $this->option('force');
+                if (!$force && app('files')->exists(base_path(self::$path . 'note/index.html'))) {
                     $this->warn('You need delete files manually before download it.');
                     return 0;
                 }
-                $confirm = $this->confirm('Download Need More Time, Will You Continue?', '');
-                if (!$confirm) {
-                    $this->warn('Download Stopped');
-                    return 0;
+                if (!$force) {
+                    $confirm = $this->confirm('Download Need More Time, Will You Continue?', '');
+                    if (!$confirm) {
+                        $this->warn('Download Stopped');
+                        return 0;
+                    }
                 }
                 $startTime = Carbon::now();
                 $this->downloadSite();
@@ -72,29 +75,27 @@ class WulicodeCommand extends Command
                         $type  = 'Framework';
                         $title = 'Poppy Framework';
                     }
-
                     $insert->push([
                         'name' => $title,
                         'type' => $type,
                         'path' => $dir . '/index.html',
                     ]);
-
                     $items = app('files')->allFiles(base_path(self::$path . $dir . '/'));
-
                     foreach ($items as $item) {
                         /** @var SplFileInfo $item */
                         if ($item->getExtension() !== 'html') {
                             continue;
                         }
-                        $path       = Str::after($item->getPathname(), 'Contents/Resources/Documents/');
-                        $content    = app('files')->get($item->getPathname());
-                        $crawler    = new Crawler($content);
-                        $replace = [];
+                        $path      = Str::after($item->getPathname(), 'Contents/Resources/Documents/');
+                        $content   = app('files')->get($item->getPathname());
+                        $crawler   = new Crawler($content);
+                        $replace   = [];
                         $replaceTo = [];
                         $crawler
-                            ->filterXPath('//div[@class="theme-default-content"]/h1 | //div[@class="theme-default-content"]/h2')
-                            ->each(function (Crawler $item) use ($path, $insert, &$replace, &$replaceTo, $type) {
-                                $title = \Str::replace([' ', '#'], '', $item->text());
+                            ->filterXPath('//div[@class="theme-default-content"]/h1 | //div[@class="theme-default-content"]/h2 | //div[@class="theme-default-content"]/h3')
+                            ->each(function (Crawler $item) use ($path, $insert, &$replace, &$replaceTo, $content, $type) {
+                                $title = Str::replace([' ', '#'], '', $item->text());
+                                $id    = $item->attr('id');
                                 if ($item->nodeName() === 'h1') {
                                     $insert->push([
                                         'name' => $title,
@@ -102,16 +103,20 @@ class WulicodeCommand extends Command
                                         'path' => $path,
                                     ]);
                                 } elseif ($item->nodeName() === 'h2') {
-                                    $replace[] = "<h2 id=\"".$item->attr('id');
-                                    $replaceTo[] = sprintf("<a name=\"//apple_ref/cpp/%s/%s\" class=\"dashAnchor\"/>", 'Section', urlencode($title)) ."<h2 id=\"".$item->attr('id');
-
-                                    $insert->push([
-                                        'name' => $title,
-                                        'type' => 'Section',
-                                        'path' => $path . '#' . sprintf("//apple_ref/cpp/%s/%s", 'Section', urlencode($title))
-                                    ]);
+                                    $tag = "<h2 id=\"{$id}\" tabindex=\"-1\">";
+                                    if (Str::contains($content, $tag . "<a name=\"//apple_ref/")) {
+                                        return;
+                                    }
+                                    $replace[]   = $tag;
+                                    $replaceTo[] = $tag . sprintf("<a name=\"//apple_ref/cpp/%s/%s\" class=\"dashAnchor\"/>", 'Section', urlencode($title));
+                                } elseif ($item->nodeName() === 'h3') {
+                                    $tag = "<h3 id=\"{$id}\" tabindex=\"-1\">";
+                                    if (Str::contains($content, $tag . "<a name=\"//apple_ref/")) {
+                                        return;
+                                    }
+                                    $replace[]   = $tag;
+                                    $replaceTo[] = $tag . sprintf("<a name=\"//apple_ref/cpp/%s/%s\" class=\"dashAnchor\"/>", 'Section', urlencode('-' . $title));
                                 }
-
                             });
                         $newContent = Str::replace($replace, $replaceTo, $content);
                         app('files')->replace($item->getPathname(), $newContent);
@@ -124,11 +129,11 @@ class WulicodeCommand extends Command
                 $this->info('Index Total Success');
                 break;
             case 'tar';
-                chdir(base_path('../_php'));
+                chdir(base_path('../_wulicode'));
                 pcntl_exec('/usr/bin/tar', [
                     '-zcvf',
-                    'Php.Cn.docset.tgz',
-                    'Php.Cn.docset'
+                    'Wulicode.docset.tgz',
+                    'Wulicode.docset'
                 ]);
                 break;
         }
