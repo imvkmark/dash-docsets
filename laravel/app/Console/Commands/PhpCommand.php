@@ -142,7 +142,7 @@ html{
     }
 
     #intro .blurb, #layout-content {
-        width: auto;
+        width: auto!important;
     }
 }
 CSS;
