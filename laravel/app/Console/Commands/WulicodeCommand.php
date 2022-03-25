@@ -60,50 +60,39 @@ class WulicodeCommand extends Command
                 $this->info('Style OK');
 
                 DbWulicode::query()->delete();
-                $directories = app('files')->directories(base_path(self::$path));
+                $insert = collect();
 
-                foreach ($directories as $directory) {
-                    $insert = collect();
-                    $dir    = Str::after($directory, 'Contents/Resources/Documents/');
-                    if ($dir === 'doc') {
-                        $type  = 'Word';
-                        $title = '笔记';
-                    } else if ($dir === 'man') {
-                        $type  = 'Command';
-                        $title = 'Man';
-                    } else {
-                        $type  = 'Framework';
-                        $title = 'Poppy Framework';
+                $items = app('files')->allFiles(base_path(self::$path . '/'));
+
+                foreach ($items as $item) {
+                    /** @var SplFileInfo $item */
+                    if ($item->getExtension() !== 'html') {
+                        continue;
                     }
-                    $insert->push([
-                        'name' => $title,
-                        'type' => $type,
-                        'path' => $dir . '/index.html',
-                    ]);
-                    $items = app('files')->allFiles(base_path(self::$path . $dir . '/'));
-                    foreach ($items as $item) {
-                        /** @var SplFileInfo $item */
-                        if ($item->getExtension() !== 'html') {
-                            continue;
-                        }
-                        $path      = Str::after($item->getPathname(), 'Contents/Resources/Documents/');
-                        $content   = app('files')->get($item->getPathname());
+                    $path = Str::after($item->getPathname(), 'Contents/Resources/Documents/');
+                    if (Str::contains($path, ['archives/', 'categories/', 'tags/', 'page/', 'webapp/'])) {
+                        continue;
+                    }
+
+                    $content = app('files')->get($item->getPathname());
+
+                    $name = '';
+                    if (preg_match('/<(title)>(.*)<\/\1>/', $content, $match)) {
+                        $name = $match[2];
+                    }
+                    $pureTitle = trim(Str::replace('- 多厘', '', $name));
+
+                    if (Str::contains($content, '<h3 class="menu-label">')) {
                         $crawler   = new Crawler($content);
                         $replace   = [];
                         $replaceTo = [];
                         $crawler
-                            ->filterXPath('//div[@class="theme-default-content"]/h1 | //div[@class="theme-default-content"]/h2 | //div[@class="theme-default-content"]/h3')
+                            ->filterXPath('//h2[@id] | //h3[@id]')
                             ->each(function (Crawler $item) use ($path, $insert, &$replace, &$replaceTo, $content, $type) {
                                 $title = Str::replace([' ', '#'], '', $item->text());
                                 $id    = $item->attr('id');
-                                if ($item->nodeName() === 'h1') {
-                                    $insert->push([
-                                        'name' => $title,
-                                        'type' => $type,
-                                        'path' => $path,
-                                    ]);
-                                } elseif ($item->nodeName() === 'h2') {
-                                    $tag = "<h2 id=\"{$id}\" tabindex=\"-1\">";
+                                if ($item->nodeName() === 'h2') {
+                                    $tag = "<h2 id=\"{$id}\">";
                                     if (Str::contains($content, $tag . "<a name=\"//apple_ref/")) {
                                         return;
                                     }
@@ -122,10 +111,29 @@ class WulicodeCommand extends Command
                         app('files')->replace($item->getPathname(), $newContent);
                     }
 
-                    $this->info(count($insert->toArray()));
-                    $this->info('Handle index ' . $dir . ' Success');
-                    DbWulicode::query()->insert($insert->toArray());
+
+                    $name = $pureTitle;
+                    $type = 'Section';
+                    if (Str::startsWith($path, 'develop/')) {
+                        $type = 'Guide';
+                    } elseif (Str::startsWith($path, 'man/')) {
+                        $type = 'Command';
+                    } elseif (Str::startsWith($path, 'mysql/')) {
+                        $type = 'Query';
+                    } elseif (Str::startsWith($path, 'ops/')) {
+                        $type = 'Operator';
+                    } elseif (Str::startsWith($path, 'web/')) {
+                        $type = 'Mixin';
+                    } elseif (Str::startsWith($path, 'php/')) {
+                        $type = 'Word';
+                    } elseif (Str::startsWith($path, 'nginx/')) {
+                        $type = 'Service';
+                    }
+
+                    $insert->push(compact('name', 'type', 'path'));
                 }
+                $this->info('Handle index  Success');
+                DbWulicode::query()->insert($insert->toArray());
                 $this->info('Index Total Success');
                 break;
             case 'tar';
@@ -144,7 +152,7 @@ class WulicodeCommand extends Command
 
     private function style()
     {
-        $files     = app('files')->glob(base_path(self::$path . '**/assets/css/*.css'));
+        $files     = app('files')->glob(base_path(self::$path . 'css/*.css'));
         $copyright = config('app.copyright');
         foreach ($files as $filename) {
             $content = app('files')->get($filename);
@@ -152,16 +160,20 @@ class WulicodeCommand extends Command
                 $content .= <<<CSS
 
 {$copyright}
-.navbar {
-    display: none;
+.column-right{
+    display: none!important;
 }
 
-.sidebar {
-    display: none;
+.navbar-main{
+  display: none;
 }
 
-.page{
-    padding-left: 0;
+.column.is-8-widescreen {
+    flex: none;
+    width: 99.66667%;
+}
+footer {
+    display: none;
 }
 
 CSS;
@@ -174,9 +186,7 @@ CSS;
     private function downloadSite()
     {
         $urls = [
-            'https://wulicode.com/note/index.html',
-            'https://wulicode.com/doc/index.html',
-            'https://wulicode.com/man/index.html',
+            'https://wulicode.com/index.html',
         ];
 
         $children = [];
