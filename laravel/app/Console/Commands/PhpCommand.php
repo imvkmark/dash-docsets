@@ -169,7 +169,6 @@ CSS;
                 '--show-progress',
                 $url
             ]],
-
         ];
 
         $children = [];

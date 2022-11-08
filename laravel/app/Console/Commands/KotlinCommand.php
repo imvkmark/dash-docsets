@@ -83,7 +83,7 @@ class KotlinCommand extends Command
                         $this->info('Count : ' . $this->allInsert->count() . ', Use time :' . $diff . 's, Path: ' . Str::replace($trimPath, '', $file->getRelativePathname()));
                     }
                 }
-                //        DbKotlin::query()->insert($this->allInsert->toArray());
+                // DbKotlin::query()->insert($this->allInsert->toArray());
                 $this->info('Gen Db Success, Total : ' . $this->allInsert->count(), ', Use ' . Carbon::now()->diffInSeconds($startTime) . 's.');
                 break;
             case 'tar';

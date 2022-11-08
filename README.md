@@ -4,26 +4,29 @@
 
 ## Docset 使用
 
-**自行下载**
-
-在 [Release](./releases) 页面下载, 自行安装
-
-**订阅**
+**订阅(推荐)**
 
 订阅 Url Feed :
 
-Php : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/php-docset.xml
+Php:
 
-Kotlin : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/kotlin-docset.xml
+https://raw.githubusercontent.com/imvkmark/dash-docsets/master/feeds/php-zh.xml
 
-LinuxCommand : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/linux-command-docset.xml
+Kotlin:
 
-Wulicode : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/wulicode-docset.xml
+https://raw.githubusercontent.com/imvkmark/dash-docsets/master/feeds/kotlin.xml
+
+Linux Command(此源如需更新需要卸载 docset 并重新安装):
+
+https://raw.githubusercontent.com/imvkmark/dash-docsets/master/feeds/linux-command.xml
 
 发布新版本会自行更新
 
 ![](./_php/feed.png)
 
+**自行下载**
+
+在 [Release](https://github.com/imvkmark/dash-docsets/releases) 页面下载, 自行安装
 
 ## 当前支持
 
@@ -41,7 +44,7 @@ Wulicode : https://raw.githubusercontent.com/imvkmark/dash-docsets/master/wulico
 
 ### LinuxCommand
 
-基于 https://github.com/jaywcjlove/linux-command 不定期生成文档并更新
+使用官方的 command, 如需更新需要手工卸载并安装
 
 ## 运行说明
 
@@ -74,4 +77,10 @@ php > 8.0.2
 ## 参考
 
 - [Docset Generation Guide](https://kapeli.com/docsets)
+
+## Changelog
+
+2022年11月08日
+
+- 移除 linux command 在项目中的支持, 使用官方源进行更新
 
