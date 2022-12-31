@@ -6,6 +6,7 @@ use App\Models\DbPhpAim;
 use App\Models\DbPhpOrigin;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
 class PhpCommand extends Command
@@ -51,6 +52,9 @@ class PhpCommand extends Command
                 }
 
                 $startTime = Carbon::now();
+                /** @var Filesystem $files */
+                $files = app('files');
+                $files->delete(dirname(base_path(self::$path)) . '/php.cn.tar.gz');
                 if (!file_exists(dirname(base_path(self::$path)) . '/php.cn.tar.gz')) {
                     $this->downloadSite();
                     $this->info('Download Success, Time : ' . Carbon::now()->diffInSeconds($startTime) . 's');
@@ -66,11 +70,16 @@ class PhpCommand extends Command
                     '--strip-components',
                     '1',
                     '--directory',
-                    base_path(self::$path)
+                    base_path(self::$path),
                 ]);
                 $this->info('Extract Success, Time : ' . Carbon::now()->diffInSeconds($startTime) . 's');
                 break;
             case 'index';
+
+                // delete file
+                /** @var Filesystem $files */
+                $files = app('files');
+                $files->delete(dirname(base_path(self::$path)) . '/php.cn.tar.gz');
                 // append style
                 $this->style();
 
@@ -100,7 +109,7 @@ class PhpCommand extends Command
                 pcntl_exec('/usr/bin/tar', [
                     '-zcvf',
                     'Php.Cn.docset.tgz',
-                    'Php.Cn.docset'
+                    'Php.Cn.docset',
                 ]);
                 break;
         }
@@ -167,7 +176,7 @@ CSS;
                 base_path(self::$path . '../php.cn.tar.gz'),
                 '--quiet',
                 '--show-progress',
-                $url
+                $url,
             ]],
         ];
 
@@ -177,10 +186,12 @@ CSS;
             if ($pid === -1) {      //进程创建失败
                 $this->error('fork child process failure!');
                 return;
-            } else if ($pid) {      //父进程处理逻辑
+            }
+            else if ($pid) {      //父进程处理逻辑
                 $children[] = $pid;
                 pcntl_wait($status, WNOHANG);
-            } else {                //子进程处理逻辑
+            }
+            else {                //子进程处理逻辑
                 pcntl_exec($command[0], $command[1]);
             }
         }
