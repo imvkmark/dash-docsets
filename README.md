@@ -46,6 +46,19 @@ https://raw.githubusercontent.com/imvkmark/dash-docsets/master/feeds/linux-comma
 
 使用官方的 command, 如需更新需要手工卸载并安装
 
+### Python
+
+下载 : https://docs.python.org/zh-cn/3/download.html
+安装 [doc2dash](https://pypi.org/project/doc2dash/)  
+运行命令: 
+```
+$ doc2dash -f /path/of/python-zh-doc/
+Converting intersphinx docs from '/path/of/python-zh-doc/' to 'Python.docset'.
+Parsing documentation...
+Added 13,683 index entries.
+Patching for TOCs... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+```
+
 ## 运行说明
 
 ```
