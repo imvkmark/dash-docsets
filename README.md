@@ -1,6 +1,6 @@
 # Docset 生成工具
 
-当前支持 Php, Kotlin, [LinuxCommand](https://github.com/jaywcjlove/linux-command)
+当前支持 Php, Kotlin, [LinuxCommand](https://github.com/jaywcjlove/linux-command), Python
 
 ## Docset 使用
 
