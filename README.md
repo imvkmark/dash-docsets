@@ -20,6 +20,10 @@ Linux Command(此源如需更新需要卸载 docset 并重新安装):
 
 https://raw.githubusercontent.com/imvkmark/dash-docsets/master/feeds/linux-command.xml
 
+Python :
+
+https://raw.githubusercontent.com/imvkmark/dash-docsets/master/feeds/python-zh.xml
+
 发布新版本会自行更新
 
 ![](./_php/feed.png)
