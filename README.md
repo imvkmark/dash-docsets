@@ -54,7 +54,8 @@ https://raw.githubusercontent.com/imvkmark/dash-docsets/master/feeds/python-zh.x
 
 下载 : https://docs.python.org/zh-cn/3/download.html
 安装 [doc2dash](https://pypi.org/project/doc2dash/)  
-运行命令: 
+运行命令:
+
 ```
 $ doc2dash -f /path/of/python-zh-doc/
 Converting intersphinx docs from '/path/of/python-zh-doc/' to 'Python.docset'.
@@ -96,6 +97,11 @@ php > 8.0.2
 - [Docset Generation Guide](https://kapeli.com/docsets)
 
 ## Changelog
+
+2022年12月31日
+
+- 移除 wulicode
+- 增加 python 中文版
 
 2022年11月08日
 
